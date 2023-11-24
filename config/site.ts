@@ -5,6 +5,6 @@ export const siteConfig = {
   description: "Testing things.",
   links: {
     twitter: "https://twitter.com/envyvox",
-    github: "https://github.com/envyvox/project-u",
+    github: "https://github.com/envyvox/nextauth-test",
   },
 };
