@@ -6,6 +6,7 @@ import Providers from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
@@ -44,13 +45,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
+            fontSans.variable,
           )}
         >
           <Providers>
             <div className="relative flex min-h-screen flex-col">
               <Header />
               <div className="flex-1">{children}</div>
+              <Toaster />
             </div>
             <TailwindIndicator />
           </Providers>

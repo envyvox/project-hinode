@@ -32,19 +32,17 @@ export function UserAvatar() {
             : "Not signed in"}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          {session ? (
-            <>
-              <LogOut className="mr-2 h-4 w-4" />
-              <span onClick={() => signOut()}>Sign out</span>
-            </>
-          ) : (
-            <>
-              <LogIn className="mr-2 h-4 w-4" />
-              <span onClick={() => signIn()}>Sign in</span>
-            </>
-          )}
-        </DropdownMenuItem>
+        {session ? (
+          <DropdownMenuItem onClick={() => signOut()}>
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Sign out</span>
+          </DropdownMenuItem>
+        ) : (
+          <DropdownMenuItem onClick={() => signIn()}>
+            <LogIn className="mr-2 h-4 w-4" />
+            <span>Sign in</span>
+          </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
