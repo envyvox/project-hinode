@@ -5,6 +5,7 @@ import { getProviders, signIn } from "next-auth/react";
 
 export default async function SignInPage() {
   const providers = await getProviders();
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {providers &&
@@ -13,7 +14,7 @@ export default async function SignInPage() {
             <Button
               variant="default"
               onClick={() =>
-                signIn(provider.id, { callbackUrl: "http://localhost:3000" })
+                signIn(provider.id, { callbackUrl: "http://localhost:3000/" })
               }
             >
               Sign in with {provider.name}
