@@ -1,0 +1,26 @@
+{
+  "sidebar": {
+    "category.info": "Пользователь",
+    "category.info.child.profile": "Профиль",
+    "category.info.child.inventory": "Инвентарь",
+    "category.info.child.reputation": "Репутация",
+    "category.info.child.collection": "Коллекция",
+    "category.info.child.banners": "Баннеры",
+    "category.info.child.achievements": "Достижения",
+    "category.world": "Мир",
+    "category.world.child.rating": "Рейтинг",
+    "category.world.child.info": "Информация"
+  },
+  "header": {
+    "user.not-signed-in": "Не авторизован",
+    "user.sign-in": "Войти",
+    "user.sign-out": "Выйти"
+  },
+  "dashboard": {
+    "info.profile.username": "Имя пользователя",
+    "info.profile.email": "Почта",
+    "info.profile.about": "Обо мне",
+    "info.profile.about-placeholder": "Я классный человек ;)",
+    "info.profile.save": "Сохранить"
+  }
+}

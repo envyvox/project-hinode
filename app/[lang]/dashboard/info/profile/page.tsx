@@ -16,8 +16,10 @@ import { profileScheme } from "@/lib/zod-schemes";
 import { updateUserInfo } from "@/actions/update-user-info";
 import SubmitButton from "./submit-btn";
 import { useUserStore } from "@/store/user-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
 
 export default function () {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
 
   const form = useForm<z.infer<typeof profileScheme>>({
@@ -34,13 +36,13 @@ export default function () {
     <div className="space-y-8 py-6 lg:py-8">
       <div className="space-y-2">
         <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-          Username
+          {dictionary.dashboard["info.profile.username"]}
         </label>
         <Input disabled value={user.name ?? ""} />
       </div>
       <div className="space-y-2">
         <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-          Email
+          {dictionary.dashboard["info.profile.email"]}
         </label>
         <Input disabled value={user.email ?? ""} />
       </div>
@@ -54,9 +56,16 @@ export default function () {
             name="about"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>About</FormLabel>
+                <FormLabel>
+                  {dictionary.dashboard["info.profile.about"]}
+                </FormLabel>
                 <FormControl>
-                  <Textarea placeholder="I'm cool person ;)" {...field} />
+                  <Textarea
+                    placeholder={
+                      dictionary.dashboard["info.profile.about-placeholder"]
+                    }
+                    {...field}
+                  />
                 </FormControl>
               </FormItem>
             )}

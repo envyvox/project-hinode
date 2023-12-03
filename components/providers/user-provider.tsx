@@ -2,13 +2,13 @@
 
 import { useUserStore } from "@/store/user-store";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
-export default function UserProvider({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+};
+
+export default function UserProvider({ children }: Props) {
   const { data: session } = useSession();
   const getUser = useUserStore((state) => state.getUser);
 
@@ -18,5 +18,5 @@ export default function UserProvider({
     }
   }, [session]);
 
-  return <>{children}</>;
+  return children;
 }

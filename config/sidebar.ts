@@ -13,43 +13,43 @@ type SidebarChildCategory = {
  */
 export const sidebarCategories: SidebarCategory[] = [
   {
-    label: "Info",
+    label: "category.info",
     child: [
       {
-        label: "Profile",
+        label: "category.info.child.profile",
         href: "/dashboard/info/profile",
       },
       {
-        label: "Inventory",
+        label: "category.info.child.inventory",
         href: "/dashboard/info/inventory",
       },
       {
-        label: "Reputation",
+        label: "category.info.child.reputation",
         href: "/dashboard/info/reputation",
       },
       {
-        label: "Collection",
+        label: "category.info.child.collection",
         href: "/dashboard/info/collection",
       },
       {
-        label: "Banners",
+        label: "category.info.child.banners",
         href: "/dashboard/info/banners",
       },
       {
-        label: "Achievements",
+        label: "category.info.child.achievements",
         href: "/dashboard/info/achievements",
       },
     ],
   },
   {
-    label: "World",
+    label: "category.world",
     child: [
       {
-        label: "Rating",
+        label: "category.world.child.rating",
         href: "/dashboard/world/rating",
       },
       {
-        label: "Info",
+        label: "category.world.child.info",
         href: "/dashboard/world/info",
       },
     ],

@@ -1,0 +1,26 @@
+{
+  "sidebar": {
+    "category.info": "User",
+    "category.info.child.profile": "Profile",
+    "category.info.child.inventory": "Inventory",
+    "category.info.child.reputation": "Reputation",
+    "category.info.child.collection": "Collection",
+    "category.info.child.banners": "Banners",
+    "category.info.child.achievements": "Achievements",
+    "category.world": "World",
+    "category.world.child.rating": "Rating",
+    "category.world.child.info": "Info"
+  },
+  "header": {
+    "user.not-signed-in": "Not signed id",
+    "user.sign-in": "Sign in",
+    "user.sign-out": "Sign out"
+  },
+  "dashboard": {
+    "info.profile.username": "Username",
+    "info.profile.email": "Email",
+    "info.profile.about": "About",
+    "info.profile.about-placeholder": "I'm cool person ;)",
+    "info.profile.save": "Save"
+  }
+}

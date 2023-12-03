@@ -1,5 +1,6 @@
 "use client";
 
+import { useDictionaryStore } from "@/store/dictionary-store";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   DropdownMenu,
@@ -14,7 +15,9 @@ import { LogIn, LogOut } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export function UserAvatar() {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
   const { data: session } = useSession();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -29,18 +32,18 @@ export function UserAvatar() {
         <DropdownMenuLabel>
           {session
             ? session.user?.name + " " + session.user?.email
-            : "Not signed in"}
+            : dictionary.header["user.not-signed-in"]}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {session ? (
           <DropdownMenuItem onClick={() => signOut()}>
             <LogOut className="mr-2 h-4 w-4" />
-            <span>Sign out</span>
+            <span>{dictionary.header["user.sign-out"]}</span>
           </DropdownMenuItem>
         ) : (
           <DropdownMenuItem onClick={() => signIn()}>
             <LogIn className="mr-2 h-4 w-4" />
-            <span>Sign in</span>
+            <span>{dictionary.header["user.sign-in"]}</span>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

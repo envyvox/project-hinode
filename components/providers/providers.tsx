@@ -4,17 +4,22 @@ import AuthProvider from "./auth-provider";
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
 import UserProvider from "./user-provider";
+import DictionaryProvider from "./dictionary-provider";
+import { Dictionary } from "@/store/dictionary-store";
 
-const Providers = ({ children }: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode;
+  dictionary: Dictionary;
+};
+
+export default function Providers({ children, dictionary }: Props) {
   return (
     <AuthProvider>
       <UserProvider>
         <ThemeProvider attribute="class" enableSystem={false}>
-          {children}
+          <DictionaryProvider dictionary={dictionary}>{children}</DictionaryProvider>
         </ThemeProvider>
       </UserProvider>
     </AuthProvider>
   );
-};
-
-export default Providers;
+}
