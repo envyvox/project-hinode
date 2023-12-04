@@ -17,6 +17,7 @@ export type Dictionary = {
     "user.not-signed-in": string;
     "user.sign-in": string;
     "user.sign-out": string;
+    "langulage-switcher.langulage": string;
   };
   dashboard: {
     "info.profile.username": string;
@@ -50,6 +51,7 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "user.not-signed-in": "",
       "user.sign-in": "",
       "user.sign-out": "",
+      "langulage-switcher.langulage": "",
     },
     dashboard: {
       "info.profile.username": "",

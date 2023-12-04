@@ -14,7 +14,8 @@
   "header": {
     "user.not-signed-in": "Не авторизован",
     "user.sign-in": "Войти",
-    "user.sign-out": "Выйти"
+    "user.sign-out": "Выйти",
+    "langulage-switcher.langulage": "Язык"
   },
   "dashboard": {
     "info.profile.username": "Имя пользователя",

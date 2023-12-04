@@ -1,3 +1,4 @@
+import LocaleSwitcher from "./locale-switcher";
 import { ThemeToggle } from "./theme-toggle";
 import { buttonVariants } from "./ui/button";
 import { UserAvatar } from "./user-avatar";
@@ -29,6 +30,7 @@ export function Header() {
               <Github />
             </Link>
             <ThemeToggle />
+            <LocaleSwitcher />
             <UserAvatar />
           </nav>
         </div>

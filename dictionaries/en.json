@@ -14,7 +14,8 @@
   "header": {
     "user.not-signed-in": "Not signed id",
     "user.sign-in": "Sign in",
-    "user.sign-out": "Sign out"
+    "user.sign-out": "Sign out",
+    "langulage-switcher.langulage": "Language"
   },
   "dashboard": {
     "info.profile.username": "Username",
