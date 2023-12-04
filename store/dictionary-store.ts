@@ -25,6 +25,14 @@ export type Dictionary = {
     "info.profile.about": string;
     "info.profile.about-placeholder": string;
     "info.profile.save": string;
+    "info.inventory.currency": string;
+    "info.inventory.currency.empty": string;
+    "info.inventory.product": string;
+    "info.inventory.product.empty": string;
+    "info.inventory.seed": string;
+    "info.inventory.seed.empty": string;
+    "info.inventory.crop": string;
+    "info.inventory.crop.empty": string;
   };
 };
 
@@ -59,6 +67,14 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "info.profile.about": "",
       "info.profile.about-placeholder": "",
       "info.profile.save": "",
+      "info.inventory.currency": "",
+      "info.inventory.currency.empty": "",
+      "info.inventory.product": "",
+      "info.inventory.product.empty": "",
+      "info.inventory.seed": "",
+      "info.inventory.seed.empty": "",
+      "info.inventory.crop": "",
+      "info.inventory.crop.empty": ""
     },
   },
   setDictionary: (dictionary: Dictionary) => set({ dictionary }),

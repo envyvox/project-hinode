@@ -22,6 +22,14 @@
     "info.profile.email": "Почта",
     "info.profile.about": "Обо мне",
     "info.profile.about-placeholder": "Я классный человек ;)",
-    "info.profile.save": "Сохранить"
+    "info.profile.save": "Сохранить",
+    "info.inventory.currency": "Валюта",
+    "info.inventory.currency.empty": "У тебя нет валюты.",
+    "info.inventory.product": "Продукты",
+    "info.inventory.product.empty": "У тебя нет продуктов.",
+    "info.inventory.seed": "Семена",
+    "info.inventory.seed.empty": "У тебя нет семян.",
+    "info.inventory.crop": "Урожай",
+    "info.inventory.crop.empty": "У тебя нет урожая."
   }
 }

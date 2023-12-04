@@ -1,3 +1,15 @@
+import InventoryCrops from "./components/inventory-crops";
+import InventoryCurrency from "./components/inventory-currency";
+import InventoryProducts from "./components/inventory-products";
+import InventorySeeds from "./components/inventory-seeds";
+
 export default function InfoInventoryPage() {
-  return <span>Info Inventory Page</span>;
+  return (
+    <div className="flex flex-col gap-5 py-7 lg:py-9">
+      <InventoryCurrency />
+      <InventorySeeds />
+      <InventoryCrops />
+      <InventoryProducts />
+    </div>
+  );
 }

@@ -15,6 +15,7 @@ export const useUserStore = create<UserState>((set) => ({
     emailVerified: null,
     about: null,
     image: null,
+    accessRole: "User",
   },
   getUser: async (email: string) => {
     const user = await getUser(email);

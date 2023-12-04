@@ -36,14 +36,20 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   about         String?
   image         String?
+  accessRole    AccessRole     @default(User)
   accounts      Account[]
   sessions      Session[]
+  currencies    UserCurrency[]
+  boxes         UserBoxes[]
+  seeds         UserSeeds[]
+  crops         UserCrops[]
+  products      UserProducts[]
 }
 
 model VerificationToken {
@@ -52,4 +58,106 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model UserCurrency {
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  currency Currency
+  amount   BigInt
+
+  @@id([userId, currency])
+}
+
+model UserBoxes {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  box    Box
+  amount BigInt
+
+  @@id([userId, box])
+}
+
+model UserSeeds {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  seed   Seed   @relation(fields: [seedId], references: [id])
+  seedId String
+  amount BigInt
+
+  @@id([userId, seedId])
+}
+
+model UserCrops {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  crop   Crop   @relation(fields: [cropId], references: [id])
+  cropId String
+  amount BigInt
+
+  @@id([userId, cropId])
+}
+
+model UserProducts {
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  amount    BigInt
+
+  @@id([userId, productId])
+}
+
+model Seed {
+  id           String      @id @default(cuid())
+  name         String      @unique
+  season       Season
+  growthDays   Int
+  reGrowthDays Int
+  isMultiply   Boolean
+  price        Int
+  crop         Crop?
+  userSeeds    UserSeeds[]
+}
+
+model Crop {
+  id        String      @id @default(cuid())
+  name      String      @unique
+  price     Int
+  seed      Seed        @relation(fields: [seedId], references: [id])
+  seedId    String      @unique
+  userCrops UserCrops[]
+}
+
+model Product {
+  id           String         @id @default(cuid())
+  name         String         @unique
+  price        Int
+  userProducts UserProducts[]
+}
+
+enum Season {
+  Any
+  Spring
+  Summer
+  Autumn
+  Winter
+}
+
+enum Currency {
+  Ien
+  Perl
+}
+
+enum Box {
+  Capital
+  Garden
+  Seaport
+  Castle
+  Village
+}
+
+enum AccessRole {
+  User
+  Admin
 }

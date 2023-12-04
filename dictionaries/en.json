@@ -22,6 +22,14 @@
     "info.profile.email": "Email",
     "info.profile.about": "About",
     "info.profile.about-placeholder": "I'm cool person ;)",
-    "info.profile.save": "Save"
+    "info.profile.save": "Save",
+    "info.inventory.currency": "Currency",
+    "info.inventory.currency.empty": "You don't have any currency.",
+    "info.inventory.product": "Products",
+    "info.inventory.product.empty": "You don't have any products.",
+    "info.inventory.seed": "Seeds",
+    "info.inventory.seed.empty": "You don't have any seeds.",
+    "info.inventory.crop": "Crops",
+    "info.inventory.crop.empty": "You don't have any crops."
   }
 }
