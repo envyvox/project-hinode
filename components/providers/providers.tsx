@@ -5,19 +5,20 @@ import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
 import UserProvider from "./user-provider";
 import DictionaryProvider from "./dictionary-provider";
-import { Dictionary } from "@/store/dictionary-store";
+import LangProvider from "./lang-provider";
 
 type Props = {
   children: ReactNode;
-  dictionary: Dictionary;
 };
 
-export default function Providers({ children, dictionary }: Props) {
+export default function Providers({ children }: Props) {
   return (
     <AuthProvider>
       <UserProvider>
         <ThemeProvider attribute="class" enableSystem={false}>
-          <DictionaryProvider dictionary={dictionary}>{children}</DictionaryProvider>
+          <LangProvider>
+            <DictionaryProvider>{children}</DictionaryProvider>
+          </LangProvider>
         </ThemeProvider>
       </UserProvider>
     </AuthProvider>

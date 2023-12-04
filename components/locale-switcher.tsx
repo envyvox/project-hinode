@@ -1,7 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { i18n } from "@/i18n-config";
 import { Languages } from "lucide-react";
 import {
@@ -14,16 +12,11 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { useLangStore } from "@/store/lang-store";
 
 export default function LocaleSwitcher() {
+  const setLang = useLangStore((state) => state.setLang);
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const pathName = usePathname();
-  const redirectedPathName = (locale: string) => {
-    if (!pathName) return "/";
-    const segments = pathName.split("/");
-    segments[1] = locale;
-    return segments.join("/");
-  };
 
   return (
     <DropdownMenu>
@@ -38,10 +31,8 @@ export default function LocaleSwitcher() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {i18n.locales.map((locale) => (
-          <DropdownMenuItem key={locale}>
-            <Link className="w-full" href={redirectedPathName(locale)}>
-              {locale}
-            </Link>
+          <DropdownMenuItem key={locale} onClick={() => setLang(locale)}>
+            {locale}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

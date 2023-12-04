@@ -8,8 +8,6 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import Sidebar from "@/components/sidebar";
-import { Locale } from "@/i18n-config";
-import { getDictionary } from "./dictionaries";
 
 export const metadata: Metadata = {
   title: {
@@ -38,14 +36,12 @@ export const fontSans = FontSans({
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: Locale };
 };
 
-export default async function RootLayout({ children, params }: Props) {
-  const dictionary = await getDictionary(params.lang);
+export default async function RootLayout({ children }: Props) {
   return (
     <>
-      <html lang={params.lang} suppressHydrationWarning>
+      <html suppressHydrationWarning>
         <head />
         <body
           className={cn(
@@ -53,7 +49,7 @@ export default async function RootLayout({ children, params }: Props) {
             fontSans.variable,
           )}
         >
-          <Providers dictionary={dictionary}>
+          <Providers>
             <div className="relative flex flex-col">
               <Header />
               <div className="flex-1">

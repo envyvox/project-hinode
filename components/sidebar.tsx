@@ -16,6 +16,7 @@ export default function Sidebar() {
         {sidebarCategories.map((category) => (
           <div key={category.label} className="pb-4">
             <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
+              {/* @ts-ignore: Implicit any */}
               {dictionary.sidebar[category.label]}
             </h4>
             {category.child.map((child) => (
@@ -24,8 +25,9 @@ export default function Sidebar() {
                   href={child.href}
                   className="group flex w-full items-center rounded-md border border-transparent px-2 py-1 text-muted-foreground hover:underline"
                 >
+                  {/* @ts-ignore: Implicit any */}
                   {dictionary.sidebar[child.label]}
-                </Link> 
+                </Link>
               </div>
             ))}
           </div>

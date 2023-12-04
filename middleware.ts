@@ -1,80 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { i18n } from "./i18n-config";
-
-import { match as matchLocale } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
-
-function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
-
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-    locales,
-  );
-
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-
-  return locale;
-}
-
 export function middleware(request: NextRequest) {
   // Get the pathname of the request (e.g. /, /dashboard)
   const pathname = request.nextUrl.pathname;
-  // Get the locale
-  const locale = getLocale(request);
-
-  // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
-  // // If you have one
-  // if (
-  //   [
-  //     '/manifest.json',
-  //     '/favicon.ico',
-  //     // Your other files in `public`
-  //   ].includes(pathname)
-  // )
-  //   return
-
-  // Check if there is any supported locale in the pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
-
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    // e.g. incoming request is /dashboard
-    // The new URL is now /en/dashboard
-
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-        request.url,
-      ),
-    );
-  }
 
   // If it's the root path, just render it
-  if (pathname === `/${locale}/`) {
+  if (pathname === `/`) {
     return NextResponse.next();
   }
 
   // Check if user is authorized
   const authorized = request.cookies.has("next-auth.session-token");
 
-  if (!authorized && pathname.startsWith(`/${locale}/dashboard`)) {
+  if (!authorized && pathname.startsWith(`/dashboard`)) {
     // If user is not authorized and tries to access dashboard, redirect to sign in page
-    return NextResponse.redirect(
-      new URL(`/${locale}/auth/signin`, request.url),
-    );
-  } else if (authorized && pathname === `/${locale}/auth/signin`) {
+    return NextResponse.redirect(new URL(`/auth/signin`, request.url));
+  } else if (authorized && pathname === `/auth/signin`) {
     // If user is authorized and tries to access sign in page, redirect to main
-    return NextResponse.redirect(new URL(`/${locale}/`, request.url));
+    return NextResponse.redirect(new URL(`/`, request.url));
   }
 }
 
