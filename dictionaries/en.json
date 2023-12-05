@@ -19,6 +19,9 @@
     "langulage-switcher.langulage": "Language"
   },
   "dashboard": {
+    "dashboard.about": "About location",
+    "dashboard.actions": "Actions",
+    "dashboard.transit": "Transit",
     "info.profile.username": "Username",
     "info.profile.email": "Email",
     "info.profile.about": "About",
@@ -32,5 +35,17 @@
     "info.inventory.seed.empty": "You don't have any seeds.",
     "info.inventory.crop": "Crops",
     "info.inventory.crop.empty": "You don't have any crops."
+  },
+  "location": {
+    "InTransit": "In transit",
+    "Capital": "Capital «Edo»",
+    "Garden": "Blooming garden «Kairaku-en»",
+    "Seaport": "Seaport city «Nagoya»",
+    "Castle": "Ancient castle «Himeji»",
+    "Village": "Village «Mura»",
+    "ExploreGarden": "Exploration of the garden",
+    "ExploreCastle": "Exploration of the castle",
+    "Fishing": "Fishing",
+    "FieldWatering": "Watering the plot of land"
   }
 }

@@ -19,6 +19,9 @@
     "langulage-switcher.langulage": "Язык"
   },
   "dashboard": {
+    "dashboard.about": "О локации",
+    "dashboard.actions": "Действия",
+    "dashboard.transit": "Перемещение",
     "info.profile.username": "Имя пользователя",
     "info.profile.email": "Почта",
     "info.profile.about": "Обо мне",
@@ -32,5 +35,17 @@
     "info.inventory.seed.empty": "У тебя нет семян.",
     "info.inventory.crop": "Урожай",
     "info.inventory.crop.empty": "У тебя нет урожая."
+  },
+  "location": {
+    "InTransit": "В пути",
+    "Capital": "Столица «Эдо»",
+    "Garden": "Цветущий сад «Кайраку-эн»",
+    "Seaport": "Портовый город «Нагоя»",
+    "Castle": "Древний замок «Химэдзи»",
+    "Village": "Деревня «Мура»",
+    "ExploreGarden": "Исследование сада",
+    "ExploreCastle": "Исследование шахт",
+    "Fishing": "Рыбалка",
+    "FieldWatering": "Поливка участка земли"
   }
 }

@@ -21,6 +21,9 @@ export type Dictionary = {
     "langulage-switcher.langulage": string;
   };
   dashboard: {
+    "dashboard.about": string;
+    "dashboard.actions": string;
+    "dashboard.transit": string;
     "info.profile.username": string;
     "info.profile.email": string;
     "info.profile.about": string;
@@ -34,6 +37,18 @@ export type Dictionary = {
     "info.inventory.seed.empty": string;
     "info.inventory.crop": string;
     "info.inventory.crop.empty": string;
+  };
+  location: {
+    InTransit: string;
+    Capital: string;
+    Garden: string;
+    Seaport: string;
+    Castle: string;
+    Village: string;
+    ExploreGarden: string;
+    ExploreCastle: string;
+    Fishing: string;
+    FieldWatering: string;
   };
 };
 
@@ -64,6 +79,9 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "langulage-switcher.langulage": "",
     },
     dashboard: {
+      "dashboard.about": "",
+      "dashboard.actions": "",
+      "dashboard.transit": "",
       "info.profile.username": "",
       "info.profile.email": "",
       "info.profile.about": "",
@@ -77,6 +95,18 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "info.inventory.seed.empty": "",
       "info.inventory.crop": "",
       "info.inventory.crop.empty": "",
+    },
+    location: {
+      InTransit: "",
+      Capital: "",
+      Garden: "",
+      Seaport: "",
+      Castle: "",
+      Village: "",
+      ExploreGarden: "",
+      ExploreCastle: "",
+      Fishing: "",
+      FieldWatering: "",
     },
   },
   setDictionary: (dictionary: Dictionary) => set({ dictionary }),
