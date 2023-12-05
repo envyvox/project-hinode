@@ -44,6 +44,8 @@ model User {
   image         String?
   accessRole    AccessRole     @default(User)
   location      Location       @default(Capital)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt
   accounts      Account[]
   sessions      Session[]
   currencies    UserCurrency[]
@@ -62,49 +64,59 @@ model VerificationToken {
 }
 
 model UserCurrency {
-  user     User     @relation(fields: [userId], references: [id])
-  userId   String
-  currency Currency
-  amount   BigInt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  currency  Currency
+  amount    BigInt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@id([userId, currency])
 }
 
 model UserBoxes {
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-  box    Box
-  amount BigInt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  box       Box
+  amount    BigInt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@id([userId, box])
 }
 
 model UserSeeds {
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-  seed   Seed   @relation(fields: [seedId], references: [id])
-  seedId String
-  amount BigInt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  seed      Seed     @relation(fields: [seedId], references: [id])
+  seedId    String
+  amount    BigInt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@id([userId, seedId])
 }
 
 model UserCrops {
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-  crop   Crop   @relation(fields: [cropId], references: [id])
-  cropId String
-  amount BigInt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  crop      Crop     @relation(fields: [cropId], references: [id])
+  cropId    String
+  amount    BigInt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@id([userId, cropId])
 }
 
 model UserProducts {
-  user      User    @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
   userId    String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
   productId String
   amount    BigInt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@id([userId, productId])
 }
@@ -118,6 +130,8 @@ model Seed {
   isMultiply   Boolean
   price        Int
   crop         Crop?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now()) @updatedAt
   userSeeds    UserSeeds[]
 }
 
@@ -127,6 +141,8 @@ model Crop {
   price     Int
   seed      Seed        @relation(fields: [seedId], references: [id])
   seedId    String      @unique
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now()) @updatedAt
   userCrops UserCrops[]
 }
 
@@ -134,6 +150,8 @@ model Product {
   id           String         @id @default(cuid())
   name         String         @unique
   price        Int
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now()) @updatedAt
   userProducts UserProducts[]
 }
 
