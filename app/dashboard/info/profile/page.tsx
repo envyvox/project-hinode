@@ -1,84 +1,43 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { profileScheme } from "@/lib/zod-schemes";
-import { updateUserInfo } from "@/actions/update-user-info";
-import SubmitButton from "./submit-btn";
 import { useUserStore } from "@/store/user-store";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { TypographyMuted } from "@/components/typography/muted";
 
 export default function () {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
 
-  const form = useForm<z.infer<typeof profileScheme>>({
-    resolver: zodResolver(profileScheme),
-    defaultValues: {
-      about: "",
-    },
-    values: {
-      about: user.about ?? "",
-    },
-  });
-
   return (
-    <div className="space-y-8">
-      <div className="space-y-2">
-        <label
-          htmlFor="username"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          {dictionary.dashboard["info.profile.username"]}
-        </label>
-        <Input id="username" disabled value={user.name ?? ""} />
-      </div>
-      <div className="space-y-2">
-        <label
-          htmlFor="email"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          {dictionary.dashboard["info.profile.email"]}
-        </label>
-        <Input id="email" disabled value={user.email ?? ""} />
-      </div>
-      <Form {...form}>
-        <form
-          action={(formData) => updateUserInfo(user?.id!, formData)}
-          className="space-y-8"
-        >
-          <FormField
-            control={form.control}
-            name="about"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  {dictionary.dashboard["info.profile.about"]}
-                </FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder={
-                      dictionary.dashboard["info.profile.about-placeholder"]
-                    }
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <SubmitButton />
-        </form>
-      </Form>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>{user.name}</CardTitle>
+        <CardDescription></CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-5">
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-sky-500" />
+          Current location: {user.location}
+        </div>
+        <div className="flex flex-col gap-1">
+          <TypographyMuted>
+            {dictionary.dashboard["info.profile.about"]}
+          </TypographyMuted>
+          <div className="rounded-lg border p-2 shadow-sm">
+            <TypographyMuted>
+              {user.about ??
+                dictionary.dashboard["info.profile.about-placeholder"]}
+            </TypographyMuted>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
