@@ -5,7 +5,7 @@ import InventorySeeds from "./components/inventory-seeds";
 
 export default function InfoInventoryPage() {
   return (
-    <div className="flex flex-col gap-5 py-7 lg:py-9">
+    <div className="flex flex-col gap-5 py-7">
       <InventoryCurrency />
       <InventorySeeds />
       <InventoryCrops />
