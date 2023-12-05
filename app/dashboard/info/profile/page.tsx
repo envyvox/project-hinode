@@ -33,7 +33,7 @@ export default function () {
   });
 
   return (
-    <div className="space-y-8 py-6">
+    <div className="space-y-8">
       <div className="space-y-2">
         <label
           htmlFor="username"

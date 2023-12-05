@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 export type Dictionary = {
   sidebar: {
+    "category.dashboard": string;
     "category.info": string;
     "category.info.child.profile": string;
     "category.info.child.inventory": string;
@@ -44,6 +45,7 @@ type DictionaryState = {
 export const useDictionaryStore = create<DictionaryState>((set) => ({
   dictionary: {
     sidebar: {
+      "category.dashboard": "",
       "category.info": "",
       "category.info.child.profile": "",
       "category.info.child.inventory": "",
@@ -74,7 +76,7 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "info.inventory.seed": "",
       "info.inventory.seed.empty": "",
       "info.inventory.crop": "",
-      "info.inventory.crop.empty": ""
+      "info.inventory.crop.empty": "",
     },
   },
   setDictionary: (dictionary: Dictionary) => set({ dictionary }),

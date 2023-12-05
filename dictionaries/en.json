@@ -1,5 +1,6 @@
 {
   "sidebar": {
+    "category.dashboard": "Dashboard",
     "category.info": "User",
     "category.info.child.profile": "Profile",
     "category.info.child.inventory": "Inventory",

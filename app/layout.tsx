@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: Props) {
             <div className="relative flex flex-col">
               <Header />
               <div className="flex-1">
-                <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+                <div className="container flex-1 items-start py-6 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
                   <Sidebar />
                   {children}
                 </div>

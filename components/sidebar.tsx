@@ -12,7 +12,7 @@ export default function Sidebar() {
 
   return session ? (
     <div className="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:block">
-      <ScrollArea className="h-full py-6">
+      <ScrollArea className="h-full">
         {sidebarCategories.map((category) => (
           <div key={category.label} className="pb-4">
             <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">

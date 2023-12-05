@@ -13,6 +13,15 @@ type SidebarChildCategory = {
  */
 export const sidebarCategories: SidebarCategory[] = [
   {
+    label: "category.dashboard",
+    child: [
+      {
+        label: "category.dashboard",
+        href: "/dashboard",
+      },
+    ],
+  },
+  {
     label: "category.info",
     child: [
       {

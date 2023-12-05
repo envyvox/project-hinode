@@ -1,5 +1,6 @@
 {
   "sidebar": {
+    "category.dashboard": "Главная",
     "category.info": "Пользователь",
     "category.info.child.profile": "Профиль",
     "category.info.child.inventory": "Инвентарь",
