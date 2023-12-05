@@ -43,6 +43,7 @@ model User {
   about         String?
   image         String?
   accessRole    AccessRole     @default(User)
+  location      Location       @default(Capital)
   accounts      Account[]
   sessions      Session[]
   currencies    UserCurrency[]
@@ -160,4 +161,18 @@ enum Box {
 enum AccessRole {
   User
   Admin
+}
+
+enum Location {
+  InTransit
+  Capital
+  Garden
+  Seaport
+  Castle
+  Village
+  ExploreGarden
+  ExploreCastle
+  Fishing
+  FieldWatering
+  WorkOnContract
 }
