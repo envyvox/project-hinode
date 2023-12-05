@@ -7,7 +7,6 @@ import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
-import Sidebar from "@/components/sidebar";
 
 export const metadata: Metadata = {
   title: {
@@ -38,32 +37,22 @@ type Props = {
   children: React.ReactNode;
 };
 
-export default async function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: Props) {
   return (
-    <>
-      <html suppressHydrationWarning>
-        <head />
-        <body
-          className={cn(
-            "bg-background font-sans antialiased",
-            fontSans.variable,
-          )}
-        >
-          <Providers>
-            <div className="relative flex flex-col">
-              <Header />
-              <div className="flex-1">
-                <div className="container flex-1 items-start py-6 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-                  <Sidebar />
-                  {children}
-                </div>
-              </div>
-              <Toaster />
-            </div>
-            <TailwindIndicator />
-          </Providers>
-        </body>
-      </html>
-    </>
+    <html suppressHydrationWarning>
+      <head />
+      <body
+        className={cn("bg-background font-sans antialiased", fontSans.variable)}
+      >
+        <Providers>
+          <div className="flex flex-col">
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Toaster />
+          </div>
+          <TailwindIndicator />
+        </Providers>
+      </body>
+    </html>
   );
 }
