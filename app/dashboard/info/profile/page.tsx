@@ -35,16 +35,22 @@ export default function () {
   return (
     <div className="space-y-8 py-6">
       <div className="space-y-2">
-        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+        <label
+          htmlFor="username"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
           {dictionary.dashboard["info.profile.username"]}
         </label>
-        <Input disabled value={user.name ?? ""} />
+        <Input id="username" disabled value={user.name ?? ""} />
       </div>
       <div className="space-y-2">
-        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+        <label
+          htmlFor="email"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
           {dictionary.dashboard["info.profile.email"]}
         </label>
-        <Input disabled value={user.email ?? ""} />
+        <Input id="email" disabled value={user.email ?? ""} />
       </div>
       <Form {...form}>
         <form
