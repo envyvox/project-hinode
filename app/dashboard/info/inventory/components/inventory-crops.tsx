@@ -3,6 +3,12 @@
 import { TypographyMuted } from "@/components/typography/muted";
 import { TypographySmall } from "@/components/typography/small";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { UserWithCrop, getUserCrops } from "@/lib/game/crop";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
@@ -38,18 +44,22 @@ export default function InventoryCrops() {
           </>
         ) : userCrops.length > 0 ? (
           userCrops.map((userCrop) => (
-            <div
-              key={userCrop.cropId}
-              className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2"
-            >
-              <Image
-                src={`/crop/${userCrop.crop.name}.png`}
-                alt={userCrop.crop.name}
-                width={36}
-                height={36}
-              />
-              {Number(userCrop.amount)}
-            </div>
+            <TooltipProvider key={userCrop.cropId}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
+                    <Image
+                      src={`/crop/${userCrop.crop.name}.png`}
+                      alt={userCrop.crop.name}
+                      width={36}
+                      height={36}
+                    />
+                    {Number(userCrop.amount)}
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>{userCrop.crop.name}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ))
         ) : (
           <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">

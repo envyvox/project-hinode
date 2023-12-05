@@ -3,6 +3,12 @@
 import { TypographyMuted } from "@/components/typography/muted";
 import { TypographySmall } from "@/components/typography/small";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { UserWithProduct, getUserProducts } from "@/lib/game/product";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
@@ -38,18 +44,22 @@ export default function InventoryProducts() {
           </>
         ) : userProducts.length > 0 ? (
           userProducts.map((userProduct) => (
-            <div
-              key={userProduct.productId}
-              className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2"
-            >
-              <Image
-                src={`/product/${userProduct.product.name}.png`}
-                alt={userProduct.product.name}
-                width={36}
-                height={36}
-              />
-              {Number(userProduct.amount)}
-            </div>
+            <TooltipProvider key={userProduct.productId}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
+                    <Image
+                      src={`/product/${userProduct.product.name}.png`}
+                      alt={userProduct.product.name}
+                      width={36}
+                      height={36}
+                    />
+                    {Number(userProduct.amount)}
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>{userProduct.product.name}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ))
         ) : (
           <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">

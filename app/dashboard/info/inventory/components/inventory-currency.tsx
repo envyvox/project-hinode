@@ -3,6 +3,12 @@
 import { TypographyMuted } from "@/components/typography/muted";
 import { TypographySmall } from "@/components/typography/small";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { getUserCurrencies } from "@/lib/game/currency";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
@@ -39,18 +45,22 @@ export default function InventoryCurrency() {
           </>
         ) : userCurrencies.length > 0 ? (
           userCurrencies.map((userCurrency) => (
-            <div
-              key={userCurrency.currency}
-              className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2"
-            >
-              <Image
-                src={`/currency/${userCurrency.currency.toString()}.png`}
-                alt={userCurrency.currency.toString()}
-                width={36}
-                height={36}
-              />
-              {Number(userCurrency.amount)}
-            </div>
+            <TooltipProvider key={userCurrency.currency}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
+                    <Image
+                      src={`/currency/${userCurrency.currency.toString()}.png`}
+                      alt={userCurrency.currency.toString()}
+                      width={36}
+                      height={36}
+                    />
+                    {Number(userCurrency.amount)}
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>{userCurrency.currency}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ))
         ) : (
           <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">
