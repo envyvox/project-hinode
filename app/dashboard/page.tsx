@@ -12,7 +12,8 @@ export default function Dashboard() {
     <Tabs defaultValue="about">
       <TabsList className="w-full justify-start gap-5">
         <TabsTrigger value="about">
-          {dictionary.dashboard["dashboard.about"]}
+          {" "}
+          {dictionary.dashboard["dashboard.about"]}{" "}
         </TabsTrigger>
         <TabsTrigger value="actions">
           {dictionary.dashboard["dashboard.actions"]}

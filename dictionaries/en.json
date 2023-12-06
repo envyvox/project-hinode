@@ -38,24 +38,14 @@
   },
   "location": {
     "InTransit": "In transit",
-    "InTransit.description": "",
     "Capital": "Capital «Edo»",
-    "Capital.description": "",
     "Garden": "Blooming garden «Kairaku-en»",
-    "Garden.description": "",
     "Seaport": "Seaport city «Nagoya»",
-    "Seaport.description": "",
     "Castle": "Ancient castle «Himeji»",
-    "Castle.description": "",
     "Village": "Village «Mura»",
-    "Village.description": "",
     "ExploreGarden": "Exploration of the garden",
-    "ExploreGarden.description": "",
     "ExploreCastle": "Exploration of the castle",
-    "ExploreCastle.description": "",
     "Fishing": "Fishing",
-    "Fishing.description": "",
-    "FieldWatering": "Watering the plot of land",
-    "FieldWatering.description": ""
+    "FieldWatering": "Watering the plot of land"
   }
 }
