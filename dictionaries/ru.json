@@ -22,6 +22,7 @@
     "dashboard.about": "О локации",
     "dashboard.actions": "Действия",
     "dashboard.transit": "Перемещение",
+    "dashboard.transit.title": "Исследуй другие локации",
     "dashboard.transit.button": "Отправиться в {0} за {1} {2} иен",
     "info.profile.username": "Имя пользователя",
     "info.profile.email": "Почта",

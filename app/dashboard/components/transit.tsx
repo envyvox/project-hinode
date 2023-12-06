@@ -25,14 +25,14 @@ export default function DashboardTransit() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>In progress...</CardTitle>
+        <CardTitle>{dictionary.dashboard["dashboard.transit.title"]}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
         {transits.length > 0 ? (
           transits.map((transit) => (
             <div
               key={transit.id}
-              className="flex flex-wrap justify-between gap-5 border-t pt-2"
+              className="flex flex-wrap justify-between gap-5 border-t pt-5"
             >
               <Image
                 className="h-[200px] w-[200px] rounded-xl object-cover"

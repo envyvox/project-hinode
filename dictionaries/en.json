@@ -22,6 +22,7 @@
     "dashboard.about": "About location",
     "dashboard.actions": "Actions",
     "dashboard.transit": "Transit",
+    "dashboard.transit.title": "Explore other locations",
     "dashboard.transit.button": "Go to the {0} for {1} {2} yen",
     "info.profile.username": "Username",
     "info.profile.email": "Email",
