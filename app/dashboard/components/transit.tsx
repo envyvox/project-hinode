@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import IenIcon from "@/public/currency/Ien.png";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { formatString } from "@/lib/format-string";
+import { TypographyH4 } from "@/components/typography/h4";
+import { TypographyP } from "@/components/typography/p";
 
 export default function DashboardTransit() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -32,7 +34,7 @@ export default function DashboardTransit() {
           transits.map((transit) => (
             <div
               key={transit.id}
-              className="flex flex-wrap justify-between gap-5 border-t pt-5"
+              className="flex flex-wrap gap-5 border-t pt-5"
             >
               <Image
                 className="h-[200px] w-[200px] rounded-xl object-cover"
@@ -41,16 +43,25 @@ export default function DashboardTransit() {
                 height={150}
                 alt={transit.destination}
               />
-              <div className="flex items-end gap-2">
+              <div className="flex flex-1 flex-col justify-between">
+                <TypographyH4>
+                  {/* @ts-ignore Imlicit any */}
+                  {dictionary.location[transit.destination]}
+                </TypographyH4>
+                <TypographyP>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  ultrices nunc turpis, non consequat odio consequat a. Proin
+                  felis sapien, sagittis ac neque et, consequat lobortis est. In
+                  vel purus et magna vestibulum venenatis. Curabitur dictum est
+                  sed eleifend pulvinar.
+                </TypographyP>
                 <Button
-                  className="flex h-fit flex-wrap"
+                  className="w-fit self-end"
                   variant="secondary"
                   onClick={() => setUserLocation(transit.destination)}
                 >
                   {formatString(
                     dictionary.dashboard["dashboard.transit.button"],
-                    // @ts-ignore Imlicit any
-                    dictionary.location[transit.destination],
                     transit.price,
                     <Image className="mx-1 h-6 w-6" src={IenIcon} alt="Ien" />,
                   )}
