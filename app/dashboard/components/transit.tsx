@@ -27,7 +27,7 @@ export default function DashboardTransit() {
       <CardHeader>
         <CardTitle>In progress...</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col flex-wrap gap-5">
+      <CardContent className="flex flex-col gap-5">
         {transits.length > 0 ? (
           transits.map((transit) => (
             <div
@@ -43,12 +43,14 @@ export default function DashboardTransit() {
               />
               <div className="flex items-end gap-2">
                 <Button
+                  className="flex h-fit flex-wrap"
                   variant="secondary"
                   onClick={() => setUserLocation(transit.destination)}
                 >
                   {formatString(
                     dictionary.dashboard["dashboard.transit.button"],
-                    transit.destination,
+                    // @ts-ignore Imlicit any
+                    dictionary.location[transit.destination],
                     transit.price,
                     <Image className="mx-1 h-6 w-6" src={IenIcon} alt="Ien" />,
                   )}
