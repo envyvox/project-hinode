@@ -155,6 +155,15 @@ model Product {
   userProducts UserProducts[]
 }
 
+model Transit {
+  id          String   @id @default(cuid())
+  departure   Location
+  destination Location
+  price       Int
+
+  @@unique([departure, destination])
+}
+
 enum Season {
   Any
   Spring

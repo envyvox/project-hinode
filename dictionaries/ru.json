@@ -22,6 +22,7 @@
     "dashboard.about": "О локации",
     "dashboard.actions": "Действия",
     "dashboard.transit": "Перемещение",
+    "dashboard.transit.button": "Отправиться в {0} за {1} {2} иен",
     "info.profile.username": "Имя пользователя",
     "info.profile.email": "Почта",
     "info.profile.about": "Обо мне",
@@ -38,19 +39,14 @@
   },
   "location": {
     "InTransit": "В пути",
-    "InTransit.description": "",
     "Capital": "Столица «Эдо»",
     "Garden": "Цветущий сад «Кайраку-эн»",
     "Seaport": "Портовый город «Нагоя»",
     "Castle": "Древний замок «Химэдзи»",
     "Village": "Деревня «Мура»",
     "ExploreGarden": "Исследование сада",
-    "ExploreGarden.description": "",
     "ExploreCastle": "Исследование шахт",
-    "ExploreCastle.description": "",
     "Fishing": "Рыбалка",
-    "Fishing.description": "",
-    "FieldWatering": "Поливка участка земли",
-    "FieldWatering.description": ""
+    "FieldWatering": "Поливка участка земли"
   }
 }

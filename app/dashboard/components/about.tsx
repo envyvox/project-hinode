@@ -11,18 +11,25 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useLangStore } from "@/store/lang-store";
 import React from "react";
-import { TypographyH1 } from "@/components/typography/h1";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function DashboardAboutLocation() {
   const lang = useLangStore((state) => state.lang);
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const user = useUserStore((state) => state.user);
+  const userLocation = useUserStore((state) => state.user.location);
 
   const renderLocationDescription = () => {
     const element = dynamic(
-      () => import(`./locations/${lang}/${user.location}.mdx`),
+      () => import(`./locations/${lang}/${userLocation}.mdx`),
       {
         ssr: false,
+        loading: () => (
+          <div className="mt-6 flex flex-col gap-6">
+            <Skeleton className="h-12" />
+            <Skeleton className="h-24" />
+            <Skeleton className="h-24" />
+          </div>
+        ),
       },
     );
     return React.createElement(element);
@@ -34,18 +41,16 @@ export default function DashboardAboutLocation() {
         <CardTitle>
           <Image
             className="rounded-xl"
-            src={`/location/${user.location}.png`}
+            src={`/location/${userLocation}.png`}
             width={1100}
             height={150}
-            alt={user.location}
+            alt={userLocation}
             priority
           />
         </CardTitle>
-        <CardDescription className="pt-6 text-foreground">
-          <TypographyH1>
-            {/* @ts-ignore: Implicit any */}
-            {dictionary.location[user.location]}
-          </TypographyH1>
+        <CardDescription className="scroll-m-20 pt-6 text-4xl font-extrabold tracking-tight text-foreground lg:text-5xl">
+          {/* @ts-ignore: Implicit any */}
+          {dictionary.location[userLocation]}
         </CardDescription>
       </CardHeader>
       <CardContent className="leading-7 [&_p]:mt-6">
