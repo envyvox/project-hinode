@@ -43,7 +43,7 @@ export default function DashboardTransit() {
                 height={150}
                 alt={transit.destination}
               />
-              <div className="flex flex-1 flex-col justify-between">
+              <div className="flex flex-1 flex-col">
                 <TypographyH4>
                   {/* @ts-ignore Imlicit any */}
                   {dictionary.location[transit.destination]}
@@ -56,7 +56,7 @@ export default function DashboardTransit() {
                   sed eleifend pulvinar.
                 </TypographyP>
                 <Button
-                  className="w-fit self-end"
+                  className="mt-2 w-fit self-end"
                   variant="secondary"
                   onClick={() => setUserLocation(transit.destination)}
                 >

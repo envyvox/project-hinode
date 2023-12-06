@@ -10,10 +10,9 @@ export default function Dashboard() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   return (
     <Tabs defaultValue="about">
-      <TabsList className="w-full justify-start gap-5">
+      <TabsList className="flex h-fit w-full flex-wrap justify-start gap-x-5">
         <TabsTrigger value="about">
-          {" "}
-          {dictionary.dashboard["dashboard.about"]}{" "}
+          {dictionary.dashboard["dashboard.about"]}
         </TabsTrigger>
         <TabsTrigger value="actions">
           {dictionary.dashboard["dashboard.actions"]}
