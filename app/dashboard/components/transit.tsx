@@ -11,8 +11,13 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import { formatString } from "@/lib/format-string";
 import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
+import { DashboardTab } from "../page";
 
-export default function DashboardTransit() {
+type Props = {
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export default function DashboardTransit({ setActiveTab }: Props) {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const userLocation = useUserStore((state) => state.user.location);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
@@ -23,6 +28,11 @@ export default function DashboardTransit() {
       setTransits(transits),
     );
   }, [userLocation]);
+
+  function handleTransit(transit: Transit) {
+    setUserLocation(transit.destination);
+    setActiveTab(DashboardTab.about);
+  }
 
   return (
     <Card>
@@ -58,7 +68,7 @@ export default function DashboardTransit() {
                 <Button
                   className="mt-2 w-fit self-end"
                   variant="secondary"
-                  onClick={() => setUserLocation(transit.destination)}
+                  onClick={() => handleTransit(transit)}
                 >
                   {formatString(
                     dictionary.dashboard["dashboard.transit.button"],
