@@ -26,6 +26,8 @@ export type Dictionary = {
     "dashboard.transit": string;
     "dashboard.transit.button": string;
     "dashboard.transit.title": string;
+    "dashboard.transit.toast.success.title": string;
+    "dashboard.transit.toast.success.description": string;
     "info.profile.username": string;
     "info.profile.email": string;
     "info.profile.about": string;
@@ -86,6 +88,8 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.transit": "",
       "dashboard.transit.title": "",
       "dashboard.transit.button": "",
+      "dashboard.transit.toast.success.title": "",
+      "dashboard.transit.toast.success.description": "",
       "info.profile.username": "",
       "info.profile.email": "",
       "info.profile.about": "",

@@ -12,6 +12,7 @@ import { formatString } from "@/lib/format-string";
 import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
 import { DashboardTab } from "../page";
+import { useToast } from "@/components/ui/use-toast";
 
 type Props = {
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
@@ -22,6 +23,7 @@ export default function DashboardTransit({ setActiveTab }: Props) {
   const userLocation = useUserStore((state) => state.user.location);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const [transits, setTransits] = useState<Transit[]>([]);
+  const { toast } = useToast();
 
   useEffect(() => {
     getTransitsFromLocation(userLocation).then((transits) =>
@@ -32,6 +34,14 @@ export default function DashboardTransit({ setActiveTab }: Props) {
   function handleTransit(transit: Transit) {
     setUserLocation(transit.destination);
     setActiveTab(DashboardTab.about);
+    toast({
+      title: dictionary.dashboard["dashboard.transit.toast.success.title"],
+      description: formatString(
+        dictionary.dashboard["dashboard.transit.toast.success.description"],
+        //@ts-ignore Imlicit any
+        dictionary.location[transit.destination],
+      ),
+    });
   }
 
   return (
