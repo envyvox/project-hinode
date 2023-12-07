@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { UserWithCrop, getUserCrops } from "@/lib/game/crop";
+import { UserWithCrop, getUserCrops } from "@/data-access/crop";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import Image from "next/image";

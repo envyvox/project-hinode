@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getTransitsFromLocation } from "@/lib/game/transit";
+import { getTransitsFromLocation } from "@/data-access/transit";
 import { useUserStore } from "@/store/user-store";
 import { Transit } from "@prisma/client";
 import Image from "next/image";

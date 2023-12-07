@@ -1,4 +1,4 @@
-import { getUser, updateUserLocation } from "@/lib/game/user";
+import { getUser, updateUserLocation } from "@/data-access/user";
 import { Location, User } from "@prisma/client";
 import { create } from "zustand";
 

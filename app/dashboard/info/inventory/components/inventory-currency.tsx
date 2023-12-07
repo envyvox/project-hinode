@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getUserCurrencies } from "@/lib/game/currency";
+import { getUserCurrencies } from "@/data-access/currency";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import { UserCurrency } from "@prisma/client";

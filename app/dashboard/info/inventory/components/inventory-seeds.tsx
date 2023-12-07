@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { UserWithSeed, getUserSeeds } from "@/lib/game/seed";
+import { UserWithSeed, getUserSeeds } from "@/data-access/seed";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import Image from "next/image";
