@@ -9,28 +9,24 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getUserCurrencies } from "@/data-access/currency";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { useUserCurrencyStore } from "@/store/user-currency-store";
 import { useUserStore } from "@/store/user-store";
-import { UserCurrency } from "@prisma/client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function InventoryCurrency() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
-  const [userCurrencies, setUserCurrencies] = useState<UserCurrency[]>([]);
-  const [loading, setLoading] = useState(true);
+  const loading = useUserCurrencyStore((state) => state.loading);
+  const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
+  const getUserCurrencies = useUserCurrencyStore(
+    (state) => state.getUserCurrencies,
+  );
 
   useEffect(() => {
-    setLoading(true);
-    if (user.id !== "") {
-      getUserCurrencies(user.id).then((userCurrencies) => {
-        setUserCurrencies(userCurrencies);
-        setLoading(false);
-      });
-    }
-  }, [user]);
+    getUserCurrencies(user.id);
+  }, [user, getUserCurrencies]);
 
   return (
     <>
