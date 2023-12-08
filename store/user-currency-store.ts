@@ -5,19 +5,18 @@ import {
 } from "@/data-access/currency";
 import { Currency, UserCurrency } from "@prisma/client";
 import { create } from "zustand";
-import { useUserStore } from "./user-store";
 
 type UserCurrencyState = {
   userCurrencies: UserCurrency[];
   loading: boolean;
   addCurrencyToUser: (currency: Currency, amount: bigint) => void;
   removeCurrencyFromUser: (currency: Currency, amount: bigint) => void;
-  getUserCurrencies: () => void;
+  getUserCurrencies: (userId: string) => void;
 };
 
 export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({
   userCurrencies: [],
-  loading: false,
+  loading: true,
   addCurrencyToUser: async (currency: Currency, amount: bigint) => {
     set({ loading: true });
 
@@ -54,11 +53,10 @@ export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({
 
     set({ userCurrencies: updatedUserCurrencies, loading: false });
   },
-  getUserCurrencies: async () => {
+  getUserCurrencies: async (userId: string) => {
     set({ loading: true });
 
-    const user = useUserStore.getState().user;
-    const userCurrencies = await getUserCurrencies(user.id);
+    const userCurrencies = await getUserCurrencies(userId);
 
     set({ userCurrencies, loading: false });
   },

@@ -35,6 +35,8 @@
     "info.profile.save": "Save",
     "info.inventory.currency": "Currency",
     "info.inventory.currency.empty": "You don't have any currency.",
+    "info.inventory.fish": "Fish",
+    "info.inventory.fish.empty": "You don't have any fish.",
     "info.inventory.product": "Products",
     "info.inventory.product.empty": "You don't have any products.",
     "info.inventory.seed": "Seeds",

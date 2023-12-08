@@ -9,27 +9,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { UserWithProduct, getUserProducts } from "@/data-access/product";
+import UseUserProduct from "@/hooks/use-user-product";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserStore } from "@/store/user-store";
+import { useUserProductStore } from "@/store/user-product-store";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function InventoryProducts() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const user = useUserStore((state) => state.user);
-  const [userProducts, setUserProducts] = useState<UserWithProduct[]>([]);
-  const [loading, setLoading] = useState(true);
+  const loading = useUserProductStore((state) => state.loading);
+  const userProducts = useUserProductStore((state) => state.userProducts);
 
-  useEffect(() => {
-    setLoading(true);
-    if (user.id !== "") {
-      getUserProducts(user.id).then((userProducts) => {
-        setUserProducts(userProducts);
-        setLoading(false);
-      });
-    }
-  }, [user]);
+  UseUserProduct();
 
   return (
     <>

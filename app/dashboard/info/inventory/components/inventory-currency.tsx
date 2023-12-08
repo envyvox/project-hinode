@@ -9,22 +9,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import UseUserCurrency from "@/hooks/use-user-currency";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
 import Image from "next/image";
-import { useEffect } from "react";
 
 export default function InventoryCurrency() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const loading = useUserCurrencyStore((state) => state.loading);
   const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
-  const getUserCurrencies = useUserCurrencyStore(
-    (state) => state.getUserCurrencies,
-  );
 
-  useEffect(() => {
-    getUserCurrencies();
-  }, [getUserCurrencies]);
+  UseUserCurrency();
 
   return (
     <>

@@ -35,6 +35,8 @@
     "info.profile.save": "Сохранить",
     "info.inventory.currency": "Валюта",
     "info.inventory.currency.empty": "У тебя нет валюты.",
+    "info.inventory.fish": "Рыба",
+    "info.inventory.fish.empty": "У тебя нет рыбы.",
     "info.inventory.product": "Продукты",
     "info.inventory.product.empty": "У тебя нет продуктов.",
     "info.inventory.seed": "Семена",

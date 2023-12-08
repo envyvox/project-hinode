@@ -53,6 +53,7 @@ model User {
   seeds         UserSeeds[]
   crops         UserCrops[]
   products      UserProducts[]
+  UserFish      UserFish[]
 }
 
 model VerificationToken {
@@ -121,6 +122,18 @@ model UserProducts {
   @@id([userId, productId])
 }
 
+model UserFish {
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  fish      Fish     @relation(fields: [fishId], references: [id])
+  fishId    String
+  amount    BigInt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@id([userId, fishId])
+}
+
 model Seed {
   id           String      @id @default(cuid())
   name         String      @unique
@@ -164,12 +177,45 @@ model Transit {
   @@unique([departure, destination])
 }
 
+model Fish {
+  id            String     @id @default(cuid())
+  name          String     @unique
+  rarity        FishRarity
+  catchWeather  Weather
+  catchTimesDay TimesDay
+  catchSeason   Season[]
+  price         Int
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @default(now()) @updatedAt
+  UserFish      UserFish[]
+}
+
+enum FishRarity {
+  Common
+  Rare
+  Epic
+  Mythical
+  Legendary
+}
+
+enum Weather {
+  Any
+  Clear
+  Rain
+}
+
 enum Season {
   Any
   Spring
   Summer
   Autumn
   Winter
+}
+
+enum TimesDay {
+  Any
+  Day
+  Night
 }
 
 enum Currency {

@@ -1,19 +1,11 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { Crop, UserCrops } from "@prisma/client";
 
 export type UserWithCrop = {
-  crop: {
-    id: string;
-    name: string;
-    price: number;
-    seedId: string;
-  };
-} & {
-  userId: string;
-  cropId: string;
-  amount: bigint;
-};
+  crop: Crop;
+} & UserCrops;
 
 /**
  * Get user crops

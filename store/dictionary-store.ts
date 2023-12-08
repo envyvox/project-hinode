@@ -37,6 +37,8 @@ export type Dictionary = {
     "info.profile.save": string;
     "info.inventory.currency": string;
     "info.inventory.currency.empty": string;
+    "info.inventory.fish": string;
+    "info.inventory.fish.empty": string;
     "info.inventory.product": string;
     "info.inventory.product.empty": string;
     "info.inventory.seed": string;
@@ -101,6 +103,8 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "info.profile.save": "",
       "info.inventory.currency": "",
       "info.inventory.currency.empty": "",
+      "info.inventory.fish": "",
+      "info.inventory.fish.empty": "",
       "info.inventory.product": "",
       "info.inventory.product.empty": "",
       "info.inventory.seed": "",

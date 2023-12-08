@@ -14,6 +14,7 @@ import { TypographyP } from "@/components/typography/p";
 import { DashboardTab } from "../page";
 import { useToast } from "@/components/ui/use-toast";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
+import UseUserCurrency from "@/hooks/use-user-currency";
 
 type Props = {
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
@@ -24,21 +25,17 @@ export default function DashboardTransit({ setActiveTab }: Props) {
   const userLocation = useUserStore((state) => state.user.location);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
-  const getUserCurrencies = useUserCurrencyStore(
-    (state) => state.getUserCurrencies,
-  );
   const removeCurrencyFromUser = useUserCurrencyStore(
     (state) => state.removeCurrencyFromUser,
   );
   const [transits, setTransits] = useState<Transit[]>([]);
   const { toast } = useToast();
+
   const userCurrency = userCurrencies.find(
     (uc) => uc.currency === Currency.Ien,
   );
 
-  useEffect(() => {
-    getUserCurrencies();
-  }, [getUserCurrencies]);
+  UseUserCurrency();
 
   useEffect(() => {
     getTransitsFromLocation(userLocation).then((transits) =>

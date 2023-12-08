@@ -9,27 +9,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { UserWithSeed, getUserSeeds } from "@/data-access/seed";
+import UseUserSeed from "@/hooks/use-user-seed";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserStore } from "@/store/user-store";
+import { useUserSeedStore } from "@/store/user-seed-store";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function InventorySeeds() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const user = useUserStore((state) => state.user);
-  const [userSeeds, setUserSeeds] = useState<UserWithSeed[]>([]);
-  const [loading, setLoading] = useState(true);
+  const loading = useUserSeedStore((state) => state.loading);
+  const userSeeds = useUserSeedStore((state) => state.userSeeds);
 
-  useEffect(() => {
-    setLoading(true);
-    if (user.id !== "") {
-      getUserSeeds(user.id).then((userSeeds) => {
-        setUserSeeds(userSeeds);
-        setLoading(false);
-      });
-    }
-  }, [user]);
+  UseUserSeed();
 
   return (
     <>
