@@ -92,18 +92,20 @@ export default function DashboardTransit({ setActiveTab }: Props) {
                 height={150}
                 alt={transit.destination}
               />
-              <div className="flex flex-1 flex-col">
-                <TypographyH4>
-                  {/* @ts-ignore Imlicit any */}
-                  {dictionary.location[transit.destination]}
-                </TypographyH4>
-                <TypographyP>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  ultrices nunc turpis, non consequat odio consequat a. Proin
-                  felis sapien, sagittis ac neque et, consequat lobortis est. In
-                  vel purus et magna vestibulum venenatis. Curabitur dictum est
-                  sed eleifend pulvinar.
-                </TypographyP>
+              <div className="flex flex-1 flex-col justify-between">
+                <div>
+                  <TypographyH4>
+                    {/* @ts-ignore Imlicit any */}
+                    {dictionary.location[transit.destination]}
+                  </TypographyH4>
+                  <TypographyP>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    ultrices nunc turpis, non consequat odio consequat a. Proin
+                    felis sapien, sagittis ac neque et, consequat lobortis est.
+                    In vel purus et magna vestibulum venenatis. Curabitur dictum
+                    est sed eleifend pulvinar.
+                  </TypographyP>
+                </div>
                 <Button
                   className="mt-2 w-fit self-end"
                   variant="secondary"

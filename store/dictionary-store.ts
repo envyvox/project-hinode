@@ -23,6 +23,36 @@ export type Dictionary = {
   dashboard: {
     "dashboard.about": string;
     "dashboard.actions": string;
+    "dashboard.actions.capital.shop-seed.label": string;
+    "dashboard.actions.capital.shop-seed.description": string;
+    "dashboard.actions.capital.shop-seed.button-label": string;
+    "dashboard.actions.capital.market.label": string;
+    "dashboard.actions.capital.market.description": string;
+    "dashboard.actions.capital.market.button-label": string;
+    "dashboard.actions.capital.casino.label": string;
+    "dashboard.actions.capital.casino.description": string;
+    "dashboard.actions.capital.casino.button-label": string;
+    "dashboard.actions.garden.shop-recipe.label": string;
+    "dashboard.actions.garden.shop-recipe.description": string;
+    "dashboard.actions.garden.shop-recipe.button-label": string;
+    "dashboard.actions.garden.explore.label": string;
+    "dashboard.actions.garden.explore.description": string;
+    "dashboard.actions.garden.explore.button-label": string;
+    "dashboard.actions.seaport.fishing.label": string;
+    "dashboard.actions.seaport.fishing.description": string;
+    "dashboard.actions.seaport.fishing.button-label": string;
+    "dashboard.actions.seaport.shop-fisher.label": string;
+    "dashboard.actions.seaport.shop-fisher.description": string;
+    "dashboard.actions.seaport.shop-fisher.button-label": string;
+    "dashboard.actions.castle.explore.label": string;
+    "dashboard.actions.castle.explore.description": string;
+    "dashboard.actions.castle.explore.button-label": string;
+    "dashboard.actions.village.shop-product.label": string;
+    "dashboard.actions.village.shop-product.description": string;
+    "dashboard.actions.village.shop-product.button-label": string;
+    "dashboard.actions.village.farm.label": string;
+    "dashboard.actions.village.farm.description": string;
+    "dashboard.actions.village.farm.button-label": string;
     "dashboard.transit": string;
     "dashboard.transit.button": string;
     "dashboard.transit.title": string;
@@ -89,6 +119,36 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
     dashboard: {
       "dashboard.about": "",
       "dashboard.actions": "",
+      "dashboard.actions.capital.shop-seed.label": "",
+      "dashboard.actions.capital.shop-seed.description": "",
+      "dashboard.actions.capital.shop-seed.button-label": "",
+      "dashboard.actions.capital.market.label": "",
+      "dashboard.actions.capital.market.description": "",
+      "dashboard.actions.capital.market.button-label": "",
+      "dashboard.actions.capital.casino.label": "",
+      "dashboard.actions.capital.casino.description": "",
+      "dashboard.actions.capital.casino.button-label": "",
+      "dashboard.actions.garden.shop-recipe.label": "",
+      "dashboard.actions.garden.shop-recipe.description": "",
+      "dashboard.actions.garden.shop-recipe.button-label": "",
+      "dashboard.actions.garden.explore.label": "",
+      "dashboard.actions.garden.explore.description": "",
+      "dashboard.actions.garden.explore.button-label": "",
+      "dashboard.actions.seaport.fishing.label": "",
+      "dashboard.actions.seaport.fishing.description": "",
+      "dashboard.actions.seaport.fishing.button-label": "",
+      "dashboard.actions.seaport.shop-fisher.label": "",
+      "dashboard.actions.seaport.shop-fisher.description": "",
+      "dashboard.actions.seaport.shop-fisher.button-label": "",
+      "dashboard.actions.castle.explore.label": "",
+      "dashboard.actions.castle.explore.description": "",
+      "dashboard.actions.castle.explore.button-label": "",
+      "dashboard.actions.village.shop-product.label": "",
+      "dashboard.actions.village.shop-product.description": "",
+      "dashboard.actions.village.shop-product.button-label": "",
+      "dashboard.actions.village.farm.label": "",
+      "dashboard.actions.village.farm.description": "",
+      "dashboard.actions.village.farm.button-label": "",
       "dashboard.transit": "",
       "dashboard.transit.title": "",
       "dashboard.transit.button": "",

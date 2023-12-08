@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useUserStore } from "@/store/user-store";
 import { locationActions } from "./location-actions";
-import Image from "next/image";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function DashboardActions() {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
   const userLocation = useUserStore((state) => state.user.location);
   const actions = locationActions[userLocation];
 
@@ -18,22 +20,26 @@ export default function DashboardActions() {
       <CardContent className="flex flex-col gap-5">
         {actions.map((action) => (
           <div id={action.label} className="flex flex-wrap gap-5 border-t pt-5">
-            <Image
-              className="h-[200px] w-[200px] rounded-xl object-cover"
-              src={`/location/action/${action.image}.png`}
-              width={1100}
-              height={150}
-              alt={action.image}
-            />
-            <div className="flex flex-1 flex-col">
-              <TypographyH4>{action.label}</TypographyH4>
-              <TypographyP>{action.description}</TypographyP>
+            {/* TODO: Replace skeleton with Image */}
+            <Skeleton className="h-[200px] w-[200px]" />
+            <div className="flex flex-1 flex-col justify-between">
+              <div>
+                <TypographyH4>
+                  {/* @ts-ignore Implicit any */}
+                  {dictionary.dashboard[action.label]}
+                </TypographyH4>
+                <TypographyP>
+                  {/* @ts-ignore Implicit any */}
+                  {dictionary.dashboard[action.description]}
+                </TypographyP>
+              </div>
               <Button
                 className="mt-2 w-fit self-end"
                 variant="secondary"
                 onClick={() => action.handler}
               >
-                {action.buttonLabel}
+                {/* @ts-ignore Implicit any */}
+                {dictionary.dashboard[action.buttonLabel]}
               </Button>
             </div>
           </div>

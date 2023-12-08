@@ -16,130 +16,80 @@ export const locationActions: LocationActions = {
   Capital: [
     {
       image: "ShopSeed",
-      label: "Action label",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      label: "dashboard.actions.capital.shop-seed.label",
+      description: "dashboard.actions.capital.shop-seed.description",
+      buttonLabel: "dashboard.actions.capital.shop-seed.button-label",
       handler: () => {},
     },
     {
       image: "Market",
-      label: "Action label 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      label: "dashboard.actions.capital.market.label",
+      description: "dashboard.actions.capital.market.description",
+      buttonLabel: "dashboard.actions.capital.market.button-label",
       handler: () => {},
     },
     {
-      image: "",
-      label: "Action label 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      image: "Casino",
+      label: "dashboard.actions.capital.casino.label",
+      description: "dashboard.actions.capital.casino.description",
+      buttonLabel: "dashboard.actions.capital.casino.button-label",
       handler: () => {},
     },
   ],
   Garden: [
     {
       image: "ShopRecipe",
-      label: "Action label",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      label: "dashboard.actions.garden.shop-recipe.label",
+      description: "dashboard.actions.garden.shop-recipe.description",
+      buttonLabel: "dashboard.actions.garden.shop-recipe.button-label",
       handler: () => {},
     },
     {
-      image: "",
-      label: "Action label 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
-      handler: () => {},
-    },
-    {
-      image: "",
-      label: "Action label 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      image: "ExploreGarden",
+      label: "dashboard.actions.garden.explore.label",
+      description: "dashboard.actions.garden.explore.description",
+      buttonLabel: "dashboard.actions.garden.explore.button-label",
       handler: () => {},
     },
   ],
   Seaport: [
     {
-      image: "Fisher",
-      label: "Action label",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      image: "Fishing",
+      label: "dashboard.actions.seaport.fishing.label",
+      description: "dashboard.actions.seaport.fishing.description",
+      buttonLabel: "dashboard.actions.seaport.fishing.button-label",
       handler: () => {},
     },
     {
-      image: "",
-      label: "Action label 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
-      handler: () => {},
-    },
-    {
-      image: "",
-      label: "Action label 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      image: "ShopFisher",
+      label: "dashboard.actions.seaport.shop-fisher.label",
+      description: "dashboard.actions.seaport.shop-fisher.description",
+      buttonLabel: "dashboard.actions.seaport.shop-fisher.button-label",
       handler: () => {},
     },
   ],
   Castle: [
     {
-      image: "",
-      label: "Action label",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
-      handler: () => {},
-    },
-    {
-      image: "",
-      label: "Action label 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      image: "ExploreCastle",
+      label: "dashboard.actions.castle.explore.label",
+      description: "dashboard.actions.castle.explore.description",
+      buttonLabel: "dashboard.actions.castle.explore.button-label",
       handler: () => {},
     },
   ],
   Village: [
     {
       image: "ShopProduct",
-      label: "Action label",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      label: "dashboard.actions.village.shop-product.label",
+      description: "dashboard.actions.village.shop-product.description",
+      buttonLabel: "dashboard.actions.village.shop-product.button-label",
       handler: () => {},
     },
     {
-      image: "",
-      label: "Action label 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
-      handler: () => {},
-    },
-    {
-      image: "",
-      label: "Action label 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
-      handler: () => {},
-    },
-    {
-      image: "",
-      label: "Action label 4",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est. In vel purus et magna vestibulum venenatis. Curabitur dictum est sed eleifend pulvinar.",
-      buttonLabel: "Action button label",
+      image: "Farm",
+      label: "dashboard.actions.village.farm.label",
+      description: "dashboard.actions.village.farm.description",
+      buttonLabel: "dashboard.actions.village.farm.button-label",
       handler: () => {},
     },
   ],
