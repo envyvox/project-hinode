@@ -5,13 +5,14 @@ import {
 } from "@/data-access/currency";
 import { Currency, UserCurrency } from "@prisma/client";
 import { create } from "zustand";
+import { useUserStore } from "./user-store";
 
 type UserCurrencyState = {
   userCurrencies: UserCurrency[];
   loading: boolean;
   addCurrencyToUser: (currency: Currency, amount: bigint) => void;
   removeCurrencyFromUser: (currency: Currency, amount: bigint) => void;
-  getUserCurrencies: (userId: string) => void;
+  getUserCurrencies: () => void;
 };
 
 export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({
@@ -19,6 +20,7 @@ export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({
   loading: false,
   addCurrencyToUser: async (currency: Currency, amount: bigint) => {
     set({ loading: true });
+
     const userCurrencies = get().userCurrencies;
     const userId = userCurrencies[0].userId;
 
@@ -36,6 +38,7 @@ export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({
   },
   removeCurrencyFromUser: async (currency: Currency, amount: bigint) => {
     set({ loading: true });
+
     const userCurrencies = get().userCurrencies;
     const userId = userCurrencies[0].userId;
 
@@ -51,9 +54,12 @@ export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({
 
     set({ userCurrencies: updatedUserCurrencies, loading: false });
   },
-  getUserCurrencies: async (userId: string) => {
+  getUserCurrencies: async () => {
     set({ loading: true });
-    const userCurrencies = await getUserCurrencies(userId);
+
+    const user = useUserStore.getState().user;
+    const userCurrencies = await getUserCurrencies(user.id);
+
     set({ userCurrencies, loading: false });
   },
 }));

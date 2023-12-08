@@ -11,13 +11,11 @@ import {
 } from "@/components/ui/tooltip";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
-import { useUserStore } from "@/store/user-store";
 import Image from "next/image";
 import { useEffect } from "react";
 
 export default function InventoryCurrency() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const user = useUserStore((state) => state.user);
   const loading = useUserCurrencyStore((state) => state.loading);
   const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
   const getUserCurrencies = useUserCurrencyStore(
@@ -25,8 +23,8 @@ export default function InventoryCurrency() {
   );
 
   useEffect(() => {
-    getUserCurrencies(user.id);
-  }, [user, getUserCurrencies]);
+    getUserCurrencies();
+  }, [getUserCurrencies]);
 
   return (
     <>

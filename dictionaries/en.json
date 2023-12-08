@@ -26,6 +26,8 @@
     "dashboard.transit.button": "Go for {0} {1} yen",
     "dashboard.transit.toast.success.title": "Arriving at the location",
     "dashboard.transit.toast.success.description": "You have reached your arrival point, welcome to {0}!",
+    "dashboard.transit.toast.no-currency.title": "Transport payment error",
+    "dashboard.transit.toast.no-currency.description": "To pay for this transportation, you need {0} yen, which you don't have.",
     "info.profile.username": "Username",
     "info.profile.email": "Email",
     "info.profile.about": "About",

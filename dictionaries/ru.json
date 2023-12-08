@@ -26,6 +26,8 @@
     "dashboard.transit.button": "Отправиться за {0} {1} иен",
     "dashboard.transit.toast.success.title": "Прибытие в локацию",
     "dashboard.transit.toast.success.description": "Ты достиг точки прибытия, добро пожаловать в {0}!",
+    "dashboard.transit.toast.no-currency.title": "Ошибка оплаты транспорта",
+    "dashboard.transit.toast.no-currency.description": "Для оплаты этого транспорта тебе необходимо {0} иен, которых у тебя нет.",
     "info.profile.username": "Имя пользователя",
     "info.profile.email": "Почта",
     "info.profile.about": "Обо мне",

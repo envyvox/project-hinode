@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getTransitsFromLocation } from "@/data-access/transit";
 import { useUserStore } from "@/store/user-store";
-import { Transit } from "@prisma/client";
+import { Currency, Transit } from "@prisma/client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import IenIcon from "@/public/currency/Ien.png";
@@ -13,6 +13,7 @@ import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
 import { DashboardTab } from "../page";
 import { useToast } from "@/components/ui/use-toast";
+import { useUserCurrencyStore } from "@/store/user-currency-store";
 
 type Props = {
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
@@ -22,8 +23,22 @@ export default function DashboardTransit({ setActiveTab }: Props) {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const userLocation = useUserStore((state) => state.user.location);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
+  const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
+  const getUserCurrencies = useUserCurrencyStore(
+    (state) => state.getUserCurrencies,
+  );
+  const removeCurrencyFromUser = useUserCurrencyStore(
+    (state) => state.removeCurrencyFromUser,
+  );
   const [transits, setTransits] = useState<Transit[]>([]);
   const { toast } = useToast();
+  const userCurrency = userCurrencies.find(
+    (uc) => uc.currency === Currency.Ien,
+  );
+
+  useEffect(() => {
+    getUserCurrencies();
+  }, [getUserCurrencies]);
 
   useEffect(() => {
     getTransitsFromLocation(userLocation).then((transits) =>
@@ -32,16 +47,32 @@ export default function DashboardTransit({ setActiveTab }: Props) {
   }, [userLocation]);
 
   function handleTransit(transit: Transit) {
-    setUserLocation(transit.destination);
-    setActiveTab(DashboardTab.about);
-    toast({
-      title: dictionary.dashboard["dashboard.transit.toast.success.title"],
-      description: formatString(
-        dictionary.dashboard["dashboard.transit.toast.success.description"],
-        //@ts-ignore Imlicit any
-        dictionary.location[transit.destination],
-      ),
-    });
+    if (userCurrency === undefined || userCurrency.amount < transit.price) {
+      toast({
+        title:
+          dictionary.dashboard["dashboard.transit.toast.no-currency.title"],
+        description: formatString(
+          dictionary.dashboard[
+            "dashboard.transit.toast.no-currency.description"
+          ],
+          transit.price,
+        ),
+        variant: "destructive",
+      });
+    } else {
+      removeCurrencyFromUser(Currency.Ien, BigInt(transit.price));
+      setUserLocation(transit.destination);
+      setActiveTab(DashboardTab.about);
+
+      toast({
+        title: dictionary.dashboard["dashboard.transit.toast.success.title"],
+        description: formatString(
+          dictionary.dashboard["dashboard.transit.toast.success.description"],
+          //@ts-ignore Imlicit any
+          dictionary.location[transit.destination],
+        ),
+      });
+    }
   }
 
   return (
