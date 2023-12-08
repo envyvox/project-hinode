@@ -1,18 +1,11 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { Product, UserProducts } from "@prisma/client";
 
 export type UserWithProduct = {
-  product: {
-    id: string;
-    name: string;
-    price: number;
-  };
-} & {
-  userId: string;
-  productId: string;
-  amount: bigint;
-};
+  product: Product;
+} & UserProducts;
 
 /**
  * Get user products

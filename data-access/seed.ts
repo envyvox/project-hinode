@@ -1,23 +1,11 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { Season } from "@prisma/client";
+import { Seed, UserSeeds } from "@prisma/client";
 
 export type UserWithSeed = {
-  seed: {
-    id: string;
-    name: string;
-    season: Season;
-    growthDays: number;
-    reGrowthDays: number;
-    isMultiply: boolean;
-    price: number;
-  };
-} & {
-  userId: string;
-  seedId: string;
-  amount: bigint;
-};
+  seed: Seed;
+} & UserSeeds;
 
 /**
  * Get user seeds
