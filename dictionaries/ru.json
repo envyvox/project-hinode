@@ -72,7 +72,9 @@
     "info.inventory.seed": "Семена",
     "info.inventory.seed.empty": "У тебя нет семян.",
     "info.inventory.crop": "Урожай",
-    "info.inventory.crop.empty": "У тебя нет урожая."
+    "info.inventory.crop.empty": "У тебя нет урожая.",
+    "info.inventory.box": "Коробки",
+    "info.inventory.box.empty": "У тебя нет коробок."
   },
   "location": {
     "InTransit": "В пути",

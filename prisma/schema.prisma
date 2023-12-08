@@ -220,7 +220,7 @@ enum TimesDay {
 
 enum Currency {
   Ien
-  Perl
+  Pearl
 }
 
 enum Box {

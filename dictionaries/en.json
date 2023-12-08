@@ -72,7 +72,9 @@
     "info.inventory.seed": "Seeds",
     "info.inventory.seed.empty": "You don't have any seeds.",
     "info.inventory.crop": "Crops",
-    "info.inventory.crop.empty": "You don't have any crops."
+    "info.inventory.crop.empty": "You don't have any crops.",
+    "info.inventory.box": "Boxes",
+    "info.inventory.box.empty": "You don't have any boxes."
   },
   "location": {
     "InTransit": "In transit",
