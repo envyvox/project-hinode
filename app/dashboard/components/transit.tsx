@@ -60,6 +60,7 @@ export default function DashboardTransit({ setActiveTab }: Props) {
       removeCurrencyFromUser(Currency.Ien, BigInt(transit.price));
       setUserLocation(transit.destination);
       setActiveTab(DashboardTab.about);
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
       toast({
         title: dictionary.dashboard["dashboard.transit.toast.success.title"],
