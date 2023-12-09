@@ -23,8 +23,11 @@ export default function Dashboard() {
       value={activeTab}
       onValueChange={(tab) => setActiveTab(tab)}
     >
-      <TabsList className="flex h-fit w-full flex-wrap justify-start gap-x-5">
-        <TabsTrigger value={DashboardTab.about}>
+      <TabsList className="flex min-h-fit w-full flex-wrap justify-start gap-x-5">
+        <TabsTrigger
+          value={DashboardTab.about}
+          className="min-h-[32px] min-w-[100px]"
+        >
           {dictionary.dashboard["dashboard.about"]}
         </TabsTrigger>
         <TabsTrigger value={DashboardTab.actions}>
