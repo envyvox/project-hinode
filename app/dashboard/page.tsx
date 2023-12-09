@@ -23,7 +23,7 @@ export default function Dashboard() {
       value={activeTab}
       onValueChange={(tab) => setActiveTab(tab)}
     >
-      <TabsList className="flex min-h-fit w-full flex-wrap justify-start gap-x-5">
+      <TabsList className="flex w-full flex-wrap justify-start gap-x-5">
         <TabsTrigger
           value={DashboardTab.about}
           className="min-h-[32px] min-w-[100px]"
