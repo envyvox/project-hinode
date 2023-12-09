@@ -5,6 +5,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import Link from "next/link";
 import { sidebarCategories } from "@/config/sidebar";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { Skeleton } from "./ui/skeleton";
 
 export default function Sidebar() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -34,5 +35,7 @@ export default function Sidebar() {
         ))}
       </ScrollArea>
     </div>
-  ) : null;
+  ) : (
+    <Skeleton className="h-96" />
+  );
 }
