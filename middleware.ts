@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   // Get the pathname of the request (e.g. /, /dashboard)
   const pathname = request.nextUrl.pathname;
 
@@ -10,7 +10,9 @@ export function middleware(request: NextRequest) {
   }
 
   // Check if user is authorized
-  const authorized = request.cookies.has("next-auth.session-token");
+  const authorized =
+    request.cookies.has("next-auth.session-token") ||
+    request.cookies.has("__Secure-next-auth.session-token");
 
   if (!authorized && pathname.startsWith(`/dashboard`)) {
     // If user is not authorized and tries to access dashboard, redirect to sign in page
