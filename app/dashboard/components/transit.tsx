@@ -11,16 +11,13 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import { formatString } from "@/lib/format-string";
 import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
-import { DashboardTab } from "../page";
 import { useToast } from "@/components/ui/use-toast";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
 import UseUserCurrency from "@/hooks/use-user-currency";
+import { DashboardTab, useDashboardTabStore } from "@/store/dashboard-tab-store";
 
-type Props = {
-  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export default function DashboardTransit({ setActiveTab }: Props) {
+export default function DashboardTransit() {
+  const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const userLocation = useUserStore((state) => state.user.location);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
@@ -60,7 +57,6 @@ export default function DashboardTransit({ setActiveTab }: Props) {
       removeCurrencyFromUser(Currency.Ien, BigInt(transit.price));
       setUserLocation(transit.destination);
       setActiveTab(DashboardTab.about);
-      window.scrollTo({ top: 0, behavior: "smooth" });
 
       toast({
         title: dictionary.dashboard["dashboard.transit.toast.success.title"],
@@ -81,6 +77,8 @@ export default function DashboardTransit({ setActiveTab }: Props) {
       <CardContent className="flex flex-col gap-5">
         {transits.length > 0 ? (
           transits.map((transit) => (
+            // TODO: somehow react warns "Each child in a list should have a unique "key" prop"
+            // even when there are provided key, idk what to do with it
             <div
               key={transit.id}
               className="flex flex-wrap gap-5 border-t pt-5"
@@ -93,7 +91,7 @@ export default function DashboardTransit({ setActiveTab }: Props) {
                 alt={transit.destination}
               />
               <div className="flex flex-1 flex-col justify-between">
-                <div>
+                <>
                   <TypographyH4>
                     {/* @ts-ignore Imlicit any */}
                     {dictionary.location[transit.destination]}
@@ -105,7 +103,7 @@ export default function DashboardTransit({ setActiveTab }: Props) {
                     In vel purus et magna vestibulum venenatis. Curabitur dictum
                     est sed eleifend pulvinar.
                   </TypographyP>
-                </div>
+                </>
                 <Button
                   className="mt-2 w-fit self-end"
                   variant="secondary"

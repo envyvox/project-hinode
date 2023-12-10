@@ -25,6 +25,9 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@trigger.dev/nextjs": "^2.3.4",
+    "@trigger.dev/react": "^2.3.4",
+    "@trigger.dev/sdk": "^2.3.4",
     "@types/mdx": "^2.0.10",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
@@ -61,5 +64,8 @@
     "prisma": "^5.6.0",
     "tailwindcss": "^3.3.2",
     "typescript": "^5"
+  },
+  "trigger.dev": {
+    "endpointId": "hinode-35XT"
   }
 }

@@ -5,23 +5,21 @@ import DashboardAboutLocation from "./components/about";
 import DashboardActions from "./components/actions";
 import DashboardTransit from "./components/transit";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useState } from "react";
-
-export enum DashboardTab {
-  about = "About",
-  actions = "Actions",
-  transit = "Transit",
-}
+import {
+  DashboardTab,
+  useDashboardTabStore,
+} from "@/store/dashboard-tab-store";
 
 export default function Dashboard() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const [activeTab, setActiveTab] = useState<string>(DashboardTab.about);
+  const activeTab = useDashboardTabStore((state) => state.activeTab);
+  const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
 
   return (
     <Tabs
       defaultValue={activeTab}
       value={activeTab}
-      onValueChange={(tab) => setActiveTab(tab)}
+      onValueChange={(tab) => setActiveTab(tab as DashboardTab)}
     >
       <TabsList className="flex w-full flex-wrap justify-start gap-x-5">
         <TabsTrigger
@@ -44,7 +42,7 @@ export default function Dashboard() {
         <DashboardActions />
       </TabsContent>
       <TabsContent value={DashboardTab.transit}>
-        <DashboardTransit setActiveTab={setActiveTab} />
+        <DashboardTransit />
       </TabsContent>
     </Tabs>
   );
