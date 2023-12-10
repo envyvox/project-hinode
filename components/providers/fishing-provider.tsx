@@ -17,12 +17,12 @@ export default function FishingProvider({ children }: Props) {
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const fishingJobData = useJobStore((state) => state.fishingJobData);
   const { isSuccess, isError } = useEventDetails(fishingJobData.jobId);
-  const resetFishingJobId = useJobStore((state) => state.resetFishingJobId);
+  const resetFishingJobData = useJobStore((state) => state.resetFishingJobData);
   const { toast } = useToast();
 
   useEffect(() => {
     if (isSuccess) {
-      resetFishingJobId();
+      resetFishingJobData();
       setUserLocation(Location.Seaport);
       toast({
         title: "Fishing completed",
@@ -40,7 +40,7 @@ export default function FishingProvider({ children }: Props) {
       });
     }
     if (isError) {
-      resetFishingJobId();
+      resetFishingJobData();
       setUserLocation(Location.Seaport);
       toast({
         title: "Fishing failed",
@@ -48,7 +48,14 @@ export default function FishingProvider({ children }: Props) {
         variant: "destructive",
       });
     }
-  }, [isSuccess, isError]);
+  }, [
+    isSuccess,
+    isError,
+    fishingJobData,
+    resetFishingJobData,
+    setUserLocation,
+    toast,
+  ]);
 
   return children;
 }

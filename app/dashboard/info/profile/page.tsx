@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { TypographyMuted } from "@/components/typography/muted";
 
-export default function () {
+export default function DashboardProfile() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
 

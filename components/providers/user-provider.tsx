@@ -16,7 +16,7 @@ export default function UserProvider({ children }: Props) {
     if (session) {
       getUser(session.user?.email!);
     }
-  }, [session]);
+  }, [session, getUser]);
 
   return children;
 }

@@ -10,7 +10,7 @@ type JobState = {
     jobId: string;
     fishName: string;
   };
-  resetFishingJobId: () => void;
+  resetFishingJobData: () => void;
   startFishingJob: () => void;
 };
 
@@ -21,7 +21,7 @@ const emptyFishingData = {
 
 export const useJobStore = create<JobState>((set) => ({
   fishingJobData: emptyFishingData,
-  resetFishingJobId: () => set({ fishingJobData: emptyFishingData }),
+  resetFishingJobData: () => set({ fishingJobData: emptyFishingData }),
   startFishingJob: async () => {
     const rarity = getRandomFishRarity();
     const weather = Weather.Clear;

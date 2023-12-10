@@ -15,7 +15,7 @@ export default function DictionaryProvider({ children }: Props) {
 
   useEffect(() => {
     getDictionary(lang).then((dictionary) => setDictionary(dictionary));
-  }, [lang]);
+  }, [lang, setDictionary]);
 
   return children;
 }
