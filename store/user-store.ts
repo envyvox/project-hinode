@@ -20,6 +20,8 @@ export const useUserStore = create<UserState>((set, get) => ({
     location: "Capital",
     createdAt: new Date(),
     updatedAt: new Date(),
+    level: 1,
+    xp: 0,
   },
   getUser: async (email: string) => {
     const user = await getUser(email);
