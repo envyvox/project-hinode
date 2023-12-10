@@ -54,7 +54,7 @@ export default function DashboardTransit() {
         variant: "destructive",
       });
     } else {
-      removeCurrencyFromUser(Currency.Ien, BigInt(transit.price));
+      removeCurrencyFromUser(Currency.Ien, transit.price);
       setUserLocation(transit.destination);
       setActiveTab(DashboardTab.about);
 

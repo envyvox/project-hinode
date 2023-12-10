@@ -77,6 +77,14 @@ export type Dictionary = {
     "info.inventory.crop.empty": string;
     "info.inventory.box": string;
     "info.inventory.box.empty": string;
+    world: {
+      rating: {
+        "table.title": string;
+        "table.user.name": string;
+        "table.user.level": string;
+        "table.user.xp": string;
+      };
+    };
   };
   location: {
     InTransit: string;
@@ -175,6 +183,14 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "info.inventory.crop.empty": "",
       "info.inventory.box": "",
       "info.inventory.box.empty": "",
+      world: {
+        rating: {
+          "table.title": "",
+          "table.user.name": "",
+          "table.user.level": "",
+          "table.user.xp": "",
+        },
+      },
     },
     location: {
       InTransit: "",

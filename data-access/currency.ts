@@ -47,7 +47,7 @@ export async function getUserCurrency(
 export async function addCurrencyToUser(
   userId: string,
   currency: Currency,
-  amount: bigint,
+  amount: number,
 ) {
   await prisma.userCurrency.upsert({
     where: {
@@ -78,7 +78,7 @@ export async function addCurrencyToUser(
 export async function removeCurrencyFromUser(
   userId: string,
   currency: Currency,
-  amount: bigint,
+  amount: number,
 ) {
   await prisma.userCurrency.update({
     where: {

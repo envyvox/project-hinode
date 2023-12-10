@@ -68,13 +68,14 @@ export async function getRandomFishWithParams(
  * @param userId User id
  * @param fishId Fish id
  * @param amount Amount
+ * @returns Updated user fish model
  */
 export async function addFishToUser(
   userId: string,
   fishId: string,
   amount: number,
-) {
-  await prisma.userFish.upsert({
+): Promise<UserFish> {
+  return await prisma.userFish.upsert({
     where: {
       userId_fishId: {
         userId: userId,

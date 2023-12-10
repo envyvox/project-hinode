@@ -74,7 +74,15 @@
     "info.inventory.crop": "Crops",
     "info.inventory.crop.empty": "You don't have any crops.",
     "info.inventory.box": "Boxes",
-    "info.inventory.box.empty": "You don't have any boxes."
+    "info.inventory.box.empty": "You don't have any boxes.",
+    "world": {
+      "rating": {
+        "table.title": "Rating",
+        "table.user.name": "Username",
+        "table.user.level": "Level",
+        "table.user.xp": "Xp"
+      }
+    }
   },
   "location": {
     "InTransit": "In transit",

@@ -74,7 +74,15 @@
     "info.inventory.crop": "Урожай",
     "info.inventory.crop.empty": "У тебя нет урожая.",
     "info.inventory.box": "Коробки",
-    "info.inventory.box.empty": "У тебя нет коробок."
+    "info.inventory.box.empty": "У тебя нет коробок.",
+    "world": {
+      "rating": {
+        "table.title": "Rating",
+        "table.user.name": "Username",
+        "table.user.level": "Level",
+        "table.user.xp": "Xp"
+      }
+    }
   },
   "location": {
     "InTransit": "В пути",

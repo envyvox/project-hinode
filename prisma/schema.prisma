@@ -43,6 +43,8 @@ model User {
   about         String?
   image         String?
   accessRole    AccessRole     @default(User)
+  level         Int            @default(1)
+  xp            Int            @default(0)
   location      Location       @default(Capital)
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @default(now()) @updatedAt
@@ -68,7 +70,7 @@ model UserCurrency {
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   currency  Currency
-  amount    BigInt
+  amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
@@ -79,7 +81,7 @@ model UserBoxes {
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   box       Box
-  amount    BigInt
+  amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
@@ -91,7 +93,7 @@ model UserSeeds {
   userId    String
   seed      Seed     @relation(fields: [seedId], references: [id])
   seedId    String
-  amount    BigInt
+  amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
@@ -103,7 +105,7 @@ model UserCrops {
   userId    String
   crop      Crop     @relation(fields: [cropId], references: [id])
   cropId    String
-  amount    BigInt
+  amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
@@ -115,7 +117,7 @@ model UserProducts {
   userId    String
   product   Product  @relation(fields: [productId], references: [id])
   productId String
-  amount    BigInt
+  amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
@@ -127,7 +129,7 @@ model UserFish {
   userId    String
   fish      Fish     @relation(fields: [fishId], references: [id])
   fishId    String
-  amount    BigInt
+  amount    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
