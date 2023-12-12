@@ -33,21 +33,22 @@ export default function InventoryFish() {
             <Skeleton className="h-[85px] flex-1" />
           </>
         ) : userFish.length > 0 ? (
-          userFish.map((uFish) => (
-            <TooltipProvider key={uFish.fishId}>
+          userFish.map((userFish) => (
+            <TooltipProvider key={userFish.fishId}>
               <Tooltip>
                 <TooltipTrigger>
                   <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
                     <Image
-                      src={`/fish/${uFish.fish.name}.png`}
-                      alt={uFish.fish.name}
+                      className="h-8 w-8 object-contain"
+                      src={`/fish/${userFish.fish.name}.png`}
+                      alt={userFish.fish.name}
                       width={36}
                       height={36}
                     />
-                    {Number(uFish.amount)}
+                    {Number(userFish.amount)}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent>{uFish.fish.name}</TooltipContent>
+                <TooltipContent>{userFish.fish.name}</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           ))

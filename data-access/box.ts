@@ -12,6 +12,9 @@ export async function getUserBoxes(userId: string): Promise<UserBoxes[]> {
   return await prisma.userBoxes.findMany({
     where: {
       userId: userId,
+      amount: {
+        gt: 0,
+      },
     },
   });
 }

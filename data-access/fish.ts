@@ -24,6 +24,9 @@ export async function getUserFish(userId: string): Promise<UserWithFish[]> {
   return await prisma.userFish.findMany({
     where: {
       userId: userId,
+      amount: {
+        gt: 0,
+      },
     },
     include: {
       fish: true,
@@ -92,5 +95,38 @@ export async function addFishToUser(
       fishId: fishId,
       amount: amount,
     },
+  });
+}
+
+/**
+ * Remove fish from user
+ * @param userId User id
+ * @param fishId Fish id
+ * @param amount Amount
+ * @returns Updated user fish model
+ */
+export async function removeFishFromUser(
+  userId: string,
+  fishId: string,
+  amount: number,
+): Promise<UserFish> {
+  return await prisma.userFish.update({
+    where: {
+      userId_fishId: {
+        userId: userId,
+        fishId: fishId,
+      },
+    },
+    data: {
+      amount: {
+        decrement: amount,
+      },
+    },
+  });
+}
+
+export async function removeAllFishFromUser(userId: string) {
+  await prisma.userFish.deleteMany({
+    where: { userId: userId },
   });
 }

@@ -16,6 +16,9 @@ export async function getUserSeeds(userId: string): Promise<UserWithSeed[]> {
   return await prisma.userSeeds.findMany({
     where: {
       userId: userId,
+      amount: {
+        gt: 0,
+      },
     },
     include: {
       seed: true,

@@ -44,6 +44,13 @@ export type Dictionary = {
     "dashboard.actions.seaport.shop-fisher.label": string;
     "dashboard.actions.seaport.shop-fisher.description": string;
     "dashboard.actions.seaport.shop-fisher.button-label": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.close": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.sell-all-fish": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.no-fish": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.sell-one": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.sell-all": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-one": string;
+    "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-all": string;
     "dashboard.actions.castle.explore.label": string;
     "dashboard.actions.castle.explore.description": string;
     "dashboard.actions.castle.explore.button-label": string;
@@ -150,6 +157,13 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.actions.seaport.shop-fisher.label": "",
       "dashboard.actions.seaport.shop-fisher.description": "",
       "dashboard.actions.seaport.shop-fisher.button-label": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.close": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.sell-all-fish": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.no-fish": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.sell-one": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.sell-all": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-one": "",
+      "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-all": "",
       "dashboard.actions.castle.explore.label": "",
       "dashboard.actions.castle.explore.description": "",
       "dashboard.actions.castle.explore.button-label": "",

@@ -1,20 +1,18 @@
 import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ReactNode } from "react";
 
 type Props = {
   label: string;
   description: string;
-  buttonLabel: string;
-  onClick: () => void;
+  actionComponent: ReactNode;
 };
 
 export default function ActionBase({
   label,
   description,
-  buttonLabel,
-  onClick,
+  actionComponent,
 }: Props) {
   return (
     <>
@@ -25,13 +23,7 @@ export default function ActionBase({
           <TypographyH4>{label}</TypographyH4>
           <TypographyP>{description}</TypographyP>
         </div>
-        <Button
-          className="mt-2 w-fit self-end"
-          variant="secondary"
-          onClick={onClick}
-        >
-          {buttonLabel}
-        </Button>
+        {actionComponent}
       </div>
     </>
   );

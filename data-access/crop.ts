@@ -16,6 +16,9 @@ export async function getUserCrops(userId: string): Promise<UserWithCrop[]> {
   return await prisma.userCrops.findMany({
     where: {
       userId: userId,
+      amount: {
+        gt: 0,
+      },
     },
     include: {
       crop: true,

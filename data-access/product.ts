@@ -18,6 +18,9 @@ export async function getUserProducts(
   return await prisma.userProducts.findMany({
     where: {
       userId: userId,
+      amount: {
+        gt: 0,
+      },
     },
     include: {
       product: true,
