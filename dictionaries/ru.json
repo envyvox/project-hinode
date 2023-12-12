@@ -39,6 +39,8 @@
     "dashboard.actions.seaport.fishing.label": "Рыбалка",
     "dashboard.actions.seaport.fishing.description": "Описание",
     "dashboard.actions.seaport.fishing.button-label": "Отправиться рыбачить",
+    "dashboard.actions.seaport.fishing.toast.start": "Портовый город «Нагоя» полон желающих поймать крутой улов и теперь ты один из них. В надежде что богиня фортуны пошлет тебе улов потяжелее ты отправляешься на рыбалку, но даже самые опытные никогда не могут знать заранее насколько удачно все пройдет.",
+    "dashboard.actions.seaport.fishing.toast.complete": "Ты возвращаешься с улыбкой на лице и гордо демонстрируешь жителям города {0} {1}. Есть чем гордиться, понимаю, но рыбы в здешних водах еще полно, возвращайся за новым уловом поскорее!",
     "dashboard.actions.seaport.shop-fisher.label": "Дом рыбака",
     "dashboard.actions.seaport.shop-fisher.description": "Описание",
     "dashboard.actions.seaport.shop-fisher.button-label": "Зайти к рыбаку",

@@ -21,9 +21,10 @@ export default function ActionSeaportFishing() {
     setUserLocation(Location.Fishing);
     setActiveTab(DashboardTab.about);
     startFishingJob();
+
     toast({
-      title: "Fishing started",
-      description: "...",
+      description:
+        dictionary.dashboard["dashboard.actions.seaport.fishing.toast.start"],
     });
   };
 

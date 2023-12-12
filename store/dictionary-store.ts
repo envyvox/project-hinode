@@ -41,6 +41,8 @@ export type Dictionary = {
     "dashboard.actions.seaport.fishing.label": string;
     "dashboard.actions.seaport.fishing.description": string;
     "dashboard.actions.seaport.fishing.button-label": string;
+    "dashboard.actions.seaport.fishing.toast.start": string;
+    "dashboard.actions.seaport.fishing.toast.complete": string;
     "dashboard.actions.seaport.shop-fisher.label": string;
     "dashboard.actions.seaport.shop-fisher.description": string;
     "dashboard.actions.seaport.shop-fisher.button-label": string;
@@ -154,6 +156,8 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.actions.seaport.fishing.label": "",
       "dashboard.actions.seaport.fishing.description": "",
       "dashboard.actions.seaport.fishing.button-label": "",
+      "dashboard.actions.seaport.fishing.toast.start": "",
+      "dashboard.actions.seaport.fishing.toast.complete": "",
       "dashboard.actions.seaport.shop-fisher.label": "",
       "dashboard.actions.seaport.shop-fisher.description": "",
       "dashboard.actions.seaport.shop-fisher.button-label": "",

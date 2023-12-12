@@ -39,6 +39,8 @@
     "dashboard.actions.seaport.fishing.label": "Fishing",
     "dashboard.actions.seaport.fishing.description": "Description",
     "dashboard.actions.seaport.fishing.button-label": "Go fishing",
+    "dashboard.actions.seaport.fishing.toast.start": "The port city of «Nagoya» is full of people who want to catch a great catch, and now you're one of them. Hoping that the goddess of fortune will send you a bigger catch, you go fishing, but even the most experienced can never know how well it will go.",
+    "dashboard.actions.seaport.fishing.toast.complete": "You return with a smile on your face and proudly show off {0} to the people of the town. {1}. It's something to be proud of, I know, but there are still plenty of fish in these waters, so come back for another catch soon!",
     "dashboard.actions.seaport.shop-fisher.label": "Fisherman's house",
     "dashboard.actions.seaport.shop-fisher.description": "Description",
     "dashboard.actions.seaport.shop-fisher.button-label": "Go to a fisherman",
