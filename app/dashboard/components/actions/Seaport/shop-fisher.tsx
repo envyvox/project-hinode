@@ -19,10 +19,10 @@ import { Currency, Fish } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
 import UseUserCurrency from "@/hooks/use-user-currency";
 import { Skeleton } from "@/components/ui/skeleton";
-import ShopFisherUserFish from "./user-fish";
 import { formatString } from "@/util/format-string";
 import Image from "next/image";
 import IenIcon from "@/public/currency/Ien.png";
+import ShopFisherUserFish from "./shop-fisher-user-fish";
 
 export default function ActionSeaportShopFisher() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -128,10 +128,16 @@ export default function ActionSeaportShopFisher() {
                   }
                 </SheetDescription>
               </SheetHeader>
-              <ScrollArea className="md:[80vh] h-[70vh]">
-                <div className="flex flex-wrap gap-5">
+              <ScrollArea className="h-[70vh] sm:h-[80vh]">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                   {loading ? (
-                    <Skeleton className="h-96 w-full" />
+                    <>
+                      <Skeleton className="h-36 w-full" />
+                      <Skeleton className="h-36 w-full" />
+                      <Skeleton className="h-36 w-full" />
+                      <Skeleton className="h-36 w-full" />
+                      <Skeleton className="h-36 w-full" />
+                    </>
                   ) : (
                     <ShopFisherUserFish
                       userFish={userFish}
@@ -142,7 +148,11 @@ export default function ActionSeaportShopFisher() {
                 </div>
               </ScrollArea>
               <SheetFooter className="flex flex-wrap gap-5">
-                <Button onClick={() => sellAllFish()}>
+                <Button
+                  variant="destructive"
+                  disabled={userFish.length < 1}
+                  onClick={() => sellAllFish()}
+                >
                   {
                     dictionary.dashboard[
                       "dashboard.actions.seaport.shop-fisher.sheet.sell-all-fish"

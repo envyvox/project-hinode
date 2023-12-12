@@ -28,10 +28,10 @@ export const useUserFishStore = create<UserFishState>((set, get) => ({
 
     await addFishToUser(userId, fishId, amount);
 
-    const updatedUserFish = userFish.map((userFish) => ({
-      ...userFish,
+    const updatedUserFish = userFish.map((uf) => ({
+      ...uf,
       amount:
-        userFish.fishId === fishId ? userFish.amount + amount : userFish.amount,
+        uf.fishId === fishId ? uf.amount + amount : uf.amount,
     }));
 
     set({ userFish: updatedUserFish, loading: false });
