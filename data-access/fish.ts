@@ -31,6 +31,11 @@ export async function getUserFish(userId: string): Promise<UserWithFish[]> {
     include: {
       fish: true,
     },
+    orderBy: {
+      fish: {
+        name: "asc",
+      },
+    },
   });
 }
 
@@ -125,6 +130,10 @@ export async function removeFishFromUser(
   });
 }
 
+/**
+ * Removes all fish from user
+ * @param userId User id
+ */
 export async function removeAllFishFromUser(userId: string) {
   await prisma.userFish.deleteMany({
     where: { userId: userId },

@@ -16,5 +16,8 @@ export async function getUserBoxes(userId: string): Promise<UserBoxes[]> {
         gt: 0,
       },
     },
+    orderBy: {
+      box: "asc",
+    },
   });
 }

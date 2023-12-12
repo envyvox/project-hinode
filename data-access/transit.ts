@@ -15,5 +15,8 @@ export async function getTransitsFromLocation(
     where: {
       departure: departure,
     },
+    orderBy: {
+      destination: "asc",
+    },
   });
 }

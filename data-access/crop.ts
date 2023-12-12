@@ -23,5 +23,10 @@ export async function getUserCrops(userId: string): Promise<UserWithCrop[]> {
     include: {
       crop: true,
     },
+    orderBy: {
+      crop: {
+        name: "asc",
+      },
+    },
   });
 }

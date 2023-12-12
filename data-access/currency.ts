@@ -15,6 +15,9 @@ export async function getUserCurrencies(
     where: {
       userId: userId,
     },
+    orderBy: {
+      currency: "asc",
+    },
   });
 }
 

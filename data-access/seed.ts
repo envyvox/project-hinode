@@ -23,5 +23,10 @@ export async function getUserSeeds(userId: string): Promise<UserWithSeed[]> {
     include: {
       seed: true,
     },
+    orderBy: {
+      seed: {
+        name: "asc",
+      },
+    },
   });
 }

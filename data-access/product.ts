@@ -25,5 +25,10 @@ export async function getUserProducts(
     include: {
       product: true,
     },
+    orderBy: {
+      product: {
+        name: "asc",
+      },
+    },
   });
 }

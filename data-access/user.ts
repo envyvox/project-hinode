@@ -19,7 +19,14 @@ export async function getUser(email: string): Promise<User> {
  */
 export async function getUsers(): Promise<User[]> {
   return await prisma.user.findMany({
-    orderBy: [{ level: "desc" }, { xp: "desc" }],
+    orderBy: [
+      {
+        level: "desc",
+      },
+      {
+        xp: "desc",
+      },
+    ],
   });
 }
 
