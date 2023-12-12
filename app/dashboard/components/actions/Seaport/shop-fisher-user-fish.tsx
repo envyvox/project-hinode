@@ -35,7 +35,7 @@ export default function ShopFisherUserFish({
     // even when there are provided key, idk what to do with it
     <div
       key={uf.fishId}
-      className="flex h-fit flex-col items-center justify-between gap-1 rounded-lg border p-2"
+      className="flex flex-col items-center gap-2 rounded-lg border p-2"
     >
       <Image
         className="h-8 w-8 object-contain"
@@ -46,7 +46,7 @@ export default function ShopFisherUserFish({
       />
       {Number(uf.amount)} {uf.fish.name}
       <Button
-        variant="outline"
+        variant="secondary"
         className="w-full"
         onClick={() => sellFish(uf.fish, 1)}
       >
@@ -59,7 +59,7 @@ export default function ShopFisherUserFish({
         )}
       </Button>
       <Button
-        variant="outline"
+        variant="secondary"
         className="w-full"
         onClick={() => sellFish(uf.fish, uf.amount)}
       >
