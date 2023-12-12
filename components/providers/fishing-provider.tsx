@@ -6,7 +6,7 @@ import { Location } from "@prisma/client";
 import { useEventDetails } from "@trigger.dev/react";
 import React, { useEffect } from "react";
 import { useToast } from "../ui/use-toast";
-import { formatString } from "@/lib/format-string";
+import { formatString } from "@/util/format-string";
 import Image from "next/image";
 
 type Props = {

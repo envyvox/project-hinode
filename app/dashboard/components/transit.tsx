@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import IenIcon from "@/public/currency/Ien.png";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { formatString } from "@/lib/format-string";
+import { formatString } from "@/util/format-string";
 import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
 import { useToast } from "@/components/ui/use-toast";

@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { shuffle } from "@/lib/shuffle";
+import { shuffle } from "@/util/shuffle";
 import {
   Fish,
   FishRarity,

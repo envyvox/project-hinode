@@ -1,7 +1,7 @@
 import { sendEventFishing } from "@/jobs/triggers";
 import { create } from "zustand";
 import { useUserStore } from "./user-store";
-import getRandomFishRarity from "@/lib/get-random-fish-rarity";
+import getRandomFishRarity from "@/util/get-random-fish-rarity";
 import { Season, TimesDay, Weather } from "@prisma/client";
 import { getRandomFishWithParams } from "@/data-access/fish";
 

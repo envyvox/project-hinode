@@ -2,7 +2,7 @@
 
 import { Location, User } from "@prisma/client";
 import prisma from "@/lib/prisma";
-import getXpRequiredToLevel from "@/lib/get-xp-required-to-lvl";
+import getXpRequiredToLevel from "@/util/get-xp-required-to-lvl";
 
 /**
  * Get user by email
