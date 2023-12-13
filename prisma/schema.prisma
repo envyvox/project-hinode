@@ -192,6 +192,31 @@ model Fish {
   UserFish      UserFish[]
 }
 
+model Gathering {
+  id         String              @id @default(cuid())
+  name       String              @unique
+  location   Location
+  price      Int
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @default(now()) @updatedAt
+  properties GatheringProperty[]
+}
+
+model GatheringProperty {
+  gathering   Gathering             @relation(fields: [gatheringId], references: [id])
+  gatheringId String
+  property    GatheringPropertyType
+  value       Int
+
+  @@unique([gatheringId, property])
+}
+
+enum GatheringPropertyType {
+  GatheringChance
+  GatheringDoubleChance
+  GatheringAmount
+}
+
 enum FishRarity {
   Common
   Rare
