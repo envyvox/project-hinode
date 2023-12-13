@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma";
 import { Product, UserProducts } from "@prisma/client";
 
-export type UserWithProduct = {
+export type UserProductIncluded = {
   product: Product;
 } & UserProducts;
 
@@ -14,7 +14,7 @@ export type UserWithProduct = {
  */
 export async function getUserProducts(
   userId: string,
-): Promise<UserWithProduct[]> {
+): Promise<UserProductIncluded[]> {
   return await prisma.userProducts.findMany({
     where: {
       userId: userId,

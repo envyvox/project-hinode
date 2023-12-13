@@ -28,12 +28,12 @@ export default function DashboardProfile() {
         </div>
         <div className="flex flex-col gap-1">
           <TypographyMuted>
-            {dictionary.dashboard["info.profile.about"]}
+            {dictionary.dashboard["user.profile.about"]}
           </TypographyMuted>
           <div className="rounded-lg border p-2 shadow-sm">
             <TypographyMuted>
               {user.about ??
-                dictionary.dashboard["info.profile.about-placeholder"]}
+                dictionary.dashboard["user.profile.about-placeholder"]}
             </TypographyMuted>
           </div>
         </div>

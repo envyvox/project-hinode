@@ -2,6 +2,7 @@ import InventoryBoxes from "./components/inventory-boxes";
 import InventoryCrops from "./components/inventory-crops";
 import InventoryCurrency from "./components/inventory-currency";
 import InventoryFish from "./components/inventory-fish";
+import InventoryGathering from "./components/inventory-gathering";
 import InventoryProducts from "./components/inventory-products";
 import InventorySeeds from "./components/inventory-seeds";
 
@@ -11,6 +12,7 @@ export default function InfoInventoryPage() {
       <InventoryCurrency />
       <InventoryBoxes />
       <InventoryFish />
+      <InventoryGathering />
       <InventorySeeds />
       <InventoryCrops />
       <InventoryProducts />

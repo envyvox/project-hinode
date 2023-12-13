@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma";
 import { Seed, UserSeeds } from "@prisma/client";
 
-export type UserWithSeed = {
+export type UserSeedIncluded = {
   seed: Seed;
 } & UserSeeds;
 
@@ -12,7 +12,9 @@ export type UserWithSeed = {
  * @param userId User id
  * @returns User seeds model array
  */
-export async function getUserSeeds(userId: string): Promise<UserWithSeed[]> {
+export async function getUserSeeds(
+  userId: string,
+): Promise<UserSeedIncluded[]> {
   return await prisma.userSeeds.findMany({
     where: {
       userId: userId,

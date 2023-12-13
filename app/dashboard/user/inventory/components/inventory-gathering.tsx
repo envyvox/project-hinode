@@ -9,22 +9,22 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import UseUserCrop from "@/hooks/use-user-crop";
+import UseUserGathering from "@/hooks/use-user-gathering";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserCropStore } from "@/store/user-crop-store";
+import { useUserGatheringStore } from "@/store/user-gathering-store";
 import Image from "next/image";
 
-export default function InventoryCrops() {
+export default function InventoryGathering() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserCropStore((state) => state.loading);
-  const userCrops = useUserCropStore((state) => state.userCrops);
+  const loading = useUserGatheringStore((state) => state.loading);
+  const userGatherings = useUserGatheringStore((state) => state.userGatherings);
 
-  UseUserCrop();
+  UseUserGathering();
 
   return (
     <>
       <TypographySmall>
-        {dictionary.dashboard["info.inventory.crop"]}
+        {dictionary.dashboard["user.inventory.gathering"]}
       </TypographySmall>
       <div className="flex flex-wrap gap-5">
         {loading ? (
@@ -32,29 +32,29 @@ export default function InventoryCrops() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userCrops.length > 0 ? (
-          userCrops.map((userCrop) => (
-            <TooltipProvider key={userCrop.cropId}>
+        ) : userGatherings.length > 0 ? (
+          userGatherings.map((userGathering) => (
+            <TooltipProvider key={userGathering.gatheringId}>
               <Tooltip>
                 <TooltipTrigger>
                   <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
                     <Image
-                      src={`/crop/${userCrop.crop.name}.png`}
-                      alt={userCrop.crop.name}
+                      src={`/gathering/${userGathering.gathering.name}.png`}
+                      alt={userGathering.gathering.name}
                       width={36}
                       height={36}
                     />
-                    {Number(userCrop.amount)}
+                    {Number(userGathering.amount)}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent>{userCrop.crop.name}</TooltipContent>
+                <TooltipContent>{userGathering.gathering.name}</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           ))
         ) : (
           <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">
             <TypographyMuted>
-              {dictionary.dashboard["info.inventory.crop.empty"]}
+              {dictionary.dashboard["user.inventory.gathering.empty"]}
             </TypographyMuted>
           </div>
         )}

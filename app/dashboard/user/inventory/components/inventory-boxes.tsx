@@ -24,7 +24,7 @@ export default function InventoryBoxes() {
   return (
     <>
       <TypographySmall>
-        {dictionary.dashboard["info.inventory.box"]}
+        {dictionary.dashboard["user.inventory.box"]}
       </TypographySmall>
       <div className="flex flex-wrap gap-5">
         {loading ? (
@@ -54,7 +54,7 @@ export default function InventoryBoxes() {
         ) : (
           <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">
             <TypographyMuted>
-              {dictionary.dashboard["info.inventory.box.empty"]}
+              {dictionary.dashboard["user.inventory.box.empty"]}
             </TypographyMuted>
           </div>
         )}

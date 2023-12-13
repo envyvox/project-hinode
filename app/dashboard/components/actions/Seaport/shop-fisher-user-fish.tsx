@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { UserWithFish } from "@/data-access/fish";
+import { UserFishIncluded } from "@/data-access/fish";
 import { formatString } from "@/util/format-string";
 import { Fish } from "@prisma/client";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import { Dictionary } from "@/store/dictionary-store";
 import { TypographyMuted } from "@/components/typography/muted";
 
 type Props = {
-  userFish: UserWithFish[];
+  userFish: UserFishIncluded[];
   dictionary: Dictionary;
   sellFish: (fish: Fish, amount: number) => void;
 };

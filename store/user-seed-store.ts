@@ -1,9 +1,9 @@
-import { UserWithSeed, getUserSeeds } from "@/data-access/seed";
+import { UserSeedIncluded, getUserSeeds } from "@/data-access/seed";
 import { create } from "zustand";
 
 type UserSeedState = {
   loading: boolean;
-  userSeeds: UserWithSeed[];
+  userSeeds: UserSeedIncluded[];
   getUserSeeds: (userId: string) => void;
 };
 

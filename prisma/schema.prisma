@@ -36,18 +36,18 @@ model Session {
 }
 
 model User {
-  id            String         @id @default(cuid())
+  id            String          @id @default(cuid())
   name          String?
-  email         String?        @unique
+  email         String?         @unique
   emailVerified DateTime?
   about         String?
   image         String?
-  accessRole    AccessRole     @default(User)
-  level         Int            @default(1)
-  xp            Int            @default(0)
-  location      Location       @default(Capital)
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @default(now()) @updatedAt
+  accessRole    AccessRole      @default(User)
+  level         Int             @default(1)
+  xp            Int             @default(0)
+  location      Location        @default(Capital)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now()) @updatedAt
   accounts      Account[]
   sessions      Session[]
   currencies    UserCurrency[]
@@ -55,7 +55,8 @@ model User {
   seeds         UserSeeds[]
   crops         UserCrops[]
   products      UserProducts[]
-  UserFish      UserFish[]
+  fish          UserFish[]
+  gatherings    UserGathering[]
 }
 
 model VerificationToken {
@@ -136,6 +137,18 @@ model UserFish {
   @@id([userId, fishId])
 }
 
+model UserGathering {
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  gathering   Gathering @relation(fields: [gatheringId], references: [id])
+  gatheringId String
+  amount      Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+
+  @@id([userId, gatheringId])
+}
+
 model Seed {
   id           String      @id @default(cuid())
   name         String      @unique
@@ -189,17 +202,18 @@ model Fish {
   price         Int
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @default(now()) @updatedAt
-  UserFish      UserFish[]
+  userFish      UserFish[]
 }
 
 model Gathering {
-  id         String              @id @default(cuid())
-  name       String              @unique
-  location   Location
-  price      Int
-  createdAt  DateTime            @default(now())
-  updatedAt  DateTime            @default(now()) @updatedAt
-  properties GatheringProperty[]
+  id            String              @id @default(cuid())
+  name          String              @unique
+  location      Location
+  price         Int
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @default(now()) @updatedAt
+  properties    GatheringProperty[]
+  userGathering UserGathering[]
 }
 
 model GatheringProperty {

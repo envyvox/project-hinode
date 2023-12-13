@@ -8,7 +8,7 @@ export default function SubmitButton() {
 
   return (
     <Button disabled={status.pending} type="submit">
-      {dictionary.dashboard["info.profile.save"]}
+      {dictionary.dashboard["user.profile.save"]}
     </Button>
   );
 }

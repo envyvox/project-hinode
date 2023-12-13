@@ -1,5 +1,5 @@
 import {
-  UserWithFish,
+  UserFishIncluded,
   removeFishFromUser,
   getUserFish,
   addFishToUser,
@@ -10,7 +10,7 @@ import { useUserStore } from "./user-store";
 
 type UserFishState = {
   loading: boolean;
-  userFish: UserWithFish[];
+  userFish: UserFishIncluded[];
   addFishToUser: (fishId: string, amount: number) => void;
   removeFishFromUser: (fishId: string, amount: number) => void;
   removeAllFishFromUser: () => void;
@@ -30,8 +30,7 @@ export const useUserFishStore = create<UserFishState>((set, get) => ({
 
     const updatedUserFish = userFish.map((uf) => ({
       ...uf,
-      amount:
-        uf.fishId === fishId ? uf.amount + amount : uf.amount,
+      amount: uf.fishId === fishId ? uf.amount + amount : uf.amount,
     }));
 
     set({ userFish: updatedUserFish, loading: false });

@@ -1,9 +1,9 @@
-import { UserWithProduct, getUserProducts } from "@/data-access/product";
+import { UserProductIncluded, getUserProducts } from "@/data-access/product";
 import { create } from "zustand";
 
 type UserProductState = {
   loading: boolean;
-  userProducts: UserWithProduct[];
+  userProducts: UserProductIncluded[];
   getUserProducts: (userId: string) => void;
 };
 

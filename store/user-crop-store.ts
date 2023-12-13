@@ -1,9 +1,9 @@
-import { UserWithCrop, getUserCrops } from "@/data-access/crop";
+import { UserCropIncluded, getUserCrops } from "@/data-access/crop";
 import { create } from "zustand";
 
 type UserCropState = {
   loading: boolean;
-  userCrops: UserWithCrop[];
+  userCrops: UserCropIncluded[];
   getUserCrops: (userId: string) => void;
 };
 

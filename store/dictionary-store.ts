@@ -69,23 +69,25 @@ export type Dictionary = {
     "dashboard.transit.toast.success.description": string;
     "dashboard.transit.toast.no-currency.title": string;
     "dashboard.transit.toast.no-currency.description": string;
-    "info.profile.username": string;
-    "info.profile.email": string;
-    "info.profile.about": string;
-    "info.profile.about-placeholder": string;
-    "info.profile.save": string;
-    "info.inventory.currency": string;
-    "info.inventory.currency.empty": string;
-    "info.inventory.fish": string;
-    "info.inventory.fish.empty": string;
-    "info.inventory.product": string;
-    "info.inventory.product.empty": string;
-    "info.inventory.seed": string;
-    "info.inventory.seed.empty": string;
-    "info.inventory.crop": string;
-    "info.inventory.crop.empty": string;
-    "info.inventory.box": string;
-    "info.inventory.box.empty": string;
+    "user.profile.username": string;
+    "user.profile.email": string;
+    "user.profile.about": string;
+    "user.profile.about-placeholder": string;
+    "user.profile.save": string;
+    "user.inventory.currency": string;
+    "user.inventory.currency.empty": string;
+    "user.inventory.fish": string;
+    "user.inventory.fish.empty": string;
+    "user.inventory.product": string;
+    "user.inventory.product.empty": string;
+    "user.inventory.seed": string;
+    "user.inventory.seed.empty": string;
+    "user.inventory.crop": string;
+    "user.inventory.crop.empty": string;
+    "user.inventory.box": string;
+    "user.inventory.box.empty": string;
+    "user.inventory.gathering": string;
+    "user.inventory.gathering.empty": string;
     world: {
       rating: {
         "table.title": string;
@@ -184,23 +186,25 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.transit.toast.success.description": "",
       "dashboard.transit.toast.no-currency.title": "",
       "dashboard.transit.toast.no-currency.description": "",
-      "info.profile.username": "",
-      "info.profile.email": "",
-      "info.profile.about": "",
-      "info.profile.about-placeholder": "",
-      "info.profile.save": "",
-      "info.inventory.currency": "",
-      "info.inventory.currency.empty": "",
-      "info.inventory.fish": "",
-      "info.inventory.fish.empty": "",
-      "info.inventory.product": "",
-      "info.inventory.product.empty": "",
-      "info.inventory.seed": "",
-      "info.inventory.seed.empty": "",
-      "info.inventory.crop": "",
-      "info.inventory.crop.empty": "",
-      "info.inventory.box": "",
-      "info.inventory.box.empty": "",
+      "user.profile.username": "",
+      "user.profile.email": "",
+      "user.profile.about": "",
+      "user.profile.about-placeholder": "",
+      "user.profile.save": "",
+      "user.inventory.currency": "",
+      "user.inventory.currency.empty": "",
+      "user.inventory.fish": "",
+      "user.inventory.fish.empty": "",
+      "user.inventory.product": "",
+      "user.inventory.product.empty": "",
+      "user.inventory.seed": "",
+      "user.inventory.seed.empty": "",
+      "user.inventory.crop": "",
+      "user.inventory.crop.empty": "",
+      "user.inventory.box": "",
+      "user.inventory.box.empty": "",
+      "user.inventory.gathering": "",
+      "user.inventory.gathering.empty": "",
       world: {
         rating: {
           "table.title": "",

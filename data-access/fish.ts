@@ -11,7 +11,7 @@ import {
   Weather,
 } from "@prisma/client";
 
-export type UserWithFish = {
+export type UserFishIncluded = {
   fish: Fish;
 } & UserFish;
 
@@ -20,7 +20,7 @@ export type UserWithFish = {
  * @param userId User id
  * @returns User fish model array
  */
-export async function getUserFish(userId: string): Promise<UserWithFish[]> {
+export async function getUserFish(userId: string): Promise<UserFishIncluded[]> {
   return await prisma.userFish.findMany({
     where: {
       userId: userId,

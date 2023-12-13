@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma";
 import { Crop, UserCrops } from "@prisma/client";
 
-export type UserWithCrop = {
+export type UserCropIncluded = {
   crop: Crop;
 } & UserCrops;
 
@@ -12,7 +12,9 @@ export type UserWithCrop = {
  * @param userId User id
  * @returns User crops model array
  */
-export async function getUserCrops(userId: string): Promise<UserWithCrop[]> {
+export async function getUserCrops(
+  userId: string,
+): Promise<UserCropIncluded[]> {
   return await prisma.userCrops.findMany({
     where: {
       userId: userId,

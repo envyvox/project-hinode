@@ -26,27 +26,27 @@ export const sidebarCategories: SidebarCategory[] = [
     child: [
       {
         label: "category.info.child.profile",
-        href: "/dashboard/info/profile",
+        href: "/dashboard/user/profile",
       },
       {
         label: "category.info.child.inventory",
-        href: "/dashboard/info/inventory",
+        href: "/dashboard/user/inventory",
       },
       {
         label: "category.info.child.reputation",
-        href: "/dashboard/info/reputation",
+        href: "/dashboard/user/reputation",
       },
       {
         label: "category.info.child.collection",
-        href: "/dashboard/info/collection",
+        href: "/dashboard/user/collection",
       },
       {
         label: "category.info.child.banners",
-        href: "/dashboard/info/banners",
+        href: "/dashboard/user/banners",
       },
       {
         label: "category.info.child.achievements",
-        href: "/dashboard/info/achievements",
+        href: "/dashboard/user/achievements",
       },
     ],
   },

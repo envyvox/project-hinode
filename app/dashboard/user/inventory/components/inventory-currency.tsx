@@ -9,22 +9,22 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import UseUserSeed from "@/hooks/use-user-seed";
+import UseUserCurrency from "@/hooks/use-user-currency";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserSeedStore } from "@/store/user-seed-store";
+import { useUserCurrencyStore } from "@/store/user-currency-store";
 import Image from "next/image";
 
-export default function InventorySeeds() {
+export default function InventoryCurrency() {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserSeedStore((state) => state.loading);
-  const userSeeds = useUserSeedStore((state) => state.userSeeds);
+  const loading = useUserCurrencyStore((state) => state.loading);
+  const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
 
-  UseUserSeed();
+  UseUserCurrency();
 
   return (
     <>
       <TypographySmall>
-        {dictionary.dashboard["info.inventory.seed"]}
+        {dictionary.dashboard["user.inventory.currency"]}
       </TypographySmall>
       <div className="flex flex-wrap gap-5">
         {loading ? (
@@ -32,29 +32,29 @@ export default function InventorySeeds() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userSeeds.length > 0 ? (
-          userSeeds.map((userSeed) => (
-            <TooltipProvider key={userSeed.seedId}>
+        ) : userCurrencies.length > 0 ? (
+          userCurrencies.map((userCurrency) => (
+            <TooltipProvider key={userCurrency.currency}>
               <Tooltip>
                 <TooltipTrigger>
                   <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
                     <Image
-                      src={`/seed/${userSeed.seed.name}.png`}
-                      alt={userSeed.seed.name}
+                      src={`/currency/${userCurrency.currency.toString()}.png`}
+                      alt={userCurrency.currency.toString()}
                       width={36}
                       height={36}
                     />
-                    {Number(userSeed.amount)}
+                    {Number(userCurrency.amount)}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent>{userSeed.seed.name}</TooltipContent>
+                <TooltipContent>{userCurrency.currency}</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           ))
         ) : (
           <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">
             <TypographyMuted>
-              {dictionary.dashboard["info.inventory.seed.empty"]}
+              {dictionary.dashboard["user.inventory.currency.empty"]}
             </TypographyMuted>
           </div>
         )}
