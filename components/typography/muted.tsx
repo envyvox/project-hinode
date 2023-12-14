@@ -1,7 +1,5 @@
-import { ReactNode } from "react";
-
 type Props = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function TypographyMuted({ children }: Props) {

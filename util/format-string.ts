@@ -1,5 +1,5 @@
 // Define a type that represents possible argument types for the formatString function.
-type FormatArguments = string | number | React.ReactNode;
+type FormatArguments = string | number | React.React.ReactNode;
 
 /**
  * Formats a string by replacing placeholders with provided values.

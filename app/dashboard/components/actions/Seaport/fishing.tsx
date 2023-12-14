@@ -11,10 +11,10 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function ActionSeaportFishing() {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
   const startFishingJob = useJobStore((state) => state.startFishingJob);
-  const dictionary = useDictionaryStore((state) => state.dictionary);
   const { toast } = useToast();
 
   const handleClick = () => {

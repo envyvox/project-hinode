@@ -2,14 +2,15 @@
 
 import AuthProvider from "./auth-provider";
 import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
+
 import UserProvider from "./user-provider";
 import DictionaryProvider from "./dictionary-provider";
 import { TriggerProvider } from "@trigger.dev/react";
 import FishingProvider from "./fishing-provider";
+import ExploreProvider from "./explore-provider";
 
 type Props = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export default function Providers({ children }: Props) {
@@ -21,7 +22,9 @@ export default function Providers({ children }: Props) {
             publicApiKey={process.env.NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY ?? ""}
           >
             <FishingProvider>
-              <DictionaryProvider>{children}</DictionaryProvider>
+              <ExploreProvider>
+                <DictionaryProvider>{children}</DictionaryProvider>
+              </ExploreProvider>
             </FishingProvider>
           </TriggerProvider>
         </ThemeProvider>

@@ -2,7 +2,7 @@
 
 import { useUserStore } from "@/store/user-store";
 import { useSession } from "next-auth/react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 type Props = {
   children: React.ReactNode;

@@ -3,7 +3,7 @@
 import { getDictionary } from "@/app/dictionaries";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useLangStore } from "@/store/lang-store";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 type Props = {
   children: React.ReactNode;

@@ -1,12 +1,11 @@
 import { TypographyH4 } from "@/components/typography/h4";
 import { TypographyP } from "@/components/typography/p";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ReactNode } from "react";
 
 type Props = {
   label: string;
   description: string;
-  actionComponent: ReactNode;
+  actionComponent: React.ReactNode;
 };
 
 export default function ActionBase({

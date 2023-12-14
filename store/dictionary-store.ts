@@ -56,6 +56,9 @@ export type Dictionary = {
     "dashboard.actions.castle.explore.label": string;
     "dashboard.actions.castle.explore.description": string;
     "dashboard.actions.castle.explore.button-label": string;
+    "dashboard.actions.castle.explore.toast.start": string;
+    "dashboard.actions.castle.explore.toast.success": string;
+    "dashboard.actions.castle.explore.toast.failed": string;
     "dashboard.actions.village.shop-product.label": string;
     "dashboard.actions.village.shop-product.description": string;
     "dashboard.actions.village.shop-product.button-label": string;
@@ -173,6 +176,9 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.actions.castle.explore.label": "",
       "dashboard.actions.castle.explore.description": "",
       "dashboard.actions.castle.explore.button-label": "",
+      "dashboard.actions.castle.explore.toast.start": "",
+      "dashboard.actions.castle.explore.toast.success": "",
+      "dashboard.actions.castle.explore.toast.failed": "",
       "dashboard.actions.village.shop-product.label": "",
       "dashboard.actions.village.shop-product.description": "",
       "dashboard.actions.village.shop-product.button-label": "",
