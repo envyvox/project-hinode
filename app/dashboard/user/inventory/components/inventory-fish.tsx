@@ -37,7 +37,7 @@ export default function InventoryFish() {
             <TooltipProvider key={uf.fishId}>
               <Tooltip>
                 <TooltipTrigger>
-                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
+                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground shadow-sm">
                     <Image
                       className="h-8 w-8 object-contain"
                       src={`/fish/${uf.fish.name}.png`}

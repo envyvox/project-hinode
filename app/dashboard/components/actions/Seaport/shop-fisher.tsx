@@ -129,7 +129,7 @@ export default function ActionSeaportShopFisher() {
                 </SheetDescription>
               </SheetHeader>
               <ScrollArea className="h-[70vh] sm:h-[80vh]">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
                   {loading ? (
                     <>
                       <Skeleton className="h-36 w-full" />

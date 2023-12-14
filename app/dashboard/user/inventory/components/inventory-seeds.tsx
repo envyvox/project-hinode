@@ -37,7 +37,7 @@ export default function InventorySeeds() {
             <TooltipProvider key={userSeed.seedId}>
               <Tooltip>
                 <TooltipTrigger>
-                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
+                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground shadow-sm">
                     <Image
                       src={`/seed/${userSeed.seed.name}.png`}
                       alt={userSeed.seed.name}

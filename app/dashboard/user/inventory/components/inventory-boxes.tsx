@@ -37,7 +37,7 @@ export default function InventoryBoxes() {
             <TooltipProvider key={userBox.box}>
               <Tooltip>
                 <TooltipTrigger>
-                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border p-2">
+                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground">
                     <Image
                       src={`/box/Box${userBox.box.toString()}.png`}
                       alt={userBox.box.toString()}

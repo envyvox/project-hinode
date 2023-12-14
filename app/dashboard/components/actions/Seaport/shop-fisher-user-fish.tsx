@@ -35,7 +35,7 @@ export default function ShopFisherUserFish({
     // even when there are provided key, idk what to do with it
     <div
       key={uf.fishId}
-      className="flex flex-col items-center gap-2 rounded-lg border p-2"
+      className="flex flex-col items-center gap-2 rounded-lg border bg-card p-5 text-card-foreground shadow-sm"
     >
       <Image
         className="h-8 w-8 object-contain"
