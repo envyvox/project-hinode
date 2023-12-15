@@ -33,21 +33,18 @@ export default function ExploreProvider({ children }: Props) {
             dictionary.dashboard[
               `dashboard.actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.success`
             ],
-            exploreJobData.successGatherings
-              .map((gathering) => {
-                return [
-                  <Image
-                    className="mx-1 h-6 w-6"
-                    width={27}
-                    height={27}
-                    src={`/gathering/${gathering.gatheringName}`}
-                    alt={gathering.gatheringName}
-                  />,
-                  gathering.amount,
-                  gathering.gatheringName,
-                ];
-              })
-              .join(", "),
+            exploreJobData.successGatherings.map((gathering) => {
+              return [
+                <Image
+                  className="mx-1 h-6 w-6"
+                  width={27}
+                  height={27}
+                  src={`/gathering/${gathering.gatheringName}.png`}
+                  alt={gathering.gatheringName}
+                />,
+                `${gathering.amount} ${gathering.gatheringName}`,
+              ];
+            }),
           ),
         });
       } else {

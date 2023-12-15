@@ -13,7 +13,7 @@ client.defineJob({
   }),
   run: async (payload, io, cxt) => {
     await io.runTask("add-gatherings-to-user", async () => {
-      const gatherings: SuccessGathering[] = payload.successGatherings;
+      const gatherings: SuccessGathering[] = payload.gatherings;
       if (!gatherings) return;
 
       gatherings.forEach(async (gathering) => {
