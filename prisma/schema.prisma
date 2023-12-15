@@ -222,7 +222,7 @@ model GatheringProperty {
   property    GatheringPropertyType
   value       Int
 
-  @@unique([gatheringId, property])
+  @@id([gatheringId, property])
 }
 
 enum GatheringPropertyType {
