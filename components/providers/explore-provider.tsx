@@ -29,8 +29,9 @@ export default function ExploreProvider({ children }: Props) {
       if (exploreJobData.successGatherings.length) {
         toast({
           description: formatString(
+            // @ts-ignore Implicit any
             dictionary.dashboard[
-              "dashboard.actions.castle.explore.toast.success"
+              `dashboard.actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.success`
             ],
             exploreJobData.successGatherings
               .map((gathering) => {
@@ -52,8 +53,9 @@ export default function ExploreProvider({ children }: Props) {
       } else {
         toast({
           description:
+            // @ts-ignore Implicit any
             dictionary.dashboard[
-              "dashboard.actions.castle.explore.toast.failed"
+              `dashboard.actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.failed`
             ],
         });
       }
