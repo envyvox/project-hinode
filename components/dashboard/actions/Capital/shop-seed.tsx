@@ -127,7 +127,7 @@ const ActionCapitalShopSeed = () => {
                     seeds.map((seed) => (
                       <ShopSeedItem
                         key={seed.id}
-                        dictonary={dictionary}
+                        dictionary={dictionary}
                         seed={seed}
                         handleBuySeed={handleBuySeed}
                       />

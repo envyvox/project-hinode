@@ -72,6 +72,10 @@ export type Dictionary = {
     "dashboard.actions.village.shop-product.label": string;
     "dashboard.actions.village.shop-product.description": string;
     "dashboard.actions.village.shop-product.button-label": string;
+    "dashboard.actions.village.shop-product.sheet.price": string;
+    "dashboard.actions.village.shop-product.sheet.button-label": string;
+    "dashboard.actions.village.shop-product.sheet.toast.no-currency": string;
+    "dashboard.actions.village.shop-product.sheet.toast.success": string;
     "dashboard.actions.village.farm.label": string;
     "dashboard.actions.village.farm.description": string;
     "dashboard.actions.village.farm.button-label": string;
@@ -202,6 +206,10 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.actions.village.shop-product.label": "",
       "dashboard.actions.village.shop-product.description": "",
       "dashboard.actions.village.shop-product.button-label": "",
+      "dashboard.actions.village.shop-product.sheet.price": "",
+      "dashboard.actions.village.shop-product.sheet.button-label": "",
+      "dashboard.actions.village.shop-product.sheet.toast.no-currency": "",
+      "dashboard.actions.village.shop-product.sheet.toast.success": "",
       "dashboard.actions.village.farm.label": "",
       "dashboard.actions.village.farm.description": "",
       "dashboard.actions.village.farm.button-label": "",

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTransitsFromLocation } from "@/services/data-access/transit";
 import { useUserStore } from "@/store/user-store";
@@ -29,10 +28,6 @@ const DashboardTransit = () => {
   const [transits, setTransits] = useState<Transit[]>([]);
   const { toast } = useToast();
 
-  const userCurrency = userCurrencies.find(
-    (uc) => uc.currency === Currency.Ien,
-  );
-
   UseUserCurrency();
 
   useEffect(() => {
@@ -42,6 +37,10 @@ const DashboardTransit = () => {
   }, [userLocation]);
 
   const handleTransit = (transit: Transit) => {
+    const userCurrency = userCurrencies.find(
+      (uc) => uc.currency === Currency.Ien,
+    );
+
     if (userCurrency === undefined || userCurrency.amount < transit.price) {
       toast({
         title:

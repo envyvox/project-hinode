@@ -10,15 +10,14 @@ import TypographyP from "@/components/typography/p";
 import formatString from "@/util/format-string";
 
 type Props = {
-  dictonary: Dictionary;
+  dictionary: Dictionary;
   seed: SeedCropIncluded;
   handleBuySeed: (seed: SeedCropIncluded) => void;
 };
 
-const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
+const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
   return (
     <div
-      key={seed.id}
       className={cn(
         "flex flex-col gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm",
         seed.reGrowthDays && seed.isMultiply
@@ -38,7 +37,7 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
           <TypographyLarge>{seed.name}</TypographyLarge>
           <TypographySmall>
             {formatString(
-              dictonary.dashboard[
+              dictionary.dashboard[
                 "dashboard.actions.capital.shop-seed.sheet.price"
               ],
               seed.price,
@@ -50,7 +49,7 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
       <div className="mb-auto flex flex-col">
         <TypographyP>
           {formatString(
-            dictonary.dashboard[
+            dictionary.dashboard[
               "dashboard.actions.capital.shop-seed.sheet.description"
             ],
             seed.growthDays,
@@ -69,7 +68,7 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
         {seed.isMultiply ? (
           <TypographyP>
             {
-              dictonary.dashboard[
+              dictionary.dashboard[
                 "dashboard.actions.capital.shop-seed.sheet.is-multiply"
               ]
             }
@@ -78,7 +77,7 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
         {seed.reGrowthDays ? (
           <TypographyP>
             {formatString(
-              dictonary.dashboard[
+              dictionary.dashboard[
                 "dashboard.actions.capital.shop-seed.sheet.re-growth-days"
               ],
               seed.reGrowthDays,
@@ -92,7 +91,7 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
         onClick={() => handleBuySeed(seed)}
       >
         {
-          dictonary.dashboard[
+          dictionary.dashboard[
             "dashboard.actions.capital.shop-seed.sheet.button-label"
           ]
         }
