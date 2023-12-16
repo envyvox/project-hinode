@@ -80,6 +80,17 @@ const actions: LocationActions = {
   WorkOnContract: {},
 };
 
+const DynamicDashboardAction = ({
+  userLocation,
+  action,
+}: {
+  userLocation: Location;
+  action: string;
+}) => {
+  const DynamicComponent = actions[userLocation][action];
+  return <DynamicComponent />;
+};
+
 const DashboardActions = () => {
   const userLocation = useUserStore((state) => state.user).location;
 
@@ -91,7 +102,10 @@ const DashboardActions = () => {
       <CardContent className="flex flex-col gap-5">
         {locationActionKeys[userLocation].map((action) => (
           <div key={action} className="flex flex-wrap gap-5 border-t pt-5">
-            {React.createElement(actions[userLocation][action])}
+            <DynamicDashboardAction
+              userLocation={userLocation}
+              action={action}
+            />
           </div>
         ))}
       </CardContent>

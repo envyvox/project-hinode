@@ -21,13 +21,13 @@ const DashboardTransitItem = ({
   handleTransit,
 }: Props) => {
   return (
-    <div key={transit.id} className="flex flex-wrap gap-5 border-t pt-5">
+    <div className="flex flex-wrap gap-5 border-t pt-5">
       {/* // TODO: Replace skeleton with Image */}
       <Skeleton className="h-[200px] w-[200px]" />
       <div className="flex flex-1 flex-col justify-between">
         <>
           <TypographyH4>
-            {/* @ts-ignore Imlicit any */}
+            {/* @ts-ignore Implicit any */}
             {dictionary.location[transit.destination]}
           </TypographyH4>
           <TypographyP>
