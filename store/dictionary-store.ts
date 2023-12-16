@@ -26,6 +26,13 @@ export type Dictionary = {
     "dashboard.actions.capital.shop-seed.label": string;
     "dashboard.actions.capital.shop-seed.description": string;
     "dashboard.actions.capital.shop-seed.button-label": string;
+    "dashboard.actions.capital.shop-seed.sheet.price": string;
+    "dashboard.actions.capital.shop-seed.sheet.description": string;
+    "dashboard.actions.capital.shop-seed.sheet.is-multiply": string;
+    "dashboard.actions.capital.shop-seed.sheet.re-growth-days": string;
+    "dashboard.actions.capital.shop-seed.sheet.button-label": string;
+    "dashboard.actions.capital.shop-seed.sheet.toast.no-currency": string;
+    "dashboard.actions.capital.shop-seed.sheet.toast.success": string;
     "dashboard.actions.capital.market.label": string;
     "dashboard.actions.capital.market.description": string;
     "dashboard.actions.capital.market.button-label": string;
@@ -149,6 +156,13 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "dashboard.actions.capital.shop-seed.label": "",
       "dashboard.actions.capital.shop-seed.description": "",
       "dashboard.actions.capital.shop-seed.button-label": "",
+      "dashboard.actions.capital.shop-seed.sheet.price": "",
+      "dashboard.actions.capital.shop-seed.sheet.description": "",
+      "dashboard.actions.capital.shop-seed.sheet.is-multiply": "",
+      "dashboard.actions.capital.shop-seed.sheet.re-growth-days": "",
+      "dashboard.actions.capital.shop-seed.sheet.button-label": "",
+      "dashboard.actions.capital.shop-seed.sheet.toast.no-currency": "",
+      "dashboard.actions.capital.shop-seed.sheet.toast.success": "",
       "dashboard.actions.capital.market.label": "",
       "dashboard.actions.capital.market.description": "",
       "dashboard.actions.capital.market.button-label": "",

@@ -47,7 +47,9 @@ const ActionCapitalShopSeed = () => {
     if (userCurrency === undefined || userCurrency.amount < seed.price) {
       toast({
         description: formatString(
-          "У тебя недостаточно {0} иен для приобретения {1} {2}.",
+          dictionary.dashboard[
+            "dashboard.actions.capital.shop-seed.sheet.toast.no-currency"
+          ],
           <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
           <Image
             className="mx-1 inline h-6 w-6"
@@ -67,7 +69,9 @@ const ActionCapitalShopSeed = () => {
 
     toast({
       description: formatString(
-        "Ты успешно приобрел {0} {1} за {2} {3} иен.",
+        dictionary.dashboard[
+          "dashboard.actions.capital.shop-seed.sheet.toast.success"
+        ],
         <Image
           className="mx-1 inline h-6 w-6"
           width={27}

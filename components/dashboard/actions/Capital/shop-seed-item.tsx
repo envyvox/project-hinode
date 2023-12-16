@@ -38,7 +38,9 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
           <TypographyLarge>{seed.name}</TypographyLarge>
           <TypographySmall>
             {formatString(
-              "стоимостью {0} {1} иен",
+              dictonary.dashboard[
+                "dashboard.actions.capital.shop-seed.sheet.price"
+              ],
               seed.price,
               <Image className="mx-1 inline h-5 w-5" src={IenIcon} alt="Ien" />,
             )}
@@ -48,7 +50,9 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
       <div className="mb-auto flex flex-col">
         <TypographyP>
           {formatString(
-            "Через {0} дня вырастет {1} {2} стоимостью {3} {4} иен.",
+            dictonary.dashboard[
+              "dashboard.actions.capital.shop-seed.sheet.description"
+            ],
             seed.growthDays,
             <Image
               className="mx-1 inline h-6 w-6"
@@ -63,12 +67,20 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
           )}
         </TypographyP>
         {seed.isMultiply ? (
-          <TypographyP>Растет несколько шт. с одного семени.</TypographyP>
+          <TypographyP>
+            {
+              dictonary.dashboard[
+                "dashboard.actions.capital.shop-seed.sheet.is-multiply"
+              ]
+            }
+          </TypographyP>
         ) : null}
         {seed.reGrowthDays ? (
           <TypographyP>
             {formatString(
-              "После первого сбора будет давать урожай каждые {0} дня.",
+              dictonary.dashboard[
+                "dashboard.actions.capital.shop-seed.sheet.re-growth-days"
+              ],
               seed.reGrowthDays,
             )}
           </TypographyP>
@@ -79,7 +91,11 @@ const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
         variant="outline"
         onClick={() => handleBuySeed(seed)}
       >
-        Купить
+        {
+          dictonary.dashboard[
+            "dashboard.actions.capital.shop-seed.sheet.button-label"
+          ]
+        }
       </Button>
     </div>
   );
