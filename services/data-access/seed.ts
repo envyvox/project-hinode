@@ -52,4 +52,37 @@ const getSeeds = async (): Promise<SeedCropIncluded[]> => {
   });
 };
 
-export { getUserSeeds, getSeeds };
+/**
+ * Upserts a user's seed by adding the specified amount to the existing amount or creating a new user seed entry if it doesn't exist.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {string} seedId - The ID of the seed.
+ * @param {number} amount - The amount to add to the existing seed amount.
+ * @return {Promise<UserSeeds>} - The updated or newly created user seed entry.
+ */
+const addSeedToUser = async (
+  userId: string,
+  seedId: string,
+  amount: number,
+): Promise<UserSeeds> => {
+  return await prisma.userSeeds.upsert({
+    where: {
+      userId_seedId: {
+        userId: userId,
+        seedId: seedId,
+      },
+    },
+    update: {
+      amount: {
+        increment: amount,
+      },
+    },
+    create: {
+      userId: userId,
+      seedId: seedId,
+      amount: amount,
+    },
+  });
+};
+
+export { getUserSeeds, getSeeds, addSeedToUser };

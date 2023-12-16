@@ -12,9 +12,10 @@ import formatString from "@/util/format-string";
 type Props = {
   dictonary: Dictionary;
   seed: SeedCropIncluded;
+  handleBuySeed: (seed: SeedCropIncluded) => void;
 };
 
-const ShopSeedItem = ({ seed }: Props) => {
+const ShopSeedItem = ({ dictonary, seed, handleBuySeed }: Props) => {
   return (
     <div
       key={seed.id}
@@ -51,8 +52,8 @@ const ShopSeedItem = ({ seed }: Props) => {
             seed.growthDays,
             <Image
               className="mx-1 inline h-6 w-6"
-              width={36}
-              height={36}
+              width={27}
+              height={27}
               src={`/crop/${seed.crop?.name}.png`}
               alt={seed.crop?.name ?? "Crop"}
             />,
@@ -73,7 +74,11 @@ const ShopSeedItem = ({ seed }: Props) => {
           </TypographyP>
         ) : null}
       </div>
-      <Button className="w-fit self-end" variant="outline">
+      <Button
+        className="w-fit self-end"
+        variant="outline"
+        onClick={() => handleBuySeed(seed)}
+      >
         Купить
       </Button>
     </div>
