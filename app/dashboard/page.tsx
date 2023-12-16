@@ -10,11 +10,23 @@ import {
 import DashboardAbout from "@/components/dashboard/dashboard-about";
 import DashboardActions from "@/components/dashboard/dashboard-actions";
 import DashboardTransit from "@/components/dashboard/dashboard-transit";
+import { useUserStore } from "@/store/user-store";
+import { Location } from "@prisma/client";
+
+const locationsWithTabs: Location[] = [
+  Location.Capital,
+  Location.Castle,
+  Location.Seaport,
+  Location.Garden,
+  Location.Village,
+];
 
 const Dashboard = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const activeTab = useDashboardTabStore((state) => state.activeTab);
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
+  const userLocation = useUserStore((state) => state.user).location;
+  const showTabs = locationsWithTabs.includes(userLocation);
 
   return (
     <Tabs
@@ -29,12 +41,16 @@ const Dashboard = () => {
         >
           {dictionary.dashboard["dashboard.about"]}
         </TabsTrigger>
-        <TabsTrigger value={DashboardTab.actions}>
-          {dictionary.dashboard["dashboard.actions"]}
-        </TabsTrigger>
-        <TabsTrigger value={DashboardTab.transit}>
-          {dictionary.dashboard["dashboard.transit"]}
-        </TabsTrigger>
+        {showTabs && (
+          <>
+            <TabsTrigger value={DashboardTab.actions}>
+              {dictionary.dashboard["dashboard.actions"]}
+            </TabsTrigger>
+            <TabsTrigger value={DashboardTab.transit}>
+              {dictionary.dashboard["dashboard.transit"]}
+            </TabsTrigger>
+          </>
+        )}
       </TabsList>
       <TabsContent value={DashboardTab.about}>
         <DashboardAbout />
