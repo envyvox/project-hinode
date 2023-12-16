@@ -2,8 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useUserStore } from "@/store/user-store";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
-import React, { useEffect, useState } from "react";
-import { Location, Seed } from "@prisma/client";
+import React from "react";
+import { Location } from "@prisma/client";
 import { getSeeds } from "@/services/data-access/seed";
 
 type LocationActions = {
@@ -24,28 +24,23 @@ const locationActions: LocationActions = {
   WorkOnContract: [],
 };
 
+const renderAction = (
+  userLocation: Location,
+  action: string,
+): React.ReactElement => {
+  const element = dynamic(() => import(`./actions/${userLocation}/${action}`), {
+    loading: () => <Skeleton className="h-[210px] w-full" />,
+  });
+
+  return React.createElement(element);
+};
+
 const DashboardActions = () => {
   const user = useUserStore((state) => state.user);
   const actions = locationActions[user.location];
-  const [seeds, setSeeds] = useState<Seed[]>([]);
 
   // TODO: remove
-  useEffect(() => {
-    getSeeds().then((seeds) => {
-      setSeeds(seeds);
-    });
-  }, [setSeeds]);
-
-  const renderAction = (action: string) => {
-    const element = dynamic(
-      () => import(`./actions/${user.location}/${action}`),
-      {
-        loading: () => <Skeleton className="h-[210px] w-full" />,
-      },
-    );
-
-    return React.createElement(element);
-  };
+  const remove = getSeeds();
 
   return (
     <Card>
@@ -55,7 +50,7 @@ const DashboardActions = () => {
       <CardContent className="flex flex-col gap-5">
         {actions.map((action) => (
           <div key={action} className="flex flex-wrap gap-5 border-t pt-5">
-            {renderAction(action)}
+            {renderAction(user.location, action)}
           </div>
         ))}
       </CardContent>
