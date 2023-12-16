@@ -2,7 +2,7 @@ import { useUserCropStore } from "@/store/user-crop-store";
 import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
-export default function UseUserCrop() {
+const UseUserCrop = () => {
   const user = useUserStore((state) => state.user);
   const getUserCrops = useUserCropStore((state) => state.getUserCrops);
 
@@ -11,4 +11,6 @@ export default function UseUserCrop() {
       getUserCrops(user.id);
     }
   }, [user, getUserCrops]);
-}
+};
+
+export default UseUserCrop;

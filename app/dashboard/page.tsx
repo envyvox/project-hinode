@@ -1,16 +1,17 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DashboardAboutLocation from "./components/about";
-import DashboardActions from "./components/actions";
-import DashboardTransit from "./components/transit";
+
 import { useDictionaryStore } from "@/store/dictionary-store";
 import {
   DashboardTab,
   useDashboardTabStore,
 } from "@/store/dashboard-tab-store";
+import DashboardAbout from "@/components/dashboard/dashboard-about";
+import DashboardActions from "@/components/dashboard/dashboard-actions";
+import DashboardTransit from "@/components/dashboard/dashboard-transit";
 
-export default function Dashboard() {
+const Dashboard = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const activeTab = useDashboardTabStore((state) => state.activeTab);
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
@@ -36,7 +37,7 @@ export default function Dashboard() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value={DashboardTab.about}>
-        <DashboardAboutLocation />
+        <DashboardAbout />
       </TabsContent>
       <TabsContent value={DashboardTab.actions}>
         <DashboardActions />
@@ -46,4 +47,6 @@ export default function Dashboard() {
       </TabsContent>
     </Tabs>
   );
-}
+};
+
+export default Dashboard;

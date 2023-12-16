@@ -9,8 +9,8 @@ import {
   TimesDay,
   Weather,
 } from "@prisma/client";
-import { getRandomFishWithParams } from "@/data-access/fish";
-import { getGatheringsInLocation } from "@/data-access/gathering";
+import { getRandomFishWithParams } from "@/services/data-access/fish";
+import { getGatheringsInLocation } from "@/services/data-access/gathering";
 import getSuccessAmount from "@/util/get-success-amount";
 
 export type SuccessGathering = {

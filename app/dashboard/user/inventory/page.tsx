@@ -1,12 +1,12 @@
-import InventoryBoxes from "./components/inventory-boxes";
-import InventoryCrops from "./components/inventory-crops";
-import InventoryCurrency from "./components/inventory-currency";
-import InventoryFish from "./components/inventory-fish";
-import InventoryGathering from "./components/inventory-gathering";
-import InventoryProducts from "./components/inventory-products";
-import InventorySeeds from "./components/inventory-seeds";
+import InventoryBoxes from "@/components/inventory/inventory-boxes";
+import InventoryCrops from "@/components/inventory/inventory-crops";
+import InventoryCurrency from "@/components/inventory/inventory-currency";
+import InventoryFish from "@/components/inventory/inventory-fish";
+import InventoryGathering from "@/components/inventory/inventory-gathering";
+import InventoryProducts from "@/components/inventory/inventory-products";
+import InventorySeeds from "@/components/inventory/inventory-seeds";
 
-export default function InfoInventoryPage() {
+const InfoInventoryPage = () => {
   return (
     <div className="flex flex-col gap-5">
       <InventoryCurrency />
@@ -18,4 +18,6 @@ export default function InfoInventoryPage() {
       <InventoryProducts />
     </div>
   );
-}
+};
+
+export default InfoInventoryPage;

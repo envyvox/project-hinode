@@ -1,4 +1,7 @@
-import { UserProductIncluded, getUserProducts } from "@/data-access/product";
+import {
+  UserProductIncluded,
+  getUserProducts,
+} from "@/services/data-access/product";
 import { create } from "zustand";
 
 type UserProductState = {

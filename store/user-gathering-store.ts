@@ -1,7 +1,7 @@
 import {
   UserGatheringIncluded,
   getUserGatherings,
-} from "@/data-access/gathering";
+} from "@/services/data-access/gathering";
 import { create } from "zustand";
 
 type UserGatheringState = {

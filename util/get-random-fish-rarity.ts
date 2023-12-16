@@ -13,15 +13,17 @@ const chances: Chances = {
   [FishRarity.Legendary]: 10,
 };
 
-function enumKeys<O extends object, K extends keyof O = keyof O>(obj: O): K[] {
+const enumKeys = <O extends object, K extends keyof O = keyof O>(
+  obj: O,
+): K[] => {
   return Object.keys(obj).filter((k) => !Number.isNaN(k)) as K[];
-}
+};
 
 /**
  * Gets random fish rarity
  * @returns Random fish rarity
  */
-export default function getRandomFishRarity(): FishRarity {
+const getRandomFishRarity = (): FishRarity => {
   while (true) {
     const rand = getRandomNumberBetween(1, 101);
     let current = 0;
@@ -34,4 +36,6 @@ export default function getRandomFishRarity(): FishRarity {
       current += chance;
     }
   }
-}
+};
+
+export default getRandomFishRarity;

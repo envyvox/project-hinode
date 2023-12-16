@@ -4,6 +4,8 @@
  * @param max Maximum number (exlusive)
  * @returns Random number between specified numbers
  */
-export default function getRandomNumberBetween(min: number, max: number) {
+const getRandomNumberBetween = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
-}
+};
+
+export default getRandomNumberBetween;

@@ -1,5 +1,5 @@
-import { addGatheringToUser } from "@/data-access/gathering";
-import { addXpToUser, updateUserLocation } from "@/data-access/user";
+import { addGatheringToUser } from "@/services/data-access/gathering";
+import { addXpToUser, updateUserLocation } from "@/services/data-access/user";
 import { SuccessGathering } from "@/store/job-store";
 import { client } from "@/trigger";
 import { eventTrigger } from "@trigger.dev/sdk";

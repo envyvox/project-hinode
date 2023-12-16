@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useLangStore } from "@/store/lang-store";
 
-export default function LocaleSwitcher() {
+const LocaleSwitcher = () => {
   const setLang = useLangStore((state) => state.setLang);
   const dictionary = useDictionaryStore((state) => state.dictionary);
 
@@ -38,4 +38,6 @@ export default function LocaleSwitcher() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
+
+export default LocaleSwitcher;

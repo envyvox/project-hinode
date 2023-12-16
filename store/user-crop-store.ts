@@ -1,4 +1,4 @@
-import { UserCropIncluded, getUserCrops } from "@/data-access/crop";
+import { UserCropIncluded, getUserCrops } from "@/services/data-access/crop";
 import { create } from "zustand";
 
 type UserCropState = {

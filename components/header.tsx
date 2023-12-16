@@ -1,12 +1,12 @@
-import LocaleSwitcher from "./locale-switcher";
-import { ThemeToggle } from "./theme-toggle";
-import { buttonVariants } from "./ui/button";
-import { UserAvatar } from "./user-avatar";
 import { siteConfig } from "@/config/site";
 import { Github, Twitter } from "lucide-react";
 import Link from "next/link";
+import LocaleSwitcher from "./locale-switcher";
+import ThemeToggle from "./theme-toggle";
+import { buttonVariants } from "./ui/button";
+import UserAvatar from "./user-avatar";
 
-export function Header() {
+const Header = () => {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -37,4 +37,6 @@ export function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

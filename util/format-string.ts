@@ -7,10 +7,10 @@ type FormatArguments = string | number | React.ReactNode;
  * @param args - Values to replace the placeholders.
  * @returns Formatted string with replaced values.
  */
-export function formatString(
+const formatString = (
   format: string,
   ...args: FormatArguments[]
-): React.ReactNode {
+): React.ReactNode => {
   // Split the format string using regular expression to identify placeholders.
   return format.split(/(\{\d+\})/g).map((part, index) => {
     const match = part.match(/\{(\d+)\}/);
@@ -23,4 +23,6 @@ export function formatString(
       return part;
     }
   });
-}
+};
+
+export default formatString;

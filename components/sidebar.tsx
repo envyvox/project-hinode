@@ -7,7 +7,7 @@ import { sidebarCategories } from "@/config/sidebar";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { Skeleton } from "./ui/skeleton";
 
-export default function Sidebar() {
+const Sidebar = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const { data: session } = useSession();
 
@@ -38,4 +38,6 @@ export default function Sidebar() {
   ) : (
     <Skeleton className="h-96" />
   );
-}
+};
+
+export default Sidebar;

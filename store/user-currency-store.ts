@@ -2,7 +2,7 @@ import {
   addCurrencyToUser,
   getUserCurrencies,
   removeCurrencyFromUser,
-} from "@/data-access/currency";
+} from "@/services/data-access/currency";
 import { Currency, UserCurrency } from "@prisma/client";
 import { create } from "zustand";
 

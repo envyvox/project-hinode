@@ -9,9 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { TypographyMuted } from "@/components/typography/muted";
+import TypographyMuted from "@/components/typography/muted";
 
-export default function DashboardProfile() {
+const DashboardProfile = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
 
@@ -40,4 +40,6 @@ export default function DashboardProfile() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default DashboardProfile;

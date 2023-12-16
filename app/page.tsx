@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="flex flex-col items-center p-24">
       <Link className={buttonVariants()} href="/dashboard">
@@ -9,4 +9,6 @@ export default function Home() {
       </Link>
     </main>
   );
-}
+};
+
+export default Home;

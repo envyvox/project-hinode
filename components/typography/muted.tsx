@@ -2,6 +2,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-export function TypographyMuted({ children }: Props) {
-  return <p className="text-sm text-muted-foreground">{children}</p>;
-}
+const TypographyMuted = ({ children }: Props) => (
+  <p className="text-sm text-muted-foreground">{children}</p>
+);
+
+export default TypographyMuted;

@@ -1,8 +1,10 @@
-import { getUsers } from "@/data-access/user";
-import RatingTable from "./rating-table";
+import RatingTable from "@/components/rating-table";
+import { getUsers } from "@/services/data-access/user";
 
-export default async function WorldRating() {
+const WorldRating = async () => {
   const users = await getUsers();
 
   return <RatingTable users={users} />;
-}
+};
+
+export default WorldRating;

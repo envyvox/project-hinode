@@ -1,4 +1,4 @@
-export function TailwindIndicator() {
+const TailwindIndicator = () => {
   if (process.env.NODE_ENV === "production") return null;
 
   return (
@@ -11,4 +11,6 @@ export function TailwindIndicator() {
       <div className="hidden 2xl:block">2xl</div>
     </div>
   );
-}
+};
+
+export default TailwindIndicator;

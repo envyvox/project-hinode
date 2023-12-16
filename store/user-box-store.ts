@@ -1,4 +1,4 @@
-import { getUserBoxes } from "@/data-access/box";
+import { getUserBoxes } from "@/services/data-access/box";
 import { UserBoxes } from "@prisma/client";
 import { create } from "zustand";
 

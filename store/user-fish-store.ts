@@ -4,7 +4,7 @@ import {
   getUserFish,
   addFishToUser,
   removeAllFishFromUser,
-} from "@/data-access/fish";
+} from "@/services/data-access/fish";
 import { create } from "zustand";
 import { useUserStore } from "./user-store";
 

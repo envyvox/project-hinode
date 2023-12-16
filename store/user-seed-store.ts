@@ -1,4 +1,4 @@
-import { UserSeedIncluded, getUserSeeds } from "@/data-access/seed";
+import { UserSeedIncluded, getUserSeeds } from "@/services/data-access/seed";
 import { create } from "zustand";
 
 type UserSeedState = {
