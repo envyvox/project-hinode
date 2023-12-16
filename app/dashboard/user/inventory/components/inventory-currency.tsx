@@ -32,7 +32,7 @@ export default function InventoryCurrency() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userCurrencies.length > 0 ? (
+        ) : userCurrencies.length ? (
           userCurrencies.map((userCurrency) => (
             <TooltipProvider key={userCurrency.currency}>
               <Tooltip>

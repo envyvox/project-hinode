@@ -98,11 +98,7 @@ export default function ActionSeaportShopFisher() {
       actionComponent={
         <Sheet>
           <SheetTrigger asChild>
-            <Button
-              className="mt-2 w-fit self-end"
-              variant="secondary"
-              onClick={() => {}}
-            >
+            <Button className="mt-2 w-fit self-end" variant="secondary">
               {
                 dictionary.dashboard[
                   "dashboard.actions.seaport.shop-fisher.button-label"
@@ -147,7 +143,7 @@ export default function ActionSeaportShopFisher() {
                   )}
                 </div>
               </ScrollArea>
-              <SheetFooter className="flex flex-wrap gap-5">
+              <SheetFooter>
                 <Button
                   variant="destructive"
                   disabled={userFish.length < 1}
@@ -159,15 +155,6 @@ export default function ActionSeaportShopFisher() {
                     ]
                   }
                 </Button>
-                <SheetClose asChild>
-                  <Button type="submit">
-                    {
-                      dictionary.dashboard[
-                        "dashboard.actions.seaport.shop-fisher.sheet.close"
-                      ]
-                    }
-                  </Button>
-                </SheetClose>
               </SheetFooter>
             </div>
           </SheetContent>

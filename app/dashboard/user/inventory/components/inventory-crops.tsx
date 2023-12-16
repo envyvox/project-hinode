@@ -32,7 +32,7 @@ export default function InventoryCrops() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userCrops.length > 0 ? (
+        ) : userCrops.length ? (
           userCrops.map((userCrop) => (
             <TooltipProvider key={userCrop.cropId}>
               <Tooltip>

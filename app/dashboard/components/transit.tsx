@@ -75,7 +75,7 @@ export default function DashboardTransit() {
         <CardTitle>{dictionary.dashboard["dashboard.transit.title"]}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
-        {transits.length > 0 ? (
+        {transits.length ? (
           transits.map((transit) => (
             // TODO: somehow react warns "Each child in a list should have a unique "key" prop"
             // even when there are provided key, idk what to do with it

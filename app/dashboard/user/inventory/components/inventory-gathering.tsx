@@ -32,7 +32,7 @@ export default function InventoryGathering() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userGatherings.length > 0 ? (
+        ) : userGatherings.length ? (
           userGatherings.map((userGathering) => (
             <TooltipProvider key={userGathering.gatheringId}>
               <Tooltip>

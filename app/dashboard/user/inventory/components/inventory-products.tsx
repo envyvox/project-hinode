@@ -32,7 +32,7 @@ export default function InventoryProducts() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userProducts.length > 0 ? (
+        ) : userProducts.length ? (
           userProducts.map((userProduct) => (
             <TooltipProvider key={userProduct.productId}>
               <Tooltip>

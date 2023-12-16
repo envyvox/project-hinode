@@ -32,7 +32,7 @@ export default function InventoryFish() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userFish.length > 0 ? (
+        ) : userFish.length ? (
           userFish.map((uf) => (
             <TooltipProvider key={uf.fishId}>
               <Tooltip>

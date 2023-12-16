@@ -32,7 +32,7 @@ export default function InventoryBoxes() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userBoxes.length > 0 ? (
+        ) : userBoxes.length ? (
           userBoxes.map((userBox) => (
             <TooltipProvider key={userBox.box}>
               <Tooltip>

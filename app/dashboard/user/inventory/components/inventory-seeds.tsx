@@ -32,7 +32,7 @@ export default function InventorySeeds() {
             <Skeleton className="h-[85px] flex-1" />
             <Skeleton className="h-[85px] flex-1" />
           </>
-        ) : userSeeds.length > 0 ? (
+        ) : userSeeds.length ? (
           userSeeds.map((userSeed) => (
             <TooltipProvider key={userSeed.seedId}>
               <Tooltip>

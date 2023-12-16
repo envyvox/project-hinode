@@ -2,8 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useUserStore } from "@/store/user-store";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
-import React from "react";
-import { Location } from "@prisma/client";
+import React, { useEffect, useState } from "react";
+import { Location, Seed } from "@prisma/client";
+import { getSeeds } from "@/data-access/seed";
 
 type LocationActions = {
   [key in Location]: string[];
@@ -26,6 +27,14 @@ const locationActions: LocationActions = {
 export default function DashboardActions() {
   const user = useUserStore((state) => state.user);
   const actions = locationActions[user.location];
+  const [seeds, setSeeds] = useState<Seed[]>([]);
+
+  // TODO: remove
+  useEffect(() => {
+    getSeeds().then((seeds) => {
+      setSeeds(seeds);
+    });
+  }, [setSeeds]);
 
   const renderAction = (action: string) => {
     const element = dynamic(
