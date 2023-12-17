@@ -5,13 +5,12 @@ import getRandomFishRarity from "@/util/get-random-fish-rarity";
 import {
   GatheringPropertyType,
   Location,
-  Season,
   TimesDay,
-  Weather,
 } from "@prisma/client";
 import { getRandomFishWithParams } from "@/services/data-access/fish";
 import { getGatheringsInLocation } from "@/services/data-access/gathering";
 import getSuccessAmount from "@/util/get-success-amount";
+import { useWorldStateStore } from "./world-state-store";
 
 export type SuccessGathering = {
   gatheringId: string;
@@ -56,15 +55,14 @@ export const useJobStore = create<JobState>((set) => ({
   resetExploreJobData: () => set({ exploreJobData: emptyExploreData }),
   startFishingJob: async () => {
     const rarity = getRandomFishRarity();
-    const weather = Weather.Clear;
+    const worldState = useWorldStateStore.getState().worldState;
     const timesDay = TimesDay.Day;
-    const season = Season.Spring;
 
     const randomFish = await getRandomFishWithParams(
       rarity,
-      weather,
+      worldState.weatherToday,
       timesDay,
-      season,
+      worldState.season,
     );
 
     const userId = useUserStore.getState().user.id;
