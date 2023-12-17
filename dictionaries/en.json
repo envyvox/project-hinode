@@ -102,16 +102,7 @@
     "user.inventory.box": "Boxes",
     "user.inventory.box.empty": "You don't have any boxes.",
     "user.inventory.gathering": "Gatherings",
-    "user.inventory.gathering.empty": "You don't have any gatherings.",
-    "world": {
-      "rating": {
-        "table.title": "Rating",
-        "table.user.position": "Position",
-        "table.user.name": "Username",
-        "table.user.level": "Level",
-        "table.user.xp": "Xp"
-      }
-    }
+    "user.inventory.gathering.empty": "You don't have any gatherings."
   },
   "location": {
     "InTransit": "In transit",
@@ -124,5 +115,14 @@
     "ExploreCastle": "Exploration of the castle",
     "Fishing": "Fishing",
     "FieldWatering": "Watering the plot of land"
+  },
+  "datatable": {
+    "next": "Next",
+    "previous": "Previous",
+    "empty": "No results.",
+    "rating.user.position": "Position",
+    "rating.user.name": "Username",
+    "rating.user.level": "Level",
+    "rating.user.xp": "Xp"
   }
 }

@@ -26,6 +26,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@tanstack/react-table": "^8.10.7",
     "@trigger.dev/nextjs": "^2.3.4",
     "@trigger.dev/react": "^2.3.4",
     "@trigger.dev/sdk": "^2.3.4",

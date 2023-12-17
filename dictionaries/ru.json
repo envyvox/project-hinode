@@ -102,16 +102,7 @@
     "user.inventory.box": "Коробки",
     "user.inventory.box.empty": "У тебя нет коробок.",
     "user.inventory.gathering": "Собирательские ресурсы",
-    "user.inventory.gathering.empty": "У тебя нет собирательских ресурсов.",
-    "world": {
-      "rating": {
-        "table.title": "Рейтинг",
-        "table.user.position": "Позиция",
-        "table.user.name": "Имя",
-        "table.user.level": "Уровень",
-        "table.user.xp": "Опыт"
-      }
-    }
+    "user.inventory.gathering.empty": "У тебя нет собирательских ресурсов."
   },
   "location": {
     "InTransit": "В пути",
@@ -124,5 +115,14 @@
     "ExploreCastle": "Исследование шахт",
     "Fishing": "Рыбалка",
     "FieldWatering": "Поливка участка земли"
+  },
+  "datatable": {
+    "next": "Вперед",
+    "previous": "Назад",
+    "empty": "Нет результатов.",
+    "rating.user.position": "Позиция",
+    "rating.user.name": "Имя",
+    "rating.user.level": "Уровень",
+    "rating.user.xp": "Опыт"
   }
 }

@@ -105,15 +105,6 @@ export type Dictionary = {
     "user.inventory.box.empty": string;
     "user.inventory.gathering": string;
     "user.inventory.gathering.empty": string;
-    world: {
-      rating: {
-        "table.title": string;
-        "table.user.position": string;
-        "table.user.name": string;
-        "table.user.level": string;
-        "table.user.xp": string;
-      };
-    };
   };
   location: {
     InTransit: string;
@@ -126,6 +117,15 @@ export type Dictionary = {
     ExploreCastle: string;
     Fishing: string;
     FieldWatering: string;
+  };
+  datatable: {
+    next: string;
+    previous: string;
+    empty: string;
+    "rating.user.position": string;
+    "rating.user.name": string;
+    "rating.user.level": string;
+    "rating.user.xp": string;
   };
 };
 
@@ -240,15 +240,6 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       "user.inventory.box.empty": "",
       "user.inventory.gathering": "",
       "user.inventory.gathering.empty": "",
-      world: {
-        rating: {
-          "table.title": "",
-          "table.user.position": "",
-          "table.user.name": "",
-          "table.user.level": "",
-          "table.user.xp": "",
-        },
-      },
     },
     location: {
       InTransit: "",
@@ -261,6 +252,15 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       ExploreCastle: "",
       Fishing: "",
       FieldWatering: "",
+    },
+    datatable: {
+      next: "",
+      previous: "",
+      empty: "",
+      "rating.user.position": "",
+      "rating.user.name": "",
+      "rating.user.level": "",
+      "rating.user.xp": "",
     },
   },
   setDictionary: (dictionary: Dictionary) => set({ dictionary }),
