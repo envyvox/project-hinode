@@ -2,3 +2,4 @@
 
 export * from "./complete-fishing";
 export * from "./complete-explore";
+export * from "./generate-weather";
