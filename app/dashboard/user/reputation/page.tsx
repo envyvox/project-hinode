@@ -1,3 +1,7 @@
-export default function InfoReputationPage() {
-  return <span>Info Reputation Page</span>;
-}
+import React from "react";
+
+const UserRepuration = () => {
+  return <div>UserRepuration</div>;
+};
+
+export default UserRepuration;

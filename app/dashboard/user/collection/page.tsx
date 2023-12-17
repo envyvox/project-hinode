@@ -1,3 +1,7 @@
-export default function InfoCollectionPage() {
-  return <span>Info Collection Page</span>;
-}
+import React from "react";
+
+const UserCollection = () => {
+  return <div>UserCollection</div>;
+};
+
+export default UserCollection;

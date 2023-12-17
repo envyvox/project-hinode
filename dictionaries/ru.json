@@ -1,13 +1,14 @@
 {
   "sidebar": {
     "category.dashboard": "Главная",
-    "category.info": "Пользователь",
-    "category.info.child.profile": "Профиль",
-    "category.info.child.inventory": "Инвентарь",
-    "category.info.child.reputation": "Репутация",
-    "category.info.child.collection": "Коллекция",
-    "category.info.child.banners": "Баннеры",
-    "category.info.child.achievements": "Достижения",
+    "category.user": "Пользователь",
+    "category.user.child.profile": "Профиль",
+    "category.user.child.inventory": "Инвентарь",
+    "category.user.child.reputation": "Репутация",
+    "category.user.child.collection": "Коллекция",
+    "category.user.child.titles": "Титулы",
+    "category.user.child.banners": "Баннеры",
+    "category.user.child.achievements": "Достижения",
     "category.world": "Мир",
     "category.world.child.rating": "Рейтинг",
     "category.world.child.info": "Информация"

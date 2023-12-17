@@ -1,13 +1,14 @@
 {
   "sidebar": {
     "category.dashboard": "Dashboard",
-    "category.info": "User",
-    "category.info.child.profile": "Profile",
-    "category.info.child.inventory": "Inventory",
-    "category.info.child.reputation": "Reputation",
-    "category.info.child.collection": "Collection",
-    "category.info.child.banners": "Banners",
-    "category.info.child.achievements": "Achievements",
+    "category.user": "User",
+    "category.user.child.profile": "Profile",
+    "category.user.child.inventory": "Inventory",
+    "category.user.child.reputation": "Reputation",
+    "category.user.child.collection": "Collection",
+    "category.user.child.titles": "Titles",
+    "category.user.child.banners": "Banners",
+    "category.user.child.achievements": "Achievements",
     "category.world": "World",
     "category.world.child.rating": "Rating",
     "category.world.child.info": "Info"

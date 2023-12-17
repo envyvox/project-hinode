@@ -6,7 +6,7 @@ import InventoryGathering from "@/components/inventory/inventory-gathering";
 import InventoryProducts from "@/components/inventory/inventory-products";
 import InventorySeeds from "@/components/inventory/inventory-seeds";
 
-const InfoInventoryPage = () => {
+const UserInventory = () => {
   return (
     <div className="flex flex-col gap-5">
       <InventoryCurrency />
@@ -20,4 +20,4 @@ const InfoInventoryPage = () => {
   );
 };
 
-export default InfoInventoryPage;
+export default UserInventory;

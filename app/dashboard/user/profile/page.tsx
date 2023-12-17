@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import TypographyMuted from "@/components/typography/muted";
 
-const DashboardProfile = () => {
+const UserProfile = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
 
@@ -42,4 +42,4 @@ const DashboardProfile = () => {
   );
 };
 
-export default DashboardProfile;
+export default UserProfile;
