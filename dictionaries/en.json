@@ -103,7 +103,10 @@
     "user.inventory.box": "Boxes",
     "user.inventory.box.empty": "You don't have any boxes.",
     "user.inventory.gathering": "Gatherings",
-    "user.inventory.gathering.empty": "You don't have any gatherings."
+    "user.inventory.gathering.empty": "You don't have any gatherings.",
+    "user.titles.active-title": "Active title",
+    "user.titles.all-titles": "All titles",
+    "user.titles.title.createdAt": "Obtained: "
   },
   "location": {
     "InTransit": "In transit",

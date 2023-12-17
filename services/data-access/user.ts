@@ -129,4 +129,26 @@ const updateUserLocation = async (
   });
 };
 
-export { getUser, getUsers, addXpToUser, updateUserLocation };
+/**
+ * Updates the title of a user.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {Title} title - The new title of the user.
+ * @return {Promise<User>} The updated user.
+ */
+const updateUserTitle = async (
+  userId: string,
+  title: Title,
+): Promise<GameUser> => {
+  return await prisma.user.update({
+    select: selectFields,
+    where: {
+      id: userId,
+    },
+    data: {
+      title: title,
+    },
+  });
+};
+
+export { getUser, getUsers, addXpToUser, updateUserLocation, updateUserTitle };

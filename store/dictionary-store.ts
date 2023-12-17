@@ -105,6 +105,9 @@ export type Dictionary = {
     "user.inventory.box.empty": string;
     "user.inventory.gathering": string;
     "user.inventory.gathering.empty": string;
+    "user.titles.active-title": string;
+    "user.titles.all-titles": string;
+    "user.titles.title.createdAt": string;
   };
   location: {
     InTransit: string;
@@ -239,6 +242,9 @@ const emptyDictinaory: Dictionary = {
     "user.inventory.box.empty": "",
     "user.inventory.gathering": "",
     "user.inventory.gathering.empty": "",
+    "user.titles.active-title": "",
+    "user.titles.all-titles": "",
+    "user.titles.title.createdAt": "",
   },
   location: {
     InTransit: "",

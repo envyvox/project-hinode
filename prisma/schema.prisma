@@ -59,6 +59,7 @@ model User {
   products      UserProducts[]
   fish          UserFish[]
   gatherings    UserGathering[]
+  titles        UserTitle[]
 }
 
 model VerificationToken {
@@ -149,6 +150,15 @@ model UserGathering {
   updatedAt   DateTime  @default(now()) @updatedAt
 
   @@id([userId, gatheringId])
+}
+
+model UserTitle {
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  title     Title
+  createdAt DateTime @default(now())
+
+  @@id([userId, title])
 }
 
 model Seed {

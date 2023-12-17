@@ -30,7 +30,7 @@ const ActionVillageShopProduct = () => {
   UseUserCurrency();
 
   useEffect(() => {
-    getProducts().then((products) => setProducts(products));
+    getProducts().then(setProducts);
   }, []);
 
   const handleBuyProduct = (product: Product) => {

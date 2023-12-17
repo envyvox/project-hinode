@@ -20,7 +20,7 @@ export default function SignInPage() {
   const error = params.get("error");
 
   useEffect(() => {
-    getProviders().then((providers) => setProviders(providers));
+    getProviders().then(setProviders);
   }, []);
 
   return (

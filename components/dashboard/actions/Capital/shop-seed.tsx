@@ -28,7 +28,7 @@ const ActionCapitalShopSeed = () => {
   UseUserCurrency();
 
   useEffect(() => {
-    getSeeds().then((seeds) => setSeeds(seeds));
+    getSeeds().then(setSeeds);
   }, []);
 
   const handleBuySeed = (seed: SeedCropIncluded) => {

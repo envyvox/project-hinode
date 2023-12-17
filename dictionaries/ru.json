@@ -103,7 +103,10 @@
     "user.inventory.box": "Коробки",
     "user.inventory.box.empty": "У тебя нет коробок.",
     "user.inventory.gathering": "Собирательские ресурсы",
-    "user.inventory.gathering.empty": "У тебя нет собирательских ресурсов."
+    "user.inventory.gathering.empty": "У тебя нет собирательских ресурсов.",
+    "user.titles.active-title": "Текущий титул",
+    "user.titles.all-titles": "Все титулы",
+    "user.titles.title.createdAt": "Получен: "
   },
   "location": {
     "InTransit": "В пути",

@@ -31,9 +31,7 @@ const DashboardTransit = () => {
   UseUserCurrency();
 
   useEffect(() => {
-    getTransitsFromLocation(userLocation).then((transits) =>
-      setTransits(transits),
-    );
+    getTransitsFromLocation(userLocation).then(setTransits);
   }, [userLocation]);
 
   const handleTransit = (transit: Transit) => {
