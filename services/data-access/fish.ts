@@ -131,12 +131,22 @@ const removeFishFromUser = async (
 };
 
 /**
- * Removes all fish from user
- * @param userId User id
+ * Removes all fish from a user's collection that were caught during a specific season.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {Season} season - The season during which the fish were caught.
+ * @return {Promise<void>} A promise that resolves when the fish are successfully removed.
  */
-const removeAllFishFromUser = async (userId: string) => {
+const removeAllFishFromUser = async (userId: string, season: Season) => {
   await prisma.userFish.deleteMany({
-    where: { userId: userId },
+    where: {
+      userId: userId,
+      fish: {
+        catchSeason: {
+          hasSome: [season],
+        },
+      },
+    },
   });
 };
 

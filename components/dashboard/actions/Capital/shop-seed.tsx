@@ -14,6 +14,7 @@ import formatString from "@/util/format-string";
 import IenIcon from "@/public/currency/Ien.png";
 import Image from "next/image";
 import FullscreenSheet from "@/components/fullscreen-sheet";
+import { useWorldStateStore } from "@/store/world-state-store";
 
 const ActionCapitalShopSeed = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -22,13 +23,14 @@ const ActionCapitalShopSeed = () => {
   const removeCurrencyFromUser = useUserCurrencyStore(
     (state) => state.removeCurrencyFromUser,
   );
+  const worldState = useWorldStateStore((state) => state.worldState);
   const [seeds, setSeeds] = useState<SeedCropIncluded[]>([]);
   const { toast } = useToast();
 
   UseUserCurrency();
 
   useEffect(() => {
-    getSeeds().then(setSeeds);
+    getSeeds(worldState.season).then(setSeeds);
   }, []);
 
   const handleBuySeed = (seed: SeedCropIncluded) => {

@@ -27,8 +27,6 @@ const ShopFisherUserFish = ({ userFish, dictionary, sellFish }: Props) => {
     );
 
   return userFish.map((uf) => (
-    // TODO: somehow react warns "Each child in a list should have a unique "key" prop"
-    // even when there are provided key, idk what to do with it
     <div
       key={uf.fishId}
       className="flex flex-col items-center gap-2 rounded-lg border bg-card p-5 text-card-foreground shadow-sm"

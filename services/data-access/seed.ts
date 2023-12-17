@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { Crop, Seed, UserSeeds } from "@prisma/client";
+import { Crop, Season, Seed, UserSeeds } from "@prisma/client";
 
 export type UserSeedIncluded = {
   seed: Seed;
@@ -39,10 +39,14 @@ const getUserSeeds = async (userId: string): Promise<UserSeedIncluded[]> => {
 /**
  * Retrieves the seeds, including the associated crops
  *
+ * @param {Season} season - The season to filter seeds by.
  * @return {Promise<SeedCropIncluded[]>} A promise that resolves to an array of SeedCropIncluded objects.
  */
-const getSeeds = async (): Promise<SeedCropIncluded[]> => {
+const getSeeds = async (season: Season): Promise<SeedCropIncluded[]> => {
   return await prisma.seed.findMany({
+    where: {
+      season: season,
+    },
     include: {
       crop: true,
     },

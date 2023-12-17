@@ -7,13 +7,14 @@ import {
 } from "@/services/data-access/fish";
 import { create } from "zustand";
 import { useUserStore } from "./user-store";
+import { Season } from "@prisma/client";
 
 type UserFishState = {
   loading: boolean;
   userFish: UserFishIncluded[];
   addFishToUser: (fishId: string, amount: number) => void;
   removeFishFromUser: (fishId: string, amount: number) => void;
-  removeAllFishFromUser: () => void;
+  removeAllFishFromUser: (season: Season) => void;
   getUserFish: (userId: string) => void;
 };
 
@@ -35,12 +36,12 @@ export const useUserFishStore = create<UserFishState>((set, get) => ({
 
     set({ userFish: updatedUserFish, loading: false });
   },
-  removeAllFishFromUser: async () => {
+  removeAllFishFromUser: async (season: Season) => {
     set({ loading: true });
 
     const userId = useUserStore.getState().user.id;
 
-    await removeAllFishFromUser(userId);
+    await removeAllFishFromUser(userId, season);
 
     set({ userFish: [], loading: false });
   },

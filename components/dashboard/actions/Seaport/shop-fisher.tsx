@@ -3,7 +3,6 @@ import DashboardActionBase from "../dashboard-action-base";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -15,7 +14,7 @@ import { useUserFishStore } from "@/store/user-fish-store";
 import UseUserFish from "@/hooks/use-user-fish";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
-import { Currency, Fish } from "@prisma/client";
+import { Currency, Fish, Season } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
 import UseUserCurrency from "@/hooks/use-user-currency";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -23,6 +22,7 @@ import formatString from "@/util/format-string";
 import Image from "next/image";
 import IenIcon from "@/public/currency/Ien.png";
 import ShopFisherUserFish from "./shop-fisher-user-fish";
+import { useWorldStateStore } from "@/store/world-state-store";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -36,7 +36,12 @@ const ActionSeaportShopFisher = () => {
     (state) => state.removeAllFishFromUser,
   );
   const loading = useUserFishStore((state) => state.loading);
-  const userFish = useUserFishStore((state) => state.userFish);
+  const worldState = useWorldStateStore((state) => state.worldState);
+  const userFish = useUserFishStore((state) => state.userFish).filter(
+    (uf) =>
+      uf.fish.catchSeason.includes(worldState.season) ||
+      uf.fish.catchSeason.includes(Season.Any),
+  );
   const { toast } = useToast();
 
   UseUserCurrency();
@@ -72,7 +77,7 @@ const ActionSeaportShopFisher = () => {
     }, 0);
 
     addCurrencyToUser(Currency.Ien, currencyAmount);
-    removeAllFishFromUser();
+    removeAllFishFromUser(worldState.season);
 
     toast({
       description: formatString(
