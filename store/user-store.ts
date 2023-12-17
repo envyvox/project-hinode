@@ -1,9 +1,13 @@
-import { getUser, updateUserLocation } from "@/services/data-access/user";
-import { Location, User } from "@prisma/client";
+import {
+  GameUser,
+  getUser,
+  updateUserLocation,
+} from "@/services/data-access/user";
+import { Location } from "@prisma/client";
 import { create } from "zustand";
 
 type UserState = {
-  user: User;
+  user: GameUser;
   getUser: (email: string) => void;
   setUserLocation: (location: Location) => void;
 };
@@ -12,16 +16,13 @@ export const useUserStore = create<UserState>((set, get) => ({
   user: {
     id: "",
     name: null,
-    email: null,
-    emailVerified: null,
+    displayName: null,
     about: null,
     image: null,
-    accessRole: "User",
-    location: "Capital",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    level: 1,
+    level: 0,
     xp: 0,
+    location: "Capital",
+    title: "Newbie",
   },
   getUser: async (email: string) => {
     const user = await getUser(email);

@@ -1,11 +1,11 @@
 "use client";
 
-import { User } from "@prisma/client";
 import { DataTable } from "./data-table";
 import { ratingTableColumns } from "./rating-table-columns";
+import { GameUser } from "@/services/data-access/user";
 
 type Props = {
-  users: User[];
+  users: GameUser[];
 };
 
 const RatingTable = ({ users }: Props) => {

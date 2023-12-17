@@ -1,15 +1,57 @@
 "use server";
 
-import { Location, User } from "@prisma/client";
+import { Location, Title } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import getXpRequiredToLevel from "@/util/get-xp-required-to-lvl";
 
-const getUser = async (email: string): Promise<User> => {
-  return await prisma.user.findUniqueOrThrow({ where: { email: email } });
+export type GameUser = {
+  id: string;
+  name: string | null;
+  displayName: string | null;
+  about: string | null;
+  image: string | null;
+  level: number;
+  xp: number;
+  location: Location;
+  title: Title;
 };
 
-const getUsers = async (): Promise<User[]> => {
+/**
+ * Selected user fields, this is required for security.
+ */
+const selectFields: Record<keyof GameUser, true> = {
+  id: true,
+  name: true,
+  displayName: true,
+  about: true,
+  image: true,
+  level: true,
+  xp: true,
+  location: true,
+  title: true,
+};
+
+/**
+ * Retrieves a user by their email address.
+ *
+ * @param {string} email - The email address of the user.
+ * @return {Promise<GameUser>} A promise that resolves to the user object.
+ */
+const getUser = async (email: string): Promise<GameUser> => {
+  return await prisma.user.findUniqueOrThrow({
+    select: selectFields,
+    where: { email: email },
+  });
+};
+
+/**
+ * Retrieves all users from the database.
+ *
+ * @return {Promise<GameUser[]>} A promise that resolves to an array of GameUser objects.
+ */
+const getUsers = async (): Promise<GameUser[]> => {
   return await prisma.user.findMany({
+    select: selectFields,
     orderBy: [
       {
         level: "desc",
@@ -21,8 +63,19 @@ const getUsers = async (): Promise<User[]> => {
   });
 };
 
-const addXpToUser = async (userId: string, amount: number): Promise<User> => {
+/**
+ * Adds experience points to a user.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {number} amount - The amount of experience points to add.
+ * @return {Promise<GameUser>} - A promise that resolves to the updated user object.
+ */
+const addXpToUser = async (
+  userId: string,
+  amount: number,
+): Promise<GameUser> => {
   const updatedUser = await prisma.user.update({
+    select: selectFields,
     where: {
       id: userId,
     },
@@ -37,6 +90,7 @@ const addXpToUser = async (userId: string, amount: number): Promise<User> => {
 
   if (updatedUser.xp > xpRequired) {
     return await prisma.user.update({
+      select: selectFields,
       where: {
         id: userId,
       },
@@ -53,11 +107,19 @@ const addXpToUser = async (userId: string, amount: number): Promise<User> => {
   return updatedUser;
 };
 
+/**
+ * Updates the location of a user.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {Location} location - The new location of the user.
+ * @return {Promise<GameUser>} - A promise that resolves to the updated user object.
+ */
 const updateUserLocation = async (
   userId: string,
   location: Location,
-): Promise<User> => {
+): Promise<GameUser> => {
   return await prisma.user.update({
+    select: selectFields,
     where: {
       id: userId,
     },

@@ -1,11 +1,11 @@
 import displayPosition from "@/util/display-position";
-import { User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import TypographyMuted from "./typography/muted";
 import Image from "next/image";
 import displayLevel from "@/util/display-level";
+import { GameUser } from "@/services/data-access/user";
 
-export const ratingTableColumns: ColumnDef<User>[] = [
+export const ratingTableColumns: ColumnDef<GameUser>[] = [
   {
     accessorKey: "position",
     header: "rating.user.position",
