@@ -46,6 +46,7 @@ model User {
   level         Int             @default(1)
   xp            Int             @default(0)
   location      Location        @default(Capital)
+  title         Title           @default(Newbie)
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @default(now()) @updatedAt
   accounts      Account[]
@@ -289,4 +290,28 @@ enum Location {
   Fishing
   FieldWatering
   WorkOnContract
+}
+
+enum Title {
+  Newbie
+  Lucky
+  ResourcefulCatcher
+  DescendantAristocracy
+  DescendantOcean
+  KeeperGrove
+  ReliableWorkaholic
+  SereneExcavator
+  AgileEarner
+  Handyman
+  WineSamurai
+  StockyFarmer
+  SeaPoet
+  CulinaryIdol
+  Toxic
+  KingExcitement
+  BelievingInLuck
+  FirstSamurai
+  Yatagarasu
+  HarbingerOfSummer
+  Wanderer
 }
