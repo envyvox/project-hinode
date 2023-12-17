@@ -106,7 +106,15 @@
     "user.inventory.gathering.empty": "You don't have any gatherings.",
     "user.titles.active-title": "Active title",
     "user.titles.all-titles": "All titles",
-    "user.titles.title.createdAt": "Obtained: "
+    "user.titles.title.createdAt": "Obtained: ",
+    "world.info.season.title": "Current season: {0}",
+    "world.info.season.description": "The current season determines the variety of seeds in the store and the types of fish you can catch while fishing. Some fish can only be caught in a certain season.",
+    "world.info.timesDay.title": "Current time of day: {0}",
+    "world.info.timesDay.description": "The time of day affects the types of fish you can catch while fishing. Some fish can only be caught at night or only during the day.",
+    "world.info.weatherToday.title": "Weather today: {0}",
+    "world.info.weatherToday.description": "The weather affects the types of fish you can catch while fishing. Some fish can only be caught in rain or only in sunny weather.",
+    "world.info.weatherTomorrow.title": "Weather tomorrow: {0}",
+    "world.info.weatherTomorrow.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est."
   },
   "location": {
     "InTransit": "In transit",

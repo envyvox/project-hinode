@@ -108,6 +108,14 @@ export type Dictionary = {
     "user.titles.active-title": string;
     "user.titles.all-titles": string;
     "user.titles.title.createdAt": string;
+    "world.info.season.title": string;
+    "world.info.season.description": string;
+    "world.info.timesDay.title": string;
+    "world.info.timesDay.description": string;
+    "world.info.weatherToday.title": string;
+    "world.info.weatherToday.description": string;
+    "world.info.weatherTomorrow.title": string;
+    "world.info.weatherTomorrow.description": string;
   };
   location: {
     InTransit: string;
@@ -245,6 +253,14 @@ const emptyDictinaory: Dictionary = {
     "user.titles.active-title": "",
     "user.titles.all-titles": "",
     "user.titles.title.createdAt": "",
+    "world.info.season.title": "",
+    "world.info.season.description": "",
+    "world.info.timesDay.title": "",
+    "world.info.timesDay.description": "",
+    "world.info.weatherToday.title": "",
+    "world.info.weatherToday.description": "",
+    "world.info.weatherTomorrow.title": "",
+    "world.info.weatherTomorrow.description": ""
   },
   location: {
     InTransit: "",

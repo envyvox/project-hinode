@@ -106,7 +106,15 @@
     "user.inventory.gathering.empty": "У тебя нет собирательских ресурсов.",
     "user.titles.active-title": "Текущий титул",
     "user.titles.all-titles": "Все титулы",
-    "user.titles.title.createdAt": "Получен: "
+    "user.titles.title.createdAt": "Получен: ",
+    "world.info.season.title": "Текущий сезон: {0}",
+    "world.info.season.description": "Текущий сезон определяет ссортимент семян в магазине, а так же виды рыб, которые ты можешь поймать во время рыбалки. Некоторую рыбу можно поймать лишь в определенный сезон.",
+    "world.info.timesDay.title": "Время суток: {0}",
+    "world.info.timesDay.description": "Время суток влияет на виды рыб, которые ты можешь поймать во время рыбалки. Некоторую рыбу можно поймать лишь ночью или наоборот только днем.",
+    "world.info.weatherToday.title": "Погода сегодня: {0}",
+    "world.info.weatherToday.description": "Погода влияет на виды рыб, которые ты можешь поймать во время рыбалки. Некоторую рыбу можно поймать лишь в дождь или наоборот только при солнечной погоде.",
+    "world.info.weatherTomorrow.title": "Погода завтра: {0}",
+    "world.info.weatherTomorrow.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est."
   },
   "location": {
     "InTransit": "В пути",
