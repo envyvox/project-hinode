@@ -237,6 +237,13 @@ model GatheringProperty {
   @@id([gatheringId, property])
 }
 
+model WorldState {
+  id              String  @id @default(cuid())
+  season          Season
+  weatherToday    Weather
+  weatherTomorrow Weather
+}
+
 enum GatheringPropertyType {
   GatheringChance
   GatheringDoubleChance
