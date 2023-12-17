@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import TypographyH3 from "./typography/h3";
+import Image from "next/image";
 
 type Props = {
   users: User[];
@@ -42,7 +43,17 @@ const RatingTable = ({ users }: Props) => {
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.id}>
-              <TableCell>{user.name}</TableCell>
+              <TableCell className="flex items-center gap-2">
+                <Image
+                  className="h-6 w-6"
+                  width={27}
+                  height={27}
+                  src={`/title/${user.title}.png`}
+                  alt={user.title}
+                />
+                <span>{user.title}</span>
+                <span>{user.name}</span>
+              </TableCell>
               <TableCell>{user.level}</TableCell>
               <TableCell>{user.xp}</TableCell>
             </TableRow>
