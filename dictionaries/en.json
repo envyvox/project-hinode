@@ -106,6 +106,7 @@
     "world": {
       "rating": {
         "table.title": "Rating",
+        "table.user.position": "Position",
         "table.user.name": "Username",
         "table.user.level": "Level",
         "table.user.xp": "Xp"

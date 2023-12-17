@@ -13,6 +13,9 @@ import {
 } from "@/components/ui/table";
 import TypographyH3 from "./typography/h3";
 import Image from "next/image";
+import TypographyMuted from "./typography/muted";
+import displayLevel from "@/util/display-level";
+import displayPosition from "@/util/display-position";
 
 type Props = {
   users: User[];
@@ -30,6 +33,9 @@ const RatingTable = ({ users }: Props) => {
         <TableHeader>
           <TableRow>
             <TableHead>
+              {dictionary.dashboard.world.rating["table.user.position"]}
+            </TableHead>
+            <TableHead>
               {dictionary.dashboard.world.rating["table.user.name"]}
             </TableHead>
             <TableHead>
@@ -41,20 +47,32 @@ const RatingTable = ({ users }: Props) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {users.map((user) => (
+          {users.map((user, index) => (
             <TableRow key={user.id}>
-              <TableCell className="flex items-center gap-2">
-                <Image
-                  className="h-6 w-6"
-                  width={27}
-                  height={27}
-                  src={`/title/${user.title}.png`}
-                  alt={user.title}
-                />
-                <span>{user.title}</span>
-                <span>{user.name}</span>
+              <TableCell>
+                <div className="flex items-center gap-2 text-center">
+                  {displayPosition(index + 1)}
+                </div>
               </TableCell>
-              <TableCell>{user.level}</TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <Image
+                    className="h-6 w-6"
+                    width={27}
+                    height={27}
+                    src={`/title/${user.title}.png`}
+                    alt={user.title}
+                  />
+                  <TypographyMuted>{user.title}</TypographyMuted>
+                  <span>{user.name}</span>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  {displayLevel(user.level)}
+                  {user.level}
+                </div>
+              </TableCell>
               <TableCell>{user.xp}</TableCell>
             </TableRow>
           ))}

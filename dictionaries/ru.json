@@ -105,10 +105,11 @@
     "user.inventory.gathering.empty": "У тебя нет собирательских ресурсов.",
     "world": {
       "rating": {
-        "table.title": "Rating",
-        "table.user.name": "Username",
-        "table.user.level": "Level",
-        "table.user.xp": "Xp"
+        "table.title": "Рейтинг",
+        "table.user.position": "Позиция",
+        "table.user.name": "Имя",
+        "table.user.level": "Уровень",
+        "table.user.xp": "Опыт"
       }
     }
   },

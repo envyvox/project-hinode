@@ -108,6 +108,7 @@ export type Dictionary = {
     world: {
       rating: {
         "table.title": string;
+        "table.user.position": string;
         "table.user.name": string;
         "table.user.level": string;
         "table.user.xp": string;
@@ -242,6 +243,7 @@ export const useDictionaryStore = create<DictionaryState>((set) => ({
       world: {
         rating: {
           "table.title": "",
+          "table.user.position": "",
           "table.user.name": "",
           "table.user.level": "",
           "table.user.xp": "",
