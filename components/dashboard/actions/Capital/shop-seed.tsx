@@ -1,15 +1,6 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
 import DashboardActionBase from "../dashboard-action-base";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
 import { SeedCropIncluded, getSeeds } from "@/services/data-access/seed";
 import ShopSeedItem from "./shop-seed-item";
@@ -22,6 +13,7 @@ import UseUserCurrency from "@/hooks/use-user-currency";
 import formatString from "@/util/format-string";
 import IenIcon from "@/public/currency/Ien.png";
 import Image from "next/image";
+import FullscreenSheet from "@/components/fullscreen-sheet";
 
 const ActionCapitalShopSeed = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -93,8 +85,8 @@ const ActionCapitalShopSeed = () => {
         dictionary.dashboard["dashboard.actions.capital.shop-seed.description"]
       }
       actionComponent={
-        <Sheet>
-          <SheetTrigger asChild>
+        <FullscreenSheet
+          trigger={
             <Button className="mt-2 w-fit self-end" variant="secondary">
               {
                 dictionary.dashboard[
@@ -102,44 +94,32 @@ const ActionCapitalShopSeed = () => {
                 ]
               }
             </Button>
-          </SheetTrigger>
-          <SheetContent className="w-full sm:max-w-full">
-            <div className="container flex flex-col gap-5">
-              <SheetHeader>
-                <SheetTitle>
-                  {
-                    dictionary.dashboard[
-                      "dashboard.actions.capital.shop-seed.label"
-                    ]
-                  }
-                </SheetTitle>
-                <SheetDescription>
-                  {
-                    dictionary.dashboard[
-                      "dashboard.actions.capital.shop-seed.description"
-                    ]
-                  }
-                </SheetDescription>
-              </SheetHeader>
-              <ScrollArea className="h-[85vh]">
-                <div className="grid grid-flow-dense grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                  {seeds.length ? (
-                    seeds.map((seed) => (
-                      <ShopSeedItem
-                        key={seed.id}
-                        dictionary={dictionary}
-                        seed={seed}
-                        handleBuySeed={handleBuySeed}
-                      />
-                    ))
-                  ) : (
-                    <ShopSeedSkeleton />
-                  )}
-                </div>
-              </ScrollArea>
+          }
+          title={
+            dictionary.dashboard["dashboard.actions.capital.shop-seed.label"]
+          }
+          description={
+            dictionary.dashboard[
+              "dashboard.actions.capital.shop-seed.description"
+            ]
+          }
+          content={
+            <div className="grid grid-flow-dense grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {seeds.length ? (
+                seeds.map((seed) => (
+                  <ShopSeedItem
+                    key={seed.id}
+                    dictionary={dictionary}
+                    seed={seed}
+                    handleBuySeed={handleBuySeed}
+                  />
+                ))
+              ) : (
+                <ShopSeedSkeleton />
+              )}
             </div>
-          </SheetContent>
-        </Sheet>
+          }
+        />
       }
     />
   );

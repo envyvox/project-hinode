@@ -11,17 +11,9 @@ import { getProducts } from "@/services/data-access/product";
 import formatString from "@/util/format-string";
 import Image from "next/image";
 import IenIcon from "@/public/currency/Ien.png";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import ShopProductItem from "./shop-product-item";
 import ShopProductSkeleton from "./shop-product-skeleton";
+import FullscreenSheet from "@/components/fullscreen-sheet";
 
 const ActionVillageShopProduct = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -99,8 +91,8 @@ const ActionVillageShopProduct = () => {
         ]
       }
       actionComponent={
-        <Sheet>
-          <SheetTrigger asChild>
+        <FullscreenSheet
+          trigger={
             <Button className="mt-2 w-fit self-end" variant="secondary">
               {
                 dictionary.dashboard[
@@ -108,44 +100,32 @@ const ActionVillageShopProduct = () => {
                 ]
               }
             </Button>
-          </SheetTrigger>
-          <SheetContent className="w-full sm:max-w-full">
-            <div className="container flex flex-col gap-5">
-              <SheetHeader>
-                <SheetTitle>
-                  {
-                    dictionary.dashboard[
-                      "dashboard.actions.capital.shop-seed.label"
-                    ]
-                  }
-                </SheetTitle>
-                <SheetDescription>
-                  {
-                    dictionary.dashboard[
-                      "dashboard.actions.capital.shop-seed.description"
-                    ]
-                  }
-                </SheetDescription>
-              </SheetHeader>
-              <ScrollArea className="h-[85vh]">
-                <div className="grid grid-flow-dense grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                  {products.length ? (
-                    products.map((product) => (
-                      <ShopProductItem
-                        key={product.id}
-                        dictionary={dictionary}
-                        product={product}
-                        handleBuyProduct={handleBuyProduct}
-                      />
-                    ))
-                  ) : (
-                    <ShopProductSkeleton />
-                  )}
-                </div>
-              </ScrollArea>
+          }
+          title={
+            dictionary.dashboard["dashboard.actions.capital.shop-seed.label"]
+          }
+          description={
+            dictionary.dashboard[
+              "dashboard.actions.capital.shop-seed.description"
+            ]
+          }
+          content={
+            <div className="flex flex-wrap gap-5">
+              {products.length ? (
+                products.map((product) => (
+                  <ShopProductItem
+                    key={product.id}
+                    dictionary={dictionary}
+                    product={product}
+                    handleBuyProduct={handleBuyProduct}
+                  />
+                ))
+              ) : (
+                <ShopProductSkeleton />
+              )}
             </div>
-          </SheetContent>
-        </Sheet>
+          }
+        />
       }
     />
   );
