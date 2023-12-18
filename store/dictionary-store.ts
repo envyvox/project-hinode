@@ -1,144 +1,6 @@
 import { create } from "zustand";
 
-export type Dictionary = {
-  sidebar: {
-    "category.dashboard": string;
-    "category.user": string;
-    "category.user.child.profile": string;
-    "category.user.child.inventory": string;
-    "category.user.child.reputation": string;
-    "category.user.child.collection": string;
-    "category.user.child.banners": string;
-    "category.user.child.achievements": string;
-    "category.world": string;
-    "category.world.child.rating": string;
-    "category.world.child.info": string;
-  };
-  header: {
-    "user.not-signed-in": string;
-    "user.sign-in": string;
-    "user.sign-out": string;
-    "langulage-switcher.langulage": string;
-  };
-  dashboard: {
-    "dashboard.about": string;
-    "dashboard.actions": string;
-    "dashboard.actions.capital.shop-seed.label": string;
-    "dashboard.actions.capital.shop-seed.description": string;
-    "dashboard.actions.capital.shop-seed.button-label": string;
-    "dashboard.actions.capital.shop-seed.sheet.price": string;
-    "dashboard.actions.capital.shop-seed.sheet.description": string;
-    "dashboard.actions.capital.shop-seed.sheet.is-multiply": string;
-    "dashboard.actions.capital.shop-seed.sheet.re-growth-days": string;
-    "dashboard.actions.capital.shop-seed.sheet.button-label": string;
-    "dashboard.actions.capital.shop-seed.sheet.toast.no-currency": string;
-    "dashboard.actions.capital.shop-seed.sheet.toast.success": string;
-    "dashboard.actions.capital.market.label": string;
-    "dashboard.actions.capital.market.description": string;
-    "dashboard.actions.capital.market.button-label": string;
-    "dashboard.actions.capital.casino.label": string;
-    "dashboard.actions.capital.casino.description": string;
-    "dashboard.actions.capital.casino.button-label": string;
-    "dashboard.actions.garden.shop-recipe.label": string;
-    "dashboard.actions.garden.shop-recipe.description": string;
-    "dashboard.actions.garden.shop-recipe.button-label": string;
-    "dashboard.actions.garden.explore.label": string;
-    "dashboard.actions.garden.explore.description": string;
-    "dashboard.actions.garden.explore.button-label": string;
-    "dashboard.actions.garden.explore.toast.start": string;
-    "dashboard.actions.garden.explore.toast.success": string;
-    "dashboard.actions.garden.explore.toast.failed": string;
-    "dashboard.actions.seaport.fishing.label": string;
-    "dashboard.actions.seaport.fishing.description": string;
-    "dashboard.actions.seaport.fishing.button-label": string;
-    "dashboard.actions.seaport.fishing.toast.start": string;
-    "dashboard.actions.seaport.fishing.toast.complete": string;
-    "dashboard.actions.seaport.shop-fisher.label": string;
-    "dashboard.actions.seaport.shop-fisher.description": string;
-    "dashboard.actions.seaport.shop-fisher.button-label": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.close": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.sell-all-fish": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.no-fish": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.sell-one": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.sell-all": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-one": string;
-    "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-all": string;
-    "dashboard.actions.castle.explore.label": string;
-    "dashboard.actions.castle.explore.description": string;
-    "dashboard.actions.castle.explore.button-label": string;
-    "dashboard.actions.castle.explore.toast.start": string;
-    "dashboard.actions.castle.explore.toast.success": string;
-    "dashboard.actions.castle.explore.toast.failed": string;
-    "dashboard.actions.village.shop-product.label": string;
-    "dashboard.actions.village.shop-product.description": string;
-    "dashboard.actions.village.shop-product.button-label": string;
-    "dashboard.actions.village.shop-product.sheet.price": string;
-    "dashboard.actions.village.shop-product.sheet.button-label": string;
-    "dashboard.actions.village.shop-product.sheet.toast.no-currency": string;
-    "dashboard.actions.village.shop-product.sheet.toast.success": string;
-    "dashboard.actions.village.farm.label": string;
-    "dashboard.actions.village.farm.description": string;
-    "dashboard.actions.village.farm.button-label": string;
-    "dashboard.transit": string;
-    "dashboard.transit.button": string;
-    "dashboard.transit.title": string;
-    "dashboard.transit.toast.success.title": string;
-    "dashboard.transit.toast.success.description": string;
-    "dashboard.transit.toast.no-currency.title": string;
-    "dashboard.transit.toast.no-currency.description": string;
-    "user.profile.username": string;
-    "user.profile.email": string;
-    "user.profile.about": string;
-    "user.profile.about-placeholder": string;
-    "user.profile.save": string;
-    "user.inventory.currency": string;
-    "user.inventory.currency.empty": string;
-    "user.inventory.fish": string;
-    "user.inventory.fish.empty": string;
-    "user.inventory.product": string;
-    "user.inventory.product.empty": string;
-    "user.inventory.seed": string;
-    "user.inventory.seed.empty": string;
-    "user.inventory.crop": string;
-    "user.inventory.crop.empty": string;
-    "user.inventory.box": string;
-    "user.inventory.box.empty": string;
-    "user.inventory.gathering": string;
-    "user.inventory.gathering.empty": string;
-    "user.titles.active-title": string;
-    "user.titles.all-titles": string;
-    "user.titles.title.createdAt": string;
-    "world.info.season.title": string;
-    "world.info.season.description": string;
-    "world.info.timesDay.title": string;
-    "world.info.timesDay.description": string;
-    "world.info.weatherToday.title": string;
-    "world.info.weatherToday.description": string;
-    "world.info.weatherTomorrow.title": string;
-    "world.info.weatherTomorrow.description": string;
-  };
-  location: {
-    InTransit: string;
-    Capital: string;
-    Garden: string;
-    Seaport: string;
-    Castle: string;
-    Village: string;
-    ExploreGarden: string;
-    ExploreCastle: string;
-    Fishing: string;
-    FieldWatering: string;
-  };
-  datatable: {
-    next: string;
-    previous: string;
-    empty: string;
-    "rating.user.position": string;
-    "rating.user.name": string;
-    "rating.user.level": string;
-    "rating.user.xp": string;
-  };
-};
+export type Dictionary = typeof import("@/dictionaries/en.json");
 
 type DictionaryState = {
   dictionary: Dictionary;
@@ -158,6 +20,7 @@ const emptyDictinaory: Dictionary = {
     "category.world": "",
     "category.world.child.rating": "",
     "category.world.child.info": "",
+    "category.user.child.titles": "",
   },
   header: {
     "user.not-signed-in": "",
@@ -260,7 +123,7 @@ const emptyDictinaory: Dictionary = {
     "world.info.weatherToday.title": "",
     "world.info.weatherToday.description": "",
     "world.info.weatherTomorrow.title": "",
-    "world.info.weatherTomorrow.description": ""
+    "world.info.weatherTomorrow.description": "",
   },
   location: {
     InTransit: "",
