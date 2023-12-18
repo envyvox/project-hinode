@@ -36,7 +36,7 @@ const ExploreProvider = ({ children }: Props) => {
             exploreJobData.successGatherings.map((gathering) => {
               return [
                 <Image
-                  className="mx-1 h-6 w-6"
+                  className="mx-1 inline h-6 w-6"
                   width={27}
                   height={27}
                   src={`/gathering/${gathering.gatheringName}.png`}

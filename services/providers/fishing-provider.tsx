@@ -33,7 +33,7 @@ const FishingProvider = ({ children }: Props) => {
             "dashboard.actions.seaport.fishing.toast.complete"
           ],
           <Image
-            className="mx-1 h-6 w-6"
+            className="mx-1 inline h-6 w-6"
             width={27}
             height={27}
             src={`/fish/${fishingJobData.fishName}.png`}
