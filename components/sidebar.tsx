@@ -1,17 +1,14 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { ScrollArea } from "./ui/scroll-area";
 import Link from "next/link";
 import { sidebarCategories } from "@/config/sidebar";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { Skeleton } from "./ui/skeleton";
 
 const Sidebar = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const { data: session } = useSession();
 
-  return session ? (
+  return (
     <div className="fixed top-14 z-30 -ml-2 hidden w-full shrink-0 md:sticky md:block">
       <ScrollArea className="h-full">
         {sidebarCategories.map((category) => (
@@ -35,8 +32,6 @@ const Sidebar = () => {
         ))}
       </ScrollArea>
     </div>
-  ) : (
-    <Skeleton className="h-96" />
   );
 };
 

@@ -278,7 +278,7 @@ const emptyDictinaory: Dictionary = {
       Yam: "",
       BokChoy: "",
       Grape: "",
-      Cranberries: "",
+      Cranberry: "",
       Beet: "",
       Pumpkin: "",
       Sunflower: "",
