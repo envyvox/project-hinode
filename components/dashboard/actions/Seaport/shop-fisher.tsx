@@ -2,27 +2,27 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import DashboardActionBase from "../dashboard-action-base";
 import { Button } from "@/components/ui/button";
 import { useUserFishStore } from "@/store/user-fish-store";
-import UseUserFish from "@/hooks/use-user-fish";
+import useUserFish from "@/hooks/use-user-fish";
 import { Season } from "@prisma/client";
-import UseUserCurrency from "@/hooks/use-user-currency";
+import useUserCurrency from "@/hooks/use-user-currency";
 import ShopFisherUserFish from "./shop-fisher-user-fish";
-import { useWorldStateStore } from "@/store/world-state-store";
 import ShopFisherSkeleton from "./shop-fisher-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
 import TypographyMuted from "@/components/typography/muted";
+import useWorldState from "@/hooks/use-world-state";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const loading = useUserFishStore((state) => state.loading);
-  const worldState = useWorldStateStore((state) => state.worldState);
+  const worldState = useWorldState();
   const userFish = useUserFishStore((state) => state.userFish).filter(
     (uf) =>
       uf.fish.catchSeason.includes(worldState.season) ||
       uf.fish.catchSeason.includes(Season.Any),
   );
 
-  UseUserCurrency();
-  UseUserFish();
+  useUserCurrency();
+  useUserFish();
 
   return (
     <DashboardActionBase

@@ -1,4 +1,4 @@
-import UseUserCrop from "@/hooks/use-user-crop";
+import useUserCrop from "@/hooks/use-user-crop";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserCropStore } from "@/store/user-crop-store";
 import InventorySkeleton from "./inventory-skeleton";
@@ -10,7 +10,7 @@ const InventoryCrops = () => {
   const loading = useUserCropStore((state) => state.loading);
   const userCrops = useUserCropStore((state) => state.userCrops);
 
-  UseUserCrop();
+  useUserCrop();
 
   return (
     <div className="grid-xl-3">

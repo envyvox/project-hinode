@@ -2,7 +2,7 @@ import { useUserProductStore } from "@/store/user-product-store";
 import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
-const UseUserProduct = () => {
+const useUserProduct = () => {
   const user = useUserStore((state) => state.user);
   const getUserProducts = useUserProductStore((state) => state.getUserProducts);
 
@@ -13,4 +13,4 @@ const UseUserProduct = () => {
   }, [user, getUserProducts]);
 };
 
-export default UseUserProduct;
+export default useUserProduct;

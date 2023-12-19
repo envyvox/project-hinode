@@ -5,7 +5,6 @@ import DictionaryProvider from "@/services/providers/dictionary-provider";
 import ExploreProvider from "@/services/providers/explore-provider";
 import FishingProvider from "@/services/providers/fishing-provider";
 import UserProvider from "@/services/providers/user-provider";
-import WorldStateProvider from "@/services/providers/world-state-provider";
 import { TriggerProvider } from "@trigger.dev/react";
 import { ThemeProvider } from "next-themes";
 
@@ -22,9 +21,7 @@ const Providers = ({ children }: Props) => (
         >
           <FishingProvider>
             <ExploreProvider>
-              <WorldStateProvider>
-                <DictionaryProvider>{children}</DictionaryProvider>
-              </WorldStateProvider>
+              <DictionaryProvider>{children}</DictionaryProvider>
             </ExploreProvider>
           </FishingProvider>
         </TriggerProvider>

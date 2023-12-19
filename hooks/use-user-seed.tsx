@@ -2,7 +2,7 @@ import { useUserSeedStore } from "@/store/user-seed-store";
 import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
-const UseUserSeed = () => {
+const useUserSeed = () => {
   const user = useUserStore((state) => state.user);
   const getUserSeeds = useUserSeedStore((state) => state.getUserSeeds);
 
@@ -13,4 +13,4 @@ const UseUserSeed = () => {
   }, [user, getUserSeeds]);
 };
 
-export default UseUserSeed;
+export default useUserSeed;

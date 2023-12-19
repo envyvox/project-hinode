@@ -2,15 +2,11 @@ import { sendEventExplore, sendEventFishing } from "@/jobs/triggers";
 import { create } from "zustand";
 import { useUserStore } from "./user-store";
 import getRandomFishRarity from "@/util/get-random-fish-rarity";
-import {
-  GatheringPropertyType,
-  Location,
-  TimesDay,
-} from "@prisma/client";
+import { GatheringPropertyType, Location, TimesDay } from "@prisma/client";
 import { getRandomFishWithParams } from "@/services/data-access/fish";
 import { getGatheringsInLocation } from "@/services/data-access/gathering";
 import getSuccessAmount from "@/util/get-success-amount";
-import { useWorldStateStore } from "./world-state-store";
+import { getWorldState } from "@/services/data-access/world-state";
 
 export type SuccessGathering = {
   gatheringId: string;
@@ -55,7 +51,7 @@ export const useJobStore = create<JobState>((set) => ({
   resetExploreJobData: () => set({ exploreJobData: emptyExploreData }),
   startFishingJob: async () => {
     const rarity = getRandomFishRarity();
-    const worldState = useWorldStateStore.getState().worldState;
+    const worldState = await getWorldState();
     const timesDay = TimesDay.Day;
 
     const randomFish = await getRandomFishWithParams(

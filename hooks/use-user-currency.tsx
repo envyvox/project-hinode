@@ -2,7 +2,7 @@ import { useUserCurrencyStore } from "@/store/user-currency-store";
 import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
-const UseUserCurrency = () => {
+const useUserCurrency = () => {
   const user = useUserStore((state) => state.user);
   const getUserCurrencies = useUserCurrencyStore(
     (state) => state.getUserCurrencies,
@@ -15,4 +15,4 @@ const UseUserCurrency = () => {
   }, [user, getUserCurrencies]);
 };
 
-export default UseUserCurrency;
+export default useUserCurrency;

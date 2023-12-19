@@ -1,4 +1,4 @@
-import UseUserBox from "@/hooks/use-user-box";
+import useUserBox from "@/hooks/use-user-box";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserBoxStore } from "@/store/user-box-store";
 import InventorySkeleton from "./inventory-skeleton";
@@ -10,7 +10,7 @@ const InventoryBoxes = () => {
   const loading = useUserBoxStore((state) => state.loading);
   const userBoxes = useUserBoxStore((state) => state.userBoxes);
 
-  UseUserBox();
+  useUserBox();
 
   return (
     <div className="grid-xl-3">

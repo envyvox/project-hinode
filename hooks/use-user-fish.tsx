@@ -2,7 +2,7 @@ import { useUserFishStore } from "@/store/user-fish-store";
 import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
-const UseUserFish = () => {
+const useUserFish = () => {
   const user = useUserStore((state) => state.user);
   const getUserFish = useUserFishStore((state) => state.getUserFish);
 
@@ -13,4 +13,4 @@ const UseUserFish = () => {
   }, [user, getUserFish]);
 };
 
-export default UseUserFish;
+export default useUserFish;

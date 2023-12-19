@@ -1,4 +1,4 @@
-import UseUserFish from "@/hooks/use-user-fish";
+import useUserFish from "@/hooks/use-user-fish";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserFishStore } from "@/store/user-fish-store";
 import InventorySkeleton from "./inventory-skeleton";
@@ -11,7 +11,7 @@ const InventoryFish = () => {
   const loading = useUserFishStore((state) => state.loading);
   const userFish = useUserFishStore((state) => state.userFish);
 
-  UseUserFish();
+  useUserFish();
 
   return (
     <div className="grid-xl-3">

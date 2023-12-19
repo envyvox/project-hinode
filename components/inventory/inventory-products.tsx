@@ -1,4 +1,4 @@
-import UseUserProduct from "@/hooks/use-user-product";
+import useUserProduct from "@/hooks/use-user-product";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserProductStore } from "@/store/user-product-store";
 import InventorySkeleton from "./inventory-skeleton";
@@ -10,7 +10,7 @@ const InventoryProducts = () => {
   const loading = useUserProductStore((state) => state.loading);
   const userProducts = useUserProductStore((state) => state.userProducts);
 
-  UseUserProduct();
+  useUserProduct();
 
   return (
     <div className="grid-xl-3">

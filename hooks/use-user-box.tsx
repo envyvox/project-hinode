@@ -2,7 +2,7 @@ import { useUserBoxStore } from "@/store/user-box-store";
 import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
-const UseUserBox = () => {
+const useUserBox = () => {
   const user = useUserStore((state) => state.user);
   const getUserBoxes = useUserBoxStore((state) => state.getUserBoxes);
 
@@ -13,4 +13,4 @@ const UseUserBox = () => {
   }, [user, getUserBoxes]);
 };
 
-export default UseUserBox;
+export default useUserBox;
