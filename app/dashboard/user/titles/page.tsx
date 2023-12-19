@@ -42,7 +42,7 @@ const UserTitles = () => {
         <TypographySmall>
           {dictionary.dashboard["user.titles.all-titles"]}
         </TypographySmall>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid-xl-3">
           {userTitles.length ? (
             userTitles.map((ut) => (
               <UserTitleComponent

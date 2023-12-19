@@ -1,19 +1,9 @@
-"use client";
-
-import TypographyMuted from "@/components/typography/muted";
-import TypographySmall from "@/components/typography/small";
-import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import UseUserProduct from "@/hooks/use-user-product";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserProductStore } from "@/store/user-product-store";
-import Image from "next/image";
 import InventorySkeleton from "./inventory-skeleton";
+import InventoryItem from "./inventory-item";
+import InventoryEmpty from "./inventory-empty";
 
 const InventoryProducts = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -23,41 +13,25 @@ const InventoryProducts = () => {
   UseUserProduct();
 
   return (
-    <>
-      <TypographySmall>
-        {dictionary.dashboard["user.inventory.product"]}
-      </TypographySmall>
-      <div className="flex flex-wrap gap-5">
-        {loading ? (
-          <InventorySkeleton />
-        ) : userProducts.length ? (
-          userProducts.map((userProduct) => (
-            <TooltipProvider key={userProduct.productId}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground shadow-sm">
-                    <Image
-                      src={`/product/${userProduct.product.name}.png`}
-                      alt={userProduct.product.name}
-                      width={36}
-                      height={36}
-                    />
-                    {Number(userProduct.amount)}
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>{userProduct.product.name}</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))
-        ) : (
-          <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">
-            <TypographyMuted>
-              {dictionary.dashboard["user.inventory.product.empty"]}
-            </TypographyMuted>
-          </div>
-        )}
-      </div>
-    </>
+    <div className="grid-xl-3">
+      {loading ? (
+        <InventorySkeleton />
+      ) : userProducts.length ? (
+        userProducts.map((userProduct) => (
+          <InventoryItem
+            key={userProduct.productId}
+            src={`/product/${userProduct.product.name}.png`}
+            // @ts-ignore Implicit any
+            name={dictionary.item.product[userProduct.product.name]}
+            amount={userProduct.amount}
+          />
+        ))
+      ) : (
+        <InventoryEmpty
+          label={dictionary.dashboard["user.inventory.product.empty"]}
+        />
+      )}
+    </div>
   );
 };
 

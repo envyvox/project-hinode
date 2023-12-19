@@ -1,19 +1,9 @@
-"use client";
-
-import TypographyMuted from "@/components/typography/muted";
-import TypographySmall from "@/components/typography/small";
-import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import UseUserCurrency from "@/hooks/use-user-currency";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
-import Image from "next/image";
 import InventorySkeleton from "./inventory-skeleton";
+import InventoryItem from "./inventory-item";
+import InventoryEmpty from "./inventory-empty";
 
 const InventoryCurrency = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -23,41 +13,24 @@ const InventoryCurrency = () => {
   UseUserCurrency();
 
   return (
-    <>
-      <TypographySmall>
-        {dictionary.dashboard["user.inventory.currency"]}
-      </TypographySmall>
-      <div className="flex flex-wrap gap-5">
-        {loading ? (
-          <InventorySkeleton />
-        ) : userCurrencies.length ? (
-          userCurrencies.map((userCurrency) => (
-            <TooltipProvider key={userCurrency.currency}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground shadow-sm">
-                    <Image
-                      src={`/currency/${userCurrency.currency.toString()}.png`}
-                      alt={userCurrency.currency.toString()}
-                      width={36}
-                      height={36}
-                    />
-                    {Number(userCurrency.amount)}
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>{userCurrency.currency}</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))
-        ) : (
-          <div className="flex flex-col justify-center gap-1 rounded-lg border p-2">
-            <TypographyMuted>
-              {dictionary.dashboard["user.inventory.currency.empty"]}
-            </TypographyMuted>
-          </div>
-        )}
-      </div>
-    </>
+    <div className="grid-xl-3">
+      {loading ? (
+        <InventorySkeleton />
+      ) : userCurrencies.length ? (
+        userCurrencies.map((userCurrency) => (
+          <InventoryItem
+            key={userCurrency.currency}
+            src={`/currency/${userCurrency.currency.toString()}.png`}
+            name={dictionary.item.currency[userCurrency.currency]}
+            amount={userCurrency.amount}
+          />
+        ))
+      ) : (
+        <InventoryEmpty
+          label={dictionary.dashboard["user.inventory.currency.empty"]}
+        />
+      )}
+    </div>
   );
 };
 
