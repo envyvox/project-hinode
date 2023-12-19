@@ -34,7 +34,10 @@ const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
           alt={seed.name}
         />
         <div className="flex flex-col">
-          <TypographyLarge>{seed.name}</TypographyLarge>
+          <TypographyLarge>
+            {/* @ts-ignore Implicit any */}
+            {dictionary.item.seed[seed.name]}
+          </TypographyLarge>
           <TypographySmall>
             {formatString(
               dictionary.dashboard[
@@ -60,7 +63,8 @@ const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
               src={`/crop/${seed.crop?.name}.png`}
               alt={seed.crop?.name ?? "Crop"}
             />,
-            seed.crop?.name,
+            // @ts-ignore Implicit any
+            dictionary.item.crop[seed.crop?.name],
             <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
             seed.crop?.price,
           )}

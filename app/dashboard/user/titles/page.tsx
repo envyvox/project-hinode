@@ -29,14 +29,16 @@ const UserTitles = () => {
         <TypographySmall>
           {dictionary.dashboard["user.titles.active-title"]}
         </TypographySmall>
-        {userActiveTitle ? (
-          <ActiveUserTitle
-            dictionary={dictionary}
-            userTitle={userActiveTitle}
-          />
-        ) : (
-          <Skeleton className="h-[95px] w-[275px]" />
-        )}
+        <div className="grid-xl-3">
+          {userActiveTitle ? (
+            <ActiveUserTitle
+              dictionary={dictionary}
+              userTitle={userActiveTitle}
+            />
+          ) : (
+            <Skeleton className="h-[95px]" />
+          )}
+        </div>
       </div>
       <div className="flex flex-col gap-5">
         <TypographySmall>

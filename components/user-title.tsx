@@ -20,7 +20,7 @@ const UserTitleComponent = ({
   return (
     <Button
       variant="ghost"
-      className="flex h-fit w-full items-center gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm"
+      className="flex h-fit w-full justify-start gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm"
       onClick={() => handleTitleSelect(userTitle)}
     >
       <Image

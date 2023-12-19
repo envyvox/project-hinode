@@ -12,7 +12,7 @@ type Props = {
 
 const ActiveUserTitle = ({ dictionary, userTitle }: Props) => {
   return (
-    <div className="flex w-fit items-center gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm">
+    <div className="flex w-full items-center gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm">
       <Image
         className="h-8 w-8"
         src={`/title/${userTitle.title}.png`}

@@ -52,7 +52,8 @@ const ActionCapitalShopSeed = () => {
             src={`/seed/${seed.name}.png`}
             alt={seed.name}
           />,
-          seed.name,
+          // @ts-ignore Implicit any
+          dictionary.item.seed[seed.name],
         ),
       });
       return;
@@ -73,7 +74,8 @@ const ActionCapitalShopSeed = () => {
           src={`/seed/${seed.name}.png`}
           alt={seed.name}
         />,
-        seed.name,
+        // @ts-ignore Implicit any,
+        dictionary.item.seed[seed.name],
         <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
         seed.price,
       ),

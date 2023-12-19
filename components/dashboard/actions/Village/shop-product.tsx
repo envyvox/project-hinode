@@ -52,7 +52,8 @@ const ActionVillageShopProduct = () => {
             src={`/product/${product.name}.png`}
             alt={product.name}
           />,
-          product.name,
+          // @ts-ignore Implicit any
+          dictionary.item.product[product.name],
         ),
       });
       return;
@@ -73,7 +74,8 @@ const ActionVillageShopProduct = () => {
           src={`/product/${product.name}.png`}
           alt={product.name}
         />,
-        product.name,
+        // @ts-ignore Implicit any
+        dictionary.item.product[product.name],
         <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
         product.price,
       ),
@@ -96,17 +98,17 @@ const ActionVillageShopProduct = () => {
             <Button className="mt-2 w-fit self-end" variant="secondary">
               {
                 dictionary.dashboard[
-                  "dashboard.actions.capital.shop-seed.button-label"
+                  "dashboard.actions.village.shop-product.button-label"
                 ]
               }
             </Button>
           }
           title={
-            dictionary.dashboard["dashboard.actions.capital.shop-seed.label"]
+            dictionary.dashboard["dashboard.actions.village.shop-product.label"]
           }
           description={
             dictionary.dashboard[
-              "dashboard.actions.capital.shop-seed.description"
+              "dashboard.actions.village.shop-product.description"
             ]
           }
           content={

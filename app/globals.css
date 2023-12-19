@@ -80,3 +80,19 @@
     @apply grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3;
   }
 }
+
+.border-rare {
+  @apply border-blue-400/60;
+}
+
+.border-epic {
+  @apply border-violet-400/60;
+}
+
+.border-mythical {
+  @apply border-pink-400/60;
+}
+
+.border-legendary {
+  @apply border-orange-400/60;
+}

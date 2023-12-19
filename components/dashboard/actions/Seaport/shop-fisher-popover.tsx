@@ -50,7 +50,8 @@ const ShopFisherPopover = ({ userFish }: Props) => {
           height={27}
         />,
         amount,
-        fish.name,
+        // @ts-ignore Implicit any
+        dictionary.item.fish[fish.name],
         <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
         fish.price * amount,
       ),

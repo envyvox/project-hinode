@@ -26,7 +26,10 @@ const ShopProductItem = ({ dictionary, product, handleBuyProduct }: Props) => {
           alt={product.name}
         />
         <div className="flex flex-col">
-          <TypographyLarge>{product.name}</TypographyLarge>
+          <TypographyLarge>
+            {/* @ts-ignore Implicit any */}
+            {dictionary.item.product[product.name]}
+          </TypographyLarge>
           <TypographySmall>
             {formatString(
               dictionary.dashboard[

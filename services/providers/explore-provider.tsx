@@ -42,7 +42,10 @@ const ExploreProvider = ({ children }: Props) => {
                   src={`/gathering/${gathering.gatheringName}.png`}
                   alt={gathering.gatheringName}
                 />,
-                `${gathering.amount} ${gathering.gatheringName}`,
+                `${gathering.amount} ${
+                  // @ts-ignore Implicit any
+                  dictionary.item.gathering[gathering.gatheringName]
+                }`,
               ];
             }),
           ),

@@ -33,7 +33,8 @@ const ShopFisherUserFish = ({ userFish }: Props) => {
         />
         <div className="flex flex-col">
           <TypographyLarge>
-            {Number(userFish.amount)} {userFish.fish.name}
+            {/* @ts-ignore Implicit any */}
+            {Number(userFish.amount)} {dictionary.item.fish[userFish.fish.name]}
           </TypographyLarge>
           <TypographySmall>
             {formatString(

@@ -39,7 +39,8 @@ const FishingProvider = ({ children }: Props) => {
             src={`/fish/${fishingJobData.fishName}.png`}
             alt={fishingJobData.fishName}
           />,
-          fishingJobData.fishName,
+          // @ts-ignore Implicit any
+          dictionary.item.fish[fishingJobData.fishName],
         ),
       });
     }
