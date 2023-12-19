@@ -303,5 +303,22 @@
     "Yatagarasu": "Yatagarasu",
     "HarbingerOfSummer": "Harbinger of summer",
     "Wanderer": "Wanderer"
+  },
+  "season": {
+    "Any": "Any",
+    "Spring": "Spring",
+    "Summer": "Summer",
+    "Autumn": "Autumn",
+    "Winter": "Winter"
+  },
+  "weather": {
+    "Any": "Any",
+    "Clear": "Clear",
+    "Rain": "Rain"
+  },
+  "timesDay": {
+    "Any": "Any",
+    "Day": "Day",
+    "Night": "Night"
   }
 }

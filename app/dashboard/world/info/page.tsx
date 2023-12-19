@@ -25,7 +25,7 @@ const WorldIntoPage = () => {
           <CardTitle>
             {formatString(
               dictionary.dashboard["world.info.season.title"],
-              worldState.season,
+              dictionary.season[worldState.season],
             )}
           </CardTitle>
           <CardDescription>
@@ -42,7 +42,7 @@ const WorldIntoPage = () => {
           <CardTitle>
             {formatString(
               dictionary.dashboard["world.info.timesDay.title"],
-              TimesDay.Day,
+              dictionary.timesDay[TimesDay.Day],
             )}
           </CardTitle>
           <CardDescription>
@@ -59,7 +59,7 @@ const WorldIntoPage = () => {
           <CardTitle>
             {formatString(
               dictionary.dashboard["world.info.weatherToday.title"],
-              worldState.weatherToday,
+              dictionary.weather[worldState.weatherToday],
             )}
           </CardTitle>
           <CardDescription>
@@ -76,7 +76,7 @@ const WorldIntoPage = () => {
           <CardTitle>
             {formatString(
               dictionary.dashboard["world.info.weatherTomorrow.title"],
-              worldState.weatherTomorrow,
+              dictionary.weather[worldState.weatherTomorrow],
             )}
           </CardTitle>
           <CardDescription>

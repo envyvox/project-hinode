@@ -303,5 +303,22 @@
     "Yatagarasu": "Ятагарасу",
     "HarbingerOfSummer": "Предвестник лета",
     "Wanderer": "Странник"
+  },
+  "season": {
+    "Any": "Любой",
+    "Spring": "Весна",
+    "Summer": "Лето",
+    "Autumn": "Осень",
+    "Winter": "Зима"
+  },
+  "weather": {
+    "Any": "Любая",
+    "Clear": "Ясная",
+    "Rain": "Дождливая"
+  },
+  "timesDay": {
+    "Any": "Любое",
+    "Day": "День",
+    "Night": "Ночь"
   }
 }

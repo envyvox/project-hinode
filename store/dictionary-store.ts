@@ -313,6 +313,23 @@ const emptyDictinaory: Dictionary = {
     HarbingerOfSummer: "",
     Wanderer: "",
   },
+  season: {
+    Any: "",
+    Spring: "",
+    Summer: "",
+    Autumn: "",
+    Winter: "",
+  },
+  weather: {
+    Any: "",
+    Clear: "",
+    Rain: "",
+  },
+  timesDay: {
+    Any: "",
+    Day: "",
+    Night: "",
+  },
 };
 
 export const useDictionaryStore = create<DictionaryState>((set) => ({
