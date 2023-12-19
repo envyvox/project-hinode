@@ -7,7 +7,6 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 
 import { useToast } from "@/components/ui/use-toast";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
-import useUserCurrency from "@/hooks/use-user-currency";
 import {
   DashboardTab,
   useDashboardTabStore,
@@ -27,8 +26,6 @@ const DashboardTransit = () => {
   );
   const [transits, setTransits] = useState<Transit[]>([]);
   const { toast } = useToast();
-
-  useUserCurrency();
 
   useEffect(() => {
     getTransitsFromLocation(userLocation).then(setTransits);

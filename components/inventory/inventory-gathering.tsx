@@ -1,4 +1,3 @@
-import useUserGathering from "@/hooks/use-user-gathering";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserGatheringStore } from "@/store/user-gathering-store";
 import InventorySkeleton from "./inventory-skeleton";
@@ -9,8 +8,6 @@ const InventoryGathering = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const loading = useUserGatheringStore((state) => state.loading);
   const userGatherings = useUserGatheringStore((state) => state.userGatherings);
-
-  useUserGathering();
 
   return (
     <div className="grid-xl-3">

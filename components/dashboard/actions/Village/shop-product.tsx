@@ -3,7 +3,6 @@ import DashboardActionBase from "../dashboard-action-base";
 import { Button } from "@/components/ui/button";
 import { useUserProductStore } from "@/store/user-product-store";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
-import useUserCurrency from "@/hooks/use-user-currency";
 import { useToast } from "@/components/ui/use-toast";
 import { Currency, Product } from "@prisma/client";
 import { useEffect, useState } from "react";
@@ -26,8 +25,6 @@ const ActionVillageShopProduct = () => {
   );
   const [products, setProducts] = useState<Product[]>([]);
   const { toast } = useToast();
-
-  useUserCurrency();
 
   useEffect(() => {
     getProducts().then(setProducts);

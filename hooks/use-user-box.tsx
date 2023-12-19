@@ -3,14 +3,14 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserBox = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserBoxes = useUserBoxStore((state) => state.getUserBoxes);
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserBoxes(user.id);
+    if (userId !== "") {
+      getUserBoxes(userId);
     }
-  }, [user, getUserBoxes]);
+  }, [userId, getUserBoxes]);
 };
 
 export default useUserBox;

@@ -3,14 +3,14 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserSeed = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserSeeds = useUserSeedStore((state) => state.getUserSeeds);
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserSeeds(user.id);
+    if (userId !== "") {
+      getUserSeeds(userId);
     }
-  }, [user, getUserSeeds]);
+  }, [userId, getUserSeeds]);
 };
 
 export default useUserSeed;

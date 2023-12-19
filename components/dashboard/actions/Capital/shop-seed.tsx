@@ -9,7 +9,6 @@ import { useUserSeedStore } from "@/store/user-seed-store";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
 import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
-import useUserCurrency from "@/hooks/use-user-currency";
 import formatString from "@/util/format-string";
 import IenIcon from "@/public/currency/Ien.png";
 import Image from "next/image";
@@ -26,8 +25,6 @@ const ActionCapitalShopSeed = () => {
   const worldState = useWorldState();
   const [seeds, setSeeds] = useState<SeedCropIncluded[]>([]);
   const { toast } = useToast();
-
-  useUserCurrency();
 
   useEffect(() => {
     getSeeds(worldState.season).then(setSeeds);

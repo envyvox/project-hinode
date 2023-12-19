@@ -3,14 +3,14 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserCrop = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserCrops = useUserCropStore((state) => state.getUserCrops);
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserCrops(user.id);
+    if (userId !== "") {
+      getUserCrops(userId);
     }
-  }, [user, getUserCrops]);
+  }, [userId, getUserCrops]);
 };
 
 export default useUserCrop;

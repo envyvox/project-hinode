@@ -3,16 +3,16 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserGathering = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserGatherings = useUserGatheringStore(
     (state) => state.getUserGatherings,
   );
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserGatherings(user.id);
+    if (userId !== "") {
+      getUserGatherings(userId);
     }
-  }, [user, getUserGatherings]);
+  }, [userId, getUserGatherings]);
 };
 
 export default useUserGathering;

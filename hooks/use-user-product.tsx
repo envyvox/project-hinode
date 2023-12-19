@@ -3,14 +3,14 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserProduct = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserProducts = useUserProductStore((state) => state.getUserProducts);
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserProducts(user.id);
+    if (userId !== "") {
+      getUserProducts(userId);
     }
-  }, [user, getUserProducts]);
+  }, [userId, getUserProducts]);
 };
 
 export default useUserProduct;

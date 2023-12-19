@@ -3,16 +3,16 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserCurrency = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserCurrencies = useUserCurrencyStore(
     (state) => state.getUserCurrencies,
   );
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserCurrencies(user.id);
+    if (userId !== "") {
+      getUserCurrencies(userId);
     }
-  }, [user, getUserCurrencies]);
+  }, [userId, getUserCurrencies]);
 };
 
 export default useUserCurrency;

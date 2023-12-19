@@ -2,9 +2,7 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import DashboardActionBase from "../dashboard-action-base";
 import { Button } from "@/components/ui/button";
 import { useUserFishStore } from "@/store/user-fish-store";
-import useUserFish from "@/hooks/use-user-fish";
 import { Season } from "@prisma/client";
-import useUserCurrency from "@/hooks/use-user-currency";
 import ShopFisherUserFish from "./shop-fisher-user-fish";
 import ShopFisherSkeleton from "./shop-fisher-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
@@ -20,9 +18,6 @@ const ActionSeaportShopFisher = () => {
       uf.fish.catchSeason.includes(worldState.season) ||
       uf.fish.catchSeason.includes(Season.Any),
   );
-
-  useUserCurrency();
-  useUserFish();
 
   return (
     <DashboardActionBase

@@ -3,14 +3,14 @@ import { useUserStore } from "@/store/user-store";
 import { useEffect } from "react";
 
 const useUserFish = () => {
-  const user = useUserStore((state) => state.user);
+  const userId = useUserStore((state) => state.user).id;
   const getUserFish = useUserFishStore((state) => state.getUserFish);
 
   useEffect(() => {
-    if (user.id !== "") {
-      getUserFish(user.id);
+    if (userId !== "") {
+      getUserFish(userId);
     }
-  }, [user, getUserFish]);
+  }, [userId, getUserFish]);
 };
 
 export default useUserFish;

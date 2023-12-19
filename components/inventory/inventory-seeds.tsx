@@ -1,4 +1,3 @@
-import useUserSeed from "@/hooks/use-user-seed";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserSeedStore } from "@/store/user-seed-store";
 import InventorySkeleton from "./inventory-skeleton";
@@ -9,8 +8,6 @@ const InventorySeeds = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const loading = useUserSeedStore((state) => state.loading);
   const userSeeds = useUserSeedStore((state) => state.userSeeds);
-
-  useUserSeed();
 
   return (
     <div className="grid-xl-3">
