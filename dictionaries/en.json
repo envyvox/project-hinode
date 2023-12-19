@@ -280,5 +280,28 @@
       "Egg": "Egg",
       "Milk": "Milk"
     }
+  },
+  "title": {
+    "ResourcefulCatcher": "Inventive catcher",
+    "Newbie": "Newbie",
+    "Lucky": "Lucky",
+    "DescendantAristocracy": "Descendant of aristocracy",
+    "DescendantOcean": "Descendant of the ocean",
+    "KeeperGrove": "Grove keeper",
+    "ReliableWorkaholic": "Reliable workaholic",
+    "SereneExcavator": "Serene excavator",
+    "AgileEarner": "Agile earner",
+    "Handyman": "Handyman",
+    "WineSamurai": "Wine samurai",
+    "StockyFarmer": "Stocky farmer",
+    "SeaPoet": "Sea poet",
+    "CulinaryIdol": "Culinary idol",
+    "Toxic": "Toxic",
+    "KingExcitement": "King of excitement",
+    "BelievingInLuck": "Believing in luck",
+    "FirstSamurai": "First samurai",
+    "Yatagarasu": "Yatagarasu",
+    "HarbingerOfSummer": "Harbinger of summer",
+    "Wanderer": "Wanderer"
   }
 }

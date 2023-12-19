@@ -1,6 +1,6 @@
 "use client";
 
-import { DataTable } from "./data-table";
+import { DataTable } from "../data-table";
 import { ratingTableColumns } from "./rating-table-columns";
 import { GameUser } from "@/services/data-access/user";
 

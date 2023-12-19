@@ -1,4 +1,4 @@
-import RatingTable from "@/components/rating-table";
+import RatingTable from "@/components/rating-table/rating-table";
 import { getUsers } from "@/services/data-access/user";
 
 const WorldRating = async () => {

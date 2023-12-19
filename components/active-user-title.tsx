@@ -21,7 +21,7 @@ const ActiveUserTitle = ({ dictionary, userTitle }: Props) => {
         alt={userTitle.title}
       />
       <div className="flex flex-col gap-1">
-        <TypographyLarge>{userTitle?.title}</TypographyLarge>
+        <TypographyLarge>{dictionary.title[userTitle.title]}</TypographyLarge>
         <TypographyMuted>
           {dictionary.dashboard["user.titles.title.createdAt"]}
           {new Date(userTitle.createdAt).toLocaleString("ru-RU", {

@@ -280,5 +280,28 @@
       "Egg": "Яйцо",
       "Milk": "Молоко"
     }
+  },
+  "title": {
+    "ResourcefulCatcher": "Изобретательный ловец",
+    "Newbie": "Новичок",
+    "Lucky": "Удачливый",
+    "DescendantAristocracy": "Потомок аристократии",
+    "DescendantOcean": "Потомок океана",
+    "KeeperGrove": "Хранитель рощи",
+    "ReliableWorkaholic": "Надежный трудяга",
+    "SereneExcavator": "Безмятежный землекоп",
+    "AgileEarner": "Проворный добытчик",
+    "Handyman": "Мастер на все руки",
+    "WineSamurai": "Винный самурай",
+    "StockyFarmer": "Запасливый фермер",
+    "SeaPoet": "Морской поэт",
+    "CulinaryIdol": "Кулинарный идол",
+    "Toxic": "Токсичный",
+    "KingExcitement": "Король азарта",
+    "BelievingInLuck": "Верящий в удачу",
+    "FirstSamurai": "Первый самурай",
+    "Yatagarasu": "Ятагарасу",
+    "HarbingerOfSummer": "Предвестник лета",
+    "Wanderer": "Странник"
   }
 }

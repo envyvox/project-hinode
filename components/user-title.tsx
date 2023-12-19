@@ -31,7 +31,7 @@ const UserTitleComponent = ({
         alt={userTitle.title}
       />
       <div className="flex flex-col gap-1 text-left">
-        <TypographyLarge>{userTitle.title}</TypographyLarge>
+        <TypographyLarge>{dictionary.title[userTitle.title]}</TypographyLarge>
         <TypographyMuted>
           {dictionary.dashboard["user.titles.title.createdAt"]}
           {new Date(userTitle.createdAt).toLocaleString("ru-RU", {
