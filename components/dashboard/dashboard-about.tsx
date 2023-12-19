@@ -7,32 +7,15 @@ import {
 } from "@/components/ui/card";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
-import dynamic from "next/dynamic";
 import { useLangStore } from "@/store/lang-store";
-import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import React from "react";
+import DynamicDashboardAbout from "./dynamic-dashboard-about";
 
 const DashboardAbout = () => {
   const lang = useLangStore((state) => state.lang);
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const userLocation = useUserStore((state) => state.user.location);
-
-  const renderLocationDescription = () => {
-    const element = dynamic(
-      () => import(`@/mdx/locations/${lang}/${userLocation}.mdx`),
-      {
-        ssr: false,
-        loading: () => (
-          <div className="mt-6 flex flex-col gap-6">
-            <Skeleton className="h-12" />
-            <Skeleton className="h-24" />
-            <Skeleton className="h-24" />
-          </div>
-        ),
-      },
-    );
-    return React.createElement(element);
-  };
 
   return (
     <Card>
@@ -47,7 +30,7 @@ const DashboardAbout = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="leading-7 [&_p]:mt-6">
-        {renderLocationDescription()}
+        <DynamicDashboardAbout lang={lang} userLocation={userLocation} />
       </CardContent>
     </Card>
   );

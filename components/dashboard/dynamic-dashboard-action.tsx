@@ -77,13 +77,12 @@ const actions: LocationActions = {
   WorkOnContract: {},
 };
 
-const DynamicDashboardAction = ({
-  userLocation,
-  action,
-}: {
+type Props = {
   userLocation: Location;
   action: string;
-}) => {
+};
+
+const DynamicDashboardAction = ({ userLocation, action }: Props) => {
   const DynamicComponent = actions[userLocation][action];
   return <DynamicComponent />;
 };
