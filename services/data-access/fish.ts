@@ -31,11 +31,18 @@ const getUserFish = async (userId: string): Promise<UserFishIncluded[]> => {
     include: {
       fish: true,
     },
-    orderBy: {
-      fish: {
-        name: "asc",
+    orderBy: [
+      {
+        fish: {
+          rarity: "desc",
+        },
       },
-    },
+      {
+        fish: {
+          name: "asc",
+        },
+      },
+    ],
   });
 };
 
@@ -130,30 +137,9 @@ const removeFishFromUser = async (
   });
 };
 
-/**
- * Removes all fish from a user's collection that were caught during a specific season.
- *
- * @param {string} userId - The ID of the user.
- * @param {Season} season - The season during which the fish were caught.
- * @return {Promise<void>} A promise that resolves when the fish are successfully removed.
- */
-const removeAllFishFromUser = async (userId: string, season: Season) => {
-  await prisma.userFish.deleteMany({
-    where: {
-      userId: userId,
-      fish: {
-        catchSeason: {
-          hasSome: [season],
-        },
-      },
-    },
-  });
-};
-
 export {
   getUserFish,
   getRandomFishWithParams,
   addFishToUser,
   removeFishFromUser,
-  removeAllFishFromUser,
 };

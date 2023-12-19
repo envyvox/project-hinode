@@ -14,6 +14,8 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserFishStore } from "@/store/user-fish-store";
 import Image from "next/image";
 import InventorySkeleton from "./inventory-skeleton";
+import { cn } from "@/lib/utils";
+import { getRarityBorderColor } from "@/util/get-rarity-border-color";
 
 const InventoryFish = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -35,7 +37,12 @@ const InventoryFish = () => {
             <TooltipProvider key={uf.fishId}>
               <Tooltip>
                 <TooltipTrigger>
-                  <div className="flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground shadow-sm">
+                  <div
+                    className={cn(
+                      "flex h-[85px] flex-col items-center justify-between gap-1 rounded-lg border bg-card p-2 text-card-foreground shadow-sm",
+                      getRarityBorderColor(uf.fish.rarity),
+                    )}
+                  >
                     <Image
                       className="h-8 w-8 object-contain"
                       src={`/fish/${uf.fish.name}.png`}

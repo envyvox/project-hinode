@@ -1,73 +1,54 @@
-import { Button } from "@/components/ui/button";
 import { UserFishIncluded } from "@/services/data-access/fish";
 import formatString from "@/util/format-string";
-import { Fish } from "@prisma/client";
 import Image from "next/image";
-import React from "react";
 import IenIcon from "@/public/currency/Ien.png";
-import { Dictionary } from "@/store/dictionary-store";
-import TypographyMuted from "@/components/typography/muted";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import TypographyLarge from "@/components/typography/large";
+import TypographySmall from "@/components/typography/small";
+import { cn } from "@/lib/utils";
+import { getRarityBorderColor } from "@/util/get-rarity-border-color";
+import ShopFisherPopover from "./shop-fisher-popover";
 
 type Props = {
-  userFish: UserFishIncluded[];
-  dictionary: Dictionary;
-  sellFish: (fish: Fish, amount: number) => void;
+  userFish: UserFishIncluded;
 };
 
-const ShopFisherUserFish = ({ userFish, dictionary, sellFish }: Props) => {
-  if (userFish.length < 1)
-    return (
-      <TypographyMuted>
-        {
-          dictionary.dashboard[
-            "dashboard.actions.seaport.shop-fisher.sheet.no-fish"
-          ]
-        }
-      </TypographyMuted>
-    );
+const ShopFisherUserFish = ({ userFish }: Props) => {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
 
-  return userFish.map((uf) => (
+  return (
     <div
-      key={uf.fishId}
-      className="flex flex-col items-center gap-2 rounded-lg border bg-card p-5 text-card-foreground shadow-sm"
+      className={cn(
+        "flex flex-col gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm",
+        getRarityBorderColor(userFish.fish.rarity),
+      )}
     >
-      <Image
-        className="h-8 w-8 object-contain"
-        src={`/fish/${uf.fish.name}.png`}
-        alt={uf.fish.name}
-        width={36}
-        height={36}
-      />
-      {Number(uf.amount)} {uf.fish.name}
-      <Button
-        variant="secondary"
-        className="w-full"
-        onClick={() => sellFish(uf.fish, 1)}
-      >
-        {formatString(
-          dictionary.dashboard[
-            "dashboard.actions.seaport.shop-fisher.sheet.sell-one"
-          ],
-          uf.fish.price,
-          <Image className="mx-1 h-6 w-6" src={IenIcon} alt="Ien" />,
-        )}
-      </Button>
-      <Button
-        variant="secondary"
-        className="w-full"
-        onClick={() => sellFish(uf.fish, uf.amount)}
-      >
-        {formatString(
-          dictionary.dashboard[
-            "dashboard.actions.seaport.shop-fisher.sheet.sell-all"
-          ],
-          uf.amount,
-          uf.fish.price * uf.amount,
-          <Image className="mx-1 h-6 w-6" src={IenIcon} alt="Ien" />,
-        )}
-      </Button>
+      <div className="flex gap-5">
+        <Image
+          className="h-12 w-12 object-contain"
+          src={`/fish/${userFish.fish.name}.png`}
+          alt={userFish.fish.name}
+          width={54}
+          height={54}
+        />
+        <div className="flex flex-col">
+          <TypographyLarge>
+            {Number(userFish.amount)} {userFish.fish.name}
+          </TypographyLarge>
+          <TypographySmall>
+            {formatString(
+              dictionary.dashboard[
+                "dashboard.actions.seaport.shop-fisher.sheet.price"
+              ],
+              userFish.fish.price,
+              <Image className="mx-1 inline h-5 w-5" src={IenIcon} alt="Ien" />,
+            )}
+          </TypographySmall>
+        </div>
+      </div>
+      <ShopFisherPopover userFish={userFish} />
     </div>
-  ));
+  );
 };
 
 export default ShopFisherUserFish;

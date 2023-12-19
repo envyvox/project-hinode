@@ -7,6 +7,7 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 import { ScrollArea } from "./ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 type Props = {
   trigger: React.ReactNode;
@@ -32,7 +33,9 @@ const FullscreenSheet = ({
             <SheetTitle>{title}</SheetTitle>
             <SheetDescription>{description}</SheetDescription>
           </SheetHeader>
-          <ScrollArea className={scrollAreaClassName}>{content}</ScrollArea>
+          <ScrollArea className={cn("pr-4", scrollAreaClassName)}>
+            {content}
+          </ScrollArea>
         </div>
       </SheetContent>
     </Sheet>
