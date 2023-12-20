@@ -18,7 +18,7 @@ const UserHoverCard = ({ user }: Props) => {
   const [activeBanner, setActiveBanner] = useState<Banner>();
 
   useEffect(() => {
-    if (user.id) {
+    if (user.id !== "") {
       getUserActiveBanner(user.id).then((userBanner) =>
         setActiveBanner(userBanner.banner),
       );

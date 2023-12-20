@@ -19,7 +19,7 @@ const BannerImage = ({ banner }: Props) => {
       alt="Active user banner"
     />
   ) : (
-    <Skeleton className="h-full w-full" />
+    <Skeleton className="h-[200px] w-full" />
   );
 };
 
