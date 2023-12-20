@@ -110,6 +110,7 @@
     "user.titles.active-title": "Active title",
     "user.titles.all-titles": "All titles",
     "user.titles.title.createdAt": "Obtained: ",
+    "user.titles.empty": "You don't have any other titles.",
     "world.info.season.title": "Current season: {0}",
     "world.info.season.description": "The current season determines the variety of seeds in the store and the types of fish you can catch while fishing. Some fish can only be caught in a certain season.",
     "world.info.timesDay.title": "Current time of day: {0}",

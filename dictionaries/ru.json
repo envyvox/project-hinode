@@ -110,6 +110,7 @@
     "user.titles.active-title": "Текущий титул",
     "user.titles.all-titles": "Все титулы",
     "user.titles.title.createdAt": "Получен: ",
+    "user.titles.empty": "У тебя нет других титулов.",
     "world.info.season.title": "Текущий сезон: {0}",
     "world.info.season.description": "Текущий сезон определяет ссортимент семян в магазине, а так же виды рыб, которые ты можешь поймать во время рыбалки. Некоторую рыбу можно поймать лишь в определенный сезон.",
     "world.info.timesDay.title": "Время суток: {0}",
