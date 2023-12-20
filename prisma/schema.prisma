@@ -60,6 +60,7 @@ model User {
   fish          UserFish[]
   gatherings    UserGathering[]
   titles        UserTitle[]
+  banners       UserBanner[]
 }
 
 model VerificationToken {
@@ -161,6 +162,17 @@ model UserTitle {
   @@id([userId, title])
 }
 
+model UserBanner {
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  banner    Banner   @relation(fields: [bannerId], references: [id])
+  bannerId  String
+  isActive  Boolean
+  createdAt DateTime @default(now())
+
+  @@id([userId, bannerId])
+}
+
 model Seed {
   id           String      @id @default(cuid())
   name         String      @unique
@@ -242,6 +254,25 @@ model WorldState {
   season          Season
   weatherToday    Weather
   weatherTomorrow Weather
+}
+
+model Banner {
+  id         String       @id @default(cuid())
+  name       String
+  rarity     BannerRarity
+  image      String
+  price      Int
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @default(now()) @updatedAt
+  userBanner UserBanner[]
+}
+
+enum BannerRarity {
+  Common
+  Rare
+  Animated
+  Event
+  Custom
 }
 
 enum GatheringPropertyType {
