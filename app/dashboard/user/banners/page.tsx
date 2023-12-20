@@ -1,6 +1,5 @@
 "use client";
 
-import UserActiveBanner from "@/components/user-banner/user-active-banner";
 import TypographySmall from "@/components/typography/small";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -14,6 +13,7 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import { BannerRarity } from "@prisma/client";
 import React, { useEffect, useState } from "react";
+import BannerImage from "@/components/banner-image";
 
 const UserBanners = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -61,7 +61,7 @@ const UserBanners = () => {
         {loading || !userActiveBanner ? (
           <Skeleton className="h-[95px]" />
         ) : (
-          <UserActiveBanner userBanner={userActiveBanner} />
+          <BannerImage banner={userActiveBanner.banner} />
         )}
       </div>
       <TypographySmall>

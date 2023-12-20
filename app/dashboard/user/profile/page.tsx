@@ -10,8 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TypographyMuted from "@/components/typography/muted";
-import UserActiveBanner from "@/components/user-banner/user-active-banner";
 import useUserActiveBanner from "@/hooks/use-user-active-banner";
+import BannerImage from "@/components/banner-image";
 
 const UserProfile = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -40,7 +40,7 @@ const UserProfile = () => {
             </TypographyMuted>
           </div>
         </div>
-        <UserActiveBanner userBanner={userActiveBanner} />
+        <BannerImage banner={userActiveBanner?.banner} />
       </CardContent>
     </Card>
   );

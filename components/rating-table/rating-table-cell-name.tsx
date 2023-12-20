@@ -3,6 +3,7 @@ import TypographyMuted from "../typography/muted";
 import { Row } from "@tanstack/react-table";
 import { GameUser } from "@/services/data-access/user";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import UserHoverCard from "../user-hover-card";
 
 type Props = {
   row: Row<GameUser>;
@@ -10,6 +11,7 @@ type Props = {
 
 const RatingTableCellName = ({ row }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
+
   return (
     <div className="flex items-center gap-2">
       <Image
@@ -20,7 +22,7 @@ const RatingTableCellName = ({ row }: Props) => {
         alt={row.original.title}
       />
       <TypographyMuted>{dictionary.title[row.original.title]}</TypographyMuted>
-      <span>{row.original.name}</span>
+      <UserHoverCard user={row.original} />
     </div>
   );
 };

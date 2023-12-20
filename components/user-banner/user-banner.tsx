@@ -1,7 +1,7 @@
 import { UserBannerIncluded } from "@/services/data-access/banner";
-import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
+import BannerImage from "../banner-image";
 
 type Props = {
   userBanner: UserBannerIncluded;
@@ -15,15 +15,7 @@ const UserBanner = ({ userBanner, handleBannerSelect }: Props) => {
       variant="ghost"
       onClick={handleBannerSelect}
     >
-      <Image
-        width={700}
-        height={200}
-        className="rounded-lg shadow-md"
-        src={`/banner/${userBanner.banner.rarity}/${userBanner.bannerId}${
-          userBanner.banner.rarity === "Animated" ? ".gif" : ".png"
-        }`}
-        alt="Active user banner"
-      />
+      <BannerImage banner={userBanner.banner} />
     </Button>
   );
 };
