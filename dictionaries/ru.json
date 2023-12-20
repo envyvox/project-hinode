@@ -133,7 +133,8 @@
     "ExploreGarden": "Исследование сада",
     "ExploreCastle": "Исследование шахт",
     "Fishing": "Рыбалка",
-    "FieldWatering": "Поливка участка земли"
+    "FieldWatering": "Поливка участка земли",
+    "WorkOnContract": "Работа по договору"
   },
   "datatable": {
     "next": "Вперед",

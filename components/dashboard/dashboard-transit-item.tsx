@@ -27,7 +27,6 @@ const DashboardTransitItem = ({
       <div className="flex flex-1 flex-col justify-between">
         <>
           <TypographyH4>
-            {/* @ts-ignore Implicit any */}
             {dictionary.location[transit.destination]}
           </TypographyH4>
           <TypographyP>

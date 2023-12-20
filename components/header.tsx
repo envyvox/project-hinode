@@ -4,7 +4,7 @@ import Link from "next/link";
 import LocaleSwitcher from "./locale-switcher";
 import ThemeToggle from "./theme-toggle";
 import { buttonVariants } from "./ui/button";
-import UserAvatar from "./user-avatar";
+import SessionAvatar from "./session-avatar";
 
 const Header = () => {
   return (
@@ -31,7 +31,7 @@ const Header = () => {
             </Link>
             <ThemeToggle />
             <LocaleSwitcher />
-            <UserAvatar />
+            <SessionAvatar />
           </nav>
         </div>
       </div>

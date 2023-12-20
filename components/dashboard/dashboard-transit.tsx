@@ -57,7 +57,6 @@ const DashboardTransit = () => {
         title: dictionary.dashboard["dashboard.transit.toast.success.title"],
         description: formatString(
           dictionary.dashboard["dashboard.transit.toast.success.description"],
-          //@ts-ignore Imlicit any
           dictionary.location[transit.destination],
         ),
       });

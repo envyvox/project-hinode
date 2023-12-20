@@ -21,7 +21,7 @@ const UserProfile = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{user.name}</CardTitle>
+        <CardTitle>{user.displayName}</CardTitle>
         <CardDescription></CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">

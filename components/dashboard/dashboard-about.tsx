@@ -25,7 +25,6 @@ const DashboardAbout = () => {
           <Skeleton className="h-[150px] w-full" />
         </CardTitle>
         <CardDescription className="scroll-m-20 pt-6 text-4xl font-extrabold tracking-tight text-foreground lg:text-5xl">
-          {/* @ts-ignore: Implicit any */}
           {dictionary.location[userLocation]}
         </CardDescription>
       </CardHeader>

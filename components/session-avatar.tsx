@@ -14,7 +14,7 @@ import { Skeleton } from "./ui/skeleton";
 import { LogIn, LogOut } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-const UserAvatar = () => {
+const SessionAvatar = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const { data: session } = useSession();
 
@@ -51,4 +51,4 @@ const UserAvatar = () => {
   );
 };
 
-export default UserAvatar;
+export default SessionAvatar;

@@ -133,7 +133,8 @@
     "ExploreGarden": "Exploration of the garden",
     "ExploreCastle": "Exploration of the castle",
     "Fishing": "Fishing",
-    "FieldWatering": "Watering the plot of land"
+    "FieldWatering": "Watering the plot of land",
+    "WorkOnContract": "Work on a contract"
   },
   "datatable": {
     "next": "Next",

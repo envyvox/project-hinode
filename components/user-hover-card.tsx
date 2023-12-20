@@ -34,6 +34,7 @@ const UserHoverCard = ({ user }: Props) => {
       </HoverCardTrigger>
       <HoverCardContent className="flex w-96 flex-col gap-5">
         <TypographyLarge>{user.displayName}</TypographyLarge>
+        <TypographyMuted>{dictionary.location[user.location]}</TypographyMuted>
         <TypographyMuted>
           {user.about ?? dictionary.dashboard["user.profile.about-placeholder"]}
         </TypographyMuted>

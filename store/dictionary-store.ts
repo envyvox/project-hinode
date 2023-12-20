@@ -143,6 +143,7 @@ const emptyDictinaory: Dictionary = {
     ExploreCastle: "",
     Fishing: "",
     FieldWatering: "",
+    WorkOnContract: ""
   },
   datatable: {
     next: "",
