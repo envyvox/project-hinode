@@ -29,11 +29,11 @@ const UserHoverCard = ({ user }: Props) => {
     <HoverCard>
       <HoverCardTrigger asChild>
         <Button variant="link" className="p-0">
-          @{user.name}
+          @{user.displayName}
         </Button>
       </HoverCardTrigger>
       <HoverCardContent className="flex w-96 flex-col gap-5">
-        <TypographyLarge>{user.name}</TypographyLarge>
+        <TypographyLarge>{user.displayName}</TypographyLarge>
         <TypographyMuted>
           {user.about ?? dictionary.dashboard["user.profile.about-placeholder"]}
         </TypographyMuted>

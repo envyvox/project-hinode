@@ -6,10 +6,8 @@ import getXpRequiredToLevel from "@/util/get-xp-required-to-lvl";
 
 export type GameUser = {
   id: string;
-  name: string | null;
   displayName: string | null;
   about: string | null;
-  image: string | null;
   level: number;
   xp: number;
   location: Location;
@@ -21,10 +19,8 @@ export type GameUser = {
  */
 const selectFields: Record<keyof GameUser, true> = {
   id: true,
-  name: true,
   displayName: true,
   about: true,
-  image: true,
   level: true,
   xp: true,
   location: true,
@@ -151,4 +147,30 @@ const updateUserTitle = async (
   });
 };
 
-export { getUser, getUsers, addXpToUser, updateUserLocation, updateUserTitle };
+/**
+ * Updates the display name of a user.
+ *
+ * @param {string} userId - The ID of the user to update.
+ * @param {string} displayName - The new display name.
+ * @returns {Promise<GameUser>} - A promise that resolves to the updated user object.
+ */
+const updateUserDisplayName = async (userId: string, displayName: string) => {
+  return await prisma.user.update({
+    select: selectFields,
+    where: {
+      id: userId,
+    },
+    data: {
+      displayName: displayName,
+    },
+  });
+};
+
+export {
+  getUser,
+  getUsers,
+  addXpToUser,
+  updateUserLocation,
+  updateUserTitle,
+  updateUserDisplayName,
+};

@@ -1,6 +1,7 @@
 import {
   GameUser,
   getUser,
+  updateUserDisplayName,
   updateUserLocation,
   updateUserTitle,
 } from "@/services/data-access/user";
@@ -10,6 +11,7 @@ import { create } from "zustand";
 type UserState = {
   user: GameUser;
   getUser: (email: string) => void;
+  setUserDisplayName: (displayName: string) => void;
   setUserLocation: (location: Location) => void;
   setUserTitle: (title: Title) => void;
 };
@@ -28,6 +30,10 @@ export const useUserStore = create<UserState>((set, get) => ({
   },
   getUser: async (email: string) => {
     const user = await getUser(email);
+    set({ user });
+  },
+  setUserDisplayName: async (displayName: string) => {
+    const user = await updateUserDisplayName(get().user.id, displayName);
     set({ user });
   },
   setUserLocation: async (location: Location) => {

@@ -24,7 +24,7 @@ export default function SignInPage() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-5 p-24">
+    <main className="flex flex-col items-center gap-5 p-24">
       {/* TODO: add localized errors */}
       {error}
       {providers &&

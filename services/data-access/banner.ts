@@ -100,4 +100,30 @@ const getUserActiveBanner = async (
   });
 };
 
-export { getBanners, getUserBanners, toggleUserBanner, getUserActiveBanner };
+/**
+ * Add a banner to a user.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {string} bannerId - The ID of the banner.
+ * @return {Promise<UserBanner>} A promise that resolves to the created UserBanner object.
+ */
+const addBannerToUser = async (
+  userId: string,
+  bannerId: string,
+): Promise<UserBanner> => {
+  return await prisma.userBanner.create({
+    data: {
+      userId: userId,
+      bannerId: bannerId,
+      isActive: false,
+    },
+  });
+};
+
+export {
+  getBanners,
+  getUserBanners,
+  toggleUserBanner,
+  getUserActiveBanner,
+  addBannerToUser,
+};
