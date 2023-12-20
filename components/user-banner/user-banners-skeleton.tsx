@@ -1,16 +1,15 @@
-import React from 'react'
-import { Skeleton } from './ui/skeleton';
+import React from "react";
+import { Skeleton } from "../ui/skeleton";
 
-const UserTitlesSkeleton = () => {
+const UserBannersSkeleton = () => {
   return (
     <>
       <Skeleton className="h-[95px]" />
       <Skeleton className="h-[95px]" />
       <Skeleton className="h-[95px]" />
       <Skeleton className="h-[95px]" />
-      <Skeleton className="h-[95px]" />
     </>
   );
-}
+};
 
-export default UserTitlesSkeleton
+export default UserBannersSkeleton;

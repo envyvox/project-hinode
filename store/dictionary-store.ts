@@ -127,6 +127,10 @@ const emptyDictinaory: Dictionary = {
     "dashboard.actions.seaport.shop-fisher.sheet.popover.slider-label": "",
     "dashboard.actions.seaport.shop-fisher.sheet.popover.input-label": "",
     "dashboard.actions.seaport.shop-fisher.sheet.popover.button-label": "",
+    "user.titles.empty": "",
+    "user.banners.active-banner": "",
+    "user.banners.all-banners": "",
+    "user.banners.empty": "",
   },
   location: {
     InTransit: "",
@@ -329,6 +333,13 @@ const emptyDictinaory: Dictionary = {
     Any: "",
     Day: "",
     Night: "",
+  },
+  bannerRarity: {
+    Common: "",
+    Rare: "",
+    Animated: "",
+    Event: "",
+    Custom: "",
   },
 };
 

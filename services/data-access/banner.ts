@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma";
 import { Banner, BannerRarity, UserBanner } from "@prisma/client";
 
-type UserBannerIncluded = {
+export type UserBannerIncluded = {
   banner: Banner;
 } & UserBanner;
 
@@ -29,6 +29,32 @@ const getBanners = async (rarities: BannerRarity[]): Promise<Banner[]> => {
 };
 
 /**
+ * Updates the isActive property of a user banner in the database.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {string} bannerId - The ID of the banner.
+ * @param {boolean} isActive - The new value for the isActive property.
+ * @return {Promise<UserBanner>} A Promise that resolves to the updated UserBanner object.
+ */
+const toggleUserBanner = async (
+  userId: string,
+  bannerId: string,
+  isActive: boolean,
+) => {
+  return await prisma.userBanner.update({
+    where: {
+      userId_bannerId: {
+        userId: userId,
+        bannerId: bannerId,
+      },
+    },
+    data: {
+      isActive: isActive,
+    },
+  });
+};
+
+/**
  * Retrieves the user banners for a given user ID.
  *
  * @param {string} userId - The ID of the user.
@@ -47,11 +73,31 @@ const getUserBanners = async (
     orderBy: [
       {
         banner: {
-          rarity: "asc",
+          rarity: "desc",
         },
       },
     ],
   });
 };
 
-export { getBanners, getUserBanners };
+/**
+ * Retrieves the active user banner for the specified user ID.
+ *
+ * @param {string} userId - The ID of the user.
+ * @return {Promise<UserBannerIncluded>} A promise that resolves to the active user banner.
+ */
+const getUserActiveBanner = async (
+  userId: string,
+): Promise<UserBannerIncluded> => {
+  return await prisma.userBanner.findFirstOrThrow({
+    where: {
+      userId: userId,
+      isActive: true,
+    },
+    include: {
+      banner: true,
+    },
+  });
+};
+
+export { getBanners, getUserBanners, toggleUserBanner, getUserActiveBanner };

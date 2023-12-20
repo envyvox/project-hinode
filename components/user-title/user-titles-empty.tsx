@@ -1,5 +1,5 @@
 import React from "react";
-import TypographyMuted from "./typography/muted";
+import TypographyMuted from "../typography/muted";
 
 type Props = {
   label: string;

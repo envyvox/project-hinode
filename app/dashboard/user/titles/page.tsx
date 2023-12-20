@@ -1,11 +1,11 @@
 "use client";
 
-import ActiveUserTitle from "@/components/active-user-title";
+import UserActiveTitle from "@/components/user-title/user-active-title";
 import TypographySmall from "@/components/typography/small";
 import { Skeleton } from "@/components/ui/skeleton";
-import UserTitleComponent from "@/components/user-title";
-import UserTitlesEmpty from "@/components/user-titles-empty";
-import UserTitlesSkeleton from "@/components/user-titles-skeleton";
+import UserTitleComponent from "@/components/user-title/user-title";
+import UserTitlesEmpty from "@/components/user-title/user-titles-empty";
+import UserTitlesSkeleton from "@/components/user-title/user-titles-skeleton";
 import { getUserTitles } from "@/services/data-access/title";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
@@ -36,7 +36,7 @@ const UserTitles = () => {
         </TypographySmall>
         <div className="grid-xl-3">
           {userActiveTitle ? (
-            <ActiveUserTitle
+            <UserActiveTitle
               dictionary={dictionary}
               userTitle={userActiveTitle}
             />
