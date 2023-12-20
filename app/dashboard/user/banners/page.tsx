@@ -49,6 +49,7 @@ const UserBanners = () => {
       );
       return updatedUserBanners;
     });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
