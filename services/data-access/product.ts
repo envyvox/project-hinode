@@ -16,6 +16,7 @@ export type UserProductIncluded = {
 const getUserProducts = async (
   userId: string,
 ): Promise<UserProductIncluded[]> => {
+  console.log("get user products", userId);
   return await prisma.userProducts.findMany({
     where: {
       userId: userId,

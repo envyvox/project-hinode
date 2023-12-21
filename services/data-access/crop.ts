@@ -13,6 +13,7 @@ export type UserCropIncluded = {
  * @returns User crops model array
  */
 const getUserCrops = async (userId: string): Promise<UserCropIncluded[]> => {
+  console.log("get user crops", userId);
   return await prisma.userCrops.findMany({
     where: {
       userId: userId,
