@@ -2,9 +2,6 @@
 
 import AuthProvider from "@/services/providers/auth-provider";
 import DictionaryProvider from "@/services/providers/dictionary-provider";
-import ExploreProvider from "@/services/providers/explore-provider";
-import FishingProvider from "@/services/providers/fishing-provider";
-import UserItemsProvider from "@/services/providers/user-items-provider";
 import UserProvider from "@/services/providers/user-provider";
 import { TriggerProvider } from "@trigger.dev/react";
 import { ThemeProvider } from "next-themes";
@@ -18,15 +15,11 @@ const Providers = ({ children }: Props) => (
     <UserProvider>
       <ThemeProvider attribute="class" enableSystem={false}>
         <TriggerProvider
-          publicApiKey={process.env.NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY ?? ""}
+          publicApiKey={
+            process.env.NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY as string
+          }
         >
-          <UserItemsProvider>
-            <FishingProvider>
-              <ExploreProvider>
-                <DictionaryProvider>{children}</DictionaryProvider>
-              </ExploreProvider>
-            </FishingProvider>
-          </UserItemsProvider>
+          <DictionaryProvider>{children}</DictionaryProvider>
         </TriggerProvider>
       </ThemeProvider>
     </UserProvider>
