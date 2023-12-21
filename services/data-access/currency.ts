@@ -9,7 +9,6 @@ import { Currency, UserCurrency } from "@prisma/client";
  * @returns User currency model array
  */
 const getUserCurrencies = async (userId: string): Promise<UserCurrency[]> => {
-  console.log("get user currencies", userId);
   return await prisma.userCurrency.findMany({
     where: {
       userId: userId,

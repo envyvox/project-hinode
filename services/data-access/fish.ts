@@ -21,7 +21,6 @@ export type UserFishIncluded = {
  * @returns User fish model array
  */
 const getUserFish = async (userId: string): Promise<UserFishIncluded[]> => {
-  console.log("get user fish", userId);
   return await prisma.userFish.findMany({
     where: {
       userId: userId,
