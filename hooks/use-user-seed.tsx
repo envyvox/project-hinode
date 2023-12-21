@@ -8,7 +8,6 @@ const useUserSeed = () => {
 
   useEffect(() => {
     if (userId !== "") {
-      console.log("useUserSeed", userId);
       getUserSeeds(userId);
     }
   }, [userId, getUserSeeds]);

@@ -8,7 +8,6 @@ const useUserProduct = () => {
 
   useEffect(() => {
     if (userId !== "") {
-      console.log("useUserProduct", userId);
       getUserProducts(userId);
     }
   }, [userId, getUserProducts]);

@@ -7,7 +7,6 @@ const useUserFish = () => {
   const getUserFish = useUserFishStore((state) => state.getUserFish);
 
   useEffect(() => {
-    console.log("useUserFish", userId);
     if (userId !== "") {
       getUserFish(userId);
     }

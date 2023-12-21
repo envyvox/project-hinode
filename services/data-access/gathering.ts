@@ -24,7 +24,6 @@ export type GatheringPropetriesIncluded = {
 const getUserGatherings = async (
   userId: string,
 ): Promise<UserGatheringIncluded[]> => {
-  console.log("get user gatherings", userId);
   return await prisma.userGathering.findMany({
     where: {
       userId: userId,

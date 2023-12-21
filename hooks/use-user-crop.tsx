@@ -7,7 +7,6 @@ const useUserCrop = () => {
   const getUserCrops = useUserCropStore((state) => state.getUserCrops);
 
   useEffect(() => {
-    console.log("useUserCrop", userId);
     if (userId !== "") {
       getUserCrops(userId);
     }
