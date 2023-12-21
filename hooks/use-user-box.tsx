@@ -7,6 +7,7 @@ const useUserBox = () => {
   const getUserBoxes = useUserBoxStore((state) => state.getUserBoxes);
 
   useEffect(() => {
+    console.log("useUserBox", userId);
     if (userId !== "") {
       getUserBoxes(userId);
     }

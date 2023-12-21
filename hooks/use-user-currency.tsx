@@ -9,6 +9,7 @@ const useUserCurrency = () => {
   );
 
   useEffect(() => {
+    console.log("useUserCurrency", userId);
     if (userId !== "") {
       getUserCurrencies(userId);
     }

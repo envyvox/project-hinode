@@ -9,6 +9,7 @@ const useUserGathering = () => {
   );
 
   useEffect(() => {
+    console.log("useUserGathering", userId);
     if (userId !== "") {
       getUserGatherings(userId);
     }
