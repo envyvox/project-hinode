@@ -14,7 +14,11 @@ const DictionaryProvider = ({ children }: Props) => {
   const setDictionary = useDictionaryStore((state) => state.setDictionary);
 
   useEffect(() => {
-    getDictionary(lang).then(setDictionary);
+    const loadData = async () => {
+      const dictionary = await getDictionary(lang);
+      setDictionary(dictionary);
+    };
+    loadData();
   }, [lang, setDictionary]);
 
   return children;

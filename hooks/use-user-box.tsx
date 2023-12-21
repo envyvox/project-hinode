@@ -4,13 +4,17 @@ import { useEffect } from "react";
 
 const useUserBox = () => {
   const userId = useUserStore((state) => state.user).id;
+  const userBoxes = useUserBoxStore((state) => state.userBoxes);
   const getUserBoxes = useUserBoxStore((state) => state.getUserBoxes);
 
   useEffect(() => {
-    if (userId !== "") {
-      getUserBoxes(userId);
-    }
-  }, [userId, getUserBoxes]);
+    const loadData = async () => {
+      if (userId !== "" && userBoxes.length === 0) {
+        await getUserBoxes(userId);
+      }
+    };
+    loadData();
+  }, [userId, userBoxes, getUserBoxes]);
 };
 
 export default useUserBox;

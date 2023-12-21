@@ -20,12 +20,17 @@ const UserTitles = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    getUserTitles(user.id).then((userTitles) => {
+    const loadData = async () => {
+      setLoading(true);
+
+      const userTitles = await getUserTitles(user.id);
+
       setUserTitles(userTitles.filter((ut) => ut.title !== user.title));
       setUserActiveTitle(userTitles.find((ut) => ut.title === user.title));
+
       setLoading(false);
-    });
+    };
+    loadData();
   }, [user]);
 
   return (

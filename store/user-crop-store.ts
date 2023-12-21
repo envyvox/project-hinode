@@ -4,7 +4,7 @@ import { create } from "zustand";
 type UserCropState = {
   loading: boolean;
   userCrops: UserCropIncluded[];
-  getUserCrops: (userId: string) => void;
+  getUserCrops: (userId: string) => Promise<void>;
 };
 
 export const useUserCropStore = create<UserCropState>((set) => ({

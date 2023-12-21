@@ -5,7 +5,7 @@ import { create } from "zustand";
 type UserBoxState = {
   loading: boolean;
   userBoxes: UserBoxes[];
-  getUserBoxes: (userId: string) => void;
+  getUserBoxes: (userId: string) => Promise<void>;
 };
 
 export const useUserBoxStore = create<UserBoxState>((set) => ({

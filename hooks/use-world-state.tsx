@@ -13,7 +13,11 @@ const useWorldState = () => {
   });
 
   useEffect(() => {
-    getWorldState().then(setWorldState);
+    const loadData = async () => {
+      const worldState = await getWorldState();
+      setWorldState(worldState);
+    };
+    loadData();
   }, []);
 
   return worldState;

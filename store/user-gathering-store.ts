@@ -7,7 +7,7 @@ import { create } from "zustand";
 type UserGatheringState = {
   loading: boolean;
   userGatherings: UserGatheringIncluded[];
-  getUserGatherings: (userId: string) => void;
+  getUserGatherings: (userId: string) => Promise<void>;
 };
 
 export const useUserGatheringStore = create<UserGatheringState>((set) => ({

@@ -10,9 +10,13 @@ const useUserActiveBanner = () => {
   const [activeBanner, setActiveBanner] = useState<UserBannerIncluded>();
 
   useEffect(() => {
-    if (userId !== "") {
-      getUserActiveBanner(userId).then(setActiveBanner);
-    }
+    const loadData = async () => {
+      if (userId !== "") {
+        const userActiveBanner = await getUserActiveBanner(userId);
+        setActiveBanner(userActiveBanner);
+      }
+    };
+    loadData();
   }, [userId]);
 
   return activeBanner;

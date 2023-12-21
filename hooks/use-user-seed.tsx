@@ -4,13 +4,17 @@ import { useEffect } from "react";
 
 const useUserSeed = () => {
   const userId = useUserStore((state) => state.user).id;
+  const userSeeds = useUserSeedStore((state) => state.userSeeds);
   const getUserSeeds = useUserSeedStore((state) => state.getUserSeeds);
 
   useEffect(() => {
-    if (userId !== "") {
-      getUserSeeds(userId);
-    }
-  }, [userId, getUserSeeds]);
+    const loadData = async () => {
+      if (userId !== "" && userSeeds.length === 0) {
+        await getUserSeeds(userId);
+      }
+    };
+    loadData();
+  }, [userId, userSeeds, getUserSeeds]);
 };
 
 export default useUserSeed;

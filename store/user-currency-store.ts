@@ -9,9 +9,9 @@ import { create } from "zustand";
 type UserCurrencyState = {
   userCurrencies: UserCurrency[];
   loading: boolean;
-  addCurrencyToUser: (currency: Currency, amount: number) => void;
-  removeCurrencyFromUser: (currency: Currency, amount: number) => void;
-  getUserCurrencies: (userId: string) => void;
+  addCurrencyToUser: (currency: Currency, amount: number) => Promise<void>;
+  removeCurrencyFromUser: (currency: Currency, amount: number) => Promise<void>;
+  getUserCurrencies: (userId: string) => Promise<void>;
 };
 
 export const useUserCurrencyStore = create<UserCurrencyState>((set, get) => ({

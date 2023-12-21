@@ -13,6 +13,7 @@ import IenIcon from "@/public/currency/Ien.png";
 import ShopProductItem from "./shop-product-item";
 import ShopProductSkeleton from "./shop-product-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
+import useUserCurrency from "@/hooks/use-user-currency";
 
 const ActionVillageShopProduct = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -27,8 +28,14 @@ const ActionVillageShopProduct = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    const loadData = async () => {
+      const products = await getProducts();
+      setProducts(products);
+    };
+    loadData();
   }, []);
+
+  useUserCurrency();
 
   const handleBuyProduct = (product: Product) => {
     const userCurrency = userCurrencies.find(

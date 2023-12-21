@@ -18,6 +18,7 @@ export type SeedCropIncluded = {
  * @returns {Promise<UserSeedIncluded[]>} - A promise that resolves to an array of UserSeedIncluded objects.
  */
 const getUserSeeds = async (userId: string): Promise<UserSeedIncluded[]> => {
+  console.log("get user seeds", userId);
   return await prisma.userSeeds.findMany({
     where: {
       userId: userId,

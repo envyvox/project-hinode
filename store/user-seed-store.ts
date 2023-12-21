@@ -9,7 +9,7 @@ import { useUserStore } from "./user-store";
 type UserSeedState = {
   loading: boolean;
   userSeeds: UserSeedIncluded[];
-  getUserSeeds: (userId: string) => void;
+  getUserSeeds: (userId: string) => Promise<void>;
   addSeedToUser: (seedId: string, amount: number) => void;
 };
 

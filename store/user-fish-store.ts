@@ -10,9 +10,9 @@ import { useUserStore } from "./user-store";
 type UserFishState = {
   loading: boolean;
   userFish: UserFishIncluded[];
-  addFishToUser: (fishId: string, amount: number) => void;
-  removeFishFromUser: (fishId: string, amount: number) => void;
-  getUserFish: (userId: string) => void;
+  addFishToUser: (fishId: string, amount: number) => Promise<void>;
+  removeFishFromUser: (fishId: string, amount: number) => Promise<void>;
+  getUserFish: (userId: string) => Promise<void>;
 };
 
 export const useUserFishStore = create<UserFishState>((set, get) => ({

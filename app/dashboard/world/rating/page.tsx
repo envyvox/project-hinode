@@ -8,7 +8,11 @@ const WorldRating = () => {
   const [users, setUsers] = useState<GameUser[]>([]);
 
   useEffect(() => {
-    getUsers().then(setUsers);
+    const loadData = async () => {
+      const users = await getUsers();
+      setUsers(users);
+    };
+    loadData();
   }, []);
 
   return <RatingTable users={users} />;

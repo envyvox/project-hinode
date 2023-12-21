@@ -2,7 +2,6 @@
 
 import ExploreProvider from "@/services/providers/explore-provider";
 import FishingProvider from "@/services/providers/fishing-provider";
-import UserItemsProvider from "@/services/providers/user-items-provider";
 import React from "react";
 
 type Props = {
@@ -11,11 +10,9 @@ type Props = {
 
 const GameProviders = ({ children }: Props) => {
   return (
-    <UserItemsProvider>
-      <FishingProvider>
-        <ExploreProvider>{children}</ExploreProvider>
-      </FishingProvider>
-    </UserItemsProvider>
+    <FishingProvider>
+      <ExploreProvider>{children}</ExploreProvider>
+    </FishingProvider>
   );
 };
 

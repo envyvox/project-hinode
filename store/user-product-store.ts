@@ -9,7 +9,7 @@ import { useUserStore } from "./user-store";
 type UserProductState = {
   loading: boolean;
   userProducts: UserProductIncluded[];
-  getUserProducts: (userId: string) => void;
+  getUserProducts: (userId: string) => Promise<void>;
   addProductToUser: (productId: string, amount: number) => void;
 };
 

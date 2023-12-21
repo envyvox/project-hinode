@@ -4,15 +4,19 @@ import { useEffect } from "react";
 
 const useUserGathering = () => {
   const userId = useUserStore((state) => state.user).id;
+  const userGatherins = useUserGatheringStore((state) => state.userGatherings);
   const getUserGatherings = useUserGatheringStore(
     (state) => state.getUserGatherings,
   );
 
   useEffect(() => {
-    if (userId !== "") {
-      getUserGatherings(userId);
-    }
-  }, [userId, getUserGatherings]);
+    const loadData = async () => {
+      if (userId !== "" && userGatherins.length === 0) {
+        await getUserGatherings(userId);
+      }
+    };
+    loadData();
+  }, [userId, userGatherins, getUserGatherings]);
 };
 
 export default useUserGathering;

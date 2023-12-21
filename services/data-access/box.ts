@@ -9,6 +9,7 @@ import { UserBoxes } from "@prisma/client";
  * @returns User box model array
  */
 const getUserBoxes = async (userId: string): Promise<UserBoxes[]> => {
+  console.log("get user boxes", userId);
   return await prisma.userBoxes.findMany({
     where: {
       userId: userId,

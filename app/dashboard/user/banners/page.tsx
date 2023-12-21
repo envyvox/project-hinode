@@ -25,12 +25,17 @@ const UserBanners = () => {
   const bannerTabs = Object.keys(BannerRarity);
 
   useEffect(() => {
-    setLoading(true);
-    getUserBanners(userId).then((userBanners) => {
-      setUserBanners(userBanners.filter((ub) => !ub.isActive));
+    const loadData = async () => {
+      setLoading(true);
+
+      const userBanners = await getUserBanners(userId);
+
+      setUserBanners(userBanners.filter((ub) => ub.isActive));
       setUserActiveBanner(userBanners.find((ub) => ub.isActive));
+
       setLoading(false);
-    });
+    };
+    loadData();
   }, [userId]);
 
   const handleBannerSelect = async (userBanner: UserBannerIncluded) => {

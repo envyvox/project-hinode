@@ -8,6 +8,7 @@ import ShopFisherSkeleton from "./shop-fisher-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
 import TypographyMuted from "@/components/typography/muted";
 import useWorldState from "@/hooks/use-world-state";
+import useUserFish from "@/hooks/use-user-fish";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -18,6 +19,8 @@ const ActionSeaportShopFisher = () => {
       uf.fish.catchSeason.includes(worldState.season) ||
       uf.fish.catchSeason.includes(Season.Any),
   );
+
+  useUserFish();
 
   return (
     <DashboardActionBase

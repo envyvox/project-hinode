@@ -14,6 +14,7 @@ import {
 import formatString from "@/util/format-string";
 import DashboardTransitSkeleton from "./dashboard-transit-skeleton";
 import DashboardTransitItem from "./dashboard-transit-item";
+import useUserCurrency from "@/hooks/use-user-currency";
 
 const DashboardTransit = () => {
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
@@ -27,8 +28,14 @@ const DashboardTransit = () => {
   const [transits, setTransits] = useState<Transit[]>([]);
   const { toast } = useToast();
 
+  useUserCurrency();
+
   useEffect(() => {
-    getTransitsFromLocation(userLocation).then(setTransits);
+    const loadData = async () => {
+      const transits = await getTransitsFromLocation(userLocation);
+      setTransits(transits);
+    };
+    loadData();
   }, [userLocation]);
 
   const handleTransit = (transit: Transit) => {

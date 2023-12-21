@@ -28,7 +28,11 @@ export default function SignInPage() {
   const error = params.get("error");
 
   useEffect(() => {
-    getProviders().then(setProviders);
+    const loadData = async () => {
+      const providers = await getProviders();
+      setProviders(providers);
+    };
+    loadData();
   }, []);
 
   return (

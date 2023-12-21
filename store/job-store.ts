@@ -26,11 +26,11 @@ type JobState = {
   };
   resetFishingJobData: () => void;
   resetExploreJobData: () => void;
-  startFishingJob: () => void;
+  startFishingJob: () => Promise<void>;
   startExploreJob: (
     exploreLocation: Location,
     returnLocation: Location,
-  ) => void;
+  ) => Promise<void>;
 };
 
 const emptyFishingData = {

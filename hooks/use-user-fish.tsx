@@ -4,13 +4,17 @@ import { useEffect } from "react";
 
 const useUserFish = () => {
   const userId = useUserStore((state) => state.user).id;
+  const userFish = useUserFishStore((state) => state.userFish);
   const getUserFish = useUserFishStore((state) => state.getUserFish);
 
   useEffect(() => {
-    if (userId !== "") {
-      getUserFish(userId);
-    }
-  }, [userId, getUserFish]);
+    const loadData = async () => {
+      if (userId !== "" && userFish.length === 0) {
+        await getUserFish(userId);
+      }
+    };
+    loadData();
+  }, [userId, userFish, getUserFish]);
 };
 
 export default useUserFish;
