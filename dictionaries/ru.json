@@ -38,6 +38,14 @@
     "dashboard.actions.capital.casino.label": "Казино «Коун»",
     "dashboard.actions.capital.casino.description": "Описание",
     "dashboard.actions.capital.casino.button-label": "Зайти сыграть",
+    "dashboard.actions.capital.casino.lottery.label": "Лотерея",
+    "dashboard.actions.capital.casino.lottery.description": "Приобретай {0} лотерейный билет за {1} {2} иен и ожидай когда наберется {3} участников. Затем, случайным образом будет выбран один победитель который получит {4} {5} иен.",
+    "dashboard.actions.capital.casino.lottery.button-label": "Купить {0} лотерейный билет",
+    "dashboard.actions.capital.casino.lottery.gift.label": "Служба доставки",
+    "dashboard.actions.capital.casino.lottery.gift.description": "Ты можешь отправить {0} лотерейный билет другому путешественнику в подарок. Наш курьер доставит его в любую точку мира! При оплате доставки, необходимо будет доплатить {1} {2} иен за услуги курьерской службы.",
+    "dashboard.actions.capital.casino.lottery.gift.button-label": "Отправить подарок",
+    "dashboard.actions.capital.casino.lottery.participants.label": "Участники лотереи",
+    "dashboard.actions.capital.casino.lottery.participants.empty": "На данный момент нет путешественников с {0} лотерейным билетом, самое время стать первым!",
     "dashboard.actions.garden.shop-recipe.label": "Магазин рецептов",
     "dashboard.actions.garden.shop-recipe.description": "Описание",
     "dashboard.actions.garden.shop-recipe.button-label": "Зайти в магазин",
@@ -121,7 +129,10 @@
     "world.info.weatherToday.title": "Погода сегодня: {0}",
     "world.info.weatherToday.description": "Погода влияет на виды рыб, которые ты можешь поймать во время рыбалки. Некоторую рыбу можно поймать лишь в дождь или наоборот только при солнечной погоде.",
     "world.info.weatherTomorrow.title": "Погода завтра: {0}",
-    "world.info.weatherTomorrow.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est."
+    "world.info.weatherTomorrow.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est.",
+    "users-select.not-selected": "Выбери путешественника",
+    "users-select.search.label": "Введи имя для поиска",
+    "users-select.search.empty": "Путешественников с таким имененм не найдено."
   },
   "location": {
     "InTransit": "В пути",

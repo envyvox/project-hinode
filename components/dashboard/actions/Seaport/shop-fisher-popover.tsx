@@ -61,7 +61,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="w-fit self-end" variant="outline">
+        <Button className="w-fit self-end" variant="secondary">
           {
             dictionary.dashboard[
               "dashboard.actions.seaport.shop-fisher.sheet.button-label"
@@ -116,7 +116,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         </div>
         <Button
           className="w-fit self-end"
-          variant="outline"
+          variant="secondary"
           onClick={() => sellFish(userFish.fish, sellAmount)}
         >
           {formatString(

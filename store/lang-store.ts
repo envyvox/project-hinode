@@ -10,7 +10,7 @@ type LangState = {
 export const useLangStore = create<LangState>()(
   persist(
     (set) => ({
-      lang: "en",
+      lang: "ru",
       setLang: (lang: Locale) => {
         set({ lang });
       },

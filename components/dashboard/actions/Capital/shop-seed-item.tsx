@@ -91,7 +91,7 @@ const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
       </div>
       <Button
         className="w-fit self-end"
-        variant="outline"
+        variant="secondary"
         onClick={() => handleBuySeed(seed)}
       >
         {

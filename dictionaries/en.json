@@ -38,6 +38,14 @@
     "dashboard.actions.capital.casino.label": "«Cone» casino",
     "dashboard.actions.capital.casino.description": "Description",
     "dashboard.actions.capital.casino.button-label": "Come in and play",
+    "dashboard.actions.capital.casino.lottery.label": "Lottery",
+    "dashboard.actions.capital.casino.lottery.description": "Buy {0} a lottery ticket for {1} {2} yen and wait for {3} participants. Then, one winner will be randomly selected to receive {4} {5} yen.",
+    "dashboard.actions.capital.casino.lottery.button-label": "Buy {0} a lottery ticket",
+    "dashboard.actions.capital.casino.lottery.gift.label": "Delivery service",
+    "dashboard.actions.capital.casino.lottery.gift.description": "You can send {0} lottery ticket to another traveler as a gift. Our courier will deliver it anywhere in the world! When you pay for the delivery, you will need to pay an additional {1} {2} yen for the courier service.",
+    "dashboard.actions.capital.casino.lottery.gift.button-label": "Send a gift",
+    "dashboard.actions.capital.casino.lottery.participants.label": "Lottery participants",
+    "dashboard.actions.capital.casino.lottery.participants.empty": "There are currently no travelers with {0} lottery ticket, it's time to be the first!",
     "dashboard.actions.garden.shop-recipe.label": "Recipe shop",
     "dashboard.actions.garden.shop-recipe.description": "Description",
     "dashboard.actions.garden.shop-recipe.button-label": "Go to the store",
@@ -121,7 +129,10 @@
     "world.info.weatherToday.title": "Weather today: {0}",
     "world.info.weatherToday.description": "The weather affects the types of fish you can catch while fishing. Some fish can only be caught in rain or only in sunny weather.",
     "world.info.weatherTomorrow.title": "Weather tomorrow: {0}",
-    "world.info.weatherTomorrow.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est."
+    "world.info.weatherTomorrow.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc turpis, non consequat odio consequat a. Proin felis sapien, sagittis ac neque et, consequat lobortis est.",
+    "users-select.not-selected": "Choose a traveler",
+    "users-select.search.label": "Enter a name for the search",
+    "users-select.search.empty": "No travelers with that name were found."
   },
   "location": {
     "InTransit": "In transit",

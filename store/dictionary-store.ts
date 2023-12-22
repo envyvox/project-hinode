@@ -131,6 +131,17 @@ const emptyDictinaory: Dictionary = {
     "user.banners.active-banner": "",
     "user.banners.all-banners": "",
     "user.banners.empty": "",
+    "users-select.not-selected": "",
+    "users-select.search.label": "",
+    "users-select.search.empty": "",
+    "dashboard.actions.capital.casino.lottery.label": "",
+    "dashboard.actions.capital.casino.lottery.description": "",
+    "dashboard.actions.capital.casino.lottery.button-label": "",
+    "dashboard.actions.capital.casino.lottery.gift.label": "",
+    "dashboard.actions.capital.casino.lottery.gift.description": "",
+    "dashboard.actions.capital.casino.lottery.gift.button-label": "",
+    "dashboard.actions.capital.casino.lottery.participants.label": "",
+    "dashboard.actions.capital.casino.lottery.participants.empty": ""
   },
   location: {
     InTransit: "",
