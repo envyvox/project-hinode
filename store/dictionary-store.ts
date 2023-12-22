@@ -141,7 +141,11 @@ const emptyDictinaory: Dictionary = {
     "dashboard.actions.capital.casino.lottery.gift.description": "",
     "dashboard.actions.capital.casino.lottery.gift.button-label": "",
     "dashboard.actions.capital.casino.lottery.participants.label": "",
-    "dashboard.actions.capital.casino.lottery.participants.empty": ""
+    "dashboard.actions.capital.casino.lottery.participants.empty": "",
+    "dashboard.actions.capital.casino.bet.label": "",
+    "dashboard.actions.capital.casino.bet.description": "",
+    "dashboard.actions.capital.casino.bet.amount-label": "",
+    "dashboard.actions.capital.casino.bet.button-label": ""
   },
   location: {
     InTransit: "",

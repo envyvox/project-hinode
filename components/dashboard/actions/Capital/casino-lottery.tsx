@@ -49,18 +49,13 @@ const CasinoLottery = () => {
           )}
           <Button
             variant="secondary"
-            className="mt-2 flex text-secondary-foreground"
+            className="mt-5 flex text-secondary-foreground"
           >
-            {formatString(
+            {
               dictionary.dashboard[
                 "dashboard.actions.capital.casino.lottery.button-label"
-              ],
-              <Image
-                className="mx-1 inline h-6 w-6"
-                src={LotteryTicket}
-                alt="LotteryTicket"
-              />,
-            )}
+              ]
+            }
           </Button>
         </CardDescription>
       </CardHeader>

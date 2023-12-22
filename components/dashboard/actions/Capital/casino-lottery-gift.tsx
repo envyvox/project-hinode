@@ -41,15 +41,11 @@ const CasinoLotteryGift = () => {
       </TypographyMuted>
       <div className="mt-5 flex flex-col gap-2">
         <UsersSelect
-          className="w-[250px] justify-between"
+          className="max-w-[250px] justify-between"
           selectedUser={selectedUser}
           setSelectedUser={setSelectedUser}
         />
-        <Button
-          variant="secondary"
-          className="w-[250px]"
-          disabled={!selectedUser}
-        >
+        <Button variant="secondary" className="w-fit" disabled={!selectedUser}>
           {
             dictionary.dashboard[
               "dashboard.actions.capital.casino.lottery.gift.button-label"

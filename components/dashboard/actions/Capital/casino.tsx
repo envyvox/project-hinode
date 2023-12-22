@@ -53,7 +53,7 @@ const ActionCapitalCasino = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Skeleton className="h-[100px]" />
+                  <Skeleton className="h-[130px]" />
                 </CardContent>
               </Card>
             </div>
