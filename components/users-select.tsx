@@ -27,6 +27,8 @@ const UsersSelect = ({ selectedUser, setSelectedUser, ...props }: Props) => {
 
   useEffect(() => {
     const loadData = async () => {
+      // TODO: This component should get only 10 users
+      // and then use search method instead of loading all existing users
       const users = await getUsers();
       setUsers(users);
     };
