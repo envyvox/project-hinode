@@ -12,6 +12,7 @@ export const IconIen = ({ className }: Props) => {
     <Image
       className={cn("mx-1 inline h-5 w-5", className)}
       src={IenIcon}
+      placeholder="blur"
       alt="Ien"
     />
   );
@@ -22,6 +23,7 @@ export const IconLotteryTicket = ({ className }: Props) => {
     <Image
       className={cn("mx-1 inline h-5 w-5", className)}
       src={LotteryTicket}
+      placeholder="blur"
       alt="Ien"
     />
   );
