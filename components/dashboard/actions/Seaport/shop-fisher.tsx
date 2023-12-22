@@ -9,16 +9,21 @@ import FullscreenSheet from "@/components/fullscreen-sheet";
 import TypographyMuted from "@/components/typography/muted";
 import useWorldState from "@/hooks/use-world-state";
 import useUserFish from "@/hooks/use-user-fish";
+import { useMemo } from "react";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const loading = useUserFishStore((state) => state.loading);
+  const userFish = useUserFishStore((state) => state.userFish);
   const worldState = useWorldState();
-  const userFish = useUserFishStore((state) => state.userFish).filter(
-    (uf) =>
-      uf.fish.catchSeason.includes(worldState.season) ||
-      uf.fish.catchSeason.includes(Season.Any),
-  );
+
+  const filteredUserFish = useMemo(() => {
+    return userFish.filter(
+      (uf) =>
+        uf.fish.catchSeason.includes(worldState.season) ||
+        uf.fish.catchSeason.includes(Season.Any),
+    );
+  }, [userFish, worldState.season]);
 
   useUserFish();
 
@@ -56,7 +61,7 @@ const ActionSeaportShopFisher = () => {
               {loading ? (
                 <ShopFisherSkeleton />
               ) : userFish.length ? (
-                userFish.map((uf) => (
+                filteredUserFish.map((uf) => (
                   <ShopFisherUserFish key={uf.fishId} userFish={uf} />
                 ))
               ) : (
