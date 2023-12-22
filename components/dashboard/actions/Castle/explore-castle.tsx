@@ -8,13 +8,13 @@ import {
   useDashboardTabStore,
 } from "@/store/dashboard-tab-store";
 import { Location } from "@prisma/client";
-import { useJobStore } from "@/store/job-store";
+import { useExploreJobStore } from "@/store/explore-job-store";
 
 const ActionCastleExploreCastle = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
-  const startExploreJob = useJobStore((state) => state.startExploreJob);
+  const startExploreJob = useExploreJobStore((state) => state.startExploreJob);
   const { toast } = useToast();
 
   const handleClick = () => {

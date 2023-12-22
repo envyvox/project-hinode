@@ -6,11 +6,13 @@
     "prettier",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["tailwindcss"],
+  "plugins": ["react", "tailwindcss", "react-hooks"],
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
     "react/jsx-key": "off",
-    "tailwindcss/no-custom-classname": "off"
+    "tailwindcss/no-custom-classname": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
   },
   "settings": {
     "tailwindcss": {

@@ -1,12 +1,13 @@
 "use server";
 
-import { SuccessGathering } from "@/store/job-store";
+import { SuccessGathering } from "@/store/explore-job-store";
 import { client } from "@/trigger";
 import { Location } from "@prisma/client";
 
 export async function sendEventFishing(
   userId: string,
   fishId: string,
+  deliverAt: Date,
 ): Promise<string> {
   const event = await client.sendEvent(
     {
@@ -16,7 +17,9 @@ export async function sendEventFishing(
         fishId: fishId,
       },
     },
-    // TODO: add deliverAfter
+    {
+      deliverAt: deliverAt,
+    },
   );
   return event.id;
 }
@@ -25,6 +28,7 @@ export async function sendEventExplore(
   userId: string,
   gatherings: SuccessGathering[],
   returnLocation: Location,
+  deliverAt: Date,
 ): Promise<string> {
   const event = await client.sendEvent(
     {
@@ -35,7 +39,9 @@ export async function sendEventExplore(
         returnLocation: returnLocation,
       },
     },
-    // TODO: add deliverAfter
+    {
+      deliverAt: deliverAt,
+    },
   );
   return event.id;
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import { useJobStore } from "@/store/job-store";
 import { useUserStore } from "@/store/user-store";
 import { Location } from "@prisma/client";
 import { useEventDetails } from "@trigger.dev/react";
@@ -9,6 +8,7 @@ import formatString from "@/util/format-string";
 import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useToast } from "@/components/ui/use-toast";
+import { useFishingJobStore } from "@/store/fishing-job-store";
 
 type Props = {
   children: React.ReactNode;
@@ -17,12 +17,20 @@ type Props = {
 const FishingProvider = ({ children }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
-  const fishingJobData = useJobStore((state) => state.fishingJobData);
-  const { isSuccess, isError } = useEventDetails(fishingJobData.jobId);
-  const resetFishingJobData = useJobStore((state) => state.resetFishingJobData);
+  const fishingJobData = useFishingJobStore((state) => state.fishingJobData);
+  const { isSuccess, isError, data } = useEventDetails(fishingJobData.jobId);
+  const resetFishingJobData = useFishingJobStore(
+    (state) => state.resetFishingJobData,
+  );
   const { toast } = useToast();
 
   useEffect(() => {
+    const firstRun = data?.runs.at(0);
+
+    if (!firstRun) {
+      return;
+    }
+
     if (isSuccess) {
       resetFishingJobData();
       setUserLocation(Location.Seaport);
@@ -42,6 +50,7 @@ const FishingProvider = ({ children }: Props) => {
           // @ts-ignore Implicit any
           dictionary.item.fish[fishingJobData.fishName],
         ),
+        duration: Infinity,
       });
     }
     if (isError) {
@@ -53,9 +62,11 @@ const FishingProvider = ({ children }: Props) => {
       });
     }
   }, [
-    isSuccess,
+    data,
+    dictionary,
+    fishingJobData.fishName,
     isError,
-    fishingJobData,
+    isSuccess,
     resetFishingJobData,
     setUserLocation,
     toast,

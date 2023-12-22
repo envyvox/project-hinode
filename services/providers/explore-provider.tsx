@@ -1,6 +1,6 @@
 "use client";
 
-import { useJobStore } from "@/store/job-store";
+import { useExploreJobStore } from "@/store/explore-job-store";
 import { useUserStore } from "@/store/user-store";
 import { useEventDetails } from "@trigger.dev/react";
 import React, { useEffect } from "react";
@@ -16,12 +16,20 @@ type Props = {
 const ExploreProvider = ({ children }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
-  const exploreJobData = useJobStore((state) => state.exploreJobData);
-  const resetExploreJobData = useJobStore((state) => state.resetExploreJobData);
-  const { isSuccess, isError } = useEventDetails(exploreJobData.jobId);
+  const exploreJobData = useExploreJobStore((state) => state.exploreJobData);
+  const resetExploreJobData = useExploreJobStore(
+    (state) => state.resetExploreJobData,
+  );
+  const { isSuccess, isError, data } = useEventDetails(exploreJobData.jobId);
   const { toast } = useToast();
 
   useEffect(() => {
+    const firstRun = data?.runs.at(0);
+
+    if (!firstRun) {
+      return;
+    }
+
     if (isSuccess) {
       resetExploreJobData();
       setUserLocation(exploreJobData.returnLocation);
@@ -49,6 +57,7 @@ const ExploreProvider = ({ children }: Props) => {
               ];
             }),
           ),
+          duration: Infinity,
         });
       } else {
         toast({
@@ -69,7 +78,16 @@ const ExploreProvider = ({ children }: Props) => {
         variant: "destructive",
       });
     }
-  }, [isSuccess, isError, exploreJobData, resetExploreJobData, toast]);
+  }, [
+    data,
+    isSuccess,
+    isError,
+    exploreJobData,
+    resetExploreJobData,
+    toast,
+    setUserLocation,
+    dictionary,
+  ]);
 
   return children;
 };

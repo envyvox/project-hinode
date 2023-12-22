@@ -1,7 +1,6 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
 import DashboardActionBase from "../dashboard-action-base";
 import { useUserStore } from "@/store/user-store";
-import { useJobStore } from "@/store/job-store";
 import { useToast } from "@/components/ui/use-toast";
 import { Location } from "@prisma/client";
 import {
@@ -9,12 +8,13 @@ import {
   useDashboardTabStore,
 } from "@/store/dashboard-tab-store";
 import { Button } from "@/components/ui/button";
+import { useFishingJobStore } from "@/store/fishing-job-store";
 
 const ActionSeaportFishing = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
-  const startFishingJob = useJobStore((state) => state.startFishingJob);
+  const startFishingJob = useFishingJobStore((state) => state.startFishingJob);
   const { toast } = useToast();
 
   const handleClick = () => {
