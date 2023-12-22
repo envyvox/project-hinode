@@ -4,19 +4,16 @@ import Image from "next/image";
 import TypographyLarge from "../typography/large";
 import { Button } from "../ui/button";
 import TypographyMuted from "../typography/muted";
-import { Dictionary } from "@/store/dictionary-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
 
 type Props = {
-  dictionary: Dictionary;
   userTitle: UserTitleComponent;
   handleTitleSelect: (userTitle: UserTitleComponent) => void;
 };
 
-const UserTitleComponent = ({
-  dictionary,
-  userTitle,
-  handleTitleSelect,
-}: Props) => {
+const UserTitleComponent = ({ userTitle, handleTitleSelect }: Props) => {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
+
   return (
     <Button
       variant="ghost"

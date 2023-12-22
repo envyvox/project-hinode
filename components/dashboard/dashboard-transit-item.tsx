@@ -5,20 +5,17 @@ import TypographyH4 from "@/components/typography/h4";
 import TypographyP from "@/components/typography/p";
 import { Button } from "@/components/ui/button";
 import formatString from "@/util/format-string";
-import { Dictionary } from "@/store/dictionary-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import { IconIen } from "../icons";
 
 type Props = {
-  dictionary: Dictionary;
   transit: Transit;
   handleTransit: (transit: Transit) => void;
 };
 
-const DashboardTransitItem = ({
-  dictionary,
-  transit,
-  handleTransit,
-}: Props) => {
+const DashboardTransitItem = ({ transit, handleTransit }: Props) => {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
+
   return (
     <div className="flex flex-wrap gap-5 border-t pt-5">
       {/* // TODO: Replace skeleton with Image */}

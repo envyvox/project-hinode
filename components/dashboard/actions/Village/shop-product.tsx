@@ -121,7 +121,6 @@ const ActionVillageShopProduct = () => {
                 products.map((product) => (
                   <ShopProductItem
                     key={product.id}
-                    dictionary={dictionary}
                     product={product}
                     handleBuyProduct={handleBuyProduct}
                   />

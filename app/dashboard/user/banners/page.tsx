@@ -12,8 +12,10 @@ import {
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import { BannerRarity } from "@prisma/client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import BannerImage from "@/components/banner-image";
+
+type UserBannersByRarity = Record<string, UserBannerIncluded[]>;
 
 const UserBanners = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -24,13 +26,27 @@ const UserBanners = () => {
   const [loading, setLoading] = useState(true);
   const bannerTabs = Object.keys(BannerRarity);
 
+  const userBannersByRarity = useMemo(() => {
+    return userBanners.reduce((acc: UserBannersByRarity, banner) => {
+      const rarity = banner.banner.rarity as string;
+
+      if (!acc[rarity]) {
+        acc[rarity] = [];
+      }
+
+      acc[rarity].push(banner);
+
+      return acc;
+    }, {} as UserBannersByRarity);
+  }, [userBanners]);
+
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
 
       const userBanners = await getUserBanners(userId);
 
-      setUserBanners(userBanners.filter((ub) => ub.isActive));
+      setUserBanners(userBanners.filter((ub) => !ub.isActive));
       setUserActiveBanner(userBanners.find((ub) => ub.isActive));
 
       setLoading(false);
@@ -62,7 +78,7 @@ const UserBanners = () => {
       <TypographySmall>
         {dictionary.dashboard["user.banners.active-banner"]}
       </TypographySmall>
-      <div className="">
+      <div>
         {loading || !userActiveBanner ? (
           <Skeleton className="h-[95px]" />
         ) : (
@@ -87,9 +103,8 @@ const UserBanners = () => {
         {bannerTabs.map((tab) => (
           <TabsContent key={tab} value={tab}>
             <UserBannersTabContent
-              dictionary={dictionary}
               loading={loading}
-              userBanners={userBanners.filter((ub) => ub.banner.rarity === tab)}
+              userBanners={userBannersByRarity[tab as BannerRarity] || []}
               handleBannerSelect={handleBannerSelect}
             />
           </TabsContent>

@@ -1,4 +1,4 @@
-import { Dictionary } from "@/store/dictionary-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import { UserTitle } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
@@ -6,11 +6,12 @@ import TypographyLarge from "../typography/large";
 import TypographyMuted from "../typography/muted";
 
 type Props = {
-  dictionary: Dictionary;
   userTitle: UserTitle;
 };
 
-const UserActiveTitle = ({ dictionary, userTitle }: Props) => {
+const UserActiveTitle = ({ userTitle }: Props) => {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
+
   return (
     <div className="flex w-full items-center gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm">
       <Image

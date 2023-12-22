@@ -5,17 +5,18 @@ import TypographySmall from "@/components/typography/small";
 import { IconIen } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { SeedCropIncluded } from "@/services/data-access/seed";
-import { Dictionary } from "@/store/dictionary-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import TypographyP from "@/components/typography/p";
 import formatString from "@/util/format-string";
 
 type Props = {
-  dictionary: Dictionary;
   seed: SeedCropIncluded;
   handleBuySeed: (seed: SeedCropIncluded) => void;
 };
 
-const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
+const ShopSeedItem = ({ seed, handleBuySeed }: Props) => {
+  const dictionary = useDictionaryStore((state) => state.dictionary);
+
   return (
     <div
       className={cn(

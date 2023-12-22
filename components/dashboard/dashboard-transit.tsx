@@ -80,7 +80,6 @@ const DashboardTransit = () => {
           transits.map((transit) => (
             <DashboardTransitItem
               key={transit.id}
-              dictionary={dictionary}
               transit={transit}
               handleTransit={handleTransit}
             />

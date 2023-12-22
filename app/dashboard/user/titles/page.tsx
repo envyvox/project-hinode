@@ -41,10 +41,7 @@ const UserTitles = () => {
         </TypographySmall>
         <div className="grid-xl-3">
           {userActiveTitle ? (
-            <UserActiveTitle
-              dictionary={dictionary}
-              userTitle={userActiveTitle}
-            />
+            <UserActiveTitle userTitle={userActiveTitle} />
           ) : (
             <Skeleton className="h-[95px]" />
           )}
@@ -61,7 +58,6 @@ const UserTitles = () => {
             userTitles.map((ut) => (
               <UserTitleComponent
                 key={ut.title}
-                dictionary={dictionary}
                 userTitle={ut}
                 handleTitleSelect={() => setUserTitle(ut.title)}
               />
