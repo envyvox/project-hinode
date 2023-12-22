@@ -12,9 +12,12 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import CasinoLottery from "./casino-lottery";
 import CasinoBets from "./casino-bets";
+import useUserCurrency from "@/hooks/use-user-currency";
 
 const ActionCapitalCasino = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
+
+  useUserCurrency();
 
   return (
     <DashboardActionBase
@@ -42,7 +45,7 @@ const ActionCapitalCasino = () => {
             dictionary.dashboard["dashboard.actions.capital.casino.description"]
           }
           content={
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <CasinoLottery />
               <CasinoBets />
               <Card>

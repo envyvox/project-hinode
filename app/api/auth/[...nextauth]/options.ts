@@ -7,6 +7,7 @@ import { addCurrencyToUser } from "@/services/data-access/currency";
 import { addTitleToUser } from "@/services/data-access/title";
 import { addBannerToUser } from "@/services/data-access/banner";
 import { updateUserDisplayName } from "@/services/data-access/user";
+import { Currency, Title } from "@prisma/client";
 
 const newUserCurrencyAmount = 1000;
 const newUserBannerId = "clqd2zrhy000sxsul7i0v6ytv";
@@ -32,8 +33,8 @@ export const options: NextAuthOptions = {
     async signIn({ user, isNewUser }) {
       if (isNewUser) {
         await updateUserDisplayName(user.id, user.name ?? "Anonymous");
-        await addCurrencyToUser(user.id, "Ien", newUserCurrencyAmount);
-        await addTitleToUser(user.id, "Newbie");
+        await addCurrencyToUser(user.id, Currency.Ien, newUserCurrencyAmount);
+        await addTitleToUser(user.id, Title.Newbie);
         await addBannerToUser(user.id, newUserBannerId);
       }
     },

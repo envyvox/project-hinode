@@ -5,7 +5,7 @@ import formatString from "@/util/format-string";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
-import IenIcon from "@/public/currency/Ien.png";
+import { IconIen } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 
 type Props = {
@@ -36,7 +36,7 @@ const ShopProductItem = ({ dictionary, product, handleBuyProduct }: Props) => {
                 "dashboard.actions.village.shop-product.sheet.price"
               ],
               product.price,
-              <Image className="mx-1 inline h-5 w-5" src={IenIcon} alt="Ien" />,
+              <IconIen />,
             )}
           </TypographySmall>
         </div>

@@ -86,6 +86,10 @@
     width: var(--radix-popover-trigger-width);
     max-height: var(--radix-popover-content-available-height);
   }
+  .tooltip-content {
+    max-width: var(--radix-tooltip-content-available-width);
+    max-height: var(--radix-tooltip-content-available-height);
+  }
 }
 
 .border-rare {

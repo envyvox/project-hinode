@@ -145,7 +145,15 @@ const emptyDictinaory: Dictionary = {
     "dashboard.actions.capital.casino.bet.label": "",
     "dashboard.actions.capital.casino.bet.description": "",
     "dashboard.actions.capital.casino.bet.amount-label": "",
-    "dashboard.actions.capital.casino.bet.button-label": ""
+    "dashboard.actions.capital.casino.bet.button-label": "",
+    "dashboard.actions.capital.casino.bet.toast.title": "",
+    "dashboard.actions.capital.casino.bet.toast.description.win": "",
+    "dashboard.actions.capital.casino.bet.toast.description.lose": "",
+    "dashboard.actions.capital.casino.bet.tooltip.case-lose": "",
+    "dashboard.actions.capital.casino.bet.tooltip.case-x2": "",
+    "dashboard.actions.capital.casino.bet.tooltip.case-x4": "",
+    "dashboard.actions.capital.casino.bet.tooltip.case-x10": "",
+    "dashboard.actions.capital.casino.bet.toast.no-currency": "",
   },
   location: {
     InTransit: "",
@@ -158,7 +166,7 @@ const emptyDictinaory: Dictionary = {
     ExploreCastle: "",
     Fishing: "",
     FieldWatering: "",
-    WorkOnContract: ""
+    WorkOnContract: "",
   },
   datatable: {
     next: "",

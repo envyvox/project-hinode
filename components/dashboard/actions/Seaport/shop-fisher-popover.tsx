@@ -12,7 +12,7 @@ import TypographyMuted from "@/components/typography/muted";
 import formatString from "@/util/format-string";
 import Image from "next/image";
 import { UserFishIncluded } from "@/services/data-access/fish";
-import IenIcon from "@/public/currency/Ien.png";
+import { IconIen } from "@/components/icons";
 import { Currency, Fish } from "@prisma/client";
 import { useUserCurrencyStore } from "@/store/user-currency-store";
 import { useUserFishStore } from "@/store/user-fish-store";
@@ -52,7 +52,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         amount,
         // @ts-ignore Implicit any
         dictionary.item.fish[fish.name],
-        <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+        <IconIen />,
         fish.price * amount,
       ),
     });
@@ -124,7 +124,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
               "dashboard.actions.seaport.shop-fisher.sheet.popover.button-label"
             ],
             sellAmount * userFish.fish.price,
-            <Image className="mx-1 inline h-5 w-5" src={IenIcon} alt="Ien" />,
+            <IconIen />,
           )}
         </Button>
       </PopoverContent>

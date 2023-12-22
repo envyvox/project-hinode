@@ -6,13 +6,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import formatString from "@/util/format-string";
-import Image from "next/image";
-import IenIcon from "@/public/currency/Ien.png";
-import LotteryTicket from "@/public/etc/LotteryTicket.png";
 import { Button } from "@/components/ui/button";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import CasinoLotteryParticipants from "./casino-lottery-participants";
 import CasinoLotteryGift from "./casino-lottery-gift";
+import { IconIen, IconLotteryTicket } from "@/components/icons";
 
 const lotteryPrice = 500;
 const lotteryMembers = 10;
@@ -22,7 +20,7 @@ const CasinoLottery = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
 
   return (
-    <Card className="col-span-2">
+    <Card className="col-span-1 md:col-span-2">
       <CardHeader>
         <CardTitle>
           {
@@ -36,16 +34,12 @@ const CasinoLottery = () => {
             dictionary.dashboard[
               "dashboard.actions.capital.casino.lottery.description"
             ],
-            <Image
-              className="mx-1 inline h-6 w-6"
-              src={LotteryTicket}
-              alt="LotteryTicket"
-            />,
+            <IconLotteryTicket />,
             lotteryPrice,
-            <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+            <IconIen />,
             lotteryMembers,
             lotteryAward,
-            <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+            <IconIen />,
           )}
           <Button
             variant="secondary"

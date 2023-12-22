@@ -3,12 +3,10 @@ import TypographyMuted from "@/components/typography/muted";
 import { Button } from "@/components/ui/button";
 import UsersSelect from "@/components/users-select";
 import { GameUser } from "@/services/data-access/user";
-import LotteryTicket from "@/public/etc/LotteryTicket.png";
 import formatString from "@/util/format-string";
-import Image from "next/image";
 import { useState } from "react";
-import IenIcon from "@/public/currency/Ien.png";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { IconIen, IconLotteryTicket } from "@/components/icons";
 
 const deliveryPrice = 100;
 
@@ -30,13 +28,9 @@ const CasinoLotteryGift = () => {
           dictionary.dashboard[
             "dashboard.actions.capital.casino.lottery.gift.description"
           ],
-          <Image
-            className="mx-1 inline h-6 w-6"
-            src={LotteryTicket}
-            alt="LotteryTicket"
-          />,
+          <IconLotteryTicket />,
           deliveryPrice,
-          <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+          <IconIen />,
         )}
       </TypographyMuted>
       <div className="mt-5 flex flex-col gap-2">

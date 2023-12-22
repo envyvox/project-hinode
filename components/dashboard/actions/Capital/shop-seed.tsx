@@ -10,7 +10,7 @@ import { useUserCurrencyStore } from "@/store/user-currency-store";
 import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
 import formatString from "@/util/format-string";
-import IenIcon from "@/public/currency/Ien.png";
+import { IconIen } from "@/components/icons";
 import Image from "next/image";
 import FullscreenSheet from "@/components/fullscreen-sheet";
 import useWorldState from "@/hooks/use-world-state";
@@ -48,7 +48,7 @@ const ActionCapitalShopSeed = () => {
           dictionary.dashboard[
             "dashboard.actions.capital.shop-seed.sheet.toast.no-currency"
           ],
-          <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+          <IconIen />,
           <Image
             className="mx-1 inline h-6 w-6"
             width={27}
@@ -80,7 +80,7 @@ const ActionCapitalShopSeed = () => {
         />,
         // @ts-ignore Implicit any,
         dictionary.item.seed[seed.name],
-        <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+        <IconIen />,
         seed.price,
       ),
     });

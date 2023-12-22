@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/services/data-access/product";
 import formatString from "@/util/format-string";
 import Image from "next/image";
-import IenIcon from "@/public/currency/Ien.png";
+import { IconIen } from "@/components/icons";
 import ShopProductItem from "./shop-product-item";
 import ShopProductSkeleton from "./shop-product-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
@@ -48,7 +48,7 @@ const ActionVillageShopProduct = () => {
           dictionary.dashboard[
             "dashboard.actions.village.shop-product.sheet.toast.no-currency"
           ],
-          <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+          <IconIen />,
           <Image
             className="mx-1 inline h-6 w-6"
             width={27}
@@ -80,7 +80,7 @@ const ActionVillageShopProduct = () => {
         />,
         // @ts-ignore Implicit any
         dictionary.item.product[product.name],
-        <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+        <IconIen />,
         product.price,
       ),
     });

@@ -1,13 +1,13 @@
 import { UserFishIncluded } from "@/services/data-access/fish";
 import formatString from "@/util/format-string";
 import Image from "next/image";
-import IenIcon from "@/public/currency/Ien.png";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import TypographyLarge from "@/components/typography/large";
 import TypographySmall from "@/components/typography/small";
 import { cn } from "@/lib/utils";
 import { getRarityBorderColor } from "@/util/get-rarity-border-color";
 import ShopFisherPopover from "./shop-fisher-popover";
+import { IconIen } from "@/components/icons";
 
 type Props = {
   userFish: UserFishIncluded;
@@ -42,7 +42,7 @@ const ShopFisherUserFish = ({ userFish }: Props) => {
                 "dashboard.actions.seaport.shop-fisher.sheet.price"
               ],
               userFish.fish.price,
-              <Image className="mx-1 inline h-5 w-5" src={IenIcon} alt="Ien" />,
+              <IconIen />,
             )}
           </TypographySmall>
         </div>

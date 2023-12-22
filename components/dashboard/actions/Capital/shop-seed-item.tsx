@@ -2,7 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import TypographyLarge from "@/components/typography/large";
 import TypographySmall from "@/components/typography/small";
-import IenIcon from "@/public/currency/Ien.png";
+import { IconIen } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { SeedCropIncluded } from "@/services/data-access/seed";
 import { Dictionary } from "@/store/dictionary-store";
@@ -44,7 +44,7 @@ const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
                 "dashboard.actions.capital.shop-seed.sheet.price"
               ],
               seed.price,
-              <Image className="mx-1 inline h-5 w-5" src={IenIcon} alt="Ien" />,
+              <IconIen />,
             )}
           </TypographySmall>
         </div>
@@ -65,7 +65,7 @@ const ShopSeedItem = ({ dictionary, seed, handleBuySeed }: Props) => {
             />,
             // @ts-ignore Implicit any
             dictionary.item.crop[seed.crop?.name],
-            <Image className="mx-1 inline h-6 w-6" src={IenIcon} alt="Ien" />,
+            <IconIen />,
             seed.crop?.price,
           )}
         </TypographyP>
