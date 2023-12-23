@@ -6,7 +6,7 @@ import { GameUser } from "@/services/data-access/user";
 import formatString from "@/util/format-string";
 import { useState } from "react";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { IconIen, IconLotteryTicket } from "@/components/icons";
+import { Icons } from "@/components/icons";
 
 const deliveryPrice = 100;
 
@@ -28,9 +28,9 @@ const CasinoLotteryGift = () => {
           dictionary.dashboard[
             "dashboard.actions.capital.casino.lottery.gift.description"
           ],
-          <IconLotteryTicket />,
+          <Icons.LotteryTicket />,
           deliveryPrice,
-          <IconIen />,
+          <Icons.Ien />,
         )}
       </TypographyMuted>
       <div className="mt-5 flex flex-col gap-2">

@@ -6,7 +6,6 @@ import TypographyP from "@/components/typography/p";
 import { Button } from "@/components/ui/button";
 import formatString from "@/util/format-string";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { IconIen } from "../icons";
 import {
   DashboardTab,
   useDashboardTabStore,
@@ -15,6 +14,7 @@ import { useUserStore } from "@/store/user-store";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { useToast } from "../ui/use-toast";
+import { Icons } from "../icons";
 
 type Props = {
   transit: Transit;
@@ -81,7 +81,7 @@ const DashboardTransitItem = ({ transit }: Props) => {
           {formatString(
             dictionary.dashboard["dashboard.transit.button"],
             transit.price,
-            <IconIen />,
+            <Icons.Ien />,
           )}
         </Button>
       </div>

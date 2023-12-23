@@ -7,7 +7,7 @@ import TypographyP from "@/components/typography/p";
 import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
 import formatString from "@/util/format-string";
-import { IconIen } from "@/components/icons";
+import { Icons } from "@/components/icons";
 import Image from "next/image";
 import { SeedCropIncluded } from "@/services/data-access/seed";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
@@ -32,7 +32,7 @@ const ShopSeedItem = ({ seed }: Props) => {
           dictionary.dashboard[
             "dashboard.actions.capital.shop-seed.sheet.toast.no-currency"
           ],
-          <IconIen />,
+          <Icons.Ien />,
           <Image
             className="mx-1 inline h-6 w-6"
             width={27}
@@ -64,7 +64,7 @@ const ShopSeedItem = ({ seed }: Props) => {
         />,
         // @ts-ignore Implicit any,
         dictionary.item.seed[seed.name],
-        <IconIen />,
+        <Icons.Ien />,
         seed.price,
       ),
     });
@@ -98,7 +98,7 @@ const ShopSeedItem = ({ seed }: Props) => {
                 "dashboard.actions.capital.shop-seed.sheet.price"
               ],
               seed.price,
-              <IconIen />,
+              <Icons.Ien />,
             )}
           </TypographySmall>
         </div>
@@ -119,7 +119,7 @@ const ShopSeedItem = ({ seed }: Props) => {
             />,
             // @ts-ignore Implicit any
             dictionary.item.crop[seed.crop?.name],
-            <IconIen />,
+            <Icons.Ien />,
             seed.crop?.price,
           )}
         </TypographyP>

@@ -7,7 +7,7 @@ import TypographySmall from "@/components/typography/small";
 import { cn } from "@/lib/utils";
 import { getRarityBorderColor } from "@/util/get-rarity-border-color";
 import ShopFisherPopover from "./shop-fisher-popover";
-import { IconIen } from "@/components/icons";
+import { Icons } from "@/components/icons";
 
 type Props = {
   userFish: UserFishIncluded;
@@ -42,7 +42,7 @@ const ShopFisherUserFish = ({ userFish }: Props) => {
                 "dashboard.actions.seaport.shop-fisher.sheet.price"
               ],
               userFish.fish.price,
-              <IconIen />,
+              <Icons.Ien />,
             )}
           </TypographySmall>
         </div>

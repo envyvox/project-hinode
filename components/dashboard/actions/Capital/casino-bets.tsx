@@ -15,10 +15,10 @@ import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
 import getRandomNumberBetween from "@/util/get-random-number";
 import CasinoBetsTooltip from "./casino-bets-tooptip";
-import { IconIen } from "@/components/icons";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
 import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { Icons } from "@/components/icons";
 
 const minBet = 10;
 const maxBet = 1000;
@@ -29,7 +29,7 @@ const getWinMessage = (dictionary: Dictionary, amount: number) => {
       "dashboard.actions.capital.casino.bet.toast.description.win"
     ],
     amount,
-    <IconIen />,
+    <Icons.Ien />,
   );
 };
 
@@ -39,7 +39,7 @@ const getLoseMessage = (dictionary: Dictionary, amount: number) => {
       "dashboard.actions.capital.casino.bet.toast.description.lose"
     ],
     amount,
-    <IconIen />,
+    <Icons.Ien />,
   );
 };
 
@@ -57,7 +57,7 @@ const CasinoBets = () => {
         dictionary.dashboard[
           "dashboard.actions.capital.casino.bet.toast.no-currency"
         ],
-        <IconIen />,
+        <Icons.Ien />,
       );
 
       toast({
@@ -147,7 +147,7 @@ const CasinoBets = () => {
               );
             }}
           />
-          <IconIen />
+          <Icons.Ien />
           {dictionary.item.currency[Currency.Ien].toLowerCase()}
         </div>
         <Button className="w-fit" variant="secondary" onClick={handleBet}>

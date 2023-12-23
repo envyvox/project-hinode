@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import CasinoLotteryParticipants from "./casino-lottery-participants";
 import CasinoLotteryGift from "./casino-lottery-gift";
-import { IconIen, IconLotteryTicket } from "@/components/icons";
+import { Icons } from "@/components/icons";
 
 const lotteryPrice = 500;
 const lotteryMembers = 10;
@@ -34,12 +34,12 @@ const CasinoLottery = () => {
             dictionary.dashboard[
               "dashboard.actions.capital.casino.lottery.description"
             ],
-            <IconLotteryTicket />,
+            <Icons.LotteryTicket />,
             lotteryPrice,
-            <IconIen />,
+            <Icons.Ien />,
             lotteryMembers,
             lotteryAward,
-            <IconIen />,
+            <Icons.Ien />,
           )}
           <Button
             variant="secondary"

@@ -7,7 +7,7 @@ import { Currency, Product } from "@prisma/client";
 import formatString from "@/util/format-string";
 import Image from "next/image";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
-import { IconIen } from "@/components/icons";
+import { Icons } from "@/components/icons";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { useAddUserProductMutation } from "@/hooks/mutations/use-add-user-product-mutation";
 
@@ -29,7 +29,7 @@ const ShopProductItem = ({ product }: Props) => {
           dictionary.dashboard[
             "dashboard.actions.village.shop-product.sheet.toast.no-currency"
           ],
-          <IconIen />,
+          <Icons.Ien />,
           <Image
             className="mx-1 inline h-6 w-6"
             width={27}
@@ -61,7 +61,7 @@ const ShopProductItem = ({ product }: Props) => {
         />,
         // @ts-ignore Implicit any
         dictionary.item.product[product.name],
-        <IconIen />,
+        <Icons.Ien />,
         product.price,
       ),
     });
@@ -88,7 +88,7 @@ const ShopProductItem = ({ product }: Props) => {
                 "dashboard.actions.village.shop-product.sheet.price"
               ],
               product.price,
-              <IconIen />,
+              <Icons.Ien />,
             )}
           </TypographySmall>
         </div>

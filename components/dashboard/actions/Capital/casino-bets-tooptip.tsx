@@ -6,8 +6,8 @@ import {
 } from "@/components/ui/tooltip";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { HelpCircle } from "lucide-react";
-import { IconIen } from "@/components/icons";
 import formatString from "@/util/format-string";
+import { Icons } from "@/components/icons";
 
 const CasinoBetsTooltip = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -16,25 +16,25 @@ const CasinoBetsTooltip = () => {
       dictionary.dashboard[
         "dashboard.actions.capital.casino.bet.tooltip.case-lose"
       ],
-      <IconIen />,
+      <Icons.Ien />,
     ),
     caseX2: formatString(
       dictionary.dashboard[
         "dashboard.actions.capital.casino.bet.tooltip.case-x2"
       ],
-      <IconIen />,
+      <Icons.Ien />,
     ),
     caseX4: formatString(
       dictionary.dashboard[
         "dashboard.actions.capital.casino.bet.tooltip.case-x4"
       ],
-      <IconIen />,
+      <Icons.Ien />,
     ),
     caseX10: formatString(
       dictionary.dashboard[
         "dashboard.actions.capital.casino.bet.tooltip.case-x10"
       ],
-      <IconIen />,
+      <Icons.Ien />,
     ),
   };
 
