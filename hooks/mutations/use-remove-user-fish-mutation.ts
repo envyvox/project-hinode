@@ -1,3 +1,4 @@
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { removeFishFromUser } from "@/services/data-access/fish";
 import { useUserStore } from "@/store/user-store";
 import { useMutation, useQueryClient } from "react-query";
@@ -17,7 +18,7 @@ export const useRemoveUserFishMutation = () => {
       removeFishFromUser(userId ?? user.id, fishId, amount),
     onSuccess(data, variables, context) {
       queryClient.invalidateQueries({
-        queryKey: ["user-fish", variables.userId ?? user.id],
+        queryKey: ReactQueryKeys.userFish(variables.userId ?? user.id),
       });
     },
   });

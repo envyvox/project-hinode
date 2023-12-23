@@ -1,3 +1,4 @@
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { addSeedToUser } from "@/services/data-access/seed";
 import { useUserStore } from "@/store/user-store";
 import { useMutation, useQueryClient } from "react-query";
@@ -17,7 +18,7 @@ export const useAddUserSeedMutation = () => {
       addSeedToUser(userId ?? user.id, seedId, amount),
     onSuccess(data, variables, context) {
       queryClient.invalidateQueries({
-        queryKey: ["user-seeds", variables.userId ?? user.id],
+        queryKey: ReactQueryKeys.userSeeds(variables.userId ?? user.id),
       });
     },
   });

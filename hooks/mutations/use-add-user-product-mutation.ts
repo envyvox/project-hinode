@@ -1,3 +1,4 @@
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { addProductToUser } from "@/services/data-access/product";
 import { useUserStore } from "@/store/user-store";
 import { useMutation, useQueryClient } from "react-query";
@@ -17,7 +18,7 @@ export const useAddUserProductMutation = () => {
       addProductToUser(userId ?? user.id, productId, amount),
     onSuccess(data, variables, context) {
       queryClient.invalidateQueries({
-        queryKey: ["user-products", variables.userId ?? user.id],
+        queryKey: ReactQueryKeys.userProducts(variables.userId ?? user.id),
       });
     },
   });

@@ -1,3 +1,4 @@
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { addCurrencyToUser } from "@/services/data-access/currency";
 import { useUserStore } from "@/store/user-store";
 import { Currency } from "@prisma/client";
@@ -18,14 +19,13 @@ export const useAddUserCurrencyMutation = () => {
       addCurrencyToUser(userId ?? user.id, currency, amount),
     onSuccess(data, variables, context) {
       queryClient.invalidateQueries({
-        queryKey: [
-          "user-currency",
+        queryKey: ReactQueryKeys.userCurrency(
           variables.userId ?? user.id,
           variables.currency,
-        ],
+        ),
       });
       queryClient.invalidateQueries({
-        queryKey: ["user-currencies", variables.userId ?? user.id],
+        queryKey: ReactQueryKeys.userCurrencies(variables.userId ?? user.id),
       });
     },
   });

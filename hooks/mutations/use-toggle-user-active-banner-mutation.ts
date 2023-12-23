@@ -1,3 +1,4 @@
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { toggleUserBanner } from "@/services/data-access/banner";
 import { useUserStore } from "@/store/user-store";
 import { useMutation, useQueryClient } from "react-query";
@@ -17,7 +18,7 @@ export const useToggleUserActiveBannerMutation = () => {
       toggleUserBanner(userId ?? user.id, bannerId, isActive),
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({
-        queryKey: ["user-active-banner", variables.userId ?? user.id],
+        queryKey: ReactQueryKeys.userActiveBanner(variables.userId ?? user.id),
       });
     },
   });
