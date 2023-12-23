@@ -10,13 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TypographyMuted from "@/components/typography/muted";
-import useUserActiveBanner from "@/hooks/use-user-active-banner";
 import BannerImage from "@/components/banner-image";
+import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
 
 const UserProfile = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const user = useUserStore((state) => state.user);
-  const userActiveBanner = useUserActiveBanner();
+  const { data: userActiveBanner } = useUserActiveBannerQuery();
 
   return (
     <Card>
