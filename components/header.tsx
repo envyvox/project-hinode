@@ -1,9 +1,7 @@
 import { siteConfig } from "@/config/site";
-import { Github, Twitter } from "lucide-react";
 import Link from "next/link";
 import LocaleSwitcher from "./locale-switcher";
 import ThemeToggle from "./theme-toggle";
-import { buttonVariants } from "./ui/button";
 import SessionAvatar from "./session-avatar";
 import MobileSidebar from "./mobile-sidebar";
 
@@ -21,18 +19,6 @@ const Header = () => {
         </div>
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
-            <Link
-              className={buttonVariants({ variant: "ghost" })}
-              href={siteConfig.links.twitter}
-            >
-              <Twitter />
-            </Link>
-            <Link
-              className={buttonVariants({ variant: "ghost" })}
-              href={siteConfig.links.github}
-            >
-              <Github />
-            </Link>
             <ThemeToggle />
             <LocaleSwitcher />
             <SessionAvatar />

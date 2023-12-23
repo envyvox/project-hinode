@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import TailwindIndicator from "@/components/tailwind-indicator";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -46,7 +47,8 @@ const RootLayout = ({ children }: Props) => (
       <Providers>
         <div className="flex flex-col">
           <Header />
-          <div className="flex-1">{children}</div>
+          <div className="min-h-[80vh] flex-1">{children}</div>
+          <Footer />
           <Toaster />
         </div>
         <TailwindIndicator />
