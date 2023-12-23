@@ -1,19 +1,18 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserProductStore } from "@/store/user-product-store";
 import InventorySkeleton from "./inventory-skeleton";
 import InventoryItem from "./inventory-item";
 import InventoryEmpty from "./inventory-empty";
+import { useUserProductsQuery } from "@/hooks/queries/use-user-products-query";
 
 const InventoryProducts = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserProductStore((state) => state.loading);
-  const userProducts = useUserProductStore((state) => state.userProducts);
+  const { data: userProducts, isLoading } = useUserProductsQuery();
 
   return (
     <div className="grid-xl-3">
-      {loading ? (
+      {isLoading ? (
         <InventorySkeleton />
-      ) : userProducts.length ? (
+      ) : userProducts?.length ? (
         userProducts.map((userProduct) => (
           <InventoryItem
             key={userProduct.productId}

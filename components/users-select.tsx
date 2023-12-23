@@ -1,5 +1,5 @@
-import { GameUser, getUsers } from "@/services/data-access/user";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { GameUser } from "@/services/data-access/user";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,7 @@ import {
   CommandItem,
 } from "./ui/command";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { ScrollArea } from "./ui/scroll-area";
+import { useUsersQuery } from "@/hooks/queries/use-users-query";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   selectedUser: GameUser | undefined;
@@ -22,19 +22,8 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const UsersSelect = ({ selectedUser, setSelectedUser, ...props }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const [open, setOpen] = useState(false);
-  const [users, setUsers] = useState<GameUser[]>([]);
-  const userMap = new Map(users.map((user) => [user.id, user]));
-
-  useEffect(() => {
-    const loadData = async () => {
-      // TODO: This component should get only 10 users
-      // and then use search method instead of loading all existing users
-      const users = await getUsers();
-      setUsers(users);
-    };
-
-    loadData();
-  }, []);
+  const { data: users } = useUsersQuery();
+  const userMap = new Map(users?.map((user) => [user.id, user]));
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -47,7 +36,7 @@ const UsersSelect = ({ selectedUser, setSelectedUser, ...props }: Props) => {
           {...props}
         >
           {selectedUser
-            ? users.find((user) => user.id === selectedUser.id)?.displayName
+            ? users?.find((user) => user.id === selectedUser.id)?.displayName
             : dictionary.dashboard["users-select.not-selected"]}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -70,7 +59,7 @@ const UsersSelect = ({ selectedUser, setSelectedUser, ...props }: Props) => {
             {dictionary.dashboard["users-select.search.empty"]}
           </CommandEmpty>
           <CommandGroup>
-            {users.map((user) => (
+            {users?.map((user) => (
               <CommandItem
                 key={user.id}
                 value={user.id}

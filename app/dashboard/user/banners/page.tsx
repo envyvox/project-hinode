@@ -1,74 +1,54 @@
 "use client";
 
 import TypographySmall from "@/components/typography/small";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import UserBannersTabContent from "@/components/user-banner/user-banners";
-import {
-  UserBannerIncluded,
-  getUserBanners,
-  toggleUserBanner,
-} from "@/services/data-access/banner";
+import { UserBannerIncluded } from "@/services/data-access/banner";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import { BannerRarity } from "@prisma/client";
-import React, { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import BannerImage from "@/components/banner-image";
+import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
+import { useUserBannersQuery } from "@/hooks/queries/use-user-banners-query";
+import { useToggleUserActiveBannerMutation } from "@/hooks/mutations/use-toggle-user-active-banner-mutation";
 
 type UserBannersByRarity = Record<string, UserBannerIncluded[]>;
 
 const UserBanners = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const userId = useUserStore((state) => state.user).id;
-  const [userBanners, setUserBanners] = useState<UserBannerIncluded[]>([]);
-  const [userActiveBanner, setUserActiveBanner] =
-    useState<UserBannerIncluded>();
-  const [loading, setLoading] = useState(true);
+  const { data: userActiveBanner } = useUserActiveBannerQuery();
+  const { data: userBanners, isLoading } = useUserBannersQuery();
+  const { mutate: toggleUserBanner } = useToggleUserActiveBannerMutation();
   const bannerTabs = Object.keys(BannerRarity);
 
   const userBannersByRarity = useMemo(() => {
-    return userBanners.reduce((acc: UserBannersByRarity, banner) => {
-      const rarity = banner.banner.rarity as string;
+    return (
+      userBanners?.reduce((acc: UserBannersByRarity, banner) => {
+        const rarity = banner.banner.rarity as string;
 
-      if (!acc[rarity]) {
-        acc[rarity] = [];
-      }
+        if (!acc[rarity]) {
+          acc[rarity] = [];
+        }
 
-      acc[rarity].push(banner);
+        acc[rarity].push(banner);
 
-      return acc;
-    }, {} as UserBannersByRarity);
+        return acc;
+      }, {} as UserBannersByRarity) ?? ({} as UserBannersByRarity)
+    );
   }, [userBanners]);
 
-  useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
-
-      const userBanners = await getUserBanners(userId);
-
-      setUserBanners(userBanners.filter((ub) => !ub.isActive));
-      setUserActiveBanner(userBanners.find((ub) => ub.isActive));
-
-      setLoading(false);
-    };
-    loadData();
-  }, [userId]);
-
   const handleBannerSelect = async (userBanner: UserBannerIncluded) => {
-    await toggleUserBanner(userId, userActiveBanner!.bannerId, false);
-    await toggleUserBanner(userId, userBanner.bannerId, true);
-
-    setUserActiveBanner(userBanner);
-    setUserBanners((prevUserBanners) => {
-      const updatedUserBanners = [...prevUserBanners];
-      updatedUserBanners.push(userActiveBanner!);
-      updatedUserBanners.splice(
-        updatedUserBanners.findIndex(
-          (ub) => ub.bannerId === userBanner.bannerId,
-        ),
-        1,
-      );
-      return updatedUserBanners;
+    toggleUserBanner({
+      userId: userId,
+      bannerId: userActiveBanner!.bannerId,
+      isActive: false,
+    });
+    toggleUserBanner({
+      userId: userId,
+      bannerId: userBanner.bannerId,
+      isActive: true,
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -79,11 +59,7 @@ const UserBanners = () => {
         {dictionary.dashboard["user.banners.active-banner"]}
       </TypographySmall>
       <div>
-        {loading || !userActiveBanner ? (
-          <Skeleton className="h-[95px]" />
-        ) : (
-          <BannerImage banner={userActiveBanner.banner} />
-        )}
+        <BannerImage banner={userActiveBanner?.banner} />
       </div>
       <TypographySmall>
         {dictionary.dashboard["user.banners.all-banners"]}
@@ -103,7 +79,7 @@ const UserBanners = () => {
         {bannerTabs.map((tab) => (
           <TabsContent key={tab} value={tab}>
             <UserBannersTabContent
-              loading={loading}
+              loading={isLoading}
               userBanners={userBannersByRarity[tab as BannerRarity] || []}
               handleBannerSelect={handleBannerSelect}
             />

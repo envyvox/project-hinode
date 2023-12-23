@@ -8,24 +8,33 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import useWorldState from "@/hooks/use-world-state";
+import { getWorldState } from "@/services/data-access/world-state";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import { TimesDay } from "@prisma/client";
 import React from "react";
+import { useQuery } from "react-query";
 
 const WorldIntoPage = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const worldState = useWorldState();
+
+  const { data: worldState, isLoading } = useQuery({
+    queryKey: ["world-state"],
+    queryFn: () => getWorldState(),
+  });
 
   return (
     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
       <Card className="flex flex-col justify-between md:col-span-2 lg:col-span-3">
         <CardHeader>
           <CardTitle>
-            {formatString(
-              dictionary.dashboard["world.info.season.title"],
-              dictionary.season[worldState.season],
+            {isLoading ? (
+              <Skeleton className="h-6" />
+            ) : (
+              formatString(
+                dictionary.dashboard["world.info.season.title"],
+                dictionary.season[worldState!.season],
+              )
             )}
           </CardTitle>
           <CardDescription>
@@ -40,9 +49,13 @@ const WorldIntoPage = () => {
       <Card className="flex flex-col justify-between">
         <CardHeader>
           <CardTitle>
-            {formatString(
-              dictionary.dashboard["world.info.timesDay.title"],
-              dictionary.timesDay[TimesDay.Day],
+            {isLoading ? (
+              <Skeleton className="h-6" />
+            ) : (
+              formatString(
+                dictionary.dashboard["world.info.timesDay.title"],
+                dictionary.timesDay[TimesDay.Day],
+              )
             )}
           </CardTitle>
           <CardDescription>
@@ -57,9 +70,13 @@ const WorldIntoPage = () => {
       <Card className="flex flex-col justify-between">
         <CardHeader>
           <CardTitle>
-            {formatString(
-              dictionary.dashboard["world.info.weatherToday.title"],
-              dictionary.weather[worldState.weatherToday],
+            {isLoading ? (
+              <Skeleton className="h-6" />
+            ) : (
+              formatString(
+                dictionary.dashboard["world.info.weatherToday.title"],
+                dictionary.weather[worldState!.weatherToday],
+              )
             )}
           </CardTitle>
           <CardDescription>
@@ -74,9 +91,13 @@ const WorldIntoPage = () => {
       <Card className="flex flex-col justify-between">
         <CardHeader>
           <CardTitle>
-            {formatString(
-              dictionary.dashboard["world.info.weatherTomorrow.title"],
-              dictionary.weather[worldState.weatherTomorrow],
+            {isLoading ? (
+              <Skeleton className="h-6" />
+            ) : (
+              formatString(
+                dictionary.dashboard["world.info.weatherTomorrow.title"],
+                dictionary.weather[worldState!.weatherTomorrow],
+              )
             )}
           </CardTitle>
           <CardDescription>

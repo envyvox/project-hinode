@@ -1,19 +1,18 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserCropStore } from "@/store/user-crop-store";
 import InventorySkeleton from "./inventory-skeleton";
 import InventoryItem from "./inventory-item";
 import InventoryEmpty from "./inventory-empty";
+import { useUserCropsQuery } from "@/hooks/queries/use-user-crops-query";
 
 const InventoryCrops = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserCropStore((state) => state.loading);
-  const userCrops = useUserCropStore((state) => state.userCrops);
+  const { data: userCrops, isLoading } = useUserCropsQuery();
 
   return (
     <div className="grid-xl-3">
-      {loading ? (
+      {isLoading ? (
         <InventorySkeleton />
-      ) : userCrops.length ? (
+      ) : userCrops?.length ? (
         userCrops.map((userCrop) => (
           <InventoryItem
             key={userCrop.cropId}

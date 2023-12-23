@@ -47,6 +47,47 @@ const getUserFish = async (userId: string): Promise<UserFishIncluded[]> => {
 };
 
 /**
+ * Retrieves a list of user fish for a specific season.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {Season} season - The season to filter the fish by.
+ * @return {Promise<UserFishIncluded[]>} - A promise that resolves to an array of user fish objects.
+ */
+const getUserSeasonFish = async (
+  userId: string,
+  season: Season,
+): Promise<UserFishIncluded[]> => {
+  return await prisma.userFish.findMany({
+    where: {
+      userId: userId,
+      amount: {
+        gt: 0,
+      },
+      fish: {
+        catchSeason: {
+          hasSome: [Season.Any, season],
+        },
+      },
+    },
+    include: {
+      fish: true,
+    },
+    orderBy: [
+      {
+        fish: {
+          rarity: "desc",
+        },
+      },
+      {
+        fish: {
+          name: "asc",
+        },
+      },
+    ],
+  });
+};
+
+/**
  * Get random fish based on provided params
  * @param rarity Fish rarity
  * @param weather Weather
@@ -142,4 +183,5 @@ export {
   getRandomFishWithParams,
   addFishToUser,
   removeFishFromUser,
+  getUserSeasonFish,
 };

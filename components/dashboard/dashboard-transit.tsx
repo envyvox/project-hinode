@@ -1,73 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getTransitsFromLocation } from "@/services/data-access/transit";
-import { useUserStore } from "@/store/user-store";
-import { Currency, Transit } from "@prisma/client";
-import { useEffect, useState } from "react";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useToast } from "@/components/ui/use-toast";
-import { useUserCurrencyStore } from "@/store/user-currency-store";
-import {
-  DashboardTab,
-  useDashboardTabStore,
-} from "@/store/dashboard-tab-store";
-import formatString from "@/util/format-string";
 import DashboardTransitSkeleton from "./dashboard-transit-skeleton";
 import DashboardTransitItem from "./dashboard-transit-item";
-import useUserCurrency from "@/hooks/use-user-currency";
+import { useTransitsQuery } from "@/hooks/queries/use-transits-query";
 
 const DashboardTransit = () => {
-  const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const userLocation = useUserStore((state) => state.user.location);
-  const setUserLocation = useUserStore((state) => state.setUserLocation);
-  const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
-  const removeCurrencyFromUser = useUserCurrencyStore(
-    (state) => state.removeCurrencyFromUser,
-  );
-  const [transits, setTransits] = useState<Transit[]>([]);
-  const { toast } = useToast();
-
-  useUserCurrency();
-
-  useEffect(() => {
-    const loadData = async () => {
-      const transits = await getTransitsFromLocation(userLocation);
-      setTransits(transits);
-    };
-    loadData();
-  }, [userLocation]);
-
-  const handleTransit = (transit: Transit) => {
-    const userCurrency = userCurrencies.find(
-      (uc) => uc.currency === Currency.Ien,
-    );
-
-    if (userCurrency === undefined || userCurrency.amount < transit.price) {
-      toast({
-        title:
-          dictionary.dashboard["dashboard.transit.toast.no-currency.title"],
-        description: formatString(
-          dictionary.dashboard[
-            "dashboard.transit.toast.no-currency.description"
-          ],
-          transit.price,
-        ),
-        variant: "destructive",
-      });
-    } else {
-      removeCurrencyFromUser(Currency.Ien, transit.price);
-      setUserLocation(transit.destination);
-      setActiveTab(DashboardTab.about);
-
-      toast({
-        title: dictionary.dashboard["dashboard.transit.toast.success.title"],
-        description: formatString(
-          dictionary.dashboard["dashboard.transit.toast.success.description"],
-          dictionary.location[transit.destination],
-        ),
-      });
-    }
-  };
+  const { data: transits, isLoading } = useTransitsQuery();
 
   return (
     <Card>
@@ -75,16 +14,12 @@ const DashboardTransit = () => {
         <CardTitle>{dictionary.dashboard["dashboard.transit.title"]}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
-        {transits.length ? (
-          transits.map((transit) => (
-            <DashboardTransitItem
-              key={transit.id}
-              transit={transit}
-              handleTransit={handleTransit}
-            />
-          ))
-        ) : (
+        {isLoading ? (
           <DashboardTransitSkeleton />
+        ) : (
+          transits?.map((transit) => (
+            <DashboardTransitItem key={transit.id} transit={transit} />
+          ))
         )}
       </CardContent>
     </Card>

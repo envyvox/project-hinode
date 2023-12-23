@@ -1,20 +1,71 @@
 import TypographyLarge from "@/components/typography/large";
 import TypographySmall from "@/components/typography/small";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import formatString from "@/util/format-string";
-import { Product } from "@prisma/client";
-import Image from "next/image";
-import React from "react";
-import { IconIen } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { Currency, Product } from "@prisma/client";
+import formatString from "@/util/format-string";
+import Image from "next/image";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { IconIen } from "@/components/icons";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useAddUserProductMutation } from "@/hooks/mutations/use-add-user-product-mutation";
 
 type Props = {
   product: Product;
-  handleBuyProduct: (product: Product) => void;
 };
 
-const ShopProductItem = ({ product, handleBuyProduct }: Props) => {
+const ShopProductItem = ({ product }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
+  const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
+  const { mutate: addProductToUser } = useAddUserProductMutation();
+  const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
+  const { toast } = useToast();
+
+  const handleBuyProduct = (product: Product) => {
+    if (userCurrency === undefined || userCurrency.amount < product.price) {
+      toast({
+        description: formatString(
+          dictionary.dashboard[
+            "dashboard.actions.village.shop-product.sheet.toast.no-currency"
+          ],
+          <IconIen />,
+          <Image
+            className="mx-1 inline h-6 w-6"
+            width={27}
+            height={27}
+            src={`/product/${product.name}.png`}
+            alt={product.name}
+          />,
+          // @ts-ignore Implicit any
+          dictionary.item.product[product.name],
+        ),
+      });
+      return;
+    }
+
+    removeCurrencyFromUser({ currency: Currency.Ien, amount: product.price });
+    addProductToUser({ productId: product.id, amount: 1 });
+
+    toast({
+      description: formatString(
+        dictionary.dashboard[
+          "dashboard.actions.village.shop-product.sheet.toast.success"
+        ],
+        <Image
+          className="mx-1 inline h-6 w-6"
+          width={27}
+          height={27}
+          src={`/product/${product.name}.png`}
+          alt={product.name}
+        />,
+        // @ts-ignore Implicit any
+        dictionary.item.product[product.name],
+        <IconIen />,
+        product.price,
+      ),
+    });
+  };
 
   return (
     <div className="flex flex-col gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm">

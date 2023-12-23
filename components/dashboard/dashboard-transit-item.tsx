@@ -1,4 +1,4 @@
-import { Transit } from "@prisma/client";
+import { Currency, Transit } from "@prisma/client";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import TypographyH4 from "@/components/typography/h4";
@@ -7,14 +7,54 @@ import { Button } from "@/components/ui/button";
 import formatString from "@/util/format-string";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { IconIen } from "../icons";
+import {
+  DashboardTab,
+  useDashboardTabStore,
+} from "@/store/dashboard-tab-store";
+import { useUserStore } from "@/store/user-store";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useToast } from "../ui/use-toast";
 
 type Props = {
   transit: Transit;
-  handleTransit: (transit: Transit) => void;
 };
 
-const DashboardTransitItem = ({ transit, handleTransit }: Props) => {
+const DashboardTransitItem = ({ transit }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
+  const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
+  const setUserLocation = useUserStore((state) => state.setUserLocation);
+  const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
+  const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
+  const { toast } = useToast();
+
+  const handleTransit = (transit: Transit) => {
+    if (userCurrency === undefined || userCurrency.amount < transit.price) {
+      toast({
+        title:
+          dictionary.dashboard["dashboard.transit.toast.no-currency.title"],
+        description: formatString(
+          dictionary.dashboard[
+            "dashboard.transit.toast.no-currency.description"
+          ],
+          transit.price,
+        ),
+        variant: "destructive",
+      });
+    } else {
+      removeCurrencyFromUser({ currency: Currency.Ien, amount: transit.price });
+      setUserLocation(transit.destination);
+      setActiveTab(DashboardTab.about);
+
+      toast({
+        title: dictionary.dashboard["dashboard.transit.toast.success.title"],
+        description: formatString(
+          dictionary.dashboard["dashboard.transit.toast.success.description"],
+          dictionary.location[transit.destination],
+        ),
+      });
+    }
+  };
 
   return (
     <div className="flex flex-wrap gap-5 border-t pt-5">

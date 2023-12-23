@@ -1,19 +1,18 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserSeedStore } from "@/store/user-seed-store";
 import InventorySkeleton from "./inventory-skeleton";
 import InventoryItem from "./inventory-item";
 import InventoryEmpty from "./inventory-empty";
+import { useUserSeedsQuery } from "@/hooks/queries/use-user-seeds-query";
 
 const InventorySeeds = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserSeedStore((state) => state.loading);
-  const userSeeds = useUserSeedStore((state) => state.userSeeds);
+  const { data: userSeeds, isLoading } = useUserSeedsQuery();
 
   return (
     <div className="grid-xl-3">
-      {loading ? (
+      {isLoading ? (
         <InventorySkeleton />
-      ) : userSeeds.length ? (
+      ) : userSeeds?.length ? (
         userSeeds.map((userSeed) => (
           <InventoryItem
             key={userSeed.seedId}

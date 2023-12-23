@@ -1,20 +1,19 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserFishStore } from "@/store/user-fish-store";
 import InventorySkeleton from "./inventory-skeleton";
 import { getRarityBorderColor } from "@/util/get-rarity-border-color";
 import InventoryItem from "./inventory-item";
 import InventoryEmpty from "./inventory-empty";
+import { useUserFishQuery } from "@/hooks/queries/use-user-fish-query";
 
 const InventoryFish = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserFishStore((state) => state.loading);
-  const userFish = useUserFishStore((state) => state.userFish);
+  const { data: userFish, isLoading } = useUserFishQuery();
 
   return (
     <div className="grid-xl-3">
-      {loading ? (
+      {isLoading ? (
         <InventorySkeleton />
-      ) : userFish.length ? (
+      ) : userFish?.length ? (
         userFish.map((uf) => (
           <InventoryItem
             key={uf.fishId}

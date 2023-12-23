@@ -12,12 +12,9 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import CasinoLottery from "./casino-lottery";
 import CasinoBets from "./casino-bets";
-import useUserCurrency from "@/hooks/use-user-currency";
 
 const ActionCapitalCasino = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-
-  useUserCurrency();
 
   return (
     <DashboardActionBase

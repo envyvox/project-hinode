@@ -1,4 +1,4 @@
-import { UserTitle as UserTitleComponent } from "@prisma/client";
+import { UserTitle } from "@prisma/client";
 import React from "react";
 import Image from "next/image";
 import TypographyLarge from "../typography/large";
@@ -7,8 +7,8 @@ import TypographyMuted from "../typography/muted";
 import { useDictionaryStore } from "@/store/dictionary-store";
 
 type Props = {
-  userTitle: UserTitleComponent;
-  handleTitleSelect: (userTitle: UserTitleComponent) => void;
+  userTitle: UserTitle;
+  handleTitleSelect: (userTitle: UserTitle) => void;
 };
 
 const UserTitleComponent = ({ userTitle, handleTitleSelect }: Props) => {

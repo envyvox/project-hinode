@@ -11,12 +11,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dictionary, useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
-import { useUserCurrencyStore } from "@/store/user-currency-store";
 import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
 import getRandomNumberBetween from "@/util/get-random-number";
 import CasinoBetsTooltip from "./casino-bets-tooptip";
 import { IconIen } from "@/components/icons";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 
 const minBet = 10;
 const maxBet = 1000;
@@ -43,21 +45,13 @@ const getLoseMessage = (dictionary: Dictionary, amount: number) => {
 
 const CasinoBets = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const userCurrencies = useUserCurrencyStore((state) => state.userCurrencies);
-  const addCurrencyToUser = useUserCurrencyStore(
-    (state) => state.addCurrencyToUser,
-  );
-  const removeCurrencyFromUser = useUserCurrencyStore(
-    (state) => state.removeCurrencyFromUser,
-  );
+  const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
+  const { mutate: addCurrencyToUser } = useAddUserCurrencyMutation();
+  const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
   const [bet, setBet] = useState(minBet);
   const { toast } = useToast();
 
   const handleBet = () => {
-    const userCurrency = userCurrencies.find(
-      (uc) => uc.currency === Currency.Ien,
-    );
-
     if (userCurrency === undefined || userCurrency.amount < bet) {
       const noCurrencyDescription = formatString(
         dictionary.dashboard[
@@ -81,19 +75,19 @@ const CasinoBets = () => {
 
     switch (true) {
       case cubeDrop >= 55 && cubeDrop < 90:
-        addCurrencyToUser(Currency.Ien, bet);
+        addCurrencyToUser({ currency: Currency.Ien, amount: bet * 2 });
         response = getWinMessage(dictionary, bet * 2);
         break;
       case cubeDrop >= 90 && cubeDrop < 100:
-        addCurrencyToUser(Currency.Ien, bet * 3);
+        addCurrencyToUser({ currency: Currency.Ien, amount: bet * 3 });
         response = getWinMessage(dictionary, bet * 4);
         break;
       case cubeDrop === 100:
-        addCurrencyToUser(Currency.Ien, bet * 9);
+        addCurrencyToUser({ currency: Currency.Ien, amount: bet * 9 });
         response = getWinMessage(dictionary, bet * 10);
         break;
       default:
-        removeCurrencyFromUser(Currency.Ien, bet);
+        removeCurrencyFromUser({ currency: Currency.Ien, amount: bet });
         response = getLoseMessage(dictionary, bet);
         break;
     }

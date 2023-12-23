@@ -1,19 +1,18 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserGatheringStore } from "@/store/user-gathering-store";
 import InventorySkeleton from "./inventory-skeleton";
 import InventoryItem from "./inventory-item";
 import InventoryEmpty from "./inventory-empty";
+import { useUserGatheringsQuery } from "@/hooks/queries/use-user-gatherings-query";
 
 const InventoryGathering = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserGatheringStore((state) => state.loading);
-  const userGatherings = useUserGatheringStore((state) => state.userGatherings);
+  const { data: userGatherings, isLoading } = useUserGatheringsQuery();
 
   return (
     <div className="grid-xl-3">
-      {loading ? (
+      {isLoading ? (
         <InventorySkeleton />
-      ) : userGatherings.length ? (
+      ) : userGatherings?.length ? (
         userGatherings.map((userGathering) => (
           <InventoryItem
             key={userGathering.gatheringId}

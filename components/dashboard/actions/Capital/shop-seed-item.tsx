@@ -1,21 +1,74 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import TypographyLarge from "@/components/typography/large";
 import TypographySmall from "@/components/typography/small";
-import { IconIen } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { SeedCropIncluded } from "@/services/data-access/seed";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import TypographyP from "@/components/typography/p";
+import { Currency } from "@prisma/client";
+import { useToast } from "@/components/ui/use-toast";
 import formatString from "@/util/format-string";
+import { IconIen } from "@/components/icons";
+import Image from "next/image";
+import { SeedCropIncluded } from "@/services/data-access/seed";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { useAddUserSeedMutation } from "@/hooks/mutations/use-add-user-seed-mutation";
 
 type Props = {
   seed: SeedCropIncluded;
-  handleBuySeed: (seed: SeedCropIncluded) => void;
 };
 
-const ShopSeedItem = ({ seed, handleBuySeed }: Props) => {
+const ShopSeedItem = ({ seed }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
+  const { mutate: addSeedToUser } = useAddUserSeedMutation();
+  const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
+  const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
+  const { toast } = useToast();
+
+  const handleBuySeed = (seed: SeedCropIncluded) => {
+    if (userCurrency === undefined || userCurrency.amount < seed.price) {
+      toast({
+        description: formatString(
+          dictionary.dashboard[
+            "dashboard.actions.capital.shop-seed.sheet.toast.no-currency"
+          ],
+          <IconIen />,
+          <Image
+            className="mx-1 inline h-6 w-6"
+            width={27}
+            height={27}
+            src={`/seed/${seed.name}.png`}
+            alt={seed.name}
+          />,
+          // @ts-ignore Implicit any
+          dictionary.item.seed[seed.name],
+        ),
+      });
+      return;
+    }
+
+    removeCurrencyFromUser({ currency: Currency.Ien, amount: seed.price });
+    addSeedToUser({ seedId: seed.id, amount: 1 });
+
+    toast({
+      description: formatString(
+        dictionary.dashboard[
+          "dashboard.actions.capital.shop-seed.sheet.toast.success"
+        ],
+        <Image
+          className="mx-1 inline h-6 w-6"
+          width={27}
+          height={27}
+          src={`/seed/${seed.name}.png`}
+          alt={seed.name}
+        />,
+        // @ts-ignore Implicit any,
+        dictionary.item.seed[seed.name],
+        <IconIen />,
+        seed.price,
+      ),
+    });
+  };
 
   return (
     <div

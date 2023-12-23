@@ -14,9 +14,9 @@ import Image from "next/image";
 import { UserFishIncluded } from "@/services/data-access/fish";
 import { IconIen } from "@/components/icons";
 import { Currency, Fish } from "@prisma/client";
-import { useUserCurrencyStore } from "@/store/user-currency-store";
-import { useUserFishStore } from "@/store/user-fish-store";
 import { useToast } from "@/components/ui/use-toast";
+import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
+import { useRemoveUserFishMutation } from "@/hooks/mutations/use-remove-user-fish-mutation";
 
 type Props = {
   userFish: UserFishIncluded;
@@ -24,18 +24,14 @@ type Props = {
 
 const ShopFisherPopover = ({ userFish }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const addCurrencyToUser = useUserCurrencyStore(
-    (state) => state.addCurrencyToUser,
-  );
-  const removeFishFromUser = useUserFishStore(
-    (state) => state.removeFishFromUser,
-  );
+  const { mutate: addCurrencyToUser } = useAddUserCurrencyMutation();
+  const { mutate: removeFishFromUser } = useRemoveUserFishMutation();
   const [sellAmount, setSellAmount] = useState(1);
   const { toast } = useToast();
 
   const sellFish = (fish: Fish, amount: number) => {
-    removeFishFromUser(fish.id, amount);
-    addCurrencyToUser(Currency.Ien, fish.price * amount);
+    removeFishFromUser({ fishId: fish.id, amount: amount });
+    addCurrencyToUser({ currency: Currency.Ien, amount: fish.price * amount });
 
     toast({
       description: formatString(

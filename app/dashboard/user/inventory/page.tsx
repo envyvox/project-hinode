@@ -8,13 +8,6 @@ import InventoryGathering from "@/components/inventory/inventory-gathering";
 import InventoryProducts from "@/components/inventory/inventory-products";
 import InventorySeeds from "@/components/inventory/inventory-seeds";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import useUserBox from "@/hooks/use-user-box";
-import useUserCrop from "@/hooks/use-user-crop";
-import useUserCurrency from "@/hooks/use-user-currency";
-import useUserFish from "@/hooks/use-user-fish";
-import useUserGathering from "@/hooks/use-user-gathering";
-import useUserProduct from "@/hooks/use-user-product";
-import useUserSeed from "@/hooks/use-user-seed";
 import { useDictionaryStore } from "@/store/dictionary-store";
 
 enum InventoryTab {
@@ -30,14 +23,6 @@ enum InventoryTab {
 const UserInventory = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const inventoryTabs = Object.keys(InventoryTab);
-
-  useUserCurrency();
-  useUserBox();
-  useUserFish();
-  useUserGathering();
-  useUserSeed();
-  useUserCrop();
-  useUserProduct();
 
   return (
     <Tabs defaultValue={InventoryTab.currency}>

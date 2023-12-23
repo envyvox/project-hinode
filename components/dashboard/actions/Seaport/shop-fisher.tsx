@@ -1,31 +1,15 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
 import DashboardActionBase from "../dashboard-action-base";
 import { Button } from "@/components/ui/button";
-import { useUserFishStore } from "@/store/user-fish-store";
-import { Season } from "@prisma/client";
 import ShopFisherUserFish from "./shop-fisher-user-fish";
 import ShopFisherSkeleton from "./shop-fisher-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
 import TypographyMuted from "@/components/typography/muted";
-import useWorldState from "@/hooks/use-world-state";
-import useUserFish from "@/hooks/use-user-fish";
-import { useMemo } from "react";
+import { useUserSeasonFishQuery } from "@/hooks/queries/use-user-season-fish-query";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const loading = useUserFishStore((state) => state.loading);
-  const userFish = useUserFishStore((state) => state.userFish);
-  const worldState = useWorldState();
-
-  const filteredUserFish = useMemo(() => {
-    return userFish.filter(
-      (uf) =>
-        uf.fish.catchSeason.includes(worldState.season) ||
-        uf.fish.catchSeason.includes(Season.Any),
-    );
-  }, [userFish, worldState.season]);
-
-  useUserFish();
+  const { data: userFish, isLoading } = useUserSeasonFishQuery();
 
   return (
     <DashboardActionBase
@@ -58,10 +42,10 @@ const ActionSeaportShopFisher = () => {
           }
           content={
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
-              {loading ? (
+              {isLoading ? (
                 <ShopFisherSkeleton />
-              ) : userFish.length ? (
-                filteredUserFish.map((uf) => (
+              ) : userFish?.length ? (
+                userFish.map((uf) => (
                   <ShopFisherUserFish key={uf.fishId} userFish={uf} />
                 ))
               ) : (
