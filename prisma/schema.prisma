@@ -61,6 +61,7 @@ model User {
   gatherings    UserGathering[]
   titles        UserTitle[]
   banners       UserBanner[]
+  lottery       UserLottery[]
 }
 
 model VerificationToken {
@@ -171,6 +172,13 @@ model UserBanner {
   createdAt DateTime @default(now())
 
   @@id([userId, bannerId])
+}
+
+model UserLottery {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
 }
 
 model Seed {
