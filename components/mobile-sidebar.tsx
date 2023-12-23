@@ -7,6 +7,7 @@ import { useState } from "react";
 import { sidebarCategories } from "@/config/sidebar";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import Link from "next/link";
+import TypographyH4 from "./typography/h4";
 
 const MobileSidebar = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -21,23 +22,24 @@ const MobileSidebar = () => {
       </DrawerTrigger>
       <DrawerContent className="container">
         {sidebarCategories.map((category) => (
-          <div key={category.label} className="pb-4">
-            <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
+          <div key={category.label} className="flex flex-col gap-3 pb-4">
+            <TypographyH4>
               {/* @ts-ignore: Implicit any */}
               {dictionary.sidebar[category.label]}
-            </h4>
-            {category.child.map((child) => (
-              <div key={child.label} className="flex flex-col gap-1 text-sm">
+            </TypographyH4>
+            <div className="flex flex-col gap-2">
+              {category.child.map((child) => (
                 <Link
+                  key={child.label}
                   href={child.href}
                   onClick={() => setOpen(false)}
-                  className="group flex w-full items-center rounded-md border border-transparent px-2 py-1 text-muted-foreground hover:underline"
+                  className="text-muted-foreground"
                 >
                   {/* @ts-ignore: Implicit any */}
                   {dictionary.sidebar[child.label]}
                 </Link>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ))}
       </DrawerContent>
