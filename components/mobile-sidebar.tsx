@@ -8,10 +8,16 @@ import { sidebarCategories } from "@/config/sidebar";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import Link from "next/link";
 import TypographyH4 from "./typography/h4";
+import { useSession } from "next-auth/react";
 
 const MobileSidebar = () => {
+  const { data: session } = useSession();
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const [open, setOpen] = useState(false);
+
+  if (!session) {
+    return null;
+  }
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
