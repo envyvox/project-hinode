@@ -1,9 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { GameUser } from "@/services/data-access/user";
 import React from "react";
-import RatingTableCellName from "./rating-table-cell-name";
 import RatingTableCellPosition from "./rating-table-cell-position";
 import RatingTableCellLevel from "./rating-table-cell-level";
+import UserHoverCard from "../user-hover-card";
 
 export const ratingTableColumns: ColumnDef<GameUser>[] = [
   {
@@ -14,7 +14,7 @@ export const ratingTableColumns: ColumnDef<GameUser>[] = [
   {
     accessorKey: "name",
     header: "rating.user.name",
-    cell: ({ row }) => <RatingTableCellName row={row} />,
+    cell: ({ row }) => <UserHoverCard user={row.original} />,
   },
   {
     accessorKey: "level",

@@ -177,7 +177,7 @@ model UserBanner {
 model UserLottery {
   id        String   @id @default(cuid())
   user      User     @relation(fields: [userId], references: [id])
-  userId    String
+  userId    String   @unique
   createdAt DateTime @default(now())
 }
 

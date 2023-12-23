@@ -154,6 +154,14 @@ const emptyDictinaory: Dictionary = {
     "dashboard.actions.capital.casino.bet.tooltip.case-x4": "",
     "dashboard.actions.capital.casino.bet.tooltip.case-x10": "",
     "dashboard.actions.capital.casino.bet.toast.no-currency": "",
+    "dashboard.actions.capital.casino.lottery.buy.toast.already-have": "",
+    "dashboard.actions.capital.casino.lottery.buy.toast.no-currency": "",
+    "dashboard.actions.capital.casino.lottery.buy.toast.success": "",
+    "dashboard.actions.capital.casino.lottery.gift.toast.yourself": "",
+    "dashboard.actions.capital.casino.lottery.gift.toast.no-currency": "",
+    "dashboard.actions.capital.casino.lottery.gift.toast.already-have": "",
+    "dashboard.actions.capital.casino.lottery.gift.toast.success": "",
+    "dashboard.actions.capital.casino.lottery.winner.toast": ""
   },
   location: {
     InTransit: "",

@@ -11,6 +11,13 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import CasinoLotteryParticipants from "./casino-lottery-participants";
 import CasinoLotteryGift from "./casino-lottery-gift";
 import { Icons } from "@/components/icons";
+import { useAddUserLotteryMutation } from "@/hooks/mutations/use-add-user-lottery-mutation";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { Currency } from "@prisma/client";
+import { useToast } from "@/components/ui/use-toast";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useUserLotteryQuery } from "@/hooks/queries/use-user-lottery-query";
+import { useLottery } from "@/hooks/use-lottery";
 
 const lotteryPrice = 500;
 const lotteryMembers = 10;
@@ -18,6 +25,54 @@ const lotteryAward = 5000;
 
 const CasinoLottery = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
+  const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
+  const { data: userLottery } = useUserLotteryQuery();
+  const { mutate: removeUserCurrency } = useRemoveUserCurrencyMutation();
+  const { mutate: addUserLottery, isLoading } = useAddUserLotteryMutation();
+  const { toast } = useToast();
+
+  useLottery();
+
+  const handleBuyLottery = () => {
+    if (userLottery) {
+      toast({
+        description: formatString(
+          dictionary.dashboard[
+            "dashboard.actions.capital.casino.lottery.buy.toast.already-have"
+          ],
+          <Icons.LotteryTicket />,
+        ),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (userCurrency === undefined || userCurrency.amount < lotteryPrice) {
+      toast({
+        description: formatString(
+          dictionary.dashboard[
+            "dashboard.actions.capital.casino.lottery.buy.toast.no-currency"
+          ],
+          <Icons.Ien />,
+          <Icons.LotteryTicket />,
+        ),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    removeUserCurrency({ currency: Currency.Ien, amount: lotteryPrice });
+    addUserLottery({});
+
+    toast({
+      description: formatString(
+        dictionary.dashboard[
+          "dashboard.actions.capital.casino.lottery.buy.toast.success"
+        ],
+        <Icons.LotteryTicket />,
+      ),
+    });
+  };
 
   return (
     <Card className="col-span-1 md:col-span-2">
@@ -44,6 +99,8 @@ const CasinoLottery = () => {
           <Button
             variant="secondary"
             className="mt-5 flex text-secondary-foreground"
+            disabled={isLoading}
+            onClick={handleBuyLottery}
           >
             {
               dictionary.dashboard[
