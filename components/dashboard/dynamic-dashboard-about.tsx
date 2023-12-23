@@ -10,7 +10,7 @@ type LocationAbouts = {
   };
 };
 
-const aboutLoading = () => <Skeleton className="h-[150px] w-full" />;
+const aboutLoading = () => <Skeleton className="mt-6 h-[150px] w-full" />;
 
 const abouts: LocationAbouts = {
   en: {
