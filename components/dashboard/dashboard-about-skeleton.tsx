@@ -13,6 +13,6 @@ const DashboardAboutSkeleton = () => {
       <Skeleton className="mt-2 h-[20px] w-2/3" />
     </>
   );
-}
+};
 
-export default DashboardAboutSkeleton
+export default DashboardAboutSkeleton;

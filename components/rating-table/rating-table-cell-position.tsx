@@ -1,7 +1,6 @@
 import { GameUser } from "@/services/data-access/user";
 import displayPosition from "@/util/display-position";
 import { Row } from "@tanstack/react-table";
-import React from "react";
 
 type Props = {
   row: Row<GameUser>;

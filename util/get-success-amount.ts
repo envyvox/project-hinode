@@ -11,7 +11,7 @@ import getRandomNumberBetween from "./get-random-number";
 const getSuccessAmount = (
   chance: number,
   doubleChance: number,
-  amount: number,
+  amount: number
 ): number => {
   return chance >= getRandomNumberBetween(1, 101)
     ? doubleChance >= getRandomNumberBetween(1, 101)

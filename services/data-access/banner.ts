@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Banner, BannerRarity, UserBanner } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 export type UserBannerIncluded = {
   banner: Banner;
@@ -39,7 +40,7 @@ const getBanners = async (rarities: BannerRarity[]): Promise<Banner[]> => {
 const toggleUserBanner = async (
   userId: string,
   bannerId: string,
-  isActive: boolean,
+  isActive: boolean
 ) => {
   return await prisma.userBanner.update({
     where: {
@@ -61,7 +62,7 @@ const toggleUserBanner = async (
  * @return {Promise<UserBannerIncluded[]>} A Promise that resolves to an array of user banners, including the associated banner information.
  */
 const getUserBanners = async (
-  userId: string,
+  userId: string
 ): Promise<UserBannerIncluded[]> => {
   return await prisma.userBanner.findMany({
     where: {
@@ -87,7 +88,7 @@ const getUserBanners = async (
  * @return {Promise<UserBannerIncluded>} A promise that resolves to the active user banner.
  */
 const getUserActiveBanner = async (
-  userId: string,
+  userId: string
 ): Promise<UserBannerIncluded> => {
   return await prisma.userBanner.findFirstOrThrow({
     where: {
@@ -109,7 +110,7 @@ const getUserActiveBanner = async (
  */
 const addBannerToUser = async (
   userId: string,
-  bannerId: string,
+  bannerId: string
 ): Promise<UserBanner> => {
   return await prisma.userBanner.create({
     data: {

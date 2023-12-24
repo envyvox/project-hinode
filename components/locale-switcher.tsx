@@ -1,7 +1,12 @@
 "use client";
 
 import { i18n } from "@/i18n-config";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import { useLangStore } from "@/store/lang-store";
 import { Languages } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +15,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import { useLangStore } from "@/store/lang-store";
 
 const LocaleSwitcher = () => {
   const setLang = useLangStore((state) => state.setLang);

@@ -1,9 +1,11 @@
 "use client";
 
-import { ScrollArea } from "./ui/scroll-area";
 import Link from "next/link";
-import { sidebarCategories } from "@/config/sidebar";
 import { useDictionaryStore } from "@/store/dictionary-store";
+
+import { sidebarCategories } from "@/config/sidebar";
+
+import { ScrollArea } from "./ui/scroll-area";
 
 const Sidebar = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

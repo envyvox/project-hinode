@@ -1,7 +1,9 @@
 "use client";
 
-import { useUserStore } from "@/store/user-store";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { useUserStore } from "@/store/user-store";
+
+import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
 import {
   Card,
   CardContent,
@@ -9,9 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import TypographyMuted from "@/components/typography/muted";
 import BannerImage from "@/components/banner-image";
-import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
+import TypographyMuted from "@/components/typography/muted";
 
 const UserProfile = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

@@ -1,19 +1,20 @@
+import { useState } from "react";
+import { GameUser } from "@/services/data-access/user";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import { useUserStore } from "@/store/user-store";
+import formatString from "@/util/format-string";
+import { Currency } from "@prisma/client";
+
+import { useAddUserLotteryMutation } from "@/hooks/mutations/use-add-user-lottery-mutation";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { useUserLotteryQuery } from "@/hooks/queries/use-user-lottery-query";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { Icons } from "@/components/icons";
 import TypographyLarge from "@/components/typography/large";
 import TypographyMuted from "@/components/typography/muted";
-import { Button } from "@/components/ui/button";
 import UsersSelect from "@/components/users-select";
-import { GameUser } from "@/services/data-access/user";
-import formatString from "@/util/format-string";
-import { useState } from "react";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import { Icons } from "@/components/icons";
-import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
-import { Currency } from "@prisma/client";
-import { useToast } from "@/components/ui/use-toast";
-import { useUserStore } from "@/store/user-store";
-import { useUserLotteryQuery } from "@/hooks/queries/use-user-lottery-query";
-import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
-import { useAddUserLotteryMutation } from "@/hooks/mutations/use-add-user-lottery-mutation";
 
 const lotteryPrice = 500;
 const deliveryPrice = 100;
@@ -35,9 +36,9 @@ const CasinoLotteryGift = () => {
       toast({
         description: formatString(
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.gift.toast.yourself"
+            "actions.capital.casino.lottery.gift.toast.yourself"
           ],
-          <Icons.LotteryTicket />,
+          <Icons.LotteryTicket />
         ),
         variant: "destructive",
       });
@@ -51,10 +52,10 @@ const CasinoLotteryGift = () => {
       toast({
         description: formatString(
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.gift.toast.no-currency"
+            "actions.capital.casino.lottery.gift.toast.no-currency"
           ],
           <Icons.Ien />,
-          <Icons.LotteryTicket />,
+          <Icons.LotteryTicket />
         ),
         variant: "destructive",
       });
@@ -65,7 +66,7 @@ const CasinoLotteryGift = () => {
       toast({
         description:
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.gift.toast.already-have"
+            "actions.capital.casino.lottery.gift.toast.already-have"
           ],
         variant: "destructive",
       });
@@ -81,9 +82,9 @@ const CasinoLotteryGift = () => {
     toast({
       description: formatString(
         dictionary.dashboard[
-          "dashboard.actions.capital.casino.lottery.gift.toast.success"
+          "actions.capital.casino.lottery.gift.toast.success"
         ],
-        <Icons.LotteryTicket />,
+        <Icons.LotteryTicket />
       ),
     });
   };
@@ -91,20 +92,16 @@ const CasinoLotteryGift = () => {
   return (
     <div>
       <TypographyLarge>
-        {
-          dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.gift.label"
-          ]
-        }
+        {dictionary.dashboard["actions.capital.casino.lottery.gift.label"]}
       </TypographyLarge>
       <TypographyMuted>
         {formatString(
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.gift.description"
+            "actions.capital.casino.lottery.gift.description"
           ],
           <Icons.LotteryTicket />,
           deliveryPrice,
-          <Icons.Ien />,
+          <Icons.Ien />
         )}
       </TypographyMuted>
       <div className="mt-5 flex flex-col gap-2">
@@ -121,7 +118,7 @@ const CasinoLotteryGift = () => {
         >
           {
             dictionary.dashboard[
-              "dashboard.actions.capital.casino.lottery.gift.button-label"
+              "actions.capital.casino.lottery.gift.button-label"
             ]
           }
         </Button>

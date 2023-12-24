@@ -1,7 +1,8 @@
-import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { addSeedToUser } from "@/services/data-access/seed";
 import { useUserStore } from "@/store/user-store";
 import { useMutation, useQueryClient } from "react-query";
+
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 
 type Props = {
   userId?: string;

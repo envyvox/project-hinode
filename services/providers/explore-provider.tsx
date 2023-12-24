@@ -1,12 +1,13 @@
 "use client";
 
-import { useExploreJobStore } from "@/store/explore-job-store";
-import { useUserStore } from "@/store/user-store";
-import { useEventDetails } from "@trigger.dev/react";
 import React, { useEffect } from "react";
-import formatString from "@/util/format-string";
 import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { useExploreJobStore } from "@/store/explore-job-store";
+import { useUserStore } from "@/store/user-store";
+import formatString from "@/util/format-string";
+import { useEventDetails } from "@trigger.dev/react";
+
 import { useToast } from "@/components/ui/use-toast";
 
 type Props = {
@@ -18,7 +19,7 @@ const ExploreProvider = ({ children }: Props) => {
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const exploreJobData = useExploreJobStore((state) => state.exploreJobData);
   const resetExploreJobData = useExploreJobStore(
-    (state) => state.resetExploreJobData,
+    (state) => state.resetExploreJobData
   );
   const { isSuccess, isError, data } = useEventDetails(exploreJobData.jobId);
   const { toast } = useToast();
@@ -39,7 +40,7 @@ const ExploreProvider = ({ children }: Props) => {
           description: formatString(
             // @ts-ignore Implicit any
             dictionary.dashboard[
-              `dashboard.actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.success`
+              `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.success`
             ],
             exploreJobData.successGatherings.map((gathering) => {
               return [
@@ -55,7 +56,7 @@ const ExploreProvider = ({ children }: Props) => {
                   dictionary.item.gathering[gathering.gatheringName]
                 }`,
               ];
-            }),
+            })
           ),
           duration: Infinity,
         });
@@ -64,7 +65,7 @@ const ExploreProvider = ({ children }: Props) => {
           description:
             // @ts-ignore Implicit any
             dictionary.dashboard[
-              `dashboard.actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.failed`
+              `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.failed`
             ],
         });
       }

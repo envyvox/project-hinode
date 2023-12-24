@@ -1,8 +1,9 @@
 "use server";
 
-import { Location, Title } from "@prisma/client";
-import prisma from "@/lib/prisma";
 import getXpRequiredToLevel from "@/util/get-xp-required-to-lvl";
+import { Location, Title } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 export type GameUser = {
   id: string;
@@ -68,7 +69,7 @@ const getUsers = async (): Promise<GameUser[]> => {
  */
 const addXpToUser = async (
   userId: string,
-  amount: number,
+  amount: number
 ): Promise<GameUser> => {
   const updatedUser = await prisma.user.update({
     select: selectFields,
@@ -112,7 +113,7 @@ const addXpToUser = async (
  */
 const updateUserLocation = async (
   userId: string,
-  location: Location,
+  location: Location
 ): Promise<GameUser> => {
   return await prisma.user.update({
     select: selectFields,
@@ -134,7 +135,7 @@ const updateUserLocation = async (
  */
 const updateUserTitle = async (
   userId: string,
-  title: Title,
+  title: Title
 ): Promise<GameUser> => {
   return await prisma.user.update({
     select: selectFields,

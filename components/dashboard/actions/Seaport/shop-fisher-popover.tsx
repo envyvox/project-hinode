@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Image from "next/image";
+import { UserFishIncluded } from "@/services/data-access/fish";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import { Currency, Fish } from "@prisma/client";
+
+import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
+import { useRemoveUserFishMutation } from "@/hooks/mutations/use-remove-user-fish-mutation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Slider } from "@/components/ui/slider";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import TypographyMuted from "@/components/typography/muted";
-import formatString from "@/util/format-string";
-import Image from "next/image";
-import { UserFishIncluded } from "@/services/data-access/fish";
-import { Icons } from "@/components/icons";
-import { Currency, Fish } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
-import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
-import { useRemoveUserFishMutation } from "@/hooks/mutations/use-remove-user-fish-mutation";
+import { Icons } from "@/components/icons";
+import TypographyMuted from "@/components/typography/muted";
 
 type Props = {
   userFish: UserFishIncluded;
@@ -36,7 +37,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
     toast({
       description: formatString(
         dictionary.dashboard[
-          "dashboard.actions.seaport.shop-fisher.sheet.toast.sell-one"
+          "actions.seaport.shop-fisher.sheet.toast.sell-one"
         ],
         <Image
           className="mx-1 inline h-6 w-6 object-contain"
@@ -49,7 +50,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         // @ts-ignore Implicit any
         dictionary.item.fish[fish.name],
         <Icons.Ien />,
-        fish.price * amount,
+        fish.price * amount
       ),
     });
   };
@@ -60,7 +61,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         <Button className="w-fit self-end" variant="secondary">
           {
             dictionary.dashboard[
-              "dashboard.actions.seaport.shop-fisher.sheet.button-label"
+              "actions.seaport.shop-fisher.sheet.button-label"
             ]
           }
         </Button>
@@ -70,7 +71,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
           <TypographyMuted>
             {
               dictionary.dashboard[
-                "dashboard.actions.seaport.shop-fisher.sheet.popover.slider-label"
+                "actions.seaport.shop-fisher.sheet.popover.slider-label"
               ]
             }
           </TypographyMuted>
@@ -91,7 +92,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
           <TypographyMuted>
             {
               dictionary.dashboard[
-                "dashboard.actions.seaport.shop-fisher.sheet.popover.input-label"
+                "actions.seaport.shop-fisher.sheet.popover.input-label"
               ]
             }
           </TypographyMuted>
@@ -105,7 +106,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
                   ? 1
                   : value > userFish.amount
                     ? userFish.amount
-                    : value,
+                    : value
               );
             }}
           />
@@ -117,10 +118,10 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         >
           {formatString(
             dictionary.dashboard[
-              "dashboard.actions.seaport.shop-fisher.sheet.popover.button-label"
+              "actions.seaport.shop-fisher.sheet.popover.button-label"
             ],
             sellAmount * userFish.fish.price,
-            <Icons.Ien />,
+            <Icons.Ien />
           )}
         </Button>
       </PopoverContent>

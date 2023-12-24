@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { useUserStore } from "@/store/user-store";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 
 type Props = {
   children: React.ReactNode;

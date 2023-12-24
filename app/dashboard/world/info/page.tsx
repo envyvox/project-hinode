@@ -1,5 +1,11 @@
 "use client";
 
+import { getWorldState } from "@/services/data-access/world-state";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import { TimesDay } from "@prisma/client";
+import { useQuery } from "react-query";
+
 import {
   Card,
   CardContent,
@@ -8,12 +14,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getWorldState } from "@/services/data-access/world-state";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import formatString from "@/util/format-string";
-import { TimesDay } from "@prisma/client";
-import React from "react";
-import { useQuery } from "react-query";
 
 const WorldIntoPage = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -33,7 +33,7 @@ const WorldIntoPage = () => {
             ) : (
               formatString(
                 dictionary.dashboard["world.info.season.title"],
-                dictionary.season[worldState!.season],
+                dictionary.season[worldState!.season]
               )
             )}
           </CardTitle>
@@ -54,7 +54,7 @@ const WorldIntoPage = () => {
             ) : (
               formatString(
                 dictionary.dashboard["world.info.timesDay.title"],
-                dictionary.timesDay[TimesDay.Day],
+                dictionary.timesDay[TimesDay.Day]
               )
             )}
           </CardTitle>
@@ -75,7 +75,7 @@ const WorldIntoPage = () => {
             ) : (
               formatString(
                 dictionary.dashboard["world.info.weatherToday.title"],
-                dictionary.weather[worldState!.weatherToday],
+                dictionary.weather[worldState!.weatherToday]
               )
             )}
           </CardTitle>
@@ -96,7 +96,7 @@ const WorldIntoPage = () => {
             ) : (
               formatString(
                 dictionary.dashboard["world.info.weatherTomorrow.title"],
-                dictionary.weather[worldState!.weatherTomorrow],
+                dictionary.weather[worldState!.weatherTomorrow]
               )
             )}
           </CardTitle>

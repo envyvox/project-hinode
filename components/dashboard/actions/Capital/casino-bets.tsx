@@ -1,3 +1,13 @@
+import { useState } from "react";
+import { Dictionary, useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import getRandomNumberBetween from "@/util/get-random-number";
+import { Currency } from "@prisma/client";
+
+import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,39 +17,27 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Dictionary, useDictionaryStore } from "@/store/dictionary-store";
-import formatString from "@/util/format-string";
-import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
-import getRandomNumberBetween from "@/util/get-random-number";
-import CasinoBetsTooltip from "./casino-bets-tooptip";
-import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
-import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
-import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { Icons } from "@/components/icons";
+
+import CasinoBetsTooltip from "./casino-bets-tooptip";
 
 const minBet = 10;
 const maxBet = 1000;
 
 const getWinMessage = (dictionary: Dictionary, amount: number) => {
   return formatString(
-    dictionary.dashboard[
-      "dashboard.actions.capital.casino.bet.toast.description.win"
-    ],
+    dictionary.dashboard["actions.capital.casino.bet.toast.description.win"],
     amount,
-    <Icons.Ien />,
+    <Icons.Ien />
   );
 };
 
 const getLoseMessage = (dictionary: Dictionary, amount: number) => {
   return formatString(
-    dictionary.dashboard[
-      "dashboard.actions.capital.casino.bet.toast.description.lose"
-    ],
+    dictionary.dashboard["actions.capital.casino.bet.toast.description.lose"],
     amount,
-    <Icons.Ien />,
+    <Icons.Ien />
   );
 };
 
@@ -54,10 +52,8 @@ const CasinoBets = () => {
   const handleBet = () => {
     if (userCurrency === undefined || userCurrency.amount < bet) {
       const noCurrencyDescription = formatString(
-        dictionary.dashboard[
-          "dashboard.actions.capital.casino.bet.toast.no-currency"
-        ],
-        <Icons.Ien />,
+        dictionary.dashboard["actions.capital.casino.bet.toast.no-currency"],
+        <Icons.Ien />
       );
 
       toast({
@@ -94,10 +90,8 @@ const CasinoBets = () => {
 
     toast({
       title: formatString(
-        dictionary.dashboard[
-          "dashboard.actions.capital.casino.bet.toast.title"
-        ],
-        cubeDrop,
+        dictionary.dashboard["actions.capital.casino.bet.toast.title"],
+        cubeDrop
       ) as string,
       description: response,
     });
@@ -107,25 +101,19 @@ const CasinoBets = () => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          {dictionary.dashboard["dashboard.actions.capital.casino.bet.label"]}
+          {dictionary.dashboard["actions.capital.casino.bet.label"]}
           <CasinoBetsTooltip />
         </CardTitle>
         <CardDescription>
-          {
-            dictionary.dashboard[
-              "dashboard.actions.capital.casino.bet.description"
-            ]
-          }
+          {dictionary.dashboard["actions.capital.casino.bet.description"]}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <Label htmlFor="amount">
           {formatString(
-            dictionary.dashboard[
-              "dashboard.actions.capital.casino.bet.amount-label"
-            ],
+            dictionary.dashboard["actions.capital.casino.bet.amount-label"],
             minBet,
-            maxBet,
+            maxBet
           )}
         </Label>
         <div>
@@ -143,7 +131,7 @@ const CasinoBets = () => {
                     ? minBet
                     : amount > maxBet
                       ? maxBet
-                      : amount,
+                      : amount
               );
             }}
           />
@@ -151,11 +139,7 @@ const CasinoBets = () => {
           {dictionary.item.currency[Currency.Ien].toLowerCase()}
         </div>
         <Button className="w-fit" variant="secondary" onClick={handleBet}>
-          {
-            dictionary.dashboard[
-              "dashboard.actions.capital.casino.bet.button-label"
-            ]
-          }
+          {dictionary.dashboard["actions.capital.casino.bet.button-label"]}
         </Button>
       </CardContent>
     </Card>

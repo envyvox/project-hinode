@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Currency, UserCurrency } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 /**
  * Get user currencies
@@ -27,7 +28,7 @@ const getUserCurrencies = async (userId: string): Promise<UserCurrency[]> => {
  */
 const getUserCurrency = async (
   userId: string,
-  currency: Currency,
+  currency: Currency
 ): Promise<UserCurrency> => {
   return await prisma.userCurrency.findUniqueOrThrow({
     where: {
@@ -48,7 +49,7 @@ const getUserCurrency = async (
 const addCurrencyToUser = async (
   userId: string,
   currency: Currency,
-  amount: number,
+  amount: number
 ) => {
   await prisma.userCurrency.upsert({
     where: {
@@ -79,7 +80,7 @@ const addCurrencyToUser = async (
 const removeCurrencyFromUser = async (
   userId: string,
   currency: Currency,
-  amount: number,
+  amount: number
 ) => {
   await prisma.userCurrency.update({
     where: {

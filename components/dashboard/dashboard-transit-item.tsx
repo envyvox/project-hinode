@@ -1,20 +1,21 @@
-import { Currency, Transit } from "@prisma/client";
-import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
-import TypographyH4 from "@/components/typography/h4";
-import TypographyP from "@/components/typography/p";
-import { Button } from "@/components/ui/button";
-import formatString from "@/util/format-string";
-import { useDictionaryStore } from "@/store/dictionary-store";
 import {
   DashboardTab,
   useDashboardTabStore,
 } from "@/store/dashboard-tab-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
-import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import formatString from "@/util/format-string";
+import { Currency, Transit } from "@prisma/client";
+
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
-import { useToast } from "../ui/use-toast";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import TypographyH4 from "@/components/typography/h4";
+import TypographyP from "@/components/typography/p";
+
 import { Icons } from "../icons";
+import { useToast } from "../ui/use-toast";
 
 type Props = {
   transit: Transit;
@@ -31,13 +32,10 @@ const DashboardTransitItem = ({ transit }: Props) => {
   const handleTransit = (transit: Transit) => {
     if (userCurrency === undefined || userCurrency.amount < transit.price) {
       toast({
-        title:
-          dictionary.dashboard["dashboard.transit.toast.no-currency.title"],
+        title: dictionary.dashboard["transit.toast.no-currency.title"],
         description: formatString(
-          dictionary.dashboard[
-            "dashboard.transit.toast.no-currency.description"
-          ],
-          transit.price,
+          dictionary.dashboard["transit.toast.no-currency.description"],
+          transit.price
         ),
         variant: "destructive",
       });
@@ -47,10 +45,10 @@ const DashboardTransitItem = ({ transit }: Props) => {
       setActiveTab(DashboardTab.about);
 
       toast({
-        title: dictionary.dashboard["dashboard.transit.toast.success.title"],
+        title: dictionary.dashboard["transit.toast.success.title"],
         description: formatString(
-          dictionary.dashboard["dashboard.transit.toast.success.description"],
-          dictionary.location[transit.destination],
+          dictionary.dashboard["transit.toast.success.description"],
+          dictionary.location[transit.destination]
         ),
       });
     }
@@ -79,9 +77,9 @@ const DashboardTransitItem = ({ transit }: Props) => {
           onClick={() => handleTransit(transit)}
         >
           {formatString(
-            dictionary.dashboard["dashboard.transit.button"],
+            dictionary.dashboard["transit.button"],
             transit.price,
-            <Icons.Ien />,
+            <Icons.Ien />
           )}
         </Button>
       </div>

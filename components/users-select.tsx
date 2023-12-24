@@ -1,9 +1,12 @@
-import { GameUser } from "@/services/data-access/user";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
+import { GameUser } from "@/services/data-access/user";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import { Check, ChevronsUpDown } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { useUsersQuery } from "@/hooks/queries/use-users-query";
+
+import { Button } from "./ui/button";
 import {
   Command,
   CommandEmpty,
@@ -11,8 +14,8 @@ import {
   CommandInput,
   CommandItem,
 } from "./ui/command";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUsersQuery } from "@/hooks/queries/use-users-query";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { ScrollArea } from "./ui/scroll-area";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   selectedUser: GameUser | undefined;
@@ -59,26 +62,30 @@ const UsersSelect = ({ selectedUser, setSelectedUser, ...props }: Props) => {
             {dictionary.dashboard["users-select.search.empty"]}
           </CommandEmpty>
           <CommandGroup>
-            {users?.map((user) => (
-              <CommandItem
-                key={user.id}
-                value={user.id}
-                onSelect={(currentValue) => {
-                  const selectedUser = users.find((u) => u.id === currentValue);
+            <ScrollArea className="h-96">
+              {users?.map((user) => (
+                <CommandItem
+                  key={user.id}
+                  value={user.id}
+                  onSelect={(currentValue) => {
+                    const selectedUser = users.find(
+                      (u) => u.id === currentValue
+                    );
 
-                  setSelectedUser(selectedUser);
-                  setOpen(false);
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    selectedUser?.id === user.id ? "opacity-100" : "opacity-0",
-                  )}
-                />
-                {user.displayName}
-              </CommandItem>
-            ))}
+                    setSelectedUser(selectedUser);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      selectedUser?.id === user.id ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {user.displayName}
+                </CommandItem>
+              ))}
+            </ScrollArea>
           </CommandGroup>
         </Command>
       </PopoverContent>

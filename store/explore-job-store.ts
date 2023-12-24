@@ -1,10 +1,11 @@
 import { sendEventExplore } from "@/jobs/triggers";
-import { create } from "zustand";
-import { useUserStore } from "./user-store";
-import { GatheringPropertyType, Location } from "@prisma/client";
 import { getGatheringsInLocation } from "@/services/data-access/gathering";
 import getSuccessAmount from "@/util/get-success-amount";
+import { GatheringPropertyType, Location } from "@prisma/client";
+import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
+import { useUserStore } from "./user-store";
 
 type ExploreJobData = {
   jobId: string;
@@ -24,7 +25,7 @@ type ExploreJobState = {
   resetExploreJobData: () => void;
   startExploreJob: (
     exploreLocation: Location,
-    returnLocation: Location,
+    returnLocation: Location
   ) => Promise<void>;
 };
 
@@ -42,7 +43,7 @@ export const useExploreJobStore = create<ExploreJobState>()(
       resetExploreJobData: () => set({ exploreJobData: emptyExploreData }),
       startExploreJob: async (
         exploreLocation: Location,
-        returnLocation: Location,
+        returnLocation: Location
       ) => {
         const gatherings = await getGatheringsInLocation(exploreLocation);
         const user = useUserStore.getState().user;
@@ -51,16 +52,16 @@ export const useExploreJobStore = create<ExploreJobState>()(
         gatherings.forEach((gathering) => {
           const chance =
             gathering.properties.find(
-              (gp) => gp.property === GatheringPropertyType.GatheringChance,
+              (gp) => gp.property === GatheringPropertyType.GatheringChance
             )?.value ?? 0;
           const doubleChance =
             gathering.properties.find(
               (gp) =>
-                gp.property === GatheringPropertyType.GatheringDoubleChance,
+                gp.property === GatheringPropertyType.GatheringDoubleChance
             )?.value ?? 0;
           const amount =
             gathering.properties.find(
-              (gp) => gp.property === GatheringPropertyType.GatheringAmount,
+              (gp) => gp.property === GatheringPropertyType.GatheringAmount
             )?.value ?? 0;
           const successAmount = getSuccessAmount(chance, doubleChance, amount);
 
@@ -80,7 +81,7 @@ export const useExploreJobStore = create<ExploreJobState>()(
           user.id,
           successGatherings,
           returnLocation,
-          deliverAt,
+          deliverAt
         );
 
         set({
@@ -95,6 +96,6 @@ export const useExploreJobStore = create<ExploreJobState>()(
     }),
     {
       name: "gathering-job-store",
-    },
-  ),
+    }
+  )
 );

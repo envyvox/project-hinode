@@ -1,8 +1,9 @@
-import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { removeCurrencyFromUser } from "@/services/data-access/currency";
 import { useUserStore } from "@/store/user-store";
 import { Currency } from "@prisma/client";
 import { useMutation, useQueryClient } from "react-query";
+
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 
 type Props = {
   userId?: string;
@@ -21,7 +22,7 @@ export const useRemoveUserCurrencyMutation = () => {
       queryClient.invalidateQueries({
         queryKey: ReactQueryKeys.userCurrency(
           variables.userId ?? user.id,
-          variables.currency,
+          variables.currency
         ),
       });
       queryClient.invalidateQueries({

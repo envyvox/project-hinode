@@ -1,6 +1,9 @@
 "use client";
 
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { LogIn, LogOut } from "lucide-react";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   DropdownMenu,
@@ -11,8 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Skeleton } from "./ui/skeleton";
-import { LogIn, LogOut } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 const SessionAvatar = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

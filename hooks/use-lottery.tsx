@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import { useLotteryUsersQuery } from "./queries/use-lottery-users-query";
-import shuffle from "@/util/shuffle";
-import { useAddUserCurrencyMutation } from "./mutations/use-add-user-currency-mutation";
-import { Currency } from "@prisma/client";
-import { useDeleteLotteryUsersMutation } from "./mutations/use-delete-lottery-users-mutation";
-import { useToast } from "@/components/ui/use-toast";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
+import shuffle from "@/util/shuffle";
+import { Currency } from "@prisma/client";
+
+import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 import UserHoverCard from "@/components/user-hover-card";
-import { useDictionaryStore } from "@/store/dictionary-store";
+
+import { useAddUserCurrencyMutation } from "./mutations/use-add-user-currency-mutation";
+import { useDeleteLotteryUsersMutation } from "./mutations/use-delete-lottery-users-mutation";
+import { useLotteryUsersQuery } from "./queries/use-lottery-users-query";
 
 const lotteryAward = 5000;
 const lotteryUsersReq = 2;
@@ -33,13 +35,11 @@ export const useLottery = () => {
 
       toast({
         description: formatString(
-          dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.winner.toast"
-          ],
+          dictionary.dashboard["actions.capital.casino.lottery.winner.toast"],
           lotteryUsersReq,
           lotteryAward,
           <Icons.Ien />,
-          <UserHoverCard user={winner.user} />,
+          <UserHoverCard user={winner.user} />
         ),
         duration: Infinity,
       });

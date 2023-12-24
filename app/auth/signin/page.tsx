@@ -1,5 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { BuiltInProviderType } from "next-auth/providers";
+import {
+  ClientSafeProvider,
+  getProviders,
+  LiteralUnion,
+  signIn,
+} from "next-auth/react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,15 +19,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BuiltInProviderType } from "next-auth/providers";
-import {
-  ClientSafeProvider,
-  LiteralUnion,
-  getProviders,
-  signIn,
-} from "next-auth/react";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function SignInPage() {
   const [providers, setProviders] = useState<Record<

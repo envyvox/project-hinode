@@ -1,7 +1,9 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { UserLottery } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
+
 import { GameUser } from "./user";
 
 type LotteryUserIncluded = {

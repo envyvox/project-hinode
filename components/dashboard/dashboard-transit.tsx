@@ -1,7 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardTransitItem from "./dashboard-transit-item";
+
 import { useTransitsQuery } from "@/hooks/queries/use-transits-query";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import DashboardTransitItem from "./dashboard-transit-item";
 import DashboardTransitSkeleton from "./dashboard-transit-skeleton";
 
 const DashboardTransit = () => {
@@ -11,7 +13,7 @@ const DashboardTransit = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{dictionary.dashboard["dashboard.transit.title"]}</CardTitle>
+        <CardTitle>{dictionary.dashboard["transit.title"]}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
         {isLoading ? (

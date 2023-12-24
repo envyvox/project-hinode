@@ -1,10 +1,12 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardActionBase from "../dashboard-action-base";
+
+import { useProductsQuery } from "@/hooks/queries/use-products-query";
 import { Button } from "@/components/ui/button";
+import FullscreenSheet from "@/components/fullscreen-sheet";
+
+import DashboardActionBase from "../dashboard-action-base";
 import ShopProductItem from "./shop-product-item";
 import ShopProductSkeleton from "./shop-product-skeleton";
-import FullscreenSheet from "@/components/fullscreen-sheet";
-import { useProductsQuery } from "@/hooks/queries/use-products-query";
 
 const ActionVillageShopProduct = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -12,13 +14,9 @@ const ActionVillageShopProduct = () => {
 
   return (
     <DashboardActionBase
-      label={
-        dictionary.dashboard["dashboard.actions.village.shop-product.label"]
-      }
+      label={dictionary.dashboard["actions.village.shop-product.label"]}
       description={
-        dictionary.dashboard[
-          "dashboard.actions.village.shop-product.description"
-        ]
+        dictionary.dashboard["actions.village.shop-product.description"]
       }
       actionComponent={
         <FullscreenSheet
@@ -26,18 +24,14 @@ const ActionVillageShopProduct = () => {
             <Button className="mt-2 w-fit self-end" variant="secondary">
               {
                 dictionary.dashboard[
-                  "dashboard.actions.village.shop-product.button-label"
+                  "actions.village.shop-product.button-label"
                 ]
               }
             </Button>
           }
-          title={
-            dictionary.dashboard["dashboard.actions.village.shop-product.label"]
-          }
+          title={dictionary.dashboard["actions.village.shop-product.label"]}
           description={
-            dictionary.dashboard[
-              "dashboard.actions.village.shop-product.description"
-            ]
+            dictionary.dashboard["actions.village.shop-product.description"]
           }
           content={
             <div className="flex flex-wrap gap-5">

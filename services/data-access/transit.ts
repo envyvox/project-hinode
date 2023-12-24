@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Location, Transit } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 /**
  * Get transits from location
@@ -9,7 +10,7 @@ import { Location, Transit } from "@prisma/client";
  * @returns Transit model array
  */
 const getTransitsFromLocation = async (
-  departure: Location,
+  departure: Location
 ): Promise<Transit[]> => {
   return await prisma.transit.findMany({
     where: {

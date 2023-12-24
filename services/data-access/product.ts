@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Product, UserProducts } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 export type UserProductIncluded = {
   product: Product;
@@ -14,7 +15,7 @@ export type UserProductIncluded = {
  * @return {Promise<UserProductIncluded[]>} - A promise that resolves to an array of user products with included product information.
  */
 const getUserProducts = async (
-  userId: string,
+  userId: string
 ): Promise<UserProductIncluded[]> => {
   return await prisma.userProducts.findMany({
     where: {
@@ -60,7 +61,7 @@ const getProducts = async (): Promise<Product[]> => {
 const addProductToUser = async (
   userId: string,
   productId: string,
-  amount: number,
+  amount: number
 ): Promise<UserProducts> => {
   return await prisma.userProducts.upsert({
     where: {

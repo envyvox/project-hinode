@@ -1,13 +1,14 @@
+import { addBannerToUser } from "@/services/data-access/banner";
+import { addCurrencyToUser } from "@/services/data-access/currency";
+import { addTitleToUser } from "@/services/data-access/title";
+import { updateUserDisplayName } from "@/services/data-access/user";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { Currency, Title } from "@prisma/client";
 import { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+
 import prisma from "@/lib/prisma";
-import { addCurrencyToUser } from "@/services/data-access/currency";
-import { addTitleToUser } from "@/services/data-access/title";
-import { addBannerToUser } from "@/services/data-access/banner";
-import { updateUserDisplayName } from "@/services/data-access/user";
-import { Currency, Title } from "@prisma/client";
 
 const newUserCurrencyAmount = 1000;
 const newUserBannerId = "clqd2zrhy000sxsul7i0v6ytv";

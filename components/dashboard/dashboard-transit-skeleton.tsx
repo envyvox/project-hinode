@@ -1,4 +1,3 @@
-import React from "react";
 import DashboardActionSkeleton from "./dashboard-action-skeleton";
 
 const DashboardTransitSkeleton = () => {

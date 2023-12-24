@@ -1,8 +1,10 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import InventorySkeleton from "./inventory-skeleton";
-import InventoryItem from "./inventory-item";
-import InventoryEmpty from "./inventory-empty";
+
 import { useUserSeedsQuery } from "@/hooks/queries/use-user-seeds-query";
+
+import InventoryEmpty from "./inventory-empty";
+import InventoryItem from "./inventory-item";
+import InventorySkeleton from "./inventory-skeleton";
 
 const InventorySeeds = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

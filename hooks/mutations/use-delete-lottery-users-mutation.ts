@@ -1,6 +1,7 @@
-import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { deleteLotteryUsers } from "@/services/data-access/lottery";
 import { useMutation, useQueryClient } from "react-query";
+
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 
 export const useDeleteLotteryUsersMutation = () => {
   const queryClient = useQueryClient();

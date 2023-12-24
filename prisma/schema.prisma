@@ -62,6 +62,7 @@ model User {
   titles        UserTitle[]
   banners       UserBanner[]
   lottery       UserLottery[]
+  farmCells     UserFarmCell[]
 }
 
 model VerificationToken {
@@ -181,18 +182,32 @@ model UserLottery {
   createdAt DateTime @default(now())
 }
 
+model UserFarmCell {
+  id         String        @id @default(cuid())
+  user       User          @relation(fields: [userId], references: [id])
+  userId     String
+  seed       Seed?         @relation(fields: [seedId], references: [id])
+  seedId     String?
+  state      FarmCellState @default(Empty)
+  progress   Int           @default(0)
+  inReGrowth Boolean       @default(false)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @default(now()) @updatedAt
+}
+
 model Seed {
-  id           String      @id @default(cuid())
-  name         String      @unique
-  season       Season
-  growthDays   Int
-  reGrowthDays Int
-  isMultiply   Boolean
-  price        Int
-  crop         Crop?
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @default(now()) @updatedAt
-  userSeeds    UserSeeds[]
+  id            String         @id @default(cuid())
+  name          String         @unique
+  season        Season
+  growthDays    Int
+  reGrowthDays  Int
+  isMultiply    Boolean
+  price         Int
+  crop          Crop?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt
+  userSeeds     UserSeeds[]
+  userFarmCells UserFarmCell[]
 }
 
 model Crop {
@@ -369,4 +384,11 @@ enum Title {
   Yatagarasu
   HarbingerOfSummer
   Wanderer
+}
+
+enum FarmCellState {
+  Empty
+  Planted
+  Watered
+  Completed
 }

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from "../ui/skeleton";
 
 const UserTitlesSkeleton = () => {
   return (
@@ -11,6 +10,6 @@ const UserTitlesSkeleton = () => {
       <Skeleton className="h-[95px]" />
     </>
   );
-}
+};
 
-export default UserTitlesSkeleton
+export default UserTitlesSkeleton;

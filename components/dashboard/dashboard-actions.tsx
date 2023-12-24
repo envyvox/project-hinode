@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useUserStore } from "@/store/user-store";
-import React from "react";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import DynamicDashboardAction, {
   locationActionKeys,
 } from "./dynamic-dashboard-action";

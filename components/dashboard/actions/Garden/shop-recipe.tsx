@@ -1,15 +1,17 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardActionBase from "../dashboard-action-base";
+
 import { Button } from "@/components/ui/button";
+
+import DashboardActionBase from "../dashboard-action-base";
 
 const ActionGardenShopRecipe = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
 
   return (
     <DashboardActionBase
-      label={dictionary.dashboard["dashboard.actions.garden.shop-recipe.label"]}
+      label={dictionary.dashboard["actions.garden.shop-recipe.label"]}
       description={
-        dictionary.dashboard["dashboard.actions.garden.shop-recipe.description"]
+        dictionary.dashboard["actions.garden.shop-recipe.description"]
       }
       actionComponent={
         <Button
@@ -17,11 +19,7 @@ const ActionGardenShopRecipe = () => {
           variant="secondary"
           onClick={() => {}}
         >
-          {
-            dictionary.dashboard[
-              "dashboard.actions.garden.shop-recipe.button-label"
-            ]
-          }
+          {dictionary.dashboard["actions.garden.shop-recipe.button-label"]}
         </Button>
       }
     />

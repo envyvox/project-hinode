@@ -1,6 +1,6 @@
-import { Banner } from "@prisma/client";
 import Image from "next/image";
-import React from "react";
+import { Banner } from "@prisma/client";
+
 import { Skeleton } from "./ui/skeleton";
 
 type Props = {

@@ -1,3 +1,6 @@
+import { cn } from "@/lib/utils";
+
+import { ScrollArea } from "./ui/scroll-area";
 import {
   Sheet,
   SheetContent,
@@ -6,8 +9,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import { ScrollArea } from "./ui/scroll-area";
-import { cn } from "@/lib/utils";
 
 type Props = {
   trigger: React.ReactNode;

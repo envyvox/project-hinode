@@ -1,6 +1,6 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import TypographyH4 from "@/components/typography/h4";
 import TypographyP from "@/components/typography/p";
-import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {
   label: string;

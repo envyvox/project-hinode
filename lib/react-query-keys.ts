@@ -28,4 +28,6 @@ export const ReactQueryKeys = {
   ],
   userSeeds: (userId: string) => ["user-seeds", userId],
   userTitles: (userId: string) => ["user-titles", userId],
+  userFarmCells: (userId: string) => ["user-farm-cells", userId],
+  cropWithSeedId: (seedId: string) => ["crop-with-seed-id", seedId],
 };

@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { UserBoxes } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 /**
  * Get user boxes

@@ -1,12 +1,13 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import {
   Gathering,
   GatheringProperty,
   Location,
   UserGathering,
 } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 export type UserGatheringIncluded = {
   gathering: Gathering;
@@ -22,7 +23,7 @@ export type GatheringPropetriesIncluded = {
  * @returns User gathering model array
  */
 const getUserGatherings = async (
-  userId: string,
+  userId: string
 ): Promise<UserGatheringIncluded[]> => {
   return await prisma.userGathering.findMany({
     where: {
@@ -48,7 +49,7 @@ const getUserGatherings = async (
  * @returns Gathering with properties model array
  */
 const getGatheringsInLocation = async (
-  location: Location,
+  location: Location
 ): Promise<GatheringPropetriesIncluded[]> => {
   return await prisma.gathering.findMany({
     where: {
@@ -73,7 +74,7 @@ const getGatheringsInLocation = async (
 const addGatheringToUser = async (
   userId: string,
   gatheringId: string,
-  amount: number,
+  amount: number
 ): Promise<UserGathering> => {
   return await prisma.userGathering.upsert({
     where: {

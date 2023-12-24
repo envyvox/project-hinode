@@ -1,7 +1,7 @@
-import { Location } from "@prisma/client";
-import React from "react";
-import { Locale } from "i18n-config";
 import dynamic from "next/dynamic";
+import { Location } from "@prisma/client";
+import { Locale } from "i18n-config";
+
 import DashboardAboutSkeleton from "./dashboard-about-skeleton";
 
 type LocationAbouts = {
@@ -34,13 +34,13 @@ const abouts: LocationAbouts = {
       () => import("@/mdx/locations/en/ExploreGarden.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
     ExploreCastle: dynamic(
       () => import("@/mdx/locations/en/ExploreCastle.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
     Fishing: dynamic(() => import("@/mdx/locations/en/Fishing.mdx"), {
       loading: DashboardAboutSkeleton,
@@ -49,13 +49,13 @@ const abouts: LocationAbouts = {
       () => import("@/mdx/locations/en/FieldWatering.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
     WorkOnContract: dynamic(
       () => import("@/mdx/locations/en/WorkOnContract.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
   },
   ru: {
@@ -81,13 +81,13 @@ const abouts: LocationAbouts = {
       () => import("@/mdx/locations/ru/ExploreGarden.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
     ExploreCastle: dynamic(
       () => import("@/mdx/locations/ru/ExploreCastle.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
     Fishing: dynamic(() => import("@/mdx/locations/ru/Fishing.mdx"), {
       loading: DashboardAboutSkeleton,
@@ -96,13 +96,13 @@ const abouts: LocationAbouts = {
       () => import("@/mdx/locations/ru/FieldWatering.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
     WorkOnContract: dynamic(
       () => import("@/mdx/locations/ru/WorkOnContract.mdx"),
       {
         loading: DashboardAboutSkeleton,
-      },
+      }
     ),
   },
 };

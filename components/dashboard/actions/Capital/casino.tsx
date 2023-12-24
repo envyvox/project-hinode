@@ -1,7 +1,6 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardActionBase from "../dashboard-action-base";
+
 import { Button } from "@/components/ui/button";
-import FullscreenSheet from "@/components/fullscreen-sheet";
 import {
   Card,
   CardContent,
@@ -10,18 +9,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import CasinoLottery from "./casino-lottery";
+import FullscreenSheet from "@/components/fullscreen-sheet";
+
+import DashboardActionBase from "../dashboard-action-base";
 import CasinoBets from "./casino-bets";
+import CasinoLottery from "./casino-lottery";
 
 const ActionCapitalCasino = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
 
   return (
     <DashboardActionBase
-      label={dictionary.dashboard["dashboard.actions.capital.casino.label"]}
-      description={
-        dictionary.dashboard["dashboard.actions.capital.casino.description"]
-      }
+      label={dictionary.dashboard["actions.capital.casino.label"]}
+      description={dictionary.dashboard["actions.capital.casino.description"]}
       actionComponent={
         <FullscreenSheet
           trigger={
@@ -30,16 +30,12 @@ const ActionCapitalCasino = () => {
               variant="secondary"
               onClick={() => {}}
             >
-              {
-                dictionary.dashboard[
-                  "dashboard.actions.capital.casino.button-label"
-                ]
-              }
+              {dictionary.dashboard["actions.capital.casino.button-label"]}
             </Button>
           }
-          title={dictionary.dashboard["dashboard.actions.capital.casino.label"]}
+          title={dictionary.dashboard["actions.capital.casino.label"]}
           description={
-            dictionary.dashboard["dashboard.actions.capital.casino.description"]
+            dictionary.dashboard["actions.capital.casino.description"]
           }
           content={
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

@@ -1,15 +1,16 @@
-import TypographyLarge from "@/components/typography/large";
-import TypographySmall from "@/components/typography/small";
+import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import { Currency, Product } from "@prisma/client";
+
+import { useAddUserProductMutation } from "@/hooks/mutations/use-add-user-product-mutation";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Currency, Product } from "@prisma/client";
-import formatString from "@/util/format-string";
-import Image from "next/image";
-import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
 import { Icons } from "@/components/icons";
-import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
-import { useAddUserProductMutation } from "@/hooks/mutations/use-add-user-product-mutation";
+import TypographyLarge from "@/components/typography/large";
+import TypographySmall from "@/components/typography/small";
 
 type Props = {
   product: Product;
@@ -27,7 +28,7 @@ const ShopProductItem = ({ product }: Props) => {
       toast({
         description: formatString(
           dictionary.dashboard[
-            "dashboard.actions.village.shop-product.sheet.toast.no-currency"
+            "actions.village.shop-product.sheet.toast.no-currency"
           ],
           <Icons.Ien />,
           <Image
@@ -38,7 +39,7 @@ const ShopProductItem = ({ product }: Props) => {
             alt={product.name}
           />,
           // @ts-ignore Implicit any
-          dictionary.item.product[product.name],
+          dictionary.item.product[product.name]
         ),
       });
       return;
@@ -50,7 +51,7 @@ const ShopProductItem = ({ product }: Props) => {
     toast({
       description: formatString(
         dictionary.dashboard[
-          "dashboard.actions.village.shop-product.sheet.toast.success"
+          "actions.village.shop-product.sheet.toast.success"
         ],
         <Image
           className="mx-1 inline h-6 w-6"
@@ -62,7 +63,7 @@ const ShopProductItem = ({ product }: Props) => {
         // @ts-ignore Implicit any
         dictionary.item.product[product.name],
         <Icons.Ien />,
-        product.price,
+        product.price
       ),
     });
   };
@@ -84,11 +85,9 @@ const ShopProductItem = ({ product }: Props) => {
           </TypographyLarge>
           <TypographySmall>
             {formatString(
-              dictionary.dashboard[
-                "dashboard.actions.village.shop-product.sheet.price"
-              ],
+              dictionary.dashboard["actions.village.shop-product.sheet.price"],
               product.price,
-              <Icons.Ien />,
+              <Icons.Ien />
             )}
           </TypographySmall>
         </div>
@@ -100,7 +99,7 @@ const ShopProductItem = ({ product }: Props) => {
       >
         {
           dictionary.dashboard[
-            "dashboard.actions.village.shop-product.sheet.button-label"
+            "actions.village.shop-product.sheet.button-label"
           ]
         }
       </Button>

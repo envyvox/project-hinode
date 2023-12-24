@@ -1,10 +1,10 @@
-import { UserTitle } from "@prisma/client";
-import React from "react";
 import Image from "next/image";
-import TypographyLarge from "../typography/large";
-import { Button } from "../ui/button";
-import TypographyMuted from "../typography/muted";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { UserTitle } from "@prisma/client";
+
+import TypographyLarge from "../typography/large";
+import TypographyMuted from "../typography/muted";
+import { Button } from "../ui/button";
 
 type Props = {
   userTitle: UserTitle;

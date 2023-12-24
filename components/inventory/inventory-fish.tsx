@@ -1,9 +1,11 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import InventorySkeleton from "./inventory-skeleton";
 import { getRarityBorderColor } from "@/util/get-rarity-border-color";
-import InventoryItem from "./inventory-item";
-import InventoryEmpty from "./inventory-empty";
+
 import { useUserFishQuery } from "@/hooks/queries/use-user-fish-query";
+
+import InventoryEmpty from "./inventory-empty";
+import InventoryItem from "./inventory-item";
+import InventorySkeleton from "./inventory-skeleton";
 
 const InventoryFish = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

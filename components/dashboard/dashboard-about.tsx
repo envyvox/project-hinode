@@ -1,3 +1,7 @@
+import { useDictionaryStore } from "@/store/dictionary-store";
+import { useLangStore } from "@/store/lang-store";
+import { useUserStore } from "@/store/user-store";
+
 import {
   Card,
   CardContent,
@@ -5,11 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import { useUserStore } from "@/store/user-store";
-import { useLangStore } from "@/store/lang-store";
 import { Skeleton } from "@/components/ui/skeleton";
-import React from "react";
+
 import DynamicDashboardAbout from "./dynamic-dashboard-about";
 
 const DashboardAbout = () => {

@@ -1,12 +1,14 @@
-import { GameUser } from "@/services/data-access/user";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
-import BannerImage from "./banner-image";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import TypographyMuted from "./typography/muted";
-import TypographyLarge from "./typography/large";
-import { Button } from "./ui/button";
-import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
 import Image from "next/image";
+import { GameUser } from "@/services/data-access/user";
+import { useDictionaryStore } from "@/store/dictionary-store";
+
+import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
+
+import BannerImage from "./banner-image";
+import TypographyLarge from "./typography/large";
+import TypographyMuted from "./typography/muted";
+import { Button } from "./ui/button";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 type Props = {
   user: GameUser;

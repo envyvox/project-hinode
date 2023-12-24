@@ -1,5 +1,8 @@
 "use client";
 
+import { useDictionaryStore } from "@/store/dictionary-store";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import InventoryBoxes from "@/components/inventory/inventory-boxes";
 import InventoryCrops from "@/components/inventory/inventory-crops";
 import InventoryCurrency from "@/components/inventory/inventory-currency";
@@ -7,8 +10,6 @@ import InventoryFish from "@/components/inventory/inventory-fish";
 import InventoryGathering from "@/components/inventory/inventory-gathering";
 import InventoryProducts from "@/components/inventory/inventory-products";
 import InventorySeeds from "@/components/inventory/inventory-seeds";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useDictionaryStore } from "@/store/dictionary-store";
 
 enum InventoryTab {
   currency = "currency",

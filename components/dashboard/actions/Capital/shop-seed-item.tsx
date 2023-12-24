@@ -1,18 +1,19 @@
-import { cn } from "@/lib/utils";
-import TypographyLarge from "@/components/typography/large";
-import TypographySmall from "@/components/typography/small";
-import { Button } from "@/components/ui/button";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import TypographyP from "@/components/typography/p";
-import { Currency } from "@prisma/client";
-import { useToast } from "@/components/ui/use-toast";
-import formatString from "@/util/format-string";
-import { Icons } from "@/components/icons";
 import Image from "next/image";
 import { SeedCropIncluded } from "@/services/data-access/seed";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import { Currency } from "@prisma/client";
+
+import { cn } from "@/lib/utils";
+import { useAddUserSeedMutation } from "@/hooks/mutations/use-add-user-seed-mutation";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
-import { useAddUserSeedMutation } from "@/hooks/mutations/use-add-user-seed-mutation";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { Icons } from "@/components/icons";
+import TypographyLarge from "@/components/typography/large";
+import TypographyP from "@/components/typography/p";
+import TypographySmall from "@/components/typography/small";
 
 type Props = {
   seed: SeedCropIncluded;
@@ -30,7 +31,7 @@ const ShopSeedItem = ({ seed }: Props) => {
       toast({
         description: formatString(
           dictionary.dashboard[
-            "dashboard.actions.capital.shop-seed.sheet.toast.no-currency"
+            "actions.capital.shop-seed.sheet.toast.no-currency"
           ],
           <Icons.Ien />,
           <Image
@@ -41,7 +42,7 @@ const ShopSeedItem = ({ seed }: Props) => {
             alt={seed.name}
           />,
           // @ts-ignore Implicit any
-          dictionary.item.seed[seed.name],
+          dictionary.item.seed[seed.name]
         ),
       });
       return;
@@ -52,9 +53,7 @@ const ShopSeedItem = ({ seed }: Props) => {
 
     toast({
       description: formatString(
-        dictionary.dashboard[
-          "dashboard.actions.capital.shop-seed.sheet.toast.success"
-        ],
+        dictionary.dashboard["actions.capital.shop-seed.sheet.toast.success"],
         <Image
           className="mx-1 inline h-6 w-6"
           width={27}
@@ -65,7 +64,7 @@ const ShopSeedItem = ({ seed }: Props) => {
         // @ts-ignore Implicit any,
         dictionary.item.seed[seed.name],
         <Icons.Ien />,
-        seed.price,
+        seed.price
       ),
     });
   };
@@ -76,7 +75,7 @@ const ShopSeedItem = ({ seed }: Props) => {
         "flex flex-col gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm",
         seed.reGrowthDays && seed.isMultiply
           ? "col-span-1 sm:col-span-2"
-          : "col-span-1",
+          : "col-span-1"
       )}
     >
       <div className="flex gap-5">
@@ -94,11 +93,9 @@ const ShopSeedItem = ({ seed }: Props) => {
           </TypographyLarge>
           <TypographySmall>
             {formatString(
-              dictionary.dashboard[
-                "dashboard.actions.capital.shop-seed.sheet.price"
-              ],
+              dictionary.dashboard["actions.capital.shop-seed.sheet.price"],
               seed.price,
-              <Icons.Ien />,
+              <Icons.Ien />
             )}
           </TypographySmall>
         </div>
@@ -106,9 +103,7 @@ const ShopSeedItem = ({ seed }: Props) => {
       <div className="mb-auto flex flex-col">
         <TypographyP>
           {formatString(
-            dictionary.dashboard[
-              "dashboard.actions.capital.shop-seed.sheet.description"
-            ],
+            dictionary.dashboard["actions.capital.shop-seed.sheet.description"],
             seed.growthDays,
             <Image
               className="mx-1 inline h-6 w-6"
@@ -120,14 +115,14 @@ const ShopSeedItem = ({ seed }: Props) => {
             // @ts-ignore Implicit any
             dictionary.item.crop[seed.crop?.name],
             <Icons.Ien />,
-            seed.crop?.price,
+            seed.crop?.price
           )}
         </TypographyP>
         {seed.isMultiply ? (
           <TypographyP>
             {
               dictionary.dashboard[
-                "dashboard.actions.capital.shop-seed.sheet.is-multiply"
+                "actions.capital.shop-seed.sheet.is-multiply"
               ]
             }
           </TypographyP>
@@ -136,9 +131,9 @@ const ShopSeedItem = ({ seed }: Props) => {
           <TypographyP>
             {formatString(
               dictionary.dashboard[
-                "dashboard.actions.capital.shop-seed.sheet.re-growth-days"
+                "actions.capital.shop-seed.sheet.re-growth-days"
               ],
-              seed.reGrowthDays,
+              seed.reGrowthDays
             )}
           </TypographyP>
         ) : null}
@@ -148,11 +143,7 @@ const ShopSeedItem = ({ seed }: Props) => {
         variant="secondary"
         onClick={() => handleBuySeed(seed)}
       >
-        {
-          dictionary.dashboard[
-            "dashboard.actions.capital.shop-seed.sheet.button-label"
-          ]
-        }
+        {dictionary.dashboard["actions.capital.shop-seed.sheet.button-label"]}
       </Button>
     </div>
   );

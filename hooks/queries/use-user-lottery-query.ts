@@ -1,7 +1,8 @@
-import { ReactQueryKeys } from "@/lib/react-query-keys";
 import { getUserLottery } from "@/services/data-access/lottery";
 import { useUserStore } from "@/store/user-store";
 import { useQuery } from "react-query";
+
+import { ReactQueryKeys } from "@/lib/react-query-keys";
 
 export const useUserLotteryQuery = (userId?: string) => {
   const user = useUserStore((state) => state.user);

@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Inter as FontSans } from "next/font/google";
+
 import "./globals.css";
-import Providers from "@/components/providers";
+
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
-import TailwindIndicator from "@/components/tailwind-indicator";
-import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
+import Providers from "@/components/providers";
+import TailwindIndicator from "@/components/tailwind-indicator";
 
 export const metadata: Metadata = {
   title: {

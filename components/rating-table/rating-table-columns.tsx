@@ -1,9 +1,9 @@
-import { ColumnDef } from "@tanstack/react-table";
 import { GameUser } from "@/services/data-access/user";
-import React from "react";
-import RatingTableCellPosition from "./rating-table-cell-position";
-import RatingTableCellLevel from "./rating-table-cell-level";
+import { ColumnDef } from "@tanstack/react-table";
+
 import UserHoverCard from "../user-hover-card";
+import RatingTableCellLevel from "./rating-table-cell-level";
+import RatingTableCellPosition from "./rating-table-cell-position";
 
 export const ratingTableColumns: ColumnDef<GameUser>[] = [
   {

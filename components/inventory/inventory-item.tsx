@@ -1,8 +1,9 @@
-import React from "react";
+import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
 import TypographyLarge from "../typography/large";
 import TypographySmall from "../typography/small";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
 
 type Props = {
   src: string;
@@ -16,7 +17,7 @@ const InventoryItem = ({ src, name, amount, className = "" }: Props) => {
     <div
       className={cn(
         "flex flex-col gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm",
-        className,
+        className
       )}
     >
       <div className="flex gap-5">

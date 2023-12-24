@@ -1,5 +1,6 @@
 "use client";
 
+import { useDictionaryStore } from "@/store/dictionary-store";
 import {
   ColumnDef,
   flexRender,
@@ -8,6 +9,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -16,10 +18,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import { Skeleton } from "./ui/skeleton";
+
 import DataTableSkeleton from "./data-table-skeleton";
+import { Skeleton } from "./ui/skeleton";
 
 type DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
@@ -76,7 +77,7 @@ export function DataTable<TData, TValue>({
                       ) : (
                         flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext(),
+                          cell.getContext()
                         )
                       )}
                     </TableCell>

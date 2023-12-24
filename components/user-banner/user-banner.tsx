@@ -1,7 +1,7 @@
 import { UserBannerIncluded } from "@/services/data-access/banner";
-import React from "react";
-import { Button } from "../ui/button";
+
 import BannerImage from "../banner-image";
+import { Button } from "../ui/button";
 
 type Props = {
   userBanner: UserBannerIncluded;

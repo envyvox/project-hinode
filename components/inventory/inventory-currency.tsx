@@ -1,8 +1,10 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import InventorySkeleton from "./inventory-skeleton";
-import InventoryItem from "./inventory-item";
-import InventoryEmpty from "./inventory-empty";
+
 import { useUserCurrenciesQuery } from "@/hooks/queries/use-user-currencies-query";
+
+import InventoryEmpty from "./inventory-empty";
+import InventoryItem from "./inventory-item";
+import InventorySkeleton from "./inventory-skeleton";
 
 const InventoryCurrency = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

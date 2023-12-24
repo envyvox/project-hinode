@@ -1,3 +1,13 @@
+import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import { Currency } from "@prisma/client";
+
+import { useAddUserLotteryMutation } from "@/hooks/mutations/use-add-user-lottery-mutation";
+import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
+import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
+import { useUserLotteryQuery } from "@/hooks/queries/use-user-lottery-query";
+import { useLottery } from "@/hooks/use-lottery";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -5,19 +15,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import formatString from "@/util/format-string";
-import { Button } from "@/components/ui/button";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import CasinoLotteryParticipants from "./casino-lottery-participants";
-import CasinoLotteryGift from "./casino-lottery-gift";
-import { Icons } from "@/components/icons";
-import { useAddUserLotteryMutation } from "@/hooks/mutations/use-add-user-lottery-mutation";
-import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
-import { Currency } from "@prisma/client";
 import { useToast } from "@/components/ui/use-toast";
-import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
-import { useUserLotteryQuery } from "@/hooks/queries/use-user-lottery-query";
-import { useLottery } from "@/hooks/use-lottery";
+import { Icons } from "@/components/icons";
+
+import CasinoLotteryGift from "./casino-lottery-gift";
+import CasinoLotteryParticipants from "./casino-lottery-participants";
 
 const lotteryPrice = 500;
 const lotteryMembers = 10;
@@ -38,9 +40,9 @@ const CasinoLottery = () => {
       toast({
         description: formatString(
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.buy.toast.already-have"
+            "actions.capital.casino.lottery.buy.toast.already-have"
           ],
-          <Icons.LotteryTicket />,
+          <Icons.LotteryTicket />
         ),
         variant: "destructive",
       });
@@ -51,10 +53,10 @@ const CasinoLottery = () => {
       toast({
         description: formatString(
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.buy.toast.no-currency"
+            "actions.capital.casino.lottery.buy.toast.no-currency"
           ],
           <Icons.Ien />,
-          <Icons.LotteryTicket />,
+          <Icons.LotteryTicket />
         ),
         variant: "destructive",
       });
@@ -67,9 +69,9 @@ const CasinoLottery = () => {
     toast({
       description: formatString(
         dictionary.dashboard[
-          "dashboard.actions.capital.casino.lottery.buy.toast.success"
+          "actions.capital.casino.lottery.buy.toast.success"
         ],
-        <Icons.LotteryTicket />,
+        <Icons.LotteryTicket />
       ),
     });
   };
@@ -78,23 +80,17 @@ const CasinoLottery = () => {
     <Card className="col-span-1 md:col-span-2">
       <CardHeader>
         <CardTitle>
-          {
-            dictionary.dashboard[
-              "dashboard.actions.capital.casino.lottery.label"
-            ]
-          }
+          {dictionary.dashboard["actions.capital.casino.lottery.label"]}
         </CardTitle>
         <CardDescription>
           {formatString(
-            dictionary.dashboard[
-              "dashboard.actions.capital.casino.lottery.description"
-            ],
+            dictionary.dashboard["actions.capital.casino.lottery.description"],
             <Icons.LotteryTicket />,
             lotteryPrice,
             <Icons.Ien />,
             lotteryMembers,
             lotteryAward,
-            <Icons.Ien />,
+            <Icons.Ien />
           )}
           <Button
             variant="secondary"
@@ -104,7 +100,7 @@ const CasinoLottery = () => {
           >
             {
               dictionary.dashboard[
-                "dashboard.actions.capital.casino.lottery.button-label"
+                "actions.capital.casino.lottery.button-label"
               ]
             }
           </Button>

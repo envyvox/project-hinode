@@ -1,11 +1,12 @@
-import TypographyLarge from "@/components/typography/large";
-import TypographyMuted from "@/components/typography/muted";
-import formatString from "@/util/format-string";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+
 import { useLotteryUsersQuery } from "@/hooks/queries/use-lottery-users-query";
 import { Skeleton } from "@/components/ui/skeleton";
-import UserHoverCard from "@/components/user-hover-card";
 import { Icons } from "@/components/icons";
+import TypographyLarge from "@/components/typography/large";
+import TypographyMuted from "@/components/typography/muted";
+import UserHoverCard from "@/components/user-hover-card";
 
 const CasinoLotteryParticipants = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -16,7 +17,7 @@ const CasinoLotteryParticipants = () => {
       <TypographyLarge>
         {
           dictionary.dashboard[
-            "dashboard.actions.capital.casino.lottery.participants.label"
+            "actions.capital.casino.lottery.participants.label"
           ]
         }
       </TypographyLarge>
@@ -32,9 +33,9 @@ const CasinoLotteryParticipants = () => {
         <TypographyMuted>
           {formatString(
             dictionary.dashboard[
-              "dashboard.actions.capital.casino.lottery.participants.empty"
+              "actions.capital.casino.lottery.participants.empty"
             ],
-            <Icons.LotteryTicket />,
+            <Icons.LotteryTicket />
           )}
         </TypographyMuted>
       )}

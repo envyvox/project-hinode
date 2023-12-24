@@ -1,9 +1,10 @@
 "use client";
 
-import { getDictionary } from "@/app/dictionaries";
+import { useEffect } from "react";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useLangStore } from "@/store/lang-store";
-import { useEffect } from "react";
+
+import { getDictionary } from "@/app/dictionaries";
 
 type Props = {
   children: React.ReactNode;

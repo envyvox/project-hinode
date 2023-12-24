@@ -17,6 +17,6 @@ export const useLangStore = create<LangState>()(
     }),
     {
       name: "lang-store",
-    },
-  ),
+    }
+  )
 );

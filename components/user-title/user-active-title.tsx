@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { UserTitle } from "@prisma/client";
-import Image from "next/image";
-import React from "react";
+
 import TypographyLarge from "../typography/large";
 import TypographyMuted from "../typography/muted";
 

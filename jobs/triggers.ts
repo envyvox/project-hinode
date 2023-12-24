@@ -7,7 +7,7 @@ import { Location } from "@prisma/client";
 export async function sendEventFishing(
   userId: string,
   fishId: string,
-  deliverAt: Date,
+  deliverAt: Date
 ): Promise<string> {
   const event = await client.sendEvent(
     {
@@ -19,7 +19,7 @@ export async function sendEventFishing(
     },
     {
       deliverAt: deliverAt,
-    },
+    }
   );
   return event.id;
 }
@@ -28,7 +28,7 @@ export async function sendEventExplore(
   userId: string,
   gatherings: SuccessGathering[],
   returnLocation: Location,
-  deliverAt: Date,
+  deliverAt: Date
 ): Promise<string> {
   const event = await client.sendEvent(
     {
@@ -41,7 +41,7 @@ export async function sendEventExplore(
     },
     {
       deliverAt: deliverAt,
-    },
+    }
   );
   return event.id;
 }

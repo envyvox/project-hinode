@@ -1,9 +1,9 @@
-import React from "react";
-import UserBannersSkeleton from "./user-banners-skeleton";
+import { UserBannerIncluded } from "@/services/data-access/banner";
+import { useDictionaryStore } from "@/store/dictionary-store";
+
 import UserBanner from "./user-banner";
 import UserBannersEmpty from "./user-banners-empty";
-import { useDictionaryStore } from "@/store/dictionary-store";
-import { UserBannerIncluded } from "@/services/data-access/banner";
+import UserBannersSkeleton from "./user-banners-skeleton";
 
 type Props = {
   loading: boolean;

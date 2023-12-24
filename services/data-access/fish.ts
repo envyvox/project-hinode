@@ -1,6 +1,5 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import shuffle from "@/util/shuffle";
 import {
   Fish,
@@ -10,6 +9,8 @@ import {
   UserFish,
   Weather,
 } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 export type UserFishIncluded = {
   fish: Fish;
@@ -55,7 +56,7 @@ const getUserFish = async (userId: string): Promise<UserFishIncluded[]> => {
  */
 const getUserSeasonFish = async (
   userId: string,
-  season: Season,
+  season: Season
 ): Promise<UserFishIncluded[]> => {
   return await prisma.userFish.findMany({
     where: {
@@ -99,7 +100,7 @@ const getRandomFishWithParams = async (
   rarity: FishRarity,
   weather: Weather,
   timesDay: TimesDay,
-  season: Season,
+  season: Season
 ): Promise<Fish> => {
   const fish = await prisma.fish.findMany({
     where: {
@@ -129,7 +130,7 @@ const getRandomFishWithParams = async (
 const addFishToUser = async (
   userId: string,
   fishId: string,
-  amount: number,
+  amount: number
 ): Promise<UserFish> => {
   return await prisma.userFish.upsert({
     where: {
@@ -161,7 +162,7 @@ const addFishToUser = async (
 const removeFishFromUser = async (
   userId: string,
   fishId: string,
-  amount: number,
+  amount: number
 ): Promise<UserFish> => {
   return await prisma.userFish.update({
     where: {

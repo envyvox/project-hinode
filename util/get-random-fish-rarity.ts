@@ -1,4 +1,5 @@
 import { FishRarity } from "@prisma/client";
+
 import getRandomNumberBetween from "./get-random-number";
 
 type Chances = {
@@ -14,7 +15,7 @@ const chances: Chances = {
 };
 
 const enumKeys = <O extends object, K extends keyof O = keyof O>(
-  obj: O,
+  obj: O
 ): K[] => {
   return Object.keys(obj).filter((k) => !Number.isNaN(k)) as K[];
 };

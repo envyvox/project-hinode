@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Season, Weather, WorldState } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 /**
  * Retrieves the current state of the world.
@@ -21,7 +22,7 @@ const getWorldState = (): Promise<WorldState> => {
  */
 const updateWeather = async (
   weatherToday: Weather,
-  weatherTomorrow: Weather,
+  weatherTomorrow: Weather
 ): Promise<void> => {
   await prisma.worldState.updateMany({
     data: {

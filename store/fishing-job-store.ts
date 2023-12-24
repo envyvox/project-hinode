@@ -1,11 +1,12 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import getRandomFishRarity from "@/util/get-random-fish-rarity";
+import { sendEventFishing } from "@/jobs/triggers";
 import { getRandomFishWithParams } from "@/services/data-access/fish";
 import { getWorldState } from "@/services/data-access/world-state";
+import getRandomFishRarity from "@/util/get-random-fish-rarity";
 import { TimesDay } from "@prisma/client";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
 import { useUserStore } from "./user-store";
-import { sendEventFishing } from "@/jobs/triggers";
 
 type FishingJobData = {
   jobId: string;
@@ -39,7 +40,7 @@ export const useFishingJobStore = create<FishingJobState>()(
           rarity,
           worldState.weatherToday,
           timesDay,
-          worldState.season,
+          worldState.season
         );
 
         const userId = useUserStore.getState().user.id;
@@ -58,6 +59,6 @@ export const useFishingJobStore = create<FishingJobState>()(
     }),
     {
       name: "fishing-job-store",
-    },
-  ),
+    }
+  )
 );

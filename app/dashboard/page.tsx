@@ -1,17 +1,17 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-import { useDictionaryStore } from "@/store/dictionary-store";
 import {
   DashboardTab,
   useDashboardTabStore,
 } from "@/store/dashboard-tab-store";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import { useUserStore } from "@/store/user-store";
+import { Location } from "@prisma/client";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DashboardAbout from "@/components/dashboard/dashboard-about";
 import DashboardActions from "@/components/dashboard/dashboard-actions";
 import DashboardTransit from "@/components/dashboard/dashboard-transit";
-import { useUserStore } from "@/store/user-store";
-import { Location } from "@prisma/client";
 
 const locationsWithTabs: Location[] = [
   Location.Capital,
@@ -39,15 +39,15 @@ const Dashboard = () => {
           value={DashboardTab.about}
           className="min-h-[32px] min-w-[100px]"
         >
-          {dictionary.dashboard["dashboard.about"]}
+          {dictionary.dashboard["about"]}
         </TabsTrigger>
         {showTabs && (
           <>
             <TabsTrigger value={DashboardTab.actions}>
-              {dictionary.dashboard["dashboard.actions"]}
+              {dictionary.dashboard["actions"]}
             </TabsTrigger>
             <TabsTrigger value={DashboardTab.transit}>
-              {dictionary.dashboard["dashboard.transit"]}
+              {dictionary.dashboard["transit"]}
             </TabsTrigger>
           </>
         )}

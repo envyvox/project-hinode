@@ -1,14 +1,15 @@
 "use client";
 
-import { useUserStore } from "@/store/user-store";
-import { Location } from "@prisma/client";
-import { useEventDetails } from "@trigger.dev/react";
 import React, { useEffect } from "react";
-import formatString from "@/util/format-string";
 import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import { useToast } from "@/components/ui/use-toast";
 import { useFishingJobStore } from "@/store/fishing-job-store";
+import { useUserStore } from "@/store/user-store";
+import formatString from "@/util/format-string";
+import { Location } from "@prisma/client";
+import { useEventDetails } from "@trigger.dev/react";
+
+import { useToast } from "@/components/ui/use-toast";
 
 type Props = {
   children: React.ReactNode;
@@ -20,7 +21,7 @@ const FishingProvider = ({ children }: Props) => {
   const fishingJobData = useFishingJobStore((state) => state.fishingJobData);
   const { isSuccess, isError, data } = useEventDetails(fishingJobData.jobId);
   const resetFishingJobData = useFishingJobStore(
-    (state) => state.resetFishingJobData,
+    (state) => state.resetFishingJobData
   );
   const { toast } = useToast();
 
@@ -37,9 +38,7 @@ const FishingProvider = ({ children }: Props) => {
 
       toast({
         description: formatString(
-          dictionary.dashboard[
-            "dashboard.actions.seaport.fishing.toast.complete"
-          ],
+          dictionary.dashboard["actions.seaport.fishing.toast.complete"],
           <Image
             className="mx-1 inline h-6 w-6"
             width={27}
@@ -48,7 +47,7 @@ const FishingProvider = ({ children }: Props) => {
             alt={fishingJobData.fishName}
           />,
           // @ts-ignore Implicit any
-          dictionary.item.fish[fishingJobData.fishName],
+          dictionary.item.fish[fishingJobData.fishName]
         ),
         duration: Infinity,
       });

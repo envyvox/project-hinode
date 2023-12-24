@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Crop, Season, Seed, UserSeeds } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 export type UserSeedIncluded = {
   seed: Seed;
@@ -67,7 +68,7 @@ const getSeeds = async (season: Season): Promise<SeedCropIncluded[]> => {
 const addSeedToUser = async (
   userId: string,
   seedId: string,
-  amount: number,
+  amount: number
 ): Promise<UserSeeds> => {
   return await prisma.userSeeds.upsert({
     where: {
@@ -89,4 +90,32 @@ const addSeedToUser = async (
   });
 };
 
-export { getUserSeeds, getSeeds, addSeedToUser };
+/**
+ * Removes a specified amount of seed from a user.
+ *
+ * @param {string} userId - The ID of the user.
+ * @param {string} seedId - The ID of the seed.
+ * @param {number} amount - The amount of seed to remove.
+ * @return {Promise<UserSeeds>} The updated user seeds object.
+ */
+const removeSeedFromUser = async (
+  userId: string,
+  seedId: string,
+  amount: number
+): Promise<UserSeeds> => {
+  return await prisma.userSeeds.update({
+    where: {
+      userId_seedId: {
+        userId: userId,
+        seedId: seedId,
+      },
+    },
+    data: {
+      amount: {
+        decrement: amount,
+      },
+    },
+  });
+};
+
+export { getUserSeeds, getSeeds, addSeedToUser, removeSeedFromUser };

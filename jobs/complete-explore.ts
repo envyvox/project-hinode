@@ -20,7 +20,7 @@ client.defineJob({
         await addGatheringToUser(
           payload.userId,
           gathering.gatheringId,
-          gathering.amount,
+          gathering.amount
         );
       });
     });

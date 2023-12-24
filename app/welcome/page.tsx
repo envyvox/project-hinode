@@ -1,11 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/user-store";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
 
 const regex =
   // Negative lookahead to disallow consecutive underscores, dots, or spaces

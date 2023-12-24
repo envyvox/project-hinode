@@ -1,14 +1,16 @@
 "use client";
 
-import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
-import { Button } from "./ui/button";
-import { Menu } from "lucide-react";
 import { useState } from "react";
-import { sidebarCategories } from "@/config/sidebar";
-import { useDictionaryStore } from "@/store/dictionary-store";
 import Link from "next/link";
-import TypographyH4 from "./typography/h4";
+import { useDictionaryStore } from "@/store/dictionary-store";
+import { Menu } from "lucide-react";
 import { useSession } from "next-auth/react";
+
+import { sidebarCategories } from "@/config/sidebar";
+
+import TypographyH4 from "./typography/h4";
+import { Button } from "./ui/button";
+import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 
 const MobileSidebar = () => {
   const { data: session } = useSession();

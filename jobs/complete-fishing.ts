@@ -1,8 +1,8 @@
-import { eventTrigger } from "@trigger.dev/sdk";
-import { client } from "@/trigger";
 import { addFishToUser } from "@/services/data-access/fish";
-import { Location } from "@prisma/client";
 import { addXpToUser, updateUserLocation } from "@/services/data-access/user";
+import { client } from "@/trigger";
+import { Location } from "@prisma/client";
+import { eventTrigger } from "@trigger.dev/sdk";
 
 client.defineJob({
   id: "complete-fishing",

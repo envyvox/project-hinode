@@ -1,11 +1,13 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardActionBase from "../dashboard-action-base";
+
+import { useUserSeasonFishQuery } from "@/hooks/queries/use-user-season-fish-query";
 import { Button } from "@/components/ui/button";
-import ShopFisherUserFish from "./shop-fisher-user-fish";
-import ShopFisherSkeleton from "./shop-fisher-skeleton";
 import FullscreenSheet from "@/components/fullscreen-sheet";
 import TypographyMuted from "@/components/typography/muted";
-import { useUserSeasonFishQuery } from "@/hooks/queries/use-user-season-fish-query";
+
+import DashboardActionBase from "../dashboard-action-base";
+import ShopFisherSkeleton from "./shop-fisher-skeleton";
+import ShopFisherUserFish from "./shop-fisher-user-fish";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -13,32 +15,20 @@ const ActionSeaportShopFisher = () => {
 
   return (
     <DashboardActionBase
-      label={
-        dictionary.dashboard["dashboard.actions.seaport.shop-fisher.label"]
-      }
+      label={dictionary.dashboard["actions.seaport.shop-fisher.label"]}
       description={
-        dictionary.dashboard[
-          "dashboard.actions.seaport.shop-fisher.description"
-        ]
+        dictionary.dashboard["actions.seaport.shop-fisher.description"]
       }
       actionComponent={
         <FullscreenSheet
           trigger={
             <Button className="mt-2 w-fit self-end" variant="secondary">
-              {
-                dictionary.dashboard[
-                  "dashboard.actions.seaport.shop-fisher.button-label"
-                ]
-              }
+              {dictionary.dashboard["actions.seaport.shop-fisher.button-label"]}
             </Button>
           }
-          title={
-            dictionary.dashboard["dashboard.actions.seaport.shop-fisher.label"]
-          }
+          title={dictionary.dashboard["actions.seaport.shop-fisher.label"]}
           description={
-            dictionary.dashboard[
-              "dashboard.actions.seaport.shop-fisher.description"
-            ]
+            dictionary.dashboard["actions.seaport.shop-fisher.description"]
           }
           content={
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
@@ -52,7 +42,7 @@ const ActionSeaportShopFisher = () => {
                 <TypographyMuted>
                   {
                     dictionary.dashboard[
-                      "dashboard.actions.seaport.shop-fisher.sheet.no-fish"
+                      "actions.seaport.shop-fisher.sheet.no-fish"
                     ]
                   }
                 </TypographyMuted>

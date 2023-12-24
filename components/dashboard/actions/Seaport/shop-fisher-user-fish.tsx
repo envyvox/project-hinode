@@ -1,13 +1,15 @@
-import { UserFishIncluded } from "@/services/data-access/fish";
-import formatString from "@/util/format-string";
 import Image from "next/image";
+import { UserFishIncluded } from "@/services/data-access/fish";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import formatString from "@/util/format-string";
+import { getRarityBorderColor } from "@/util/get-rarity-border-color";
+
+import { cn } from "@/lib/utils";
+import { Icons } from "@/components/icons";
 import TypographyLarge from "@/components/typography/large";
 import TypographySmall from "@/components/typography/small";
-import { cn } from "@/lib/utils";
-import { getRarityBorderColor } from "@/util/get-rarity-border-color";
+
 import ShopFisherPopover from "./shop-fisher-popover";
-import { Icons } from "@/components/icons";
 
 type Props = {
   userFish: UserFishIncluded;
@@ -20,7 +22,7 @@ const ShopFisherUserFish = ({ userFish }: Props) => {
     <div
       className={cn(
         "flex flex-col gap-5 rounded-lg border bg-card p-5 text-card-foreground shadow-sm",
-        getRarityBorderColor(userFish.fish.rarity),
+        getRarityBorderColor(userFish.fish.rarity)
       )}
     >
       <div className="flex gap-5">
@@ -38,11 +40,9 @@ const ShopFisherUserFish = ({ userFish }: Props) => {
           </TypographyLarge>
           <TypographySmall>
             {formatString(
-              dictionary.dashboard[
-                "dashboard.actions.seaport.shop-fisher.sheet.price"
-              ],
+              dictionary.dashboard["actions.seaport.shop-fisher.sheet.price"],
               userFish.fish.price,
-              <Icons.Ien />,
+              <Icons.Ien />
             )}
           </TypographySmall>
         </div>

@@ -1,9 +1,11 @@
-import { siteConfig } from "@/config/site";
 import Link from "next/link";
+
+import { siteConfig } from "@/config/site";
+
 import LocaleSwitcher from "./locale-switcher";
-import ThemeToggle from "./theme-toggle";
-import SessionAvatar from "./session-avatar";
 import MobileSidebar from "./mobile-sidebar";
+import SessionAvatar from "./session-avatar";
+import ThemeToggle from "./theme-toggle";
 
 const Header = () => {
   return (

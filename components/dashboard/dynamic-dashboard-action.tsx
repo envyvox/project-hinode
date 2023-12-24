@@ -1,5 +1,6 @@
-import { Location } from "@prisma/client";
 import dynamic from "next/dynamic";
+import { Location } from "@prisma/client";
+
 import DashboardActionSkeleton from "./dashboard-action-skeleton";
 
 type LocationActions = {

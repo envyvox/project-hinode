@@ -1,17 +1,18 @@
 "use client";
 
-import TypographySmall from "@/components/typography/small";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import UserBannersTabContent from "@/components/user-banner/user-banners";
+import { useMemo } from "react";
 import { UserBannerIncluded } from "@/services/data-access/banner";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import { BannerRarity } from "@prisma/client";
-import { useMemo } from "react";
-import BannerImage from "@/components/banner-image";
+
+import { useToggleUserActiveBannerMutation } from "@/hooks/mutations/use-toggle-user-active-banner-mutation";
 import { useUserActiveBannerQuery } from "@/hooks/queries/use-user-active-banner-query";
 import { useUserBannersQuery } from "@/hooks/queries/use-user-banners-query";
-import { useToggleUserActiveBannerMutation } from "@/hooks/mutations/use-toggle-user-active-banner-mutation";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import BannerImage from "@/components/banner-image";
+import TypographySmall from "@/components/typography/small";
+import UserBannersTabContent from "@/components/user-banner/user-banners";
 
 type UserBannersByRarity = Record<string, UserBannerIncluded[]>;
 

@@ -1,14 +1,16 @@
-import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardActionBase from "../dashboard-action-base";
-import { useUserStore } from "@/store/user-store";
-import { useToast } from "@/components/ui/use-toast";
-import { Location } from "@prisma/client";
 import {
   DashboardTab,
   useDashboardTabStore,
 } from "@/store/dashboard-tab-store";
-import { Button } from "@/components/ui/button";
+import { useDictionaryStore } from "@/store/dictionary-store";
 import { useFishingJobStore } from "@/store/fishing-job-store";
+import { useUserStore } from "@/store/user-store";
+import { Location } from "@prisma/client";
+
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+
+import DashboardActionBase from "../dashboard-action-base";
 
 const ActionSeaportFishing = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
@@ -23,28 +25,21 @@ const ActionSeaportFishing = () => {
     startFishingJob();
 
     toast({
-      description:
-        dictionary.dashboard["dashboard.actions.seaport.fishing.toast.start"],
+      description: dictionary.dashboard["actions.seaport.fishing.toast.start"],
     });
   };
 
   return (
     <DashboardActionBase
-      label={dictionary.dashboard["dashboard.actions.seaport.fishing.label"]}
-      description={
-        dictionary.dashboard["dashboard.actions.seaport.fishing.description"]
-      }
+      label={dictionary.dashboard["actions.seaport.fishing.label"]}
+      description={dictionary.dashboard["actions.seaport.fishing.description"]}
       actionComponent={
         <Button
           className="mt-2 w-fit self-end"
           variant="secondary"
           onClick={handleClick}
         >
-          {
-            dictionary.dashboard[
-              "dashboard.actions.seaport.fishing.button-label"
-            ]
-          }
+          {dictionary.dashboard["actions.seaport.fishing.button-label"]}
         </Button>
       }
     />

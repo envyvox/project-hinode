@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import IenIcon from "@/public/currency/Ien.png";
 import LotteryTicketIcon from "@/public/etc/LotteryTicket.png";
-import Image from "next/image";
+
+import { cn } from "@/lib/utils";
 
 type Props = {
   className?: string;

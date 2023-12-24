@@ -1,7 +1,8 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Title, UserTitle } from "@prisma/client";
+
+import prisma from "@/lib/prisma";
 
 /**
  * Retrieves the titles of a user.
@@ -26,7 +27,7 @@ const getUserTitles = async (userId: string): Promise<UserTitle[]> => {
  */
 const addTitleToUser = async (
   userId: string,
-  title: Title,
+  title: Title
 ): Promise<UserTitle> => {
   return await prisma.userTitle.create({
     data: {
