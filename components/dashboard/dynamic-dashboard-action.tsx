@@ -1,6 +1,6 @@
 import { Location } from "@prisma/client";
-import { Skeleton } from "../ui/skeleton";
 import dynamic from "next/dynamic";
+import DashboardActionSkeleton from "./dashboard-action-skeleton";
 
 type LocationActions = {
   [location in Location]: {
@@ -26,47 +26,45 @@ export const locationActionKeys: LocationActionKeys = {
   WorkOnContract: [],
 };
 
-const actionsLoading = () => <Skeleton className="h-[210px] w-full" />;
-
 const actions: LocationActions = {
   [Location.Capital]: {
     "shop-seed": dynamic(() => import("./actions/Capital/shop-seed"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
     market: dynamic(() => import("./actions/Capital/market"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
     casino: dynamic(() => import("./actions/Capital/casino"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
   },
   [Location.Garden]: {
     "shop-recipe": dynamic(() => import("./actions/Garden/shop-recipe"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
     "explore-garden": dynamic(() => import("./actions/Garden/explore-garden"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
   },
   [Location.Seaport]: {
     fishing: dynamic(() => import("./actions/Seaport/fishing"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
     "shop-fisher": dynamic(() => import("./actions/Seaport/shop-fisher"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
   },
   [Location.Castle]: {
     "explore-castle": dynamic(() => import("./actions/Castle/explore-castle"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
   },
   [Location.Village]: {
     "shop-product": dynamic(() => import("./actions/Village/shop-product"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
     farm: dynamic(() => import("./actions/Village/farm"), {
-      loading: actionsLoading,
+      loading: DashboardActionSkeleton,
     }),
   },
   InTransit: {},

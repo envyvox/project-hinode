@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDictionaryStore } from "@/store/dictionary-store";
-import DashboardTransitSkeleton from "./dashboard-transit-skeleton";
 import DashboardTransitItem from "./dashboard-transit-item";
 import { useTransitsQuery } from "@/hooks/queries/use-transits-query";
+import DashboardTransitSkeleton from "./dashboard-transit-skeleton";
 
 const DashboardTransit = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);

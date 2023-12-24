@@ -2,7 +2,7 @@ import { Location } from "@prisma/client";
 import React from "react";
 import { Locale } from "i18n-config";
 import dynamic from "next/dynamic";
-import { Skeleton } from "../ui/skeleton";
+import DashboardAboutSkeleton from "./dashboard-about-skeleton";
 
 type LocationAbouts = {
   [lang in Locale]: {
@@ -10,100 +10,98 @@ type LocationAbouts = {
   };
 };
 
-const aboutLoading = () => <Skeleton className="mt-6 h-[150px] w-full" />;
-
 const abouts: LocationAbouts = {
   en: {
     InTransit: dynamic(() => import("@/mdx/locations/en/InTransit.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Capital: dynamic(() => import("@/mdx/locations/en/Capital.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Garden: dynamic(() => import("@/mdx/locations/en/Garden.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Seaport: dynamic(() => import("@/mdx/locations/en/Seaport.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Castle: dynamic(() => import("@/mdx/locations/en/Castle.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Village: dynamic(() => import("@/mdx/locations/en/Village.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     ExploreGarden: dynamic(
       () => import("@/mdx/locations/en/ExploreGarden.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
     ExploreCastle: dynamic(
       () => import("@/mdx/locations/en/ExploreCastle.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
     Fishing: dynamic(() => import("@/mdx/locations/en/Fishing.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     FieldWatering: dynamic(
       () => import("@/mdx/locations/en/FieldWatering.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
     WorkOnContract: dynamic(
       () => import("@/mdx/locations/en/WorkOnContract.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
   },
   ru: {
     InTransit: dynamic(() => import("@/mdx/locations/ru/InTransit.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Capital: dynamic(() => import("@/mdx/locations/ru/Capital.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Garden: dynamic(() => import("@/mdx/locations/ru/Garden.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Seaport: dynamic(() => import("@/mdx/locations/ru/Seaport.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Castle: dynamic(() => import("@/mdx/locations/ru/Castle.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     Village: dynamic(() => import("@/mdx/locations/ru/Village.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     ExploreGarden: dynamic(
       () => import("@/mdx/locations/ru/ExploreGarden.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
     ExploreCastle: dynamic(
       () => import("@/mdx/locations/ru/ExploreCastle.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
     Fishing: dynamic(() => import("@/mdx/locations/ru/Fishing.mdx"), {
-      loading: aboutLoading,
+      loading: DashboardAboutSkeleton,
     }),
     FieldWatering: dynamic(
       () => import("@/mdx/locations/ru/FieldWatering.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
     WorkOnContract: dynamic(
       () => import("@/mdx/locations/ru/WorkOnContract.mdx"),
       {
-        loading: aboutLoading,
+        loading: DashboardAboutSkeleton,
       },
     ),
   },

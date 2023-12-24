@@ -1,12 +1,18 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import DashboardActionSkeleton from "./dashboard-action-skeleton";
 
 const DashboardTransitSkeleton = () => {
   return (
     <>
-      <Skeleton className="h-[210px]" />
-      <Skeleton className="h-[210px]" />
-      <Skeleton className="h-[210px]" />
+      <div className="flex flex-wrap gap-5 border-t pt-5">
+        <DashboardActionSkeleton />
+      </div>
+      <div className="flex flex-wrap gap-5 border-t pt-5">
+        <DashboardActionSkeleton />
+      </div>
+      <div className="flex flex-wrap gap-5 border-t pt-5">
+        <DashboardActionSkeleton />
+      </div>
     </>
   );
 };
