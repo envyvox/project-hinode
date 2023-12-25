@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import Ignis from "@/public/IGNIS.jpg";
 import { BuiltInProviderType } from "next-auth/providers";
 import {
   ClientSafeProvider,
@@ -37,32 +39,46 @@ export default function SignInPage() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center p-24">
-      <Card>
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Sign in</CardTitle>
-          <CardDescription>Using one of the following services</CardDescription>
-        </CardHeader>
-        <CardContent className="grid grid-cols-2 gap-5">
-          {/* TODO: add localized errors */}
-          {error && <div className="col-span-2">{error}</div>}
-          {providers ? (
-            Object.values(providers).map((provider) => (
-              <Button
-                key={provider.name}
-                variant="outline"
-                onClick={() => signIn(provider.id)}
-              >
-                {provider.name}
-              </Button>
-            ))
-          ) : (
-            <>
-              <Skeleton className="h-10" />
-              <Skeleton className="h-10" />
-            </>
-          )}
-        </CardContent>
+    <main className="container py-6">
+      <Card className="grid p-6 sm:grid-cols-2">
+        <Image
+          className="rounded-lg shadow-sm"
+          src={Ignis}
+          placeholder="blur"
+          alt="Ignis"
+        />
+        <div className="flex flex-col items-center justify-center">
+          <div>
+            <CardHeader className="space-y-1">
+              <CardTitle className="text-2xl">Sign in</CardTitle>
+              <CardDescription>
+                Using one of the following services
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="grid grid-cols-2 gap-5">
+              {providers ? (
+                Object.values(providers).map((provider) => (
+                  <Button
+                    key={provider.name}
+                    variant="outline"
+                    onClick={() => signIn(provider.id)}
+                  >
+                    {provider.name}
+                  </Button>
+                ))
+              ) : (
+                <>
+                  <Skeleton className="h-10" />
+                  <Skeleton className="h-10" />
+                </>
+              )}
+              {/* TODO: add localized errors */}
+              {error && (
+                <div className="col-span-2 text-destructive">{error}</div>
+              )}
+            </CardContent>
+          </div>
+        </div>
       </Card>
     </main>
   );
