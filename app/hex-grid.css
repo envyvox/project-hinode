@@ -17,7 +17,7 @@
   grid-row: calc(var(--counter) + var(--counter)) / span 2;
   clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1536px) {
   .hex-grid__list {
     --amount: 5;
     --counter: 1;
@@ -100,7 +100,7 @@
     --counter: 21;
   }
 }
-@media screen and (min-width: 1120px) and (max-width: 1439px) {
+@media screen and (min-width: 1280px) and (max-width: 1535px) {
   .hex-grid__list {
     --amount: 4;
     --counter: 1;
@@ -180,7 +180,7 @@
     --counter: 21;
   }
 }
-@media screen and (min-width: 840px) and (max-width: 1119px) {
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
   .hex-grid__list {
     --amount: 3;
     --counter: 1;
@@ -257,7 +257,7 @@
     --counter: 21;
   }
 }
-@media screen and (min-width: 480px) and (max-width: 839px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .hex-grid__list {
     --amount: 2;
     --counter: 1;
@@ -331,7 +331,7 @@
     --counter: 21;
   }
 }
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 767px) {
   .hex-grid__list {
     --amount: 1;
     grid-gap: 1.5rem 3rem;
