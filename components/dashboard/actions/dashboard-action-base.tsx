@@ -18,10 +18,10 @@ const DashboardActionBase = ({
       {/* TODO: Replace skeleton with Image */}
       <Skeleton className="h-[200px] w-[200px]" />
       <div className="flex flex-1 flex-col justify-between">
-        <div>
+        <>
           <TypographyH4>{label}</TypographyH4>
           <TypographyP>{description}</TypographyP>
-        </div>
+        </>
         {actionComponent}
       </div>
     </>
