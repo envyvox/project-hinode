@@ -13,6 +13,10 @@
   padding: 2rem 25%;
   transition: transform 0.24s ease-out;
 }
+.hex-grid__content::before {
+  grid-row: calc(var(--counter) + var(--counter)) / span 2;
+  clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+}
 @media screen and (min-width: 1440px) {
   .hex-grid__list {
     --amount: 5;

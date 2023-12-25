@@ -40,7 +40,7 @@ const HexGridContent = ({ className, children }: HexGridContentProps) => {
   return (
     <div
       className={cn(
-        "hex-grid__content absolute flex h-full w-full flex-col items-center justify-center bg-secondary text-center text-card-foreground transition-colors hover:bg-secondary-foreground/5 dark:bg-card dark:hover:bg-primary-foreground/90",
+        "hex-grid__content absolute flex h-full w-full flex-col items-center justify-center bg-border text-center text-card-foreground transition-colors before:absolute before:h-[99%] before:w-[99%] before:bg-card before:content-[''] before:hover:bg-primary-foreground/90 [&_*]:z-0",
         className
       )}
     >
