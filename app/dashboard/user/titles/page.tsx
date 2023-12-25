@@ -6,7 +6,6 @@ import { useUserStore } from "@/store/user-store";
 import { UserTitle } from "@prisma/client";
 
 import { useUserTitlesQuery } from "@/hooks/queries/use-user-titles-query";
-import { Skeleton } from "@/components/ui/skeleton";
 import TypographySmall from "@/components/typography/small";
 import UserActiveTitle from "@/components/user-title/user-active-title";
 import UserTitleComponent from "@/components/user-title/user-title";
@@ -33,7 +32,7 @@ const UserTitles = () => {
           {userActiveTitle ? (
             <UserActiveTitle userTitle={userActiveTitle} />
           ) : (
-            <Skeleton className="h-[95px]" />
+            <UserTitlesSkeleton single />
           )}
         </div>
       </div>
