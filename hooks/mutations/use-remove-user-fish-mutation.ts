@@ -1,5 +1,6 @@
 import { removeFishFromUser } from "@/services/data-access/fish";
 import { useUserStore } from "@/store/user-store";
+import { Season } from "@prisma/client";
 import { useMutation, useQueryClient } from "react-query";
 
 import { ReactQueryKeys } from "@/lib/react-query-keys";
@@ -20,6 +21,9 @@ export const useRemoveUserFishMutation = () => {
     onSuccess(data, variables, context) {
       queryClient.invalidateQueries({
         queryKey: ReactQueryKeys.userFish(variables.userId ?? user.id),
+      });
+      queryClient.invalidateQueries({
+        queryKey: ReactQueryKeys.userAllSeasonFish(variables.userId ?? user.id),
       });
     },
   });

@@ -26,9 +26,11 @@ type Props = {
 const ShopFisherPopover = ({ userFish }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const { mutate: addCurrencyToUser } = useAddUserCurrencyMutation();
-  const { mutate: removeFishFromUser } = useRemoveUserFishMutation();
+  const { mutate: removeFishFromUser, isLoading: isRemoveLoading } =
+    useRemoveUserFishMutation();
   const [sellAmount, setSellAmount] = useState(1);
   const { toast } = useToast();
+  const [isOpen, setIsOpen] = useState(false);
 
   const sellFish = (fish: Fish, amount: number) => {
     removeFishFromUser({ fishId: fish.id, amount: amount });
@@ -53,10 +55,12 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         fish.price * amount
       ),
     });
+
+    setIsOpen(false);
   };
 
   return (
-    <Popover>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <Button className="w-fit self-end" variant="secondary">
           {
@@ -114,6 +118,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         <Button
           className="w-fit self-end"
           variant="secondary"
+          disabled={isRemoveLoading}
           onClick={() => sellFish(userFish.fish, sellAmount)}
         >
           {formatString(
