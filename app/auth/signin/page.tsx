@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import Ignis from "@/public/IGNIS.jpg";
+import Ignis from "@/public/Ignis.jpg";
 import { BuiltInProviderType } from "next-auth/providers";
 import {
   ClientSafeProvider,
