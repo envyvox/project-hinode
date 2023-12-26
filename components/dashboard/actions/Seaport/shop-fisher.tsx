@@ -1,6 +1,9 @@
+import { UserFishIncluded } from "@/services/data-access/fish";
 import { useDictionaryStore } from "@/store/dictionary-store";
+import { Season } from "@prisma/client";
 
-import { useUserSeasonFishQuery } from "@/hooks/queries/use-user-season-fish-query";
+import { useUserFishQuery } from "@/hooks/queries/use-user-fish-query";
+import { useWorldStateQuery } from "@/hooks/queries/use-world-state-query";
 import { Button } from "@/components/ui/button";
 import FullscreenSheet from "@/components/fullscreen-sheet";
 import TypographyMuted from "@/components/typography/muted";
@@ -11,7 +14,17 @@ import ShopFisherUserFish from "./shop-fisher-user-fish";
 
 const ActionSeaportShopFisher = () => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
-  const { data: userFish, isLoading } = useUserSeasonFishQuery();
+  const { data: userFish, isLoading } = useUserFishQuery();
+  const { data: worldState } = useWorldStateQuery();
+
+  let filteredUserFish: UserFishIncluded[] = [];
+  if (!isLoading && userFish?.length) {
+    filteredUserFish = userFish.filter(
+      (uf) =>
+        uf.fish.catchSeason.includes(worldState?.season ?? Season.Any) ||
+        uf.fish.catchSeason.includes(Season.Any)
+    );
+  }
 
   return (
     <DashboardActionBase
@@ -34,8 +47,8 @@ const ActionSeaportShopFisher = () => {
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
               {isLoading ? (
                 <ShopFisherSkeleton />
-              ) : userFish?.length ? (
-                userFish.map((uf) => (
+              ) : filteredUserFish.length ? (
+                filteredUserFish.map((uf) => (
                   <ShopFisherUserFish key={uf.fishId} userFish={uf} />
                 ))
               ) : (

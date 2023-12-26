@@ -57,6 +57,7 @@ const ShopFisherPopover = ({ userFish }: Props) => {
     });
 
     setIsOpen(false);
+    setSellAmount(1);
   };
 
   return (

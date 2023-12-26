@@ -21,12 +21,6 @@ export const ReactQueryKeys = {
   userFish: (userId: string) => ["user-fish", userId],
   userGatherings: (userId: string) => ["user-gatherings", userId],
   userProducts: (userId: string) => ["user-products", userId],
-  userAllSeasonFish: (userId: string) => ["user-season-fish", userId],
-  userSeasonFish: (userId: string, season: Season) => [
-    "user-season-fish",
-    userId,
-    season,
-  ],
   userSeeds: (userId: string) => ["user-seeds", userId],
   userTitles: (userId: string) => ["user-titles", userId],
   userFarmCells: (userId: string) => ["user-farm-cells", userId],
