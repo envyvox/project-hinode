@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import { useFishingJobStore } from "@/store/fishing-job-store";
@@ -19,7 +17,7 @@ const FishingProvider = ({ children }: Props) => {
   const dictionary = useDictionaryStore((state) => state.dictionary);
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const fishingJobData = useFishingJobStore((state) => state.fishingJobData);
-  const { isSuccess, isError, data } = useEventDetails(fishingJobData.jobId);
+  const { data } = useEventDetails(fishingJobData.jobId);
   const resetFishingJobData = useFishingJobStore(
     (state) => state.resetFishingJobData
   );
@@ -28,11 +26,9 @@ const FishingProvider = ({ children }: Props) => {
   useEffect(() => {
     const firstRun = data?.runs.at(0);
 
-    if (!firstRun) {
-      return;
-    }
+    if (!firstRun) return;
 
-    if (isSuccess) {
+    if (firstRun.status === "SUCCESS") {
       resetFishingJobData();
       setUserLocation(Location.Seaport);
 
@@ -51,24 +47,24 @@ const FishingProvider = ({ children }: Props) => {
         ),
         duration: Infinity,
       });
-    }
-    if (isError) {
+    } else if (firstRun.status === "FAILURE") {
       resetFishingJobData();
       setUserLocation(Location.Seaport);
+
       toast({
-        description: "Fishing failed...",
+        title: dictionary.unexpectedError.title,
+        description: dictionary.unexpectedError["fishing.job"],
         variant: "destructive",
+        duration: Infinity,
       });
     }
   }, [
-    data,
+    data?.runs,
     dictionary,
-    fishingJobData.fishName,
-    isError,
-    isSuccess,
+    fishingJobData,
     resetFishingJobData,
-    setUserLocation,
     toast,
+    setUserLocation,
   ]);
 
   return children;

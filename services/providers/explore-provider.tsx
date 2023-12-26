@@ -21,68 +21,59 @@ const ExploreProvider = ({ children }: Props) => {
   const resetExploreJobData = useExploreJobStore(
     (state) => state.resetExploreJobData
   );
-  const { isSuccess, isError, data } = useEventDetails(exploreJobData.jobId);
+  const { data } = useEventDetails(exploreJobData.jobId);
   const { toast } = useToast();
 
   useEffect(() => {
     const firstRun = data?.runs.at(0);
 
-    if (!firstRun) {
-      return;
-    }
+    if (!firstRun) return;
 
-    if (isSuccess) {
-      resetExploreJobData();
-      setUserLocation(exploreJobData.returnLocation);
-
-      if (exploreJobData.successGatherings.length) {
-        toast({
-          description: formatString(
-            // @ts-ignore Implicit any
-            dictionary.dashboard[
-              `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.success`
-            ],
-            exploreJobData.successGatherings.map((gathering) => {
-              return [
-                <Image
-                  className="mx-1 inline h-6 w-6"
-                  width={27}
-                  height={27}
-                  src={`/gathering/${gathering.gatheringName}.png`}
-                  alt={gathering.gatheringName}
-                />,
-                `${gathering.amount} ${
-                  // @ts-ignore Implicit any
-                  dictionary.item.gathering[gathering.gatheringName]
-                }`,
-              ];
-            })
-          ),
-          duration: Infinity,
-        });
-      } else {
-        toast({
-          description:
-            // @ts-ignore Implicit any
-            dictionary.dashboard[
-              `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.failed`
-            ],
-        });
-      }
-    }
-    if (isError) {
+    if (firstRun.status === "SUCCESS") {
       resetExploreJobData();
       setUserLocation(exploreJobData.returnLocation);
 
       toast({
-        description: "Explore failed...",
+        description: exploreJobData.successGatherings.length
+          ? formatString(
+              // @ts-ignore Implicit any
+              dictionary.dashboard[
+                `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.success`
+              ],
+              exploreJobData.successGatherings.map((gathering) => {
+                return [
+                  <Image
+                    className="mx-1 inline h-6 w-6"
+                    width={27}
+                    height={27}
+                    src={`/gathering/${gathering.gatheringName}.png`}
+                    alt={gathering.gatheringName}
+                  />,
+                  `${gathering.amount} ${
+                    // @ts-ignore Implicit any
+                    dictionary.item.gathering[gathering.gatheringName]
+                  }`,
+                ];
+              })
+            ) // @ts-ignore Implicit any
+          : dictionary.dashboard[
+              `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.failed`
+            ],
+        duration: Infinity,
+      });
+    } else if (firstRun.status === "FAILURE") {
+      resetExploreJobData();
+      setUserLocation(exploreJobData.returnLocation);
+
+      toast({
+        title: dictionary.unexpectedError.title,
+        description: dictionary.unexpectedError["explore.job"],
         variant: "destructive",
+        duration: Infinity,
       });
     }
   }, [
-    data,
-    isSuccess,
-    isError,
+    data?.runs,
     exploreJobData,
     resetExploreJobData,
     toast,
