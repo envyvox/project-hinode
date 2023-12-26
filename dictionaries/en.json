@@ -389,7 +389,7 @@
   },
   "unexpectedError": {
     "title": "Oops, something gone wrong",
-    "fishing.job": "It's a strange feeling, you know you went fishing, but here you are standing in a harbor town and you don't remember the results of the fishing, it seems to be the intervention of an otherworldly force.",
-    "explore.job": ""
+    "fishing.job": "It's a strange feeling, you know you went fishing, but here you are standing in a town and you don't remember the results of the fishing, it seems to be the intervention of an otherworldly force.",
+    "explore.job": "It's a strange feeling, you know you went exploring, but here you are standing in a town and you don't remember the results of the exploring, it seems to be the intervention of an otherworldly force."
   }
 }

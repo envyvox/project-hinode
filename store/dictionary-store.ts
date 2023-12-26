@@ -396,6 +396,11 @@ const emptyDictinaory: Dictionary = {
     Watered: "",
     Completed: "",
   },
+  unexpectedError: {
+    title: "",
+    "fishing.job": "",
+    "explore.job": "",
+  },
 };
 
 export const useDictionaryStore = create<DictionaryState>((set) => ({
