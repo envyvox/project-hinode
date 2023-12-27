@@ -61,7 +61,9 @@ export default function SignInPage() {
                   <Button
                     key={provider.name}
                     variant="outline"
-                    onClick={() => signIn(provider.id)}
+                    onClick={() =>
+                      signIn(provider.id, { callbackUrl: "/dashboard" })
+                    }
                   >
                     {provider.name}
                   </Button>
