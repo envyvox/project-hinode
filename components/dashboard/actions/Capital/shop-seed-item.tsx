@@ -3,13 +3,13 @@ import { SeedCropIncluded } from "@/services/data-access/seed";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import { Currency } from "@prisma/client";
+import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
 import { useAddUserSeedMutation } from "@/hooks/mutations/use-add-user-seed-mutation";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 import TypographyLarge from "@/components/typography/large";
 import TypographyP from "@/components/typography/p";
@@ -24,12 +24,11 @@ const ShopSeedItem = ({ seed }: Props) => {
   const { mutate: addSeedToUser } = useAddUserSeedMutation();
   const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
   const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
-  const { toast } = useToast();
 
   const handleBuySeed = (seed: SeedCropIncluded) => {
     if (userCurrency === undefined || userCurrency.amount < seed.price) {
-      toast({
-        description: formatString(
+      toast.success(
+        formatString(
           dictionary.dashboard[
             "actions.capital.shop-seed.sheet.toast.no-currency"
           ],
@@ -43,16 +42,16 @@ const ShopSeedItem = ({ seed }: Props) => {
           />,
           // @ts-ignore Implicit any
           dictionary.item.seed[seed.name]
-        ),
-      });
+        )
+      );
       return;
     }
 
     removeCurrencyFromUser({ currency: Currency.Ien, amount: seed.price });
     addSeedToUser({ seedId: seed.id, amount: 1 });
 
-    toast({
-      description: formatString(
+    toast.success(
+      formatString(
         dictionary.dashboard["actions.capital.shop-seed.sheet.toast.success"],
         <Image
           className="mx-1 inline h-6 w-6"
@@ -66,7 +65,10 @@ const ShopSeedItem = ({ seed }: Props) => {
         <Icons.Ien />,
         seed.price
       ),
-    });
+      {
+        duration: Infinity,
+      }
+    );
   };
 
   return (

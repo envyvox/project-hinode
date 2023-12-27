@@ -7,8 +7,7 @@ import { useExploreJobStore } from "@/store/explore-job-store";
 import { useUserStore } from "@/store/user-store";
 import formatString from "@/util/format-string";
 import { useEventDetails } from "@trigger.dev/react";
-
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 type Props = {
   children: React.ReactNode;
@@ -22,7 +21,6 @@ const ExploreProvider = ({ children }: Props) => {
     (state) => state.resetExploreJobData
   );
   const { data } = useEventDetails(exploreJobData.jobId);
-  const { toast } = useToast();
 
   useEffect(() => {
     const firstRun = data?.runs.at(0);
@@ -33,8 +31,8 @@ const ExploreProvider = ({ children }: Props) => {
       resetExploreJobData();
       setUserLocation(exploreJobData.returnLocation);
 
-      toast({
-        description: exploreJobData.successGatherings.length
+      toast.success(
+        exploreJobData.successGatherings.length
           ? formatString(
               // @ts-ignore Implicit any
               dictionary.dashboard[
@@ -59,16 +57,16 @@ const ExploreProvider = ({ children }: Props) => {
           : dictionary.dashboard[
               `actions.${exploreJobData.returnLocation.toLowerCase()}.explore.toast.failed`
             ],
-        duration: Infinity,
-      });
+        {
+          duration: Infinity,
+        }
+      );
     } else if (firstRun.status === "FAILURE") {
       resetExploreJobData();
       setUserLocation(exploreJobData.returnLocation);
 
-      toast({
-        title: dictionary.unexpectedError.title,
+      toast.error(dictionary.unexpectedError.title, {
         description: dictionary.unexpectedError["explore.job"],
-        variant: "destructive",
         duration: Infinity,
       });
     }
@@ -76,7 +74,6 @@ const ExploreProvider = ({ children }: Props) => {
     data?.runs,
     exploreJobData,
     resetExploreJobData,
-    toast,
     setUserLocation,
     dictionary,
   ]);

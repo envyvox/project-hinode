@@ -2,12 +2,12 @@ import Image from "next/image";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import { Currency, Product } from "@prisma/client";
+import { toast } from "sonner";
 
 import { useAddUserProductMutation } from "@/hooks/mutations/use-add-user-product-mutation";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 import TypographyLarge from "@/components/typography/large";
 import TypographySmall from "@/components/typography/small";
@@ -21,12 +21,11 @@ const ShopProductItem = ({ product }: Props) => {
   const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
   const { mutate: addProductToUser } = useAddUserProductMutation();
   const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
-  const { toast } = useToast();
 
   const handleBuyProduct = (product: Product) => {
     if (userCurrency === undefined || userCurrency.amount < product.price) {
-      toast({
-        description: formatString(
+      toast.success(
+        formatString(
           dictionary.dashboard[
             "actions.village.shop-product.sheet.toast.no-currency"
           ],
@@ -40,16 +39,16 @@ const ShopProductItem = ({ product }: Props) => {
           />,
           // @ts-ignore Implicit any
           dictionary.item.product[product.name]
-        ),
-      });
+        )
+      );
       return;
     }
 
     removeCurrencyFromUser({ currency: Currency.Ien, amount: product.price });
     addProductToUser({ productId: product.id, amount: 1 });
 
-    toast({
-      description: formatString(
+    toast.success(
+      formatString(
         dictionary.dashboard[
           "actions.village.shop-product.sheet.toast.success"
         ],
@@ -64,8 +63,8 @@ const ShopProductItem = ({ product }: Props) => {
         dictionary.item.product[product.name],
         <Icons.Ien />,
         product.price
-      ),
-    });
+      )
+    );
   };
 
   return (

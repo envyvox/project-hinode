@@ -3,6 +3,7 @@ import { Dictionary, useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import getRandomNumberBetween from "@/util/get-random-number";
 import { Currency } from "@prisma/client";
+import { toast } from "sonner";
 
 import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
@@ -17,7 +18,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 
 import CasinoBetsTooltip from "./casino-bets-tooptip";
@@ -47,19 +47,15 @@ const CasinoBets = () => {
   const { mutate: addCurrencyToUser } = useAddUserCurrencyMutation();
   const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
   const [bet, setBet] = useState(minBet);
-  const { toast } = useToast();
 
   const handleBet = () => {
     if (userCurrency === undefined || userCurrency.amount < bet) {
-      const noCurrencyDescription = formatString(
-        dictionary.dashboard["actions.capital.casino.bet.toast.no-currency"],
-        <Icons.Ien />
+      toast.error(
+        formatString(
+          dictionary.dashboard["actions.capital.casino.bet.toast.no-currency"],
+          <Icons.Ien />
+        )
       );
-
-      toast({
-        description: noCurrencyDescription,
-        variant: "destructive",
-      });
       return;
     }
 
@@ -88,13 +84,15 @@ const CasinoBets = () => {
         break;
     }
 
-    toast({
-      title: formatString(
+    toast.success(
+      formatString(
         dictionary.dashboard["actions.capital.casino.bet.toast.title"],
         cubeDrop
-      ) as string,
-      description: response,
-    });
+      ),
+      {
+        description: response,
+      }
+    );
   };
 
   return (

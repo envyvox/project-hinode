@@ -10,10 +10,10 @@ import { useReGrowthCellMutation } from "@/hooks/mutations/use-re-growth-cell-mu
 import { useResetCellMutation } from "@/hooks/mutations/use-reset-cell-mutation";
 import { useCropBySeedIdQuery } from "@/hooks/queries/use-crop-by-seed-id-query";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import TypographyLarge from "@/components/typography/large";
 import TypographyMuted from "@/components/typography/muted";
 import TypographySmall from "@/components/typography/small";
+import { toast } from "sonner";
 
 type Props = {
   cell: UserFarmCellSeedIncluded;
@@ -29,7 +29,6 @@ const FarmCellContentCompleted = ({ cell }: Props) => {
   const { mutate: resetCell, isLoading: isResetLoading } =
     useResetCellMutation();
   const { mutate: addCropToUser } = useAddUserCropMutation();
-  const { toast } = useToast();
 
   // There are some delay before updated cell will be available
   // so user can click again and collect crop second time
@@ -50,8 +49,8 @@ const FarmCellContentCompleted = ({ cell }: Props) => {
       resetCell(cell.id);
     }
 
-    toast({
-      description: formatString(
+    toast(
+      formatString(
         dictionary.dashboard["actions.village.farm.sheet.completed.toast"],
         amount,
         <Image
@@ -63,8 +62,8 @@ const FarmCellContentCompleted = ({ cell }: Props) => {
         />,
         // @ts-ignore Implicit any
         dictionary.item.crop[crop!.name]
-      ),
-    });
+      )
+    );
     setCollected(true);
   };
 

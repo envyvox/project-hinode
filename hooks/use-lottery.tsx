@@ -3,8 +3,8 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import shuffle from "@/util/shuffle";
 import { Currency } from "@prisma/client";
+import { toast } from "sonner";
 
-import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 import UserHoverCard from "@/components/user-hover-card";
 
@@ -20,7 +20,6 @@ export const useLottery = () => {
   const { data: lotteryUsers } = useLotteryUsersQuery();
   const { mutate: addUserCurrency } = useAddUserCurrencyMutation();
   const { mutate: deleteLotteryUsers } = useDeleteLotteryUsersMutation();
-  const { toast } = useToast();
 
   useEffect(() => {
     if (lotteryUsers && lotteryUsers.length >= lotteryUsersReq) {
@@ -33,16 +32,18 @@ export const useLottery = () => {
       });
       deleteLotteryUsers();
 
-      toast({
-        description: formatString(
+      toast.success(
+        formatString(
           dictionary.dashboard["actions.capital.casino.lottery.winner.toast"],
           lotteryUsersReq,
           lotteryAward,
           <Icons.Ien />,
           <UserHoverCard user={winner.user} />
         ),
-        duration: Infinity,
-      });
+        {
+          duration: Infinity,
+        }
+      );
     }
-  }, [addUserCurrency, deleteLotteryUsers, dictionary, lotteryUsers, toast]);
+  }, [addUserCurrency, deleteLotteryUsers, dictionary, lotteryUsers]);
 };

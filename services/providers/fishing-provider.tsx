@@ -6,8 +6,7 @@ import { useUserStore } from "@/store/user-store";
 import formatString from "@/util/format-string";
 import { Location } from "@prisma/client";
 import { useEventDetails } from "@trigger.dev/react";
-
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 type Props = {
   children: React.ReactNode;
@@ -21,7 +20,6 @@ const FishingProvider = ({ children }: Props) => {
   const resetFishingJobData = useFishingJobStore(
     (state) => state.resetFishingJobData
   );
-  const { toast } = useToast();
 
   useEffect(() => {
     const firstRun = data?.runs.at(0);
@@ -32,8 +30,8 @@ const FishingProvider = ({ children }: Props) => {
       resetFishingJobData();
       setUserLocation(Location.Seaport);
 
-      toast({
-        description: formatString(
+      toast.success(
+        formatString(
           dictionary.dashboard["actions.seaport.fishing.toast.complete"],
           <Image
             className="mx-1 inline h-6 w-6"
@@ -45,16 +43,16 @@ const FishingProvider = ({ children }: Props) => {
           // @ts-ignore Implicit any
           dictionary.item.fish[fishingJobData.fishName]
         ),
-        duration: Infinity,
-      });
+        {
+          duration: Infinity,
+        }
+      );
     } else if (firstRun.status === "FAILURE") {
       resetFishingJobData();
       setUserLocation(Location.Seaport);
 
-      toast({
-        title: dictionary.unexpectedError.title,
+      toast.error(dictionary.unexpectedError.title, {
         description: dictionary.unexpectedError["fishing.job"],
-        variant: "destructive",
         duration: Infinity,
       });
     }
@@ -63,7 +61,6 @@ const FishingProvider = ({ children }: Props) => {
     dictionary,
     fishingJobData,
     resetFishingJobData,
-    toast,
     setUserLocation,
   ]);
 

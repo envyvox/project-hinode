@@ -1,6 +1,7 @@
 import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import { Currency } from "@prisma/client";
+import { toast } from "sonner";
 
 import { useAddUserLotteryMutation } from "@/hooks/mutations/use-add-user-lottery-mutation";
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
@@ -15,7 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 
 import CasinoLotteryGift from "./casino-lottery-gift";
@@ -31,49 +31,46 @@ const CasinoLottery = () => {
   const { data: userLottery } = useUserLotteryQuery();
   const { mutate: removeUserCurrency } = useRemoveUserCurrencyMutation();
   const { mutate: addUserLottery, isLoading } = useAddUserLotteryMutation();
-  const { toast } = useToast();
 
   useLottery();
 
   const handleBuyLottery = () => {
     if (userLottery) {
-      toast({
-        description: formatString(
+      toast.error(
+        formatString(
           dictionary.dashboard[
             "actions.capital.casino.lottery.buy.toast.already-have"
           ],
           <Icons.LotteryTicket />
-        ),
-        variant: "destructive",
-      });
+        )
+      );
       return;
     }
 
     if (userCurrency === undefined || userCurrency.amount < lotteryPrice) {
-      toast({
-        description: formatString(
+      toast.error(
+        formatString(
           dictionary.dashboard[
             "actions.capital.casino.lottery.buy.toast.no-currency"
           ],
           <Icons.Ien />,
           <Icons.LotteryTicket />
-        ),
-        variant: "destructive",
-      });
+        )
+      );
       return;
     }
 
     removeUserCurrency({ currency: Currency.Ien, amount: lotteryPrice });
     addUserLottery({});
 
-    toast({
-      description: formatString(
+    toast.success(
+      formatString(
         dictionary.dashboard[
           "actions.capital.casino.lottery.buy.toast.success"
         ],
         <Icons.LotteryTicket />
-      ),
-    });
+      )
+    );
   };
 
   return (

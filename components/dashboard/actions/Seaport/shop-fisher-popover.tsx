@@ -4,6 +4,7 @@ import { UserFishIncluded } from "@/services/data-access/fish";
 import { useDictionaryStore } from "@/store/dictionary-store";
 import formatString from "@/util/format-string";
 import { Currency, Fish } from "@prisma/client";
+import { toast } from "sonner";
 
 import { useAddUserCurrencyMutation } from "@/hooks/mutations/use-add-user-currency-mutation";
 import { useRemoveUserFishMutation } from "@/hooks/mutations/use-remove-user-fish-mutation";
@@ -15,7 +16,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Slider } from "@/components/ui/slider";
-import { useToast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
 import TypographyMuted from "@/components/typography/muted";
 
@@ -29,15 +29,14 @@ const ShopFisherPopover = ({ userFish }: Props) => {
   const { mutate: removeFishFromUser, isLoading: isRemoveLoading } =
     useRemoveUserFishMutation();
   const [sellAmount, setSellAmount] = useState(1);
-  const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
 
   const sellFish = (fish: Fish, amount: number) => {
     removeFishFromUser({ fishId: fish.id, amount: amount });
     addCurrencyToUser({ currency: Currency.Ien, amount: fish.price * amount });
 
-    toast({
-      description: formatString(
+    toast.success(
+      formatString(
         dictionary.dashboard[
           "actions.seaport.shop-fisher.sheet.toast.sell-one"
         ],
@@ -53,8 +52,8 @@ const ShopFisherPopover = ({ userFish }: Props) => {
         dictionary.item.fish[fish.name],
         <Icons.Ien />,
         fish.price * amount
-      ),
-    });
+      )
+    );
 
     setIsOpen(false);
     setSellAmount(1);

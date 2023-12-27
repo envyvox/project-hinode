@@ -6,6 +6,7 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import { useUserStore } from "@/store/user-store";
 import formatString from "@/util/format-string";
 import { Currency, Transit } from "@prisma/client";
+import { toast } from "sonner";
 
 import { useRemoveUserCurrencyMutation } from "@/hooks/mutations/use-remove-user-currency-mutation";
 import { useUserCurrencyQuery } from "@/hooks/queries/use-user-currency-query";
@@ -15,7 +16,6 @@ import TypographyH4 from "@/components/typography/h4";
 import TypographyP from "@/components/typography/p";
 
 import { Icons } from "../icons";
-import { useToast } from "../ui/use-toast";
 
 type Props = {
   transit: Transit;
@@ -27,25 +27,21 @@ const DashboardTransitItem = ({ transit }: Props) => {
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const { data: userCurrency } = useUserCurrencyQuery(Currency.Ien);
   const { mutate: removeCurrencyFromUser } = useRemoveUserCurrencyMutation();
-  const { toast } = useToast();
 
   const handleTransit = (transit: Transit) => {
     if (userCurrency === undefined || userCurrency.amount < transit.price) {
-      toast({
-        title: dictionary.dashboard["transit.toast.no-currency.title"],
+      toast.error(dictionary.dashboard["transit.toast.no-currency.title"], {
         description: formatString(
           dictionary.dashboard["transit.toast.no-currency.description"],
           transit.price
         ),
-        variant: "destructive",
       });
     } else {
       removeCurrencyFromUser({ currency: Currency.Ien, amount: transit.price });
       setUserLocation(transit.destination);
       setActiveTab(DashboardTab.about);
 
-      toast({
-        title: dictionary.dashboard["transit.toast.success.title"],
+      toast.success(dictionary.dashboard["transit.toast.success.title"], {
         description: formatString(
           dictionary.dashboard["transit.toast.success.description"],
           dictionary.location[transit.destination]

@@ -5,7 +5,7 @@ import "./globals.css";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Providers from "@/components/providers";
@@ -51,7 +51,15 @@ const RootLayout = ({ children }: Props) => (
           <Header />
           <div className="min-h-[80vh] flex-1">{children}</div>
           <Footer />
-          <Toaster />
+          <Toaster
+            closeButton
+            toastOptions={{
+              classNames: {
+                title: "text-sm font-semibold",
+                description: "text-sm opacity-90",
+              },
+            }}
+          />
         </div>
         <TailwindIndicator />
       </Providers>

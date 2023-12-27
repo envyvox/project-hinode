@@ -6,9 +6,9 @@ import { useDictionaryStore } from "@/store/dictionary-store";
 import { useExploreJobStore } from "@/store/explore-job-store";
 import { useUserStore } from "@/store/user-store";
 import { Location } from "@prisma/client";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 
 import DashboardActionBase from "../dashboard-action-base";
 
@@ -17,16 +17,13 @@ const ActionCastleExploreCastle = () => {
   const setUserLocation = useUserStore((state) => state.setUserLocation);
   const setActiveTab = useDashboardTabStore((state) => state.setActiveTab);
   const startExploreJob = useExploreJobStore((state) => state.startExploreJob);
-  const { toast } = useToast();
 
   const handleClick = () => {
     setUserLocation(Location.ExploreCastle);
     setActiveTab(DashboardTab.about);
     startExploreJob(Location.ExploreCastle, Location.Castle);
 
-    toast({
-      description: dictionary.dashboard["actions.castle.explore.toast.start"],
-    });
+    toast.success(dictionary.dashboard["actions.castle.explore.toast.start"]);
   };
 
   return (
