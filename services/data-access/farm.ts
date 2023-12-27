@@ -2,13 +2,36 @@
 
 import { FarmCellState, Seed, UserFarmCell, Weather } from "@prisma/client";
 
+
+
 import prisma from "@/lib/prisma";
 
+
+
 import { getWorldState } from "./world-state";
+
 
 export type UserFarmCellSeedIncluded = {
   seed: Seed | null;
 } & UserFarmCell;
+
+
+/**
+ * Retrieves all farm cells with a given state.
+ *
+ * @param {FarmCellState} state - The state of the farm cells to retrieve.
+ * @return {Promise<Array<UserFarmCell>>} - A promise that resolves to an array of user farm cells.
+ */
+const getFarmCellsWithState = async (state: FarmCellState) => {
+  return await prisma.userFarmCell.findMany({
+    where: {
+      state: state,
+    },
+    include: {
+      seed: true,
+    },
+  });
+};
 
 const getUserFarmCells = async (userId: string) => {
   return await prisma.userFarmCell.findMany({
@@ -128,4 +151,5 @@ export {
   waterCell,
   reGrowthCell,
   resetCell,
+  getFarmCellsWithState,
 };
