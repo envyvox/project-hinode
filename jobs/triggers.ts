@@ -17,9 +17,9 @@ export async function sendEventFishing(
         fishId: fishId,
       },
     },
-    // {
-    //   deliverAt: deliverAt,
-    // }
+    {
+      deliverAt: deliverAt,
+    }
   );
   return event.id;
 }

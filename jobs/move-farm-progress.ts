@@ -12,13 +12,15 @@ client.defineJob({
   version: "0.0.2",
   trigger: cronTrigger({ cron: "0 0 * * *" }),
   run: async (payload, io, cxt) => {
-    const worldState = await io.runTask("get-world-state", async () => {
-      return await getWorldState();
-    });
+    const worldState = await io.runTask(
+      "get-world-state",
+      async () => await getWorldState()
+    );
 
-    const cells = await io.runTask("get-watered-cells", async () => {
-      return await getFarmCellsWithState(FarmCellState.Watered);
-    });
+    const cells = await io.runTask(
+      "get-watered-cells",
+      async () => await getFarmCellsWithState(FarmCellState.Watered)
+    );
 
     await io.runTask("update-cells", async () => {
       cells.forEach(async (cell) => {

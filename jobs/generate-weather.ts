@@ -10,23 +10,28 @@ import { cronTrigger } from "@trigger.dev/sdk";
 client.defineJob({
   id: "generate-weather",
   name: "Generate Weather",
-  version: "0.0.1",
+  version: "0.0.2",
   trigger: cronTrigger({ cron: "0 0 * * *" }),
   run: async (payload, io, cxt) => {
-    const worldState = await getWorldState();
-    const chance = getRandomNumberBetween(1, 101);
-
-    const newWeatherToday = worldState.weatherTomorrow;
-    const newWeatherTomorrow =
-      worldState.weatherTomorrow === Weather.Clear
-        ? chance + (worldState.weatherToday === Weather.Clear ? 10 : 20) > 50
-          ? Weather.Rain
-          : Weather.Clear
-        : chance + (worldState.weatherToday === Weather.Rain ? 10 : 20) > 50
-          ? Weather.Clear
-          : Weather.Rain;
+    const worldState = await io.runTask(
+      "get-world-state",
+      async () => await getWorldState()
+    );
 
     await io.runTask("update-weather", async () => {
+      const chance = getRandomNumberBetween(1, 101);
+
+      const newWeatherToday = worldState.weatherTomorrow;
+
+      const newWeatherTomorrow =
+        worldState.weatherTomorrow === Weather.Clear
+          ? chance + (worldState.weatherToday === Weather.Clear ? 10 : 20) > 50
+            ? Weather.Rain
+            : Weather.Clear
+          : chance + (worldState.weatherToday === Weather.Rain ? 10 : 20) > 50
+            ? Weather.Clear
+            : Weather.Rain;
+
       await updateWeather(newWeatherToday, newWeatherTomorrow);
     });
   },
