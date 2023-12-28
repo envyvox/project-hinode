@@ -16,13 +16,13 @@ client.defineJob({
       const gatherings: SuccessGathering[] = payload.gatherings;
       if (!gatherings) return;
 
-      gatherings.forEach(async (gathering) => {
+      for (const gathering of gatherings) {
         await addGatheringToUser(
           payload.userId,
           gathering.gatheringId,
           gathering.amount
         );
-      });
+      }
     });
 
     await io.runTask("add-xp-to-user", async () => {

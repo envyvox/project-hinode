@@ -23,7 +23,7 @@ client.defineJob({
     );
 
     await io.runTask("update-cells", async () => {
-      cells.forEach(async (cell) => {
+      for (const cell of cells) {
         if (!cell.seed) {
           await io.logger.error(
             `There are cell with watered state but seed is undefined: ${cell.id}`
@@ -57,7 +57,7 @@ client.defineJob({
             },
           });
         });
-      });
+      }
     });
   },
 });
