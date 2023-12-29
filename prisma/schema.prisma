@@ -288,6 +288,17 @@ model Banner {
   userBanner UserBanner[]
 }
 
+model WorkContract {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  location    Location
+  duration    Int
+  reward      Int
+
+  @@unique([name, location])
+}
+
 enum BannerRarity {
   Common
   Rare
