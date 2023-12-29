@@ -14,7 +14,7 @@ const DashboardActionBase = ({
   actionComponent,
 }: Props) => {
   return (
-    <>
+    <div className="flex flex-wrap gap-5 border-t pt-5">
       {/* TODO: Replace skeleton with Image */}
       <Skeleton className="h-[200px] w-[200px]" />
       <div className="flex flex-1 flex-col justify-between">
@@ -24,7 +24,7 @@ const DashboardActionBase = ({
         </>
         {actionComponent}
       </div>
-    </>
+    </div>
   );
 };
 

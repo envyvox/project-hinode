@@ -1,7 +1,7 @@
 import { Skeleton } from "../ui/skeleton";
 
 const DashboardActionSkeleton = () => (
-  <>
+  <div className="flex flex-wrap gap-5 border-t pt-5">
     <Skeleton className="h-[200px] w-[200px]" />
     <div className="flex flex-1 flex-col justify-between">
       <div>
@@ -14,7 +14,7 @@ const DashboardActionSkeleton = () => (
       </div>
       <Skeleton className="h-10 w-[200px] self-end" />
     </div>
-  </>
+  </div>
 );
 
 export default DashboardActionSkeleton;
