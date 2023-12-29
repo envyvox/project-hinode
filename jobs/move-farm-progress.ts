@@ -11,6 +11,7 @@ client.defineJob({
   name: "Move farm progress",
   version: "0.0.2",
   trigger: cronTrigger({ cron: "0 0 * * *" }),
+  enabled: process.env.TRIGGER_JOBS_DISABLED === "false",
   run: async (payload, io, cxt) => {
     const worldState = await io.runTask(
       "get-world-state",
