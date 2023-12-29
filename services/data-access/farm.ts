@@ -70,15 +70,16 @@ const addUserFarmCell = async (userId: string): Promise<UserFarmCell> => {
  */
 const plantSeedToCell = async (
   cellId: string,
-  seedId: string
+  seedId: string,
+  state: FarmCellState
 ): Promise<UserFarmCell> => {
   return await prisma.userFarmCell.update({
     where: {
-      id: cellId,
+      id: cellId, 
     },
     data: {
       seedId: seedId,
-      state: FarmCellState.Planted,
+      state: state,
     },
   });
 };
