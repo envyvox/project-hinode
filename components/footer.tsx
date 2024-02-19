@@ -23,6 +23,15 @@ const Footer = () => {
           >
             GitHub
           </a>
+          . You can support me on{" "}
+          <a
+            href={siteConfig.links.buymeacoffee}
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium underline underline-offset-4"
+          >
+            Buy Me a Coffee
+          </a>
           .
         </p>
       </div>

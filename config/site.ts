@@ -9,5 +9,6 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/envyvox",
     github: "https://github.com/envyvox/project-hinode",
+    buymeacoffee: "https://www.buymeacoffee.com/envyvox",
   },
 };
